@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="ClientDetailsEdit">
+        <t t-jquery=".client-details-box .client-details-right" t-operation='append'>
+            <div class='client-detail'>
+                <span class='label'>Neighborhood</span>
+                <select class='detail client-address-states needsclick' name='neighborhood_id'>
+                    <option value=''>None</option>
+                    <t t-foreach='widget.pos.neighborhoods' t-as='neighborhood'>
+                        <option t-if="widget.pos.config.id == neighborhood.pos_config_id[0]" t-att-value='neighborhood.id'
+                            t-att-selected="partner.neighborhood_id ? ((neighborhood.id === partner.neighborhood_id[0]) ? true : undefined) : undefined">
+                            <t t-esc='neighborhood.name'/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </t>
+    </t>
+    <t t-extend="OrderReceipt">
+        <t t-jquery=".pos-receipt .pos-receipt-contact" t-operation='replace'></t>
+
+        <t t-jquery=".pos-receipt t[t-if='taxincluded']" t-operation='replace'></t>
+
+        <t t-jquery=".pos-receipt t[t-if='!taxincluded']" t-operation='before'>
+            <t t-if='taxincluded'>
+                <t t-foreach='receipt.tax_details' t-as='tax'>
+                    <div style="border-top: 1px solid #000;">
+                        <t t-esc='tax.name' />
+                        <span t-esc='widget.format_currency_no_symbol(tax.amount)' class="pos-receipt-right-align"/>
+                    </div>
+                </t>
+                <div style="border-bottom: 1px solid #000;">
+                    Total Taxes
+                    <span t-esc='widget.format_currency(receipt.total_tax)' class="pos-receipt-right-align"/>
+                </div>
+            </t>
+        </t>
+
+        <t t-jquery=".pos-receipt .pos-receipt-order-data" t-operation='replace'>
+            <div style="border-top: 1px solid #000;" class="pos-receipt-order-data">
+                <div><t t-esc='receipt.name' /></div>
+                <div>Happy to serve you</div>
+                <div>سعداء بخدمتكم</div>
+            </div>
+        </t>
+
+        <t t-jquery=".pos-receipt .orderlines t[t-foreach='receipt.orderlines']" t-operation="replace">
+            <t t-if='receipt.header_html'>
+                <t t-raw='receipt.header_html' />
+            </t>
+            <t t-if='!receipt.header_html and receipt.header'>
+                <div style="text-align: center;"><t t-esc='receipt.header' /></div>
+            </t>
+            <div style="text-align: center;">Official Receipt</div><br />
+            <t t-if="widget.pos.get_order().pricelist.pricelist_type=='employee'">
+                <div style="text-align:center;font-weight:bold;">### Employee Meal ###</div><br />
+            </t>
+            <div style="margin-left:15%;margin-right:15%;width:70%;text-align: center;font-weight: bold;font-size: 200%;border: 1px solid black">&#160;&#160;Order # <t t-esc="widget.pos.get_order().sequence_number" /> &#160;&#160;</div>
+            <br /><div style="border-bottom: 1px solid #000;text-align: center;">Printed At : <t t-esc='receipt.date.localestring' /></div>
+            <t t-if="widget.pos.get_order().delivery_type=='takeaway'">
+                <div style="text-align:left;font-weight:bold;">Takeaway</div>
+            </t>
+            <t t-if="widget.pos.get_order().delivery_type=='internal'">
+                <div style="text-align:left;font-weight:bold;">Internal</div>
+            </t>
+            <t t-if="widget.pos.get_order().delivery_type=='delivery'">
+                <div style="text-align:left;font-weight:bold;">Delivery</div>
+            </t>
+            <div style="border-bottom: 1px solid #000;" align="left">Cashier : <t t-esc='receipt.cashier' /></div>
+            <t t-if="widget.pos.get_order().delivery_type=='delivery'">
+                <t t-if="widget.pos.get_client()">
+                    <div style="border-bottom: 1px solid #000;text-align:left;direction:ltr;" class="pos-receipt-customer">
+                        <div><span> Delivery Info: </span></div>
+                        Name: <t t-esc="widget.pos.get_client().name || ''"/><br />
+                        Mobile: <t t-esc="widget.pos.get_client().phone || ''"/><br />
+                        Address: <t t-esc="widget.pos.get_client().street || ''"/><br />
+                                 <t t-esc="widget.pos.get_client().city || ''"/>,
+                                 <t t-esc="widget.pos.get_client().zip || ''"/><br />
+                    </div>
+                </t>
+            </t>
+
+            <div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;border-bottom: 1px solid #000;border-top: 1px solid #000;">
+                <div style="display: table-cell;width:10%">Qty</div>
+                <div align="center" style="display: table-cell;width: 75%;">Item</div>
+                <div style="display: table-cell;width:15%">Price</div>
+            </div>
+            <t t-foreach="receipt.orderlines" t-as="line">
+                <div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;border-top: 1px solid #000;">
+                    <div style="display: table-cell;width:10%">
+                        <t t-esc="Math.round(line.quantity * Math.pow(10, pos.dp['Product Unit of Measure'])) / Math.pow(10, pos.dp['Product Unit of Measure'])"/>
+                    </div>
+                    <div style="display: table-cell;width:75%;text-align: -moz-center;">
+<!--                        <div t-esc='line.product_name_wrapped[0]'/>-->
+<!--                        <t t-call="OrderReceiptWrappedProductNameLines"/>-->
+                        <t t-esc="line.product_en_trans"/>
+                        <br />
+                        <t t-esc="line.product_ar_trans"/>
+                    </div>
+                    <div style="display: table-cell;width:15%;">
+                        <span t-esc='widget.format_currency_no_symbol(line.price_display)' class="price_display"/>
+                    </div>
+                </div>
+                    <t t-if="line.extra_items">
+                        <t t-foreach="line.extra_items" t-as="extra">
+                            <div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;">
+                                <div style="display: table-cell;width:10%"></div>
+                                <div align="center" style="display: table-cell;width: 75%;">
+                                    <i class='fa fa-plus'/><span style="font-size:14px !important;" t-esc="extra.display_name" />
+                                </div>
+                                <div style="display: table-cell;width:15%">
+                                    <span style="font-size:14px;" t-esc='widget.format_currency_no_symbol(extra.lst_price*line.quantity)' />
+                                </div>
+                            </div>
+                        </t>
+                    </t>
+            </t>
+        </t>
+    </t>
+
+    <t t-extend="OrderChangeReceipt">
+        <t t-jquery=".pos-receipt" t-operation='replace'>
+            <div class="pos-receipt" style="direction:rtl;">
+                <!--<div class="pos-receipt-order-data"><b style="margin-left:15%;margin-right:15%;width:70%;text-align: center;font-weight: bold;font-size: 200%;border: 1px solid black">Order # <t t-esc="widget.pos.get_order().sequence_number" /></b></div>-->
+		<div class="pos-receipt-order-data"><b style="margin-left:15%;margin-right:15%;width:70%;text-align: center;font-weight: bold;font-size: 200%;border: 1px solid black">Order # <t t-esc="changes.sequence_number" /></b></div>
+                <t t-if="changes.floor || changes.table">
+                    <br />
+                    <div class="pos-receipt-title">
+                        <t t-esc="changes.floor" /> / <t t-esc="changes.table"/>
+                    </div>
+                </t>
+                <br />
+                <t t-if="changes.cancelled.length > 0">
+                    <div class="pos-order-receipt-cancel">
+                        <div class="pos-receipt-title">
+                            <t t-esc='changes.time.hours'/>:<t t-esc='changes.time.minutes'/>
+                        </div>
+                        <div style="font-size: 125%;margin-right:47%;"><span>ملغي</span></div>
+                        <br />
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="border-top: 1px solid #000;">نقطة البيع :</th>
+                                    <th style="border-top: 1px solid #000;"><t t-esc="widget.pos.config.name"/></th>
+                                </tr>
+                                <tr>
+                                    <th style="border-top: 1px solid #000;border-bottom: 1px solid #000;">الكمية</th>
+                                    <th style="border-top: 1px solid #000;border-bottom: 1px solid #000;margin-right:50%">الوصف</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="changes.new" t-as="change">
+                                    <tr>
+                                        <td style="border-top: 1px solid #000;"><t t-esc="change.qty"/></td>
+                                        <td style="border-top: 1px solid #000;">
+                                            <span t-esc="change.product_en_trans" class="pos-receipt-right-align"/><br />
+                                            <span t-esc="change.product_ar_trans" class="pos-receipt-right-align"/><br />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <t t-if="change.note">
+                                                <div>
+                                                    NOTE
+                                                </div>
+                                                <div>
+                                                    <t t-foreach="change.note.split('-')" t-as="text">
+                                                        <p t-esc="text" />
+                                                    </t>
+                                                </div>
+                                                <br/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <br />
+                        <br />
+                    </div>
+                </t>
+                <t t-if="changes.new.length > 0">
+                    <div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;border: 1px solid black">
+                        <div style="display: table-cell;width:30%;border: 1px solid black">
+                            <t t-esc='changes.time.hours'/>:<t t-esc='changes.time.minutes'/>
+                        </div>
+                        <div style="font-size: 125%;display: table-cell;width:30%;border: 1px solid black"><span>جديد</span></div>
+                        <t t-if="widget.pos.get_order().delivery_type=='delivery'">
+                            <div style="font-size: 125%;display: table-cell;width:40%;border: 1px solid black"><span>سفري توصيل</span></div>
+                        </t>
+                        <t t-if="widget.pos.get_order().delivery_type=='takeaway'">
+                            <div style="font-size: 125%;display: table-cell;width:40%;border: 1px solid black"><span>سفري</span></div>
+                        </t>
+                        <t t-if="widget.pos.get_order().delivery_type=='internal'">
+                            <div style="font-size: 125%;display: table-cell;width:40%;border: 1px solid black"><span>محلي</span></div>
+                        </t>
+                    </div>
+                    <br />
+                    <table style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th style="border-top: 1px solid #000;">نقطة البيع :</th>
+                                <th style="border-top: 1px solid #000;"><t t-esc="widget.pos.config.name"/></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th style="border-bottom: 1px solid #000;border-top: 1px solid #000;">الكمية</th>
+                                <th style="border-bottom: 1px solid #000;border-top: 1px solid #000;margin-right:50%">الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="test" t-value="CHANGESSSSSS"/>
+                            <t t-log="test"/>
+                            <t t-log="changes"/>
+                            <t t-foreach="changes.new" t-as="change">
+				<tr>
+                                    <td style="border-top: 1px solid #000;"><t t-esc="change.qty"/></td>
+                                    <td style="border-top: 1px solid #000;">
+                                        <span t-esc="change.product_en_trans" class="pos-receipt-right-align"/><br />
+                                        <span t-esc="change.product_ar_trans" class="pos-receipt-right-align"/><br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <t t-if="change.extra_items">
+                                            <div>
+					    	                    <t t-foreach="change.extra_items" t-as="extra">
+                                                    <p style="direction:ltr"> + <t t-esc="extra.display_name"/></p>
+                            			        </t>
+					                        </div>
+                                            <br/>
+                                        </t>
+                                        <t t-if="change.note">
+                                            <div>
+                                                NOTE
+                                            </div>
+                                            <div>
+					    	                    <t t-foreach="change.note.split('-')" t-as="text">
+                                		            <p t-esc="text" />
+                            			        </t>
+					                        </div>
+                                            <br/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <br />
+                    <br />
+                </t>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="SubmitOrderButton">
+        <t t-jquery="span.order-submit" t-operation="replace"/>
+    </t>
+
+    <t t-name="SubmitOrderButton1">
+        <span class="control-button order-submit">
+            <i class="fa fa-cutlery"></i>
+            Order
+        </span>
+    </t>
+
+    <t t-extend="FloorScreenWidget">
+        <t t-jquery=".editing" t-operation='replace'>
+            <span class='edit-button editing'><i class='fa fa-pencil' role="img" aria-label="Edit" title="Edit"></i></span>
+        </t>
+    </t>
+</templates>

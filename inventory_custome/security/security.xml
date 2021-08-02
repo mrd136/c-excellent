@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+      
+
+        <record id="group_stock_manager_operation_rule" model="ir.rule">
+            <field name="name">Transfer Request</field>
+            <!-- <field name="model_id" search="[('model','=','transfer.request')]" model="ir.model"/> -->
+            <field name="model_id" ref="model_transfer_request"/>
+            <field name="groups" eval="[(4, ref('warehouse_stock_restrictions.group_stock_manager_operation'))]"/>
+          <!--   <field name="domain_force">[('location_main_id','in', user.stock_location_ids)]</field>           
+ -->
+<!--             <field name="domain_force">[('user_id.partner_id','in', [ r.owner_ids for r in user.stock_location_ids ])]</field>           
+ -->        <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+    </data>
+</odoo>

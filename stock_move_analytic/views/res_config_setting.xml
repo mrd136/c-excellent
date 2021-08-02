@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="maher_res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='module_account_budget']/../.." position="after">
+                    <div class="col-12 col-lg-6 o_setting_box" id="enable_analytic"
+                         title="This allows accountants to manage analytic account in Moves"
+                         groups="account.group_account_user">
+                        <div class="o_setting_left_pane">
+                            <field name="is_analytic" widget="upgrade_boolean"/>
+                        </div>
+                        <div class="o_setting_right_pane" id="enable_is_analytic">
+                            <label for="is_analytic"/>
+                            <div class="text-muted">
+                                Use Analytic Account in moves
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

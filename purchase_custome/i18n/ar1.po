@@ -1,0 +1,182 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_custome
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-24 14:25+0000\n"
+"PO-Revision-Date: 2020-06-24 14:25+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__oper_type__add
+msgid "Add"
+msgstr "إضافة"
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__cancel
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__oper_type__clean
+msgid "Clean"
+msgstr "حذف"
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "Confirm"
+msgstr "تاكيد"
+
+#. module: purchase_custome
+#: model:res.groups,name:purchase_custome.group_purchase_department_manager
+msgid "Department Manager"
+msgstr "تعميد مدير ادارة المشتريات"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order_line__forecast_qty
+msgid "Forcast Quantity"
+msgstr "الكمية المتوقعة"
+
+#. module: purchase_custome
+#: model:res.groups,name:purchase_custome.group_purchase_general_manager
+msgid "Genaeral Manager"
+msgstr "تعميد المدير العام"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__to_approve
+msgid "General Manager"
+msgstr "في انتظار تعميد المدير العان"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__done
+msgid "Locked"
+msgstr "مقفل"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order_line__onhand_qty
+msgid "On hand Quantity"
+msgstr "الكمية في اليد"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order__oper_type
+msgid "Operation Type"
+msgstr "نوع العملية"
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "Period"
+msgstr "الفترة"
+
+#. module: purchase_custome
+#: code:addons/purchase_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please define stock  '%s' account !!"
+msgstr "الرجاء تعريف حساب المخزن"
+
+#. module: purchase_custome
+#: code:addons/purchase_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please define stock  '%s' valuation account !!"
+msgstr "الرجاء تعريف حساب تقييم المخزن"
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "Prepare Products"
+msgstr "تحضير المنتجات"
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "Print"
+msgstr "طباعة"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order__categ_ids
+msgid "Product Category"
+msgstr "فئة المنتج"
+
+#. module: purchase_custome
+#: model:ir.module.category,name:purchase_custome.module_category_purchase
+msgid "Purchase"
+msgstr "المشتريات"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__confirm
+msgid "Purchase Department Manager"
+msgstr "في انتظار تعميد مدير المشتريات"
+
+#. module: purchase_custome
+#: model:ir.model,name:purchase_custome.model_purchase_order
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__purchase
+msgid "Purchase Order"
+msgstr "أمر شراء"
+
+#. module: purchase_custome
+#: model:ir.model,name:purchase_custome.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "بند أمر الشراء"
+
+#. module: purchase_custome
+#: model:ir.model.fields.selection,name:purchase_custome.selection__purchase_order__state__sent
+msgid "RFQ Sent"
+msgstr "تم إرسال طلب عرض السعر"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order__is_sales
+msgid "Sales"
+msgstr "المبيعات"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order__date_sales_from
+msgid "Sales From"
+msgstr "المبيعات من"
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "Sales Period"
+msgstr "مبيعات الفترة"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order__date_sales_to
+msgid "Sales To"
+msgstr "المبيعات الي"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order_line__sold_qty
+msgid "Sold Quantity"
+msgstr "الكمية المباعة"
+
+#. module: purchase_custome
+#: model:ir.model.fields,field_description:purchase_custome.field_purchase_order__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: purchase_custome
+#: code:addons/purchase_custome/models/stock_picking.py:0
+#, python-format
+msgid ""
+"There's no accounting journal assgined to handle stock moves for product "
+"category ( %s ), please contact system administrator!"
+msgstr ""
+
+#. module: purchase_custome
+#: model_terms:ir.ui.view,arch_db:purchase_custome.purchase_order_form_inherit
+msgid "to"
+msgstr "الي"

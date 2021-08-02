@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- Form transfer request -->
+	<record id="view_transfer_request_form" model="ir.ui.view">
+		<field name="name">transfer.request.form</field>
+		<field name="model">transfer.request</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="action_confirm" type="object" string="Confirm" class="btn-primary" states="draft" />
+					<button name="action_deliver" type="object" string="Deliver" class="btn-primary" states="confirm" groups="warehouse_stock_restrictions.group_stock_manager_operation"/>
+					<button name="action_cancel" type="object" string="Cancel" states="draft,t,confirm,deliver,receipt" groups="purchase.group_purchase_manager"/>
+					<button name="action_done" type="object" string="Make as Done" states="deliver,receipt" groups="warehouse_stock_restrictions.group_stock_manager_operation"/>
+					<button name="action_reset_draft" type="object" string="Reset to draft" states="cancel"/>
+					<field name="state" widget="statusbar" statusbar_visible="draft,confirm,deliver,receipt,done"/>
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_view_deliver" string="Deliver" type="object" icon="fa-arrow-circle-o-up" attrs="{'invisible':['|',('state','not in',('deliver','receipt','done')),('picking_deliver_id','=',False)]}"/>
+						<button name="action_view_receipt" string="Receipt" type="object" icon="fa-arrow-circle-o-down" attrs="{'invisible':['|',('state','not in',('deliver','receipt','done')),('picking_receipt_id','=',False)]}"/>
+
+					</div>
+					<div class="oe_title">
+						<lable from="name" string="Request ID: "/>
+						<h1><field name="name"/></h1>
+					</div>
+					<group>
+						<group attrs="{'invisible':[('type','!=','feeding')]}">
+							<field name="location_main_id"  force_save="1" string="Location From"/>
+							<field name="location_branch_id" string="Location To" domain="[('usage','=','internal'),('id','!=',location_main_id)]" options="{'no_create':True}"  />
+							<field name="is_sales" attrs="{'invisible': [('type','not in',('feeding'))]}"/>
+						</group>
+						<group attrs="{'invisible':[('type','=','feeding')]}">
+							<field name="location_branch_id" string="Location From" domain="[('usage','=','internal'),('id','!=',location_main_id)]" options="{'no_create':True}"  />
+							<field name="location_main_id"  force_save="1" string="Location to"/>
+							<field name="is_sales" attrs="{'invisible': [('type','not in',('feeding'))]}"/>
+						</group>
+						<group>
+							<field name="date_request"/>
+							<field name="user_id"/>
+						</group>
+					</group>
+					<group>
+			            <group name="dates" string="Sales Period" modifiers="{}"  attrs="{'invisible':['|',('is_sales','=',False),('type','not in',('feeding'))]}">
+			              <label for="date_start" string="Period" modifiers="{}"/>
+			              <div style="display: inline;" modifiers="{}">
+			                <field name="date_sales_from" class="oe_inline" on_change="1"/>
+			                 to 
+			                <field name="date_sales_to" class="oe_inline" on_change="1" />
+			              </div>
+			              <field name="categ_ids" widget="many2many_tags" />
+			              <field name="oper_type" widget="radio" options="{'horizontal':True}"/>
+			            </group>
+						<group>
+							<field name="company_id" invisible="1"/>
+							<field name="type" invisible="1"/>
+							<field name="picking_deliver_id" invisible="1"/>
+							<field name="picking_receipt_id" invisible="1"/>
+						</group>
+		          </group>
+		          <group>
+		            <button name="prepare_products" type="object" string="Prepare Products" icon="fa-gears" attrs="{'invisible':['|','|',('is_sales','=',False),('state','not in',('draft','confirm')),('type','not in',('feeding'))]}" class="btn-primary"/>
+		          </group>
+					<notebook>
+						<page string="Operations">
+							<field name="line_ids" options='{"always_reload": True}'>
+								<tree editable="bottom" 
+								decoration-success="product_qty == deliver_qty == receipt_qty != 0.0"
+								decoration-danger="(
+								product_qty != 0.0 and 
+								deliver_qty != 0.0 and 
+								product_qty != deliver_qty) or 
+								(receipt_qty != deliver_qty and  
+								receipt_qty != 0.0)"
+								>
+									<field name="product_id"/>
+									<field name="product_uom" options="{'no_create':'1'}" />
+									<field name="onhand_src_qty" readonly="1" force_save="True"/>
+						        	<field name="onhand_dest_qty" readonly="1" force_save="True"/>
+									<field name="sold_qty" attrs="{'column_invisible':['|',('parent.is_sales','=',False),('parent.type','not in',('feeding'))]}" force_save="True"/>
+									<field name="product_qty"/>
+									<field name="deliver_qty" attrs="{'column_invisible':[('parent.state','not in',('deliver','receipt','done'))]}"/>
+									<field name="receipt_qty" attrs="{'column_invisible':[('parent.state','not in',('receipt','done'))]}"/>
+								</tree>
+								<form string="Products">
+									<sheet>
+										<group col="4">
+											<field name="product_id"/>
+											<field name="product_uom" options="{'no_create':'1'}" />
+											<field name="onhand_src_qty" readonly="1" force_save="True"/>
+								        	<field name="onhand_dest_qty" readonly="1" force_save="True"/>
+											<field name="sold_qty" attrs="{'column_invisible':['|',('parent.is_sales','=',False),('parent.type','not in',('feeding'))]}"/>
+											<field name="product_qty"/>
+											<field name="deliver_qty" attrs="{'column_invisible':[('parent.state','not in',('deliver','receipt','done'))]}"/>
+											<field name="receipt_qty" attrs="{'column_invisible':[('parent.state','not in',('receipt','done'))]}"/>
+										</group>
+									</sheet>
+								</form>
+							</field>
+						</page>
+						<page string="Note">
+							<field name="note" placeholder="Note ..."/>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers"/>
+					<field name="activity_ids" widget="mail_activity"/>
+					<field name="message_ids" widget="mail_thread"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- Tree transfer request-->
+	<record id="view_transfer_request_tree" model="ir.ui.view">
+		<field name="name">transfer.request.tree</field>
+		<field name="model">transfer.request</field>
+		<field name="arch" type="xml">
+			<tree string="Request list" multi_edit="1"
+                      decoration-info="state == 'draft'" decoration-muted="state == 'cancel'"
+                      decoration-danger="state not in ('cancel', 'done') and date_request &lt; current_date">
+				<field name="name"/>
+				<field name="date_request"/>
+				<field name="user_id"/>
+				<field name="location_main_id"/>
+				<field name="location_branch_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+
+	<!-- Action interanl transfer -->
+	<record id="action_internal_transfer" model="ir.actions.act_window">
+		<field name="name">Internal Transfer</field>
+		<field name="res_model">transfer.request</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[('type', '=', 'internal')]</field>
+		<field name="context">{
+				  'default_type': 'internal',
+		}
+		</field>      
+	</record>
+
+
+
+	<!-- Menu inventory feeding -->
+	<menuitem id="menu_internal_transfer"  parent="stock.menu_stock_warehouse_mgmt" sequence="1" action="action_internal_transfer" groups="stock.group_stock_manager,stock.group_stock_user"/>
+
+
+	<!-- Action inventory feeding -->
+	<record id="action_inventory_feeding" model="ir.actions.act_window">
+		<field name="name">Inventory Feeding</field>
+		<field name="res_model">transfer.request</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[('type', '=', 'feeding')]</field>
+		<field name="context">{
+				  'default_type': 'feeding',
+		}
+		</field>      
+	</record>
+
+	<!-- Menu inventory feeding -->
+	<menuitem id="menu_inventory_feeding"  parent="stock.menu_stock_warehouse_mgmt" sequence="0" action="action_inventory_feeding" groups="stock.group_stock_manager,stock.group_stock_user"/>
+
+	<record id="transfer_request_search" model="ir.ui.view">
+        <field name="name">transfer.request.search</field>
+        <field name="model">transfer.request</field>
+        <field name="arch" type="xml">
+        	<search string="Transfe Tequest">
+        		<field name="line_ids" string="Product" filter_domain="[('line_ids.product_id', 'ilike', self)]"/>
+<!--         	<field name="user_id"/>
+ -->        </search>
+        </field>
+    </record>
+
+</odoo>

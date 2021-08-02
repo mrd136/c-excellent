@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_transfer_request,transfer.request,model_transfer_request,,1,1,1,1
+access_transfer_request_line,transfer.request.line,model_transfer_request_line,,1,1,1,1
+access_transfer_request_report,transfer.request.report,model_transfer_request_report,,1,1,1,1
+

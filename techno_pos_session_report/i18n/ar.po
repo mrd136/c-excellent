@@ -1,0 +1,197 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* techno_pos_session_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20191019\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-27 22:11+0000\n"
+"PO-Revision-Date: 2020-09-27 22:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid ""
+"----------------------------------------------------<br/>\n"
+"                            Sales Detail"
+msgstr ""
+"----------------------------------------------------<br/>\n"
+"                            تفاصيل المبيعات"
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "<b> Actual in Cash </b>"
+msgstr "<b> المبيعات الفعلية </b>"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "<b> Difference </b>"
+msgstr "<b> فرق المبيعات </b>"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "<strong>Session Report</strong>"
+msgstr "<strong>تقرير نهاية الجلسة</strong>"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.view_pos_config_session_report_form_inherit
+msgid "Allow to print Session details from POS screen Directly."
+msgstr "إمكانية طباعة تفاصيل الجلسة من شاشة البيع مباشرة"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Discount Amount"
+msgstr "الخصم"
+
+#. module: techno_pos_session_report
+#: model:ir.model.fields,field_description:techno_pos_session_report.field_report_techno_pos_session_report_report_pos_session_pdf__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Email:"
+msgstr "البريد الإلكتروني:"
+
+#. module: techno_pos_session_report
+#: model:ir.model.fields,field_description:techno_pos_session_report.field_report_techno_pos_session_report_report_pos_session_pdf__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: techno_pos_session_report
+#: model:ir.model.fields,field_description:techno_pos_session_report.field_report_techno_pos_session_report_report_pos_session_pdf____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: techno_pos_session_report
+#: model:ir.model,name:techno_pos_session_report.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "إعدادات نقطة البيع"
+
+#. module: techno_pos_session_report
+#: model:ir.model,name:techno_pos_session_report.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "أوامر نقطة البيع"
+
+#. module: techno_pos_session_report
+#: model:ir.model,name:techno_pos_session_report.model_pos_session
+msgid "Point of Sale Session"
+msgstr "جلسة نقطة البيع"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Product"
+msgstr "المنتج"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Qty"
+msgstr "الكمية"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Report on"
+msgstr " تقرير في"
+
+#. module: techno_pos_session_report
+#: model:ir.model.fields,field_description:techno_pos_session_report.field_pos_order__is_return_order
+msgid "Return Order"
+msgstr "أمر إرجاع"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Returns"
+msgstr "الإرجاعات"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Sales"
+msgstr "المبيعات"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Salesman"
+msgstr "الكاشير"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Session"
+msgstr "الجلسة"
+
+#. module: techno_pos_session_report
+#. openerp-web
+#: code:addons/techno_pos_session_report/static/src/xml/session_report.xml:0
+#: model:ir.actions.report,name:techno_pos_session_report.action_report_session
+#, python-format
+msgid "Session Report"
+msgstr "تقرير نهاية الجلسة"
+
+#. module: techno_pos_session_report
+#: model:ir.model.fields,field_description:techno_pos_session_report.field_pos_config__iface_session_report
+msgid "Session Report "
+msgstr "تقرير نهاية الجلسة"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Session Status"
+msgstr "حالة الجلسة"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Start Date"
+msgstr "التاريخ"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Start Time"
+msgstr "الزمن"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Tax"
+msgstr "الضريبة"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Tel:"
+msgstr "هاتف:"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Total Internal"
+msgstr "إجمالي الطلبات الداخلية"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Total Delivery"
+msgstr "إجمالي التوصيل"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Total Items"
+msgstr "إجمالي الأصناف"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Total Takeaway"
+msgstr "إجمالي السفري"
+
+#. module: techno_pos_session_report
+#: model_terms:ir.ui.view,arch_db:techno_pos_session_report.session_report_pdf_document
+msgid "Website:"
+msgstr "الموقع:"
+
+#. module: techno_pos_session_report
+#: model:ir.model,name:techno_pos_session_report.model_report_techno_pos_session_report_report_pos_session_pdf
+msgid "report.techno_pos_session_report.report_pos_session_pdf"
+msgstr ""

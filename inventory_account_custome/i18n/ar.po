@@ -1,0 +1,169 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* inventory_account_custome
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20200811\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-27 10:00+0000\n"
+"PO-Revision-Date: 2020-09-27 10:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: inventory_account_custome
+#: model_terms:ir.ui.view,arch_db:inventory_account_custome.stock_landed_costs_views_inherit
+#: model_terms:ir.ui.view,arch_db:inventory_account_custome.view_picking_form_account
+msgid "<span class=\"o_stat_text\">Account Move</span>"
+msgstr "قيد اليومية"
+
+#. module: inventory_account_custome
+#: model_terms:ir.ui.view,arch_db:inventory_account_custome.view_picking_form_account
+msgid "<span class=\"o_stat_text\">Return</span>"
+msgstr "ارجاع"
+
+#. module: inventory_account_custome
+#: model:ir.model.fields,field_description:inventory_account_custome.field_hr_department__analytic_account_id
+msgid "Analytic Account"
+msgstr "مركز التكلفة"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Department of user can not analytic account !!"
+msgstr "لا يوجد مركز تكلفة لهذه الادارة"
+
+#. module: inventory_account_custome
+#: model:ir.model,name:inventory_account_custome.model_hr_department
+msgid "HR Department"
+msgstr "قسم الموارد البشرية"
+
+#. module: inventory_account_custome
+#: model:ir.model,name:inventory_account_custome.model_stock_inventory
+#: model:ir.model.fields,field_description:inventory_account_custome.field_stock_inventory__account_move_ids
+msgid "Inventory"
+msgstr "الجرد"
+
+#. module: inventory_account_custome
+#: model:ir.model.fields,field_description:inventory_account_custome.field_stock_picking__is_return
+msgid "Is Return"
+msgstr "للاعادة"
+
+#. module: inventory_account_custome
+#: model_terms:ir.ui.view,arch_db:inventory_account_custome.stock_landed_costs_views_inherit
+#: model_terms:ir.ui.view,arch_db:inventory_account_custome.view_picking_form_account
+msgid "List view of operations"
+msgstr "قائمة عرض العمليات"
+
+#. module: inventory_account_custome
+#: model:ir.model.fields,field_description:inventory_account_custome.field_stock_landed_cost__location_id
+msgid "Location"
+msgstr "الموقع"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please check source and destination location of picking!!"
+msgstr "الرجاء التأكد من اعدادات العملية او الاتصال بالمشرف"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please check sourse and destination location of picking!!"
+msgstr "الرجاء التأكد من اعدادات العملية او الاتصال بالمشرف"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please define an expense account for item: %s, or category: %s"
+msgstr "الرجاء تعريف حساب مصروف للمواد"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_landed_costs.py:0
+#, python-format
+msgid "Please define location (%s) account !!"
+msgstr "الرجاء تعريف حساب المخزن"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_inventory.py:0
+#: code:addons/inventory_account_custome/models/stock_inventory.py:0
+#, python-format
+msgid "Please define stock  '%s' account !!"
+msgstr "الرجاء تعريف حساب المخزن"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please define stock ( %s/%s ) account !!"
+msgstr "الرجاء تعريف حساب للمخزن"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Please define stock (%s/%s) account !!"
+msgstr "الرجاء تعريف حساب للمخزن"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid "Return"
+msgstr "ارجاع"
+
+#. module: inventory_account_custome
+#: model:ir.model,name:inventory_account_custome.model_stock_return_picking
+msgid "Return Sale Order Picking"
+msgstr "ارجاع امر البيع"
+
+#. module: inventory_account_custome
+#: model:ir.model,name:inventory_account_custome.model_stock_landed_cost
+msgid "Stock Landed Cost"
+msgstr "التكلفه الاضافيه للمخزون"
+
+#. module: inventory_account_custome
+#: model:ir.model.fields,field_description:inventory_account_custome.field_account_move__picking_id
+msgid "Stock Picking"
+msgstr "العملية"
+
+#. module: inventory_account_custome
+#: model:ir.model.fields,field_description:inventory_account_custome.field_account_move__stock_inventory_id
+msgid "Stock inventory"
+msgstr "المخزن"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#: code:addons/inventory_account_custome/models/stock_picking.py:0
+#, python-format
+msgid ""
+"There's no accounting journal assgined to handle stock moves for product "
+"category ( %s ), please contact system administrator!"
+msgstr "نرجو تهيئة دفتر اليومية للمخزون"
+
+#. module: inventory_account_custome
+#: code:addons/inventory_account_custome/models/stock_inventory.py:0
+#, python-format
+msgid ""
+"There's no accounting journal assigned to handle stock moves for product "
+"category ( %s ), please contact system administrator!"
+msgstr "لا يوجد حسابات معرفة لانهاء هذه العملية . نرجو التواصل مع المشرف"
+
+#. module: inventory_account_custome
+#: model:ir.model,name:inventory_account_custome.model_stock_picking
+msgid "Transfer Sale Picking"
+msgstr "التحويل"
+
+#. module: inventory_account_custome
+#: model:ir.model,name:inventory_account_custome.model_account_move
+msgid "additional partner_id fill with original sale order partner"
+msgstr ""

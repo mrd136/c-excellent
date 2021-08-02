@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+<!-- Form material request -->
+	<record id="view_material_request_form" model="ir.ui.view">
+		<field name="name">material.request.form</field>
+		<field name="model">material.request</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="action_confirm" type="object" string="Confirm" class="btn-primary" states="draft"  />
+					<button name="action_deliver" type="object" string="Deliver" class="btn-primary" states="confirm" groups="warehouse_stock_restrictions.group_stock_manager_operation"/>
+					<button name="action_cancel" type="object" string="Cancel" states="draft,confirm,deliver"/>
+					<button name="action_reset_draft" type="object" string="Reset to draft" states="cancel"/>
+					<field name="state" widget="statusbar" statusbar_visible="draft,confirm,deliver,done"/>
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_view_deliver" string="Delivery Picking" type="object" icon="fa-arrow-circle-o-up" attrs="{'invisible':['|',('state','not in',('deliver','done'))]}"/>
+					</div>
+					<div class="oe_title">
+						<lable from="name" string="Request ID: "/>
+						<h1><field name="name"/></h1>
+					</div>
+					<group>
+						<group>
+							<field name="location_id" />
+						</group>
+						<group>
+							<field name="date_request"/>
+							<field name="user_id"/>
+							<field name="dept_id"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Operations">
+							<field name="line_ids">
+								<tree editable="bottom" decoration-success="product_qty == deliver_qty != 0.0"
+								decoration-danger="(
+								product_qty != 0.0 and 
+								deliver_qty != 0.0 and 
+								product_qty != deliver_qty)"
+								>
+									<field name="product_id"/>
+									<field name="product_uom" options="{'no_create':'1'}" />
+									<field name="onhand_qty" force_save="True"/>
+									<field name="product_qty"/>
+									<field name="deliver_qty" attrs="{'column_invisible':[('parent.state','not in',('deliver','done'))]}"/>
+								</tree>
+								<form>
+									<sheet>
+										<group col="4">
+											<field name="product_id"/>
+											<field name="product_uom" options="{'no_create':'1'}" />
+											<field name="onhand_qty" force_save="True"/>
+											<field name="product_qty"/>
+											<field name="deliver_qty" attrs="{'column_invisible':[('parent.state','not in',('deliver','done'))]}"/>
+										</group>
+									</sheet>
+								</form>
+							</field>
+						</page>
+						<page string="Note">
+							<field name="note" placeholder="Note ..."/>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers"/>
+					<field name="activity_ids" widget="mail_activity"/>
+					<field name="message_ids" widget="mail_thread"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- Tree material request-->
+	<record id="view_material_request_tree" model="ir.ui.view">
+		<field name="name">material.request.tree</field>
+		<field name="model">material.request</field>
+		<field name="arch" type="xml">
+			<tree string="Request list" multi_edit="1"
+                      decoration-info="state == 'draft'" decoration-muted="state == 'cancel'"
+                      decoration-danger="state not in ('cancel', 'done') and date_request &lt; current_date">
+				<field name="name"/>
+				<field name="date_request"/>
+				<field name="user_id"/>
+				<field name="location_id"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Action Materials Request -->
+	<record id="action_materials_request" model="ir.actions.act_window">
+		<field name="name">Materials Request</field>
+		<field name="res_model">material.request</field>
+		<field name="view_mode">tree,form</field>
+		<field name="domain">[]</field>
+		<field name="context">{}</field>      
+	</record>
+
+	<!-- Menu materials request -->
+	<menuitem id="menu_materials_request"  parent="stock.menu_stock_warehouse_mgmt" sequence="2" action="action_materials_request" groups="stock.group_stock_manager,stock.group_stock_user"/>
+
+
+</odoo>

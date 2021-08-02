@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="stock_landed_costs_views_inherit">
+      <field name="name">stock.landed.cost.form.inherit</field>
+      <field name="model">stock.landed.cost</field>
+      <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form"/>
+      <field name="arch" type="xml">
+          <field name="picking_ids" position="attributes">
+              <attribute name="required">1</attribute>
+          </field>
+          <field name="picking_ids" position="after">
+              <field name="location_id"  required="1" />
+          </field>
+          <xpath expr="//button[@name='action_view_stock_valuation_layers']" position="before">
+             <button name="action_account_move" class="oe_stat_button" icon="fa-arrows-v" type="object" help="List view of operations" states="done">
+                  <div class="o_form_field o_stat_info">
+                      <span class="o_stat_text">Account Move</span>
+                  </div>
+             </button>
+          </xpath>
+      </field>
+    </record>
+
+
+  </data>
+</odoo>

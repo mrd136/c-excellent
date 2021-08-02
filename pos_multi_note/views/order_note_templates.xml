@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="pos_sale_order_template" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/pos_multi_note/static/src/js/notes_pos.js"/>
+            </xpath>
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="/pos_multi_note/static/src/css/pos.css"/>
+            </xpath>
+        </template>
+        <record id="view_note" model="ir.ui.view">
+            <field name="name">Note</field>
+            <field name="model">pos.config</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+             <xpath expr="//div[@id='category_reference']" position="inside">
+                 <br />
+                 <div class="o_setting_right_pane">
+                    <label for="delivery_guy_ids"/>
+                    <div class="text-muted">
+                        Select the delivery drivers for this pos
+                    </div>
+                    <div class="content-group mt16">
+                        <field name="delivery_guy_ids" widget="many2many_tags"/>
+                    </div>
+                </div>
+
+                 <br />
+                    <div class="o_setting_left_pane">
+                        <field name="note_config"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="note_config"/>
+                        <span class=""></span>
+                        <div class="text-muted">
+                            Enable this for the feature of multi order notes
+                        </div>
+                    </div>
+            </xpath>
+            </field>
+        </record>
+
+        <record id="view_delivery" model="ir.ui.view">
+            <field name="name">Delivery</field>
+            <field name="model">pos.order</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='order_fields']" position="inside">
+                    <field name="delivery_type"/>
+                    <field name="delivery_guy_id"/>
+		    <field name="delivery_fees" attrs="{'invisible': [('delivery_type', '!=','delivery')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_delivery_tree" model="ir.ui.view">
+            <field name="name">pos.order.tree.inherit</field>
+            <field name="model">pos.order</field>
+            <field name="priority" eval="8" />
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="delivery_type"/>
+                    <field name="delivery_fees" sum="Delivery Fees" widget="monetary"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+            id="consum_report"
+            model="consum.report.wizard"
+            string="Consumption Report"
+            report_type="qweb-pdf"
+            name="custom_pos_receipt.consum_report"
+            file="custom_pos_receipt.consum_report" />
+
+    <record id="view_consum_report_wizard" model="ir.ui.view">
+        <field name="name">consum.report.wizard.form</field>
+        <field name="model">consum.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Payment Method Details">
+                <group>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="pos_config_id"/>
+                    <field name="product_id"/>
+                </group>
+                <footer>
+                    <button name="generate_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_report_consum" model="ir.actions.act_window">
+        <field name="name">Consumption Report</field>
+        <field name="res_model">consum.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem id="menu_report_consum" name="Consumption Report" action="action_report_consum" parent="point_of_sale.menu_point_rep" sequence="7"/>
+
+</odoo>

@@ -1,0 +1,119 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_extra_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20191019\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-29 09:00+0000\n"
+"PO-Revision-Date: 2021-07-29 09:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_extra_product
+#. openerp-web
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#, python-format
+msgid "% discount"
+msgstr "% تخفيض"
+
+#. module: pos_extra_product
+#. openerp-web
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#, python-format
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: pos_extra_product
+#: model:ir.model,name:pos_extra_product.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: pos_extra_product
+#. openerp-web
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#: model:ir.model.fields,field_description:pos_extra_product.field_product_product__extra_product_ids
+#: model:ir.model.fields,field_description:pos_extra_product.field_product_template__extra_product_ids
+#, python-format
+msgid "Extra Items"
+msgstr "منتجات إضافية"
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order_line__extra_items
+#: model_terms:ir.ui.view,arch_db:pos_extra_product.product_extra_product_form_inherit
+msgid "Extra Products"
+msgstr "منتجات إضافية"
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order_line__line_unit_price
+msgid "Line Price"
+msgstr "سعر المنتج"
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order__line_id
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order_line__line_id
+msgid "Line id"
+msgstr ""
+
+#. module: pos_extra_product
+#. openerp-web
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#, python-format
+msgid "Ok"
+msgstr "تم"
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order_line__parent_line_id
+msgid "Parent Line"
+msgstr "المنتج الرئيسي"
+
+#. module: pos_extra_product
+#: model:ir.model,name:pos_extra_product.model_pos_order_line
+msgid "Point of Sale Order Lines"
+msgstr "بنود أمر نقطة البيع"
+
+#. module: pos_extra_product
+#: model:ir.model,name:pos_extra_product.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "أوامر نقطة البيع"
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_res_partner__pos_special_customer
+#: model:ir.model.fields,field_description:pos_extra_product.field_res_users__pos_special_customer
+msgid "Pos Special Customer"
+msgstr "عميل مميز لنقاط البيع"
+
+#. module: pos_extra_product
+#: model:ir.model,name:pos_extra_product.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: pos_extra_product
+#. openerp-web
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#, python-format
+msgid "Special Customer"
+msgstr "العملاء المميزين"
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order__is_void
+msgid "Void Order ?"
+msgstr ""
+
+#. module: pos_extra_product
+#: model:ir.model.fields,field_description:pos_extra_product.field_pos_order_line__is_void
+msgid "Void Order Line ?"
+msgstr ""
+
+#. module: pos_extra_product
+#. openerp-web
+#: code:addons/pos_extra_product/static/src/xml/pos.xml:0
+#, python-format
+msgid "With a"
+msgstr ""

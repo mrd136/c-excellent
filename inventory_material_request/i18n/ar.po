@@ -1,0 +1,581 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* inventory_material_request
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20200811\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-27 10:21+0000\n"
+"PO-Revision-Date: 2020-09-27 10:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__access_warning
+msgid "Access warning"
+msgstr "خطأ"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_needaction
+msgid "Action Needed"
+msgstr "خطأ"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_ids
+msgid "Activities"
+msgstr "الانشطة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_pivot
+msgid "Asset Analysis"
+msgstr "تقرير طلبات المواد"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request__state__cancel
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__cancel
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request__state__confirm
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__confirm
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__create_uid
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__create_uid
+msgid "Created by"
+msgstr "انشاء بواسطة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__create_date
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__date
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request__state__deliver
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__deliver
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+#, python-format
+msgid "Deliver"
+msgstr "تاكيد مدير المخازن"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Deliverd"
+msgstr "تم التوصيل"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__deliver_qty
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__deliver_qty
+msgid "Delivered"
+msgstr "تم شحنها"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Delivery Picking"
+msgstr "توصيل المواد"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__dept_id
+msgid "Department"
+msgstr "الادارة الطالبة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_res_users__department_id
+msgid "Depatment"
+msgstr "الادارة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_res_users__department_ids
+msgid "Depatments"
+msgstr "الادارة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__picking_deliver_id
+msgid "Devliver Picking"
+msgstr "امر التوصيل"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__display_name
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__display_name
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request__state__done
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__done
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Done"
+msgstr "تم"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request__state__draft
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_follower_ids
+msgid "Followers"
+msgstr "المتابعين"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Group By"
+msgstr "تجميع ب"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__id
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__id
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__id
+msgid "ID"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_needaction
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_has_error
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request__state__in_process
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__in_process
+msgid "In Process"
+msgstr "قيد التنفيذ"
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_material_request
+msgid "Inventory Material Request"
+msgstr "طلب المواد"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request____last_update
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line____last_update
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل بواسطة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__write_uid
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل بواسطة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__write_date
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل بواسطة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__location_id
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__location_id
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Location"
+msgstr "المخزن"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفقات الاساسية"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__stock_picking_type__op_type__material
+msgid "Material"
+msgstr "المواد"
+
+#. module: inventory_material_request
+#: model:ir.actions.act_window,name:inventory_material_request.action_material_report
+#: model:ir.ui.menu,name:inventory_material_request.menu_material_report
+msgid "Material Report"
+msgstr "تقرير طلبات المواد"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_stock_picking__material_request_id
+msgid "Material Request"
+msgstr "طلب مواد"
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_material_request_line
+msgid "Material Request Line"
+msgstr "تفاصيل المواد"
+
+#. module: inventory_material_request
+#: model:ir.actions.act_window,name:inventory_material_request.action_materials_request
+#: model:ir.ui.menu,name:inventory_material_request.menu_materials_request
+msgid "Materials Request"
+msgstr "طلب مواد"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_has_error
+msgid "Message Delivery error"
+msgstr "خطا توصيل"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_ids
+msgid "Messages"
+msgstr "رسالة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__note
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Note ..."
+msgstr "ملاحظة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__onhand_qty
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__onhand_qty
+msgid "On hand Quantity"
+msgstr "الكمية باليد"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Operations"
+msgstr "العمليات"
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_stock_picking_type
+msgid "Picking Type"
+msgstr "نوع الاستلام"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "Please insert at least one product !!"
+msgstr "الرجاء ادخال منتج واحد على الاقل !!"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__product_id
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__product_id
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Product"
+msgstr "المنتج"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "Product "
+msgstr "المنتج"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "Product '%s' quantity must be != 0.0 !!"
+msgstr "الكمية يجب ان تكون اكبر من الصفر"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "Product '%s' quantity must be less quantity!!"
+msgstr "الكمية المطلوبة يجب ان تكون اقل من الكمية الموجودة في المخزن"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__stock_picking_type__op_type__purchase
+msgid "Purchase"
+msgstr "المشتريات"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__product_qty
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__product_qty
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__material_request_report__state__receipt
+msgid "Ready to Receipt"
+msgstr "جاهز للاستلام"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__user_id
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__user_id
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Representative"
+msgstr "المسؤول"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__request_id
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__request_id
+msgid "Request"
+msgstr "الطلب"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__date_request
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__name
+msgid "Request ID"
+msgstr "الرقم المتسلسل للطلب"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Request ID:"
+msgstr "الرقم المتسلسل للطلب :"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__line_ids
+msgid "Request Line"
+msgstr "تفاصيل الطلب"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_tree
+msgid "Request list"
+msgstr "قائمة الطلبات"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_form
+msgid "Reset to draft"
+msgstr "الارجاع الي مسودة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields.selection,name:inventory_material_request.selection__stock_picking_type__op_type__sale
+msgid "Sale"
+msgstr "المبيعات"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__state
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__state
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "Status"
+msgstr "الحالة"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_stock_move
+msgid "Stock Move of Sale Picking"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__move_ids
+msgid "Stock Moves"
+msgstr "حركة المخزون"
+
+#. module: inventory_material_request
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_graph
+msgid "Transfer Request Statistics"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_stock_picking
+msgid "Transfer Sale Picking"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_stock_picking_type__op_type
+msgid "Type"
+msgstr "النوع"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_line__product_uom
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request_report__product_uom
+msgid "Unit of Measure"
+msgstr "وحدة القياس"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_res_users
+msgid "Users"
+msgstr "المستخدمون"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_material_request__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: inventory_material_request
+#: model:ir.model.fields,help:inventory_material_request.field_material_request__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "You can not cancel because all deliver quantity is 0.0 !!!"
+msgstr ""
+"لا يمكن الغاء الطلب لان هنالك كميات تم فعليا استخراجها او ادخالها  للمخزن"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "You have not deliver operation type material location (%s/%s) !!"
+msgstr "لا يوجد عملية معرفة لاستلام الطلبات . الرجاء التواصل مع المشرف"
+
+#. module: inventory_material_request
+#: code:addons/inventory_material_request/models/inventoy_material_request.py:0
+#, python-format
+msgid "You have not destination location from '%s' operation  !!"
+msgstr "لا يوجد عملية معرفة لاستلام الطلبات . الرجاء التواصل مع المشرف"
+
+#. module: inventory_material_request
+#: model:ir.model.fields,field_description:inventory_material_request.field_stock_move__material_line_id
+msgid "material Line"
+msgstr "تفاصيل الطلب"
+
+#. module: inventory_material_request
+#: model:ir.model,name:inventory_material_request.model_material_request_report
+#: model_terms:ir.ui.view,arch_db:inventory_material_request.view_material_request_report_search
+msgid "material Request Report"
+msgstr "تقرير طلبات المواد"

@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="view_picking_form_account">
+      <field name="name">stock.picking.form.account</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_picking_move_tree']" position="before">
+          <button name="action_account_move" class="oe_stat_button" icon="fa-arrows-v" type="object" help="List view of operations" states="done">
+              <div class="o_form_field o_stat_info">
+                  <span class="o_stat_text">Account Move</span>
+              </div>
+          </button>
+          <button name="action_view_return" class="oe_stat_button" icon="fa-long-arrow-down" type="object" help="List view of operations" attrs="{'invisible':[('is_return','=',False)]}">
+              <div class="o_form_field o_stat_info" >
+                  <span class="o_stat_text">Return</span>
+                  <field name="is_return" invisible="1"/>
+              </div>
+          </button>
+        </xpath>
+      </field>
+    </record>
+    
+
+  </data>
+</odoo>

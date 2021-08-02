@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_pos_config_form_extended" model="ir.ui.view">
+        <field name="name">view.pos.config.form.extended</field>
+        <field name="model">pos.config</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <div id="inventory_location" position="after">
+                <h2>Notes</h2>
+                <field name="is_pos_restaurant" invisible="1"/>
+                <div class="row mt16 o_settings_container" id="restuant_button_configuration">
+                    <div class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': [('module_pos_restaurant','=',True)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="orderline_note"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="orderline_note" string='Line Notes'/>
+                            <div class="text-muted">
+                               Create notes on product order lines
+                            </div>
+                        </div>
+                        <div class="o_setting_left_pane">
+                            <field name="print_orderline_note"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="print_orderline_note" string='Print Line Notes'/>
+                            <div class="text-muted">
+                               Print order line notes on POS receipt
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="order_remark"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="orderline_note" string='Order Notes'/>
+                            <div class="text-muted">
+                                Create notes for the entire order   
+                            </div>
+                        </div>
+                        <div class="o_setting_left_pane">
+                            <field name="print_order_remark"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="print_order_remark" string='Print Order Notes'/>
+                            <div class="text-muted">
+                               Print order notes on POS receipt
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_pos_pos_form_extended" model="ir.ui.view">
+        <field name="name">view.pos.config.form.extended</field>
+        <field name="model">pos.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lines']/tree/field[@name='product_id']" position="after">
+                <field name="note"/>
+            </xpath>
+            <xpath expr="//page[@name='extra']" position="after">
+              <page string="Order Notes">
+                    <field name="order_remark"/>
+                </page>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[not(@name)][4]" position="replace"/>
+        </field>
+    </record>
+</odoo>

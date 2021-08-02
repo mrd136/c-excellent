@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="consum_report">
+    <t t-call="web.html_container">
+    <t t-call="web.internal_layout">
+        <style>
+            @font-face {
+                font-family: 'Droid Arabic Kufi';
+                font-style: normal;
+                font-weight: 400;
+                src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.eot);
+                src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+            }
+            strong, h2, h3, table, td, th {
+                font-family: 'Droid Arabic Kufi';
+              font-style: normal;
+              font-weight: 700;
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.eot);
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+            }
+            strong, h2, h3,table, tr, td, th, tbody, thead, tfoot {
+                page-break-inside: avoid !important;
+                font-family: 'Droid Arabic Kufi';
+              font-style: normal;
+              font-weight: 700;
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.eot);
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+            }
+            </style>
+            <link rel="stylesheet" href="/custom_pos_receipt/static/src/css/style.css" />
+            <div class="page;font-family:Droid Arabic Kufi, serif !important;">
+            <div class="text-center">
+                <img t-att-src='image_data_uri(pos_logo)' style="width:76px;height:47px"/>
+                <h2 class="font-family:Droid Arabic Kufi, serif !important;">  Consumption Report  </h2>
+                <strong class="font-family:Droid Arabic Kufi, serif !important;"><t t-esc="date_start" t-options="{'widget': 'datetime'}"/> - <t t-esc="date_stop" t-options="{'widget': 'datetime'}"/></strong>
+            </div>
+            <br /><br />
+            <table  class="table table-sm">
+                <tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;">Point of sale</th>
+                    <td style="text-align:center;"><t t-esc="pos"/></td>
+                </tr>
+                <tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;">Product</th>
+                    <td style="text-align:center;"><t t-esc="product" /></td>
+                </tr>
+                <tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;">From Date</th>
+                    <td style="text-align:center;"><t t-esc="date_start" t-options="{'widget': 'datetime'}"/></td>
+                </tr>
+                <tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;">To Date</th>
+                    <td style="text-align:center;"><t t-esc="date_stop" t-options="{'widget': 'datetime'}"/></td>
+                </tr>
+                <tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;">Total Consumption</th>
+                    <td style="text-align:center;"><t t-esc="total_consumption" /></td>
+                </tr>
+            </table>
+            <table  class="table table-sm">
+                <thead><tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;"><b>Product</b></th>
+                    <th style="text-align:center;background-color:#d9dadc !important;">Qty</th>
+                    <th style="text-align:center;background-color:#d9dadc !important;">Consumption</th>
+                </tr></thead>
+                <tbody>
+                    <t t-set="total" t-value="0"/>
+                    <tr t-foreach='sold' t-as='l'>
+                        <td style="text-align:center;">
+                           <t t-esc="l['name']" />
+                        </td>
+                        <td style="text-align:center;">
+                           <t t-esc="l['qty']"/>
+                        </td>
+                        <td style="text-align:center;">
+                           <t t-esc="l['cons_qty']"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+        </div>
+    </t>
+    </t>
+</template>
+</data>
+</openerp>

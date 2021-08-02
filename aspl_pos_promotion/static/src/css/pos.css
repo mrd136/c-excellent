@@ -1,0 +1,9 @@
+.control-button.active{
+	color: #fff;
+	background: #6EC89B;
+	border-color: transparent;
+}
+.pos .control-button.active:hover {
+    background: #6EC89B;
+    color:#fff;
+}

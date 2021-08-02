@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="demo_assets_backend" name="custom_pos_receipt_backend_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/custom_pos_receipt/static/src/js/pos_products_domain.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

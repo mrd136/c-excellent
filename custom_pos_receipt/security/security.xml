@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="module_custom_pos_receipt" model="ir.module.category">
+            <field name="name">POS Groups</field>
+            <field name="description">Allow access for POS screens
+            </field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_sale_details" model="res.groups">
+            <field name="name">Sale Details</field>
+            <field name="category_id" ref="module_custom_pos_receipt"/>
+        </record>
+
+        <record id="group_pos_reports" model="res.groups">
+            <field name="name">Print Reports</field>
+            <field name="category_id" ref="module_custom_pos_receipt"/>
+        </record>
+
+	<record id="group_pos_print_session_end_report" model="res.groups">
+            <field name="name">Print session end Report</field>
+            <field name="category_id" ref="module_custom_pos_receipt"/>
+        </record>
+
+        <record id="group_pos_session_end_report_value" model="res.groups">
+            <field name="name">session end Report value</field>
+            <field name="category_id" ref="module_custom_pos_receipt"/>
+        </record>
+
+        <record id="group_kitchen_print_button" model="res.groups">
+            <field name="name">Print Receipt in kitchen</field>
+            <field name="category_id" ref="module_custom_pos_receipt"/>
+        </record>
+
+        <record id="group_edit_payment_method_in_orders" model="res.groups">
+            <field name="name">Edit Payment Method In Orders</field>
+            <field name="category_id" ref="module_custom_pos_receipt"/>
+        </record>
+    </data>
+</odoo>

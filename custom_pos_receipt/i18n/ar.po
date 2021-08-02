@@ -1,0 +1,205 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_pos_receipt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20191019\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-27 01:55+0000\n"
+"PO-Revision-Date: 2020-04-27 01:55+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "<span>المجموع</span>"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "<span>مفتوحة</span>"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "<span>مقفلة ومرحلة</span>"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.view_pos_tax_report_wizard
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__display_name
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_report_custom_pos_receipt_tax_report__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__end_date
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_config__exepted_products
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.pos_config_inherit_form_view
+msgid "Excluded products"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__id
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_report_custom_pos_receipt_tax_report__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard____last_update
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_report_custom_pos_receipt_tax_report____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: custom_pos_receipt
+#. openerp-web
+#: code:addons/custom_pos_receipt/static/src/xml/pos.xml:0
+#, python-format
+msgid "Order #"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__pos_config_id
+msgid "POS"
+msgstr "نقطة البيع"
+
+#. module: custom_pos_receipt
+#: model:ir.model,name:custom_pos_receipt.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "إعدادات نقطة البيع"
+
+#. module: custom_pos_receipt
+#: model:ir.model,name:custom_pos_receipt.model_report_custom_pos_receipt_tax_report
+msgid "Point of Sale Details"
+msgstr "تفاصيل نقطة البيع"
+
+#. module: custom_pos_receipt
+#: model:ir.model,name:custom_pos_receipt.model_pos_tax_report_wizard
+msgid "Point of Sale Tax Report"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__pos_config_ids
+msgid "Pos Config"
+msgstr "إعداد نقطة البيع"
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.view_pos_tax_report_wizard
+msgid "Print"
+msgstr "طباعة"
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.view_pos_tax_report_wizard
+msgid "Sales Details"
+msgstr "تفاصيل المبيعات"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,help:custom_pos_receipt.field_pos_config__exepted_products
+msgid "Selected products will never shows in this POS."
+msgstr "المنتجات التي لن يتم إظهارها في نقطة البيع"
+
+#. module: custom_pos_receipt
+#: model:ir.model.fields,field_description:custom_pos_receipt.field_pos_tax_report_wizard__start_date
+msgid "Start Date"
+msgstr "تاريخ البداية"
+
+#. module: custom_pos_receipt
+#: model:ir.actions.act_window,name:custom_pos_receipt.action_report_pos_tax
+msgid "Tax Report"
+msgstr "تقرير المبيعات"
+
+#. module: custom_pos_receipt
+#: code:addons/custom_pos_receipt/wizard/pos_tax_report.py:0
+#, python-format
+msgid "You have to set a logo or a layout for your company."
+msgstr ""
+
+#. module: custom_pos_receipt
+#: code:addons/custom_pos_receipt/wizard/pos_tax_report.py:0
+#, python-format
+msgid "You have to set your reports's header and footer layout."
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "إسم الجلسة"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "الإرجاع"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "التاريخ"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "الجلسات"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "الحالة"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "الصافي"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "الضرائب"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model:ir.actions.report,name:custom_pos_receipt.pos_tax_report
+#: model:ir.ui.menu,name:custom_pos_receipt.menu_report_pos_tax
+msgid "تقرير المبيعات"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "تقرير مبيعات نقطة البيع:"
+msgstr ""
+
+#. module: custom_pos_receipt
+#: model_terms:ir.ui.view,arch_db:custom_pos_receipt.tax_report
+msgid "جملة المبيعات"
+msgstr ""

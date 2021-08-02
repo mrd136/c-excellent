@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <!-- Inherit PurchaseOrder Form view -->
+  <record id="purchase_order_form_inherit" model="ir.ui.view">
+    <field name="name">purchase.order.form</field>
+    <field name="model">purchase.order</field>
+    <field name="inherit_id" ref="purchase.purchase_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="replace">
+         <field name="product_id"
+                context="{'partner_id': parent.partner_id}"
+                widget="many2one_barcode"
+                domain="[('purchase_ok', '=', True), ('available_in_pos', '=', False), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                />
+       </xpath>
+    </field>
+  </record>
+
+  <!-- Inherit Sale Order Form view -->
+  <record id="view_order_form_inherit" model="ir.ui.view">
+    <field name="name">sale.order.form</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_id']" position="replace">
+        <field name="product_id"
+            domain="[('sale_ok', '=', True),('available_in_pos', '=', False), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+            context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}"
+            attrs="{
+                'readonly': [('product_updatable', '=', False)],
+                'required': [('display_type', '=', False)],
+            }"
+            force_save="1"
+            widget="many2one_barcode"
+           />
+       </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="payment_method_report">
+    <t t-call="web.html_container">
+    <t t-call="web.internal_layout">
+        <style>
+            @font-face {
+                font-family: 'Droid Arabic Kufi';
+                font-style: normal;
+                font-weight: 400;
+                src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.eot);
+                src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+            }
+            strong, h2, h3, table, td, th {
+                font-family: 'Droid Arabic Kufi';
+              font-style: normal;
+              font-weight: 700;
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.eot);
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+            }
+            strong, h2, h3,table, tr, td, th, tbody, thead, tfoot {
+                page-break-inside: avoid !important;
+                font-family: 'Droid Arabic Kufi';
+              font-style: normal;
+              font-weight: 700;
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.eot);
+              src: url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff2) format('woff2'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.woff) format('woff'),
+                   url(/custom_pos_receipt/static/src/fonts/DroidKufi-Regular.ttf) format('truetype');
+            }
+            </style>
+            <link rel="stylesheet" href="/custom_pos_receipt/static/src/css/style.css" />
+            <div class="page;font-family:Droid Arabic Kufi, serif !important;">
+            <div class="text-center">
+                <img t-att-src='image_data_uri(pos_logo)' style="width:76px;height:47px"/>
+                <h2 class="font-family:Droid Arabic Kufi, serif !important;">  تقرير الدفع لنقطة البيع:  <t t-esc="pos"/></h2>
+                <strong class="font-family:Droid Arabic Kufi, serif !important;"><t t-esc="date_start" t-options="{'widget': 'datetime'}"/> - <t t-esc="date_stop" t-options="{'widget': 'datetime'}"/></strong>
+            </div>
+            <table  class="table table-sm">
+                <thead><tr>
+                    <th style="text-align:center;background-color:#d9dadc !important;"><b>طرق الدفع</b></th>
+                    <th style="text-align:center;background-color:#d9dadc !important;">المبلغ</th>
+                </tr></thead>
+                <tbody>
+                    <t t-set="total" t-value="0"/>
+                <tr t-foreach='payment_methods' t-as='line'>
+                    <td style="text-align:center;">
+                       <t t-esc='line["method"]' />
+                    </td>
+                    <td style="text-align:center;">
+                       <t t-esc="'{0:,.2f}'.format(line['amount'])"/>
+                        <t t-set="total" t-value="total+line['amount']"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;background-color:#d9dadc !important;">
+                        <b><span>المجموع</span></b>
+                    </td>
+                    <td style="text-align:center;background-color:#d9dadc !important;">
+                       <t t-esc="'{0:,.2f}'.format(total)"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br/>
+        </div>
+    </t>
+    </t>
+</template>
+</data>
+</openerp>

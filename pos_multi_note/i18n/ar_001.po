@@ -1,0 +1,250 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_multi_note
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-19 12:12+0000\n"
+"PO-Revision-Date: 2020-11-19 12:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "% discount"
+msgstr ""
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/js/notes_pos.js:0
+#, python-format
+msgid "ADD YOUR MULTIPLE ORDER NOTES"
+msgstr "إضافة ملاحظات"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,help:pos_multi_note.field_pos_order_note__pos_note
+msgid "Add the description of the order note"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,help:pos_multi_note.field_pos_config__iface_orderline_notes
+msgid "Allow custom notes on Orderlines."
+msgstr "السماح بملاحظات معدلة في بنود الطلبات."
+
+#. module: pos_multi_note
+#: model:ir.model.fields,help:pos_multi_note.field_pos_config__note_config
+msgid "Allow to write internal note in POS interface"
+msgstr "إمكانية إضافة ملاحظة داخلية في شاشة البيع"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: pos_multi_note
+#: model_terms:ir.actions.act_window,help:pos_multi_note.action_view_order_notes
+msgid "Create New Order Note"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: model:ir.model.fields.selection,name:pos_multi_note.selection__pos_order__delivery_type__delivery
+#, python-format
+msgid "Delivery"
+msgstr "التوصيل"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order__delivery_fees
+#: model_terms:ir.ui.view,arch_db:pos_multi_note.view_delivery_tree
+msgid "Delivery Fees"
+msgstr "رسوم التوصيل"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order__delivery_guy_id
+msgid "Delivery Guy"
+msgstr "سائق التوصيل"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_config__delivery_guy_ids
+msgid "Delivery Guys"
+msgstr "سائقي التوصيل"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order__delivery_type
+msgid "Delivery Type"
+msgstr "النوع"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: pos_multi_note
+#: model_terms:ir.ui.view,arch_db:pos_multi_note.view_note
+msgid "Enable this for the feature of multi order notes"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__id
+msgid "ID"
+msgstr ""
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: model:ir.model.fields.selection,name:pos_multi_note.selection__pos_order__delivery_type__internal
+#, python-format
+msgid "Internal"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__pos_note
+msgid "Multiple Order Note In POS"
+msgstr ""
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "Ok"
+msgstr "موافق"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_config__note_config
+msgid "Order Line Note"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.actions.act_window,name:pos_multi_note.action_view_order_notes
+#: model_terms:ir.ui.view,arch_db:pos_multi_note.view_order_note_form
+#: model_terms:ir.ui.view,arch_db:pos_multi_note.view_order_note_tree
+msgid "Order Notes"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_config__iface_orderline_notes
+msgid "Orderline Notes"
+msgstr "ملاحظات بنود الطلب"
+
+#. module: pos_multi_note
+#: model:ir.ui.menu,name:pos_multi_note.menu_pos_order_note
+msgid "POS Order Notes"
+msgstr ""
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/js/notes_pos.js:0
+#, python-format
+msgid ""
+"Please select delivery guy for this order , if there is no delivery guy in "
+"the list please add them from POS configuration"
+msgstr "الرجاء إضافة سائق التوصيل لهذا الأمر"
+
+#. module: pos_multi_note
+#: model:ir.model,name:pos_multi_note.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "إعدادات نقطة البيع"
+
+#. module: pos_multi_note
+#: model:ir.model,name:pos_multi_note.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "أوامر نقطة البيع"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "Select Driver"
+msgstr "إختار السائق"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "Select Type"
+msgstr "إختار النوع"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/js/notes_pos.js:0
+#, python-format
+msgid "Select a driver"
+msgstr "إختار السائق"
+
+#. module: pos_multi_note
+#: model_terms:ir.ui.view,arch_db:pos_multi_note.view_note
+msgid "Select the delivery drivers for this pos"
+msgstr "إختار السائقين"
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#: model:ir.model.fields.selection,name:pos_multi_note.selection__pos_order__delivery_type__takeaway
+#, python-format
+msgid "Takeaway"
+msgstr ""
+
+#. module: pos_multi_note
+#. openerp-web
+#: code:addons/pos_multi_note/static/src/xml/pos_internal_note.xml:0
+#, python-format
+msgid "With a"
+msgstr "بـ"
+
+#. module: pos_multi_note
+#: model:ir.model.fields,field_description:pos_multi_note.field_pos_order_note__menu_categ
+msgid "category"
+msgstr ""
+
+#. module: pos_multi_note
+#: model:ir.model,name:pos_multi_note.model_pos_order_note
+msgid "pos.order.note"
+msgstr ""

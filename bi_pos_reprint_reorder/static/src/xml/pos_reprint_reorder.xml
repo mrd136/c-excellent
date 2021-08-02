@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="pos_reprint_reorder_template" inherit_id="point_of_sale.template" xml:space="preserve">
+
+
+
+	 <!-- SeeAllOrdersScreenWidget -->
+    <t t-extend="SeeAllOrdersScreenWidget">
+			<!-- -->
+        <t t-jquery="tr" t-operation="append">
+				<th>Receipt</th>
+			</t>
+
+		</t>
+
+
+    <!-- OrdersLine -->
+    <t t-extend="OrdersLine">
+			<!-- -->
+        <t t-jquery="tr" t-operation="append">
+				<td>
+					<button class="print-order" t-att-id='order.id'
+                            style="cursor: pointer; color: #fff; background-color: #7F82AC;"><i class="fa fa-print"></i>
+                        Print</button>
+				</td>
+			</t>
+
+		</t>
+
+
+    <t t-name="ReceiptScreenWidgetNew">
+		<div class='receipt-screen screen'>
+			<div class='screen-content'>
+				<div class='top-content'>
+					<span class='button back'>
+						<i class='fa fa-angle-double-left'></i>
+                        back
+					</span>
+				</div>
+                <div class="centered-content">
+					<div class="button print ayaz">
+						<i class='fa fa-print'></i>
+                        Print Receipt
+					</div>
+                    <div class="pos-receipt-container">
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+
+    <t t-name="OrderReceipt1">
+		<div class="pos-receipt">
+			<t t-if='widget.pos.config.image'>
+				<img class="pos-receipt-logo" t-att-src="a2" alt="Logo"/>
+                <br/>
+			</t>
+            <t t-if='!widget.pos.config.image'>
+				<img class="pos-receipt-logo" t-att-src='receipt.company.logo' alt="Logo"/>
+                <br/>
+			</t>
+            <div>
+				<t t-if="widget.pos.config.name">
+					<div style="width:100%;text-align:center;"><t t-esc="widget.pos.config.name"/></div>
+				</t>
+			</div>
+            <br/>
+            <br/>
+			<t t-if='receipt.header_html'>
+                <t t-raw='receipt.header_html'/>
+            </t>
+			<t t-if='!receipt.header_html and receipt.header'>
+                <div style="text-align: center;"><t t-esc='receipt.header' /></div>
+            </t>
+			<div style="text-align: center;">Official Receipt</div>
+			<br/>
+			<div style="margin-left:15%;margin-right:15%;width:70%;text-align: center;font-weight: bold;font-size: 200%;border: 1px solid black">&#160;&#160;Order # <t
+					t-esc="sequence_number"/> &#160;&#160;</div>
+			<br/>
+
+			<div style="font-weight: bold;text-align: center;font-size: 170%;"> Duplicated Receipt </div>
+			<br />
+			<div style="border-bottom: 1px solid #000;text-align: center;">Printed At :
+				<t t-esc='date_order'/>
+			</div>
+			<t t-if="delivery_type=='takeaway'">
+                <div style="text-align:left;font-weight:bold;">Takeaway</div>
+            </t>
+			<t t-if="delivery_type=='internal'">
+                <div style="text-align:left;font-weight:bold;">Internal</div>
+            </t>
+			<t t-if="delivery_type=='delivery'">
+                <div style="text-align:left;font-weight:bold;">Delivery</div>
+            </t>
+			<div style="border-bottom: 1px solid #000;" align="left">Cashier :
+				<t t-esc='pos.user.name'/>
+			</div>
+			<t t-if="delivery_type=='delivery'">
+                <t t-if="client">
+                    <div style="border-bottom: 1px solid #000;text-align:left;direction:ltr;"
+						 class="pos-receipt-customer">
+                        <div><span> Delivery Info: </span></div>
+						Name:
+						<t t-esc="client.name || ''"/>
+						<br/>
+						Mobile:
+						<t t-esc="client.phone || ''"/>
+						<br/>
+						Address:
+						<t t-esc="client.street || ''"/>
+						<br/>
+						<t t-esc="client.city || ''"/>,
+						<t t-esc="client.zip || ''"/>
+						<br/>
+                    </div>
+                </t>
+            </t>
+
+			<div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;border-bottom: 1px solid #000;border-top: 1px solid #000;">
+                <div style="display: table-cell;width:10%">Qty</div>
+				<div align="center" style="display: table-cell;width: 75%;">Item</div>
+				<div style="display: table-cell;width:15%">Price</div>
+            </div>
+			<t t-foreach="orderlines" t-as="line">
+				<t t-if="!line.parent_line_id">
+					<div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;border-top: 1px solid #000;">
+						<div style="display: table-cell;width:10%">
+							<t t-esc="line.qty"/>
+						</div>
+						<div style="display: table-cell;width:75%;text-align: -moz-center;">
+							<t t-esc="line.en_trans"/>
+							<br/>
+							<t t-esc="line.ar_trans"/>
+							<div>
+								<tr>
+									<t t-if="line.note">
+										<t t-foreach="line.note.split('-')" t-as="text">
+											<span t-esc="text" style="font-size:14px"/>
+										</t>
+									</t>
+								</tr>
+							</div>
+						</div>
+						<div style="display: table-cell;width:15%;">
+							<span t-esc='widget.format_currency_no_symbol(line.total_price)' class="price_display"/>
+						</div>
+					</div>
+					<t t-if="line.extra_items.length > 0">
+						<t t-foreach="line.extra_items" t-as="extra">
+							<div style="display: table;width: 100%;table-layout: fixed;border-spacing: 0px;">
+								<div style="display: table-cell;width:10%"></div>
+								<div align="center" style="display: table-cell;width: 75%;">
+									<i class='fa fa-plus'/>
+									<span style="font-size:14px !important;" t-esc="extra.en_trans"/>
+								</div>
+								<div style="display: table-cell;width:15%">
+									<span style="font-size:14px;" t-esc='widget.format_currency_no_symbol(extra.total_price)'/>
+								</div>
+							</div>
+						</t>
+					</t>
+				</t>
+            </t>
+
+            <div class="pos-receipt-right-align">--------</div>
+
+            <br/>
+			<div style="border-top: 1px solid #000;">
+				Total Taxes 15%
+				<span t-esc='widget.format_currency(tax)' class="pos-receipt-right-align"/>
+			</div>
+            <div class="pos-receipt-amount">
+				TOTAL
+				<span t-esc='widget.format_currency(total)' class="pos-receipt-right-align"/>
+			</div>
+            <br/>
+            <br/>
+            <t t-foreach='paymentlines' t-as='line'>
+				<div>
+					<t t-esc='line.name'/>
+                    <span t-esc='widget.format_currency_no_symbol(line.amount)' class="pos-receipt-right-align"/>
+				</div>
+			</t>
+            <br/>
+            <div class="pos-receipt-amount receipt-change">
+				CHANGE
+				<span t-esc='widget.format_currency(-change)' class="pos-receipt-right-align"/>
+			</div>
+            <br/>
+            <t t-if='discount_total'>
+				<div>
+					Discounts
+					<span t-esc='widget.format_currency(discount_total)' class="pos-receipt-right-align"/>
+				</div>
+			</t>
+            <div class='before-footer'/>
+            <br/>
+            <div style="border-top: 1px solid #000;" class="pos-receipt-order-data">
+                <div><t t-esc='pos_reference' /></div>
+                <div>Happy to serve you</div>
+                <div>سعداء بخدمتكم</div>
+            </div>
+<!--            <t t-if="widget.pos.config.show_barcode">-->
+<!--				<div>-->
+<!--					<div style="margin:auto;margin-top:10px;" id="barcode_print1"></div>-->
+<!--                    &lt;!&ndash; <img t-if="barcode_img" t-att-src="'data:image/png;base64,'+ barcode_img" style="max-height: 130px;margin-left: 30px;margin-top: 20px;"/> &ndash;&gt;-->
+<!--				</div>-->
+<!--			</t>-->
+		</div>
+	</t>
+
+
+    <!-- PosReOrderPopupWidget -->
+    <t t-name="PosReOrderPopupWidget">
+		<div class="modal-dialog">
+			<div class="popup popup-confirm" style="height: 350px !important;">
+				<p class="title" style="background-color: rgb(110,200,155); color: #fff;">Reorder Products</p>
+
+                <div class="body" style="height: 200px !important;">
+							<div class='div-container'>
+								<table class='reorder-product-list'>
+									<thead>
+										<tr class="reorder_product_header">
+											<th>Product</th>
+                                            <th>Reorder Qty</th>
+										</tr>
+									</thead>
+                                    <tbody class='reorder-product-list-contents'>
+										<!--<t t-foreach="orderlines" t-as="orderline">-->
+                                        <tr class="reorder_product_body" t-foreach="widget.options.orderlines || []"
+                                            t-as="item">
+											<td><t t-esc='item.product_id[1]' /></td>
+                                            <!--<td><t t-esc=" widget.options.orderlines" /></td>-->
+                                            <td class="entered_item_qty">
+												<input id="entered_item_qty" t-att-line-id='item.id'
+                                                       t-att-qty-id='item.qty' type="text" class="input-field"
+                                                       name="code"></input>
+											 </td>
+
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						 </div>
+
+                <div class="footer" style="background-color: rgb(110,200,155); color: #fff;">
+					<div class="button cancel" style="background-color: #0075AC; color: #fff;">
+						Cancel
+					</div>
+                    <div class="button confirm" id="apply_reorder" style="background-color: #0075AC; color: #fff;">
+						Apply
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+
+
+
+	</templates>
+
+

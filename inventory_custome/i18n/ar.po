@@ -1,0 +1,639 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* inventory_custome
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-25 09:20+0000\n"
+"PO-Revision-Date: 2020-06-25 09:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__access_warning
+msgid "Access warning"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_location__account_id
+msgid "Account"
+msgstr "حساب المخزن"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_needaction
+msgid "Action Needed"
+msgstr "خطأ"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_ids
+msgid "Activities"
+msgstr "الانشطة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__oper_type__add
+msgid "Add"
+msgstr "إضافة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__cancel
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__oper_type__clean
+msgid "Clean"
+msgstr "مسح"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__company_id
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__company_id
+msgid "Company"
+msgstr "الفرع"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__confirm
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__create_uid
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__create_uid
+msgid "Created by"
+msgstr "انشاء بواسطة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__create_date
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#: model:ir.model.fields.selection,name:inventory_custome.selection__stock_move__deliver_type__deliver
+#: model:ir.model.fields.selection,name:inventory_custome.selection__stock_picking__deliver_type__deliver
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__deliver
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+#, python-format
+msgid "Deliver"
+msgstr "تاكيد مدير المخازن"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_move__deliver_type
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_picking__deliver_type
+msgid "Deliver Type"
+msgstr "النوع "
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__deliver_qty
+msgid "Delivered"
+msgstr "تم شحنها"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__location_branch_id
+msgid "Destnation Location"
+msgstr "الوجهة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__picking_deliver_id
+msgid "Devliver Picking"
+msgstr "امر التوصيل"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__display_name
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__display_name
+msgid "Display Name"
+msgstr "الاسم"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__done
+msgid "Done"
+msgstr "مكتمل"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__type__feeding
+msgid "Feeding"
+msgstr "تغذية"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__id
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__id
+msgid "ID"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_needaction
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_has_error
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__in_process
+msgid "In Process"
+msgstr "قيد التنفيذ"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__type__internal
+msgid "Internal"
+msgstr "داخلي"
+
+#. module: inventory_custome
+#: model:ir.actions.act_window,name:inventory_custome.action_internal_transfer
+#: model:ir.ui.menu,name:inventory_custome.menu_internal_transfer
+msgid "Internal Transfer"
+msgstr "التحويل الداخلي"
+
+#. module: inventory_custome
+#: model:ir.actions.act_window,name:inventory_custome.action_inventory_feeding
+#: model:ir.ui.menu,name:inventory_custome.menu_inventory_feeding
+msgid "Inventory Feeding"
+msgstr "تغذية المخزن"
+
+#. module: inventory_custome
+#: model:ir.model,name:inventory_custome.model_stock_location
+msgid "Inventory Locations"
+msgstr "مواقع المخزون"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_location__transit_transfer_location
+msgid "Is Transit Transfer Location?"
+msgstr "موقع وسيط"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request____last_update
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line____last_update
+msgid "Last Modified on"
+msgstr "اخر تعديل بواسطة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__write_uid
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__write_uid
+msgid "Last Updated by"
+msgstr "اخر تعديل بواسطة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__write_date
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__write_date
+msgid "Last Updated on"
+msgstr "اخر تعديل بواسطة"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Location From"
+msgstr " من مخزن"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Location To"
+msgstr "الى مخزن"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Location to"
+msgstr "الى مخزن"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفقات الاساسية"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_has_error
+msgid "Message Delivery error"
+msgstr "خطا توصيل"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_ids
+msgid "Messages"
+msgstr "رسالة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__note
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Note ..."
+msgstr "ملاحظة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__oper_type
+msgid "Operation Type"
+msgstr "نوع العملية"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Operations"
+msgstr "العمليات"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_location__owner_ids
+msgid "Owner"
+msgstr "المسؤول"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Period"
+msgstr "الفترة"
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#, python-format
+msgid "Please insert at least one product !!"
+msgstr "الرجاء ادخال منتج واحد على الاقل !!"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Prepare Products"
+msgstr "تحضير المنتجات"
+
+#. module: inventory_custome
+#: model:ir.model,name:inventory_custome.model_product_product
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/stock_picking.py:0
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#, python-format
+msgid "Product "
+msgstr "المنتج"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__categ_ids
+msgid "Product Category"
+msgstr "فئة المنتج"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__onhand_src_qty
+msgid "Qty From"
+msgstr "الكمية من"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__onhand_dest_qty
+msgid "Qty To"
+msgstr "الكمية الي"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__product_qty
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__transfer_request__state__receipt
+msgid "Ready to Receipt"
+msgstr "جاهز للاستلام"
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+#, python-format
+msgid "Receipt"
+msgstr "الاستلام"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__picking_receipt_id
+msgid "Receipt Picking"
+msgstr "استلام المنتجات"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__receipt_qty
+msgid "Receipted"
+msgstr "تم الاستلام"
+
+#. module: inventory_custome
+#: model:ir.model.fields.selection,name:inventory_custome.selection__stock_move__deliver_type__receipt
+#: model:ir.model.fields.selection,name:inventory_custome.selection__stock_picking__deliver_type__receipt
+msgid "Recipt"
+msgstr "الاستلام"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__user_id
+msgid "Representative"
+msgstr "المسؤول"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__request_id
+msgid "Request"
+msgstr "الطلب"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__date_request
+msgid "Request Date"
+msgstr "تاريخ الطلب"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__name
+msgid "Request ID"
+msgstr "الرقم المتسلسل للطلب"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Request ID:"
+msgstr "الرقم المتسلسل للطلب :"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__line_ids
+msgid "Request Line"
+msgstr "تفاصيل الطلب"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_tree
+msgid "Request list"
+msgstr "قائمة الطلبات"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Reset to draft"
+msgstr "الارجاع الي مسودة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__is_sales
+msgid "Sales"
+msgstr "المبيعات"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__date_sales_from
+msgid "Sales From"
+msgstr "المبيعات من"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "Sales Period"
+msgstr "مبيعات الفترة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__date_sales_to
+msgid "Sales To"
+msgstr "المبيعات الى"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__location_main_id
+msgid "Source Location"
+msgstr "من المخزن"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model,name:inventory_custome.model_stock_move
+msgid "Stock Move"
+msgstr "حركة المخزون"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__move_ids
+msgid "Stock Moves"
+msgstr "حركة المخزون"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__sold_qty
+msgid "Sub-inventory sales"
+msgstr "مبيعات المخزن الفرعي"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__location_transit_id
+msgid "Tranist Location"
+msgstr "المخزن الوسيط"
+
+#. module: inventory_custome
+#: model:ir.model,name:inventory_custome.model_stock_picking
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_picking__transfer_id
+msgid "Transfer"
+msgstr "الشحنة"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_move__transfer_line_id
+msgid "Transfer Line"
+msgstr "تفاصيل الطلب"
+
+#. module: inventory_custome
+#: model:ir.model,name:inventory_custome.model_transfer_request
+msgid "Transfer Request"
+msgstr "طلب تحويل"
+
+#. module: inventory_custome
+#: model:ir.model,name:inventory_custome.model_transfer_request_line
+msgid "Transfer Request Line"
+msgstr "تفاصيل الطلب"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__type
+msgid "Type"
+msgstr "النوع"
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request_line__product_uom
+msgid "Unit of Measure"
+msgstr "وحدة القياس"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_stock_location__valuation_account_id
+msgid "Valuation Account"
+msgstr "حساب وسيط بين المخزن و المشتريات"
+
+#. module: inventory_custome
+#: model:ir.model.fields,field_description:inventory_custome.field_transfer_request__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: inventory_custome
+#: model:ir.model.fields,help:inventory_custome.field_transfer_request__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#, python-format
+msgid "You can not cancel because all deliver and receipt quantity is 0.0 !!!"
+msgstr ""
+"لا يمكن الغاء الطلب لان هنالك كميات تم فعليا استخراجها او ادخالها  للمخزن"
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#, python-format
+msgid ""
+"You have not deliver operation source location '%s' and destnation transit "
+"location '%s' !!"
+msgstr ""
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/stock_picking.py:0
+#, python-format
+msgid ""
+"You have not receipt operation main location '%s' and main trainst location "
+"'%s' !!"
+msgstr "الرجاء مراجعة اعدادات عمليات المخازن او الاتصال بالمشرف"
+
+#. module: inventory_custome
+#: code:addons/inventory_custome/models/transfer_request.py:0
+#, python-format
+msgid "You have not traniste location for transfer!!"
+msgstr "الرجاء مراجعة اعدادات عمليات المخازن او الاتصال بالمشرف"
+
+#. module: inventory_custome
+#: model_terms:ir.ui.view,arch_db:inventory_custome.view_transfer_request_form
+msgid "to"
+msgstr "الي"

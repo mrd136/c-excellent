@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_pos_view" xml:space="preserve">
+    <t t-extend="Orderline">
+        <t t-jquery=".info-list" t-operation="append">
+            <t t-if="! line.is_pos_restaurant_install and line.get_note()">
+                <li class="info orderline-note">
+                    <i class='fa fa-tag'/><t t-esc="line.get_note()" />
+                </li>
+            </t>
+        </t>
+    </t>
+
+    <t t-name="OrderlineNoteButton">
+        <div class='control-button'>
+            <i class='fa fa-comment' />
+                Line Note
+        </div>
+    </t>
+
+    <t t-name="OrderRemarkButton">
+        <div class='control-button'>
+            <i class='fa fa-commenting-o' />
+                Order Note
+        </div>
+    </t>
+
+    <t t-extend="PosTicket">
+        <t t-jquery=".receipt-change" t-operation="after"> 
+            <t t-if="pos.config.print_order_remark and order.order_remark">
+                <table class="receipt-change">
+                    <colgroup>
+                        <col width='20%' />
+                        <col width='80%' />
+                    </colgroup>
+                    <tr>
+                        <td>
+                            Note
+                        </td>
+                        <td>
+                            <t t-esc="order.order_remark"/>
+                        </td>
+                    </tr>                    
+                </table>
+            </t>
+        </t>
+        
+        <t t-jquery="t[t-esc='orderline.get_product().display_name']" t-operation="after">        
+            <t t-if="pos.config.print_orderline_note and orderline.get_note()">
+                <div>
+                    <i class='fa fa-tag'/><t t-esc="orderline.get_note()"/>
+                </div>
+            </t>
+        </t>
+    </t>
+
+    <t t-extend="XmlReceipt">
+        <t t-jquery=".orderlines" t-operation="before"> 
+            <div line-ratio='2.6'> 
+                <t t-if="receipt.order_remark">
+                    <line>
+                        <left>
+                            Note: <t t-esc="receipt.order_remark"/>
+                            <br />
+                        </left>
+                    </line>
+                </t>
+                <br /><br />
+            </div>
+        </t>
+    </t>
+
+    </templates>

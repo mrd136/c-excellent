@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+
+    <t t-name="InternalNoteButton">
+        <div class='control-button in_note'>
+            <i class="fa fa-tags"> Notes </i>
+        </div>
+    </t>
+    <t t-name="DeliveryButton">
+        <div class='control-button delivery'>
+            <i class="fa fa-shopping-bag"> Takeaway </i>
+<!--            <t t-if="widget.pos.get_order().get_delivery_type()=='takeaway'">-->
+<!--                <i class="fa fa-shopping-bag"> Takeaway </i>-->
+<!--            </t>-->
+<!--            <t t-if="widget.pos.get_order().get_delivery_type()=='internal'">-->
+<!--                <i class="fa fa-home"> Internal </i>-->
+<!--            </t>-->
+<!--            <t t-if="widget.pos.get_order().get_delivery_type()=='delivery'">-->
+<!--                <i class="fa fa-motorcycle"> Delivery </i>-->
+<!--            </t>-->
+        </div>
+    </t>
+<!--    <t t-name="DeliveryPopupWidget">-->
+<!--        <div role="dialog" class="modal-dialog">-->
+<!--            <div class="popup popup-textinput" style="width:800px;height:auto;background-color: #6EC89B;color:white;">-->
+<!--                <header class="title" style="background-color: #6EC89B;color:white;"><t t-esc=" widget.options.title || '' " /></header>-->
+<!--                <div class="product_note">-->
+<!--                    <ul id="delivery_type">-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <br/>-->
+
+<!--                <div class="footer">-->
+<!--                    <div class="button confirm">-->
+<!--                        Ok-->
+<!--                    </div>-->
+<!--                    <div class="button cancel">-->
+<!--                        Cancel-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </t>-->
+    <t t-name="DeliveryPopupWidget">
+        <div class="modal-dialog">
+            <div class="popup">
+                <div class="header title">
+                    <div>
+                        Select Type
+                    </div>
+                </div>
+               <div class="product_note prod_additional_item">
+                    <ul>
+                        <li style="display:flex;">
+                            <div id="takeaway" class="button" style="width:100%"><i class="fa fa-shopping-bag"> Takeaway </i></div>
+                        </li>
+                        <li style="display:flex;">
+                            <div id="internal" class="button" style="width:100%"><i class="fa fa-home"> Internal </i></div>
+                        </li>
+                        <li style="display:flex;">
+                            <div id="delivery" class="button" style="width:100%"><i class="fa fa-motorcycle"> Delivery </i></div>
+                        </li>
+                        <li id="del_li" style="display:none;">
+                            <br /><label style="width:100%">Select Driver </label><br />
+                            <select id="del_select" style="width:100%;padding-bottom: 15px;">
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer centered">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="NotePopupWidget">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-textinput" style="width:800px;height:auto;background-color: #6EC89B;color:white;">
+                <header class="title" style="background-color: #6EC89B;color:white;"><t t-esc=" widget.options.title || '' " /></header>
+                <textarea id="note_text_area" type='text' style="height: 15%;" t-att-value="widget.options.value || ''"></textarea>
+                <br/>
+                <div class="product_note">
+                    <ul id="test">
+                    </ul>
+                </div>
+                <br/>
+
+                <div class="footer">
+                    <div class="button confirm">
+                        Ok
+                    </div>
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-extend="PosTicket">
+        <t t-jquery="table.receipt-orderlines" t-operation="replace">
+            <table class='receipt-orderlines'>
+                <colgroup>
+                    <col width='50%' />
+                    <col width='25%' />
+                    <col width='25%' />
+                </colgroup>
+                <tr t-foreach="orderlines" t-as="orderline">
+                    <td>
+                        <t t-esc="orderline.get_product().display_name"/><br/>
+                        <i class="fa fa-tags"><t t-esc="orderline.note"/></i><br/>
+                         <t t-if="orderline.get_discount() > 0">
+                            <div class="pos-disc-font">
+                                With a <t t-esc="orderline.get_discount()"/>% discount
+                            </div>
+                        </t>
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                    </td>
+                </tr>
+            </table>
+        </t>
+    </t>
+
+    <t t-extend="OrderReceipt">
+        <t t-jquery=".pos-receipt .orderlines t[t-esc='line.product_ar_trans']" t-operation="after">
+            <div>
+		<tr>
+                    <t t-if="line.note">
+                        <t t-foreach="line.note.split('-')" t-as="text">
+                            <span t-esc="text" style="font-size:14px"/>
+                        </t>
+                    </t>
+                </tr>
+            </div>
+        </t>
+    </t>
+
+</template>

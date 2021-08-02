@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <!-- Form-->
+     <record id="update_picking_view_form" model="ir.ui.view">
+          <field name="name">update.picking.view.form</field>
+          <field name="model">update.picking</field>
+          <field name="arch" type="xml">
+               <form string="Update Piking">
+                    <sheet>
+                         <p>
+                         Are sure you want validate all selected orders?
+                         </p>
+                         <footer>
+                              <button name="action_update_picking" type="object" string="Process" class="oe_highlight"/>
+                              <button string="Cancel" special="cancel" class="oe_link"/>
+                         </footer>
+                    </sheet>
+               </form>
+          </field>
+     </record>
+
+     <!-- Action-->
+     <record id="action_update_picking" model="ir.actions.act_window">
+          <field name="name">Validate Multiple Picking</field>
+          <field name="res_model">update.picking</field>
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="update_picking_view_form" />
+          <field name="target">new</field>   
+          <field name="binding_model_id" ref="stock.model_stock_picking" />
+      
+     </record>
+
+   
+</odoo>

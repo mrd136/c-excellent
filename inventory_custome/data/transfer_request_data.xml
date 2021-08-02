@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	
+	<!-- Sequence Intrnal Transfer -->
+ 	<record id="sequence_internal_transfer" model="ir.sequence">
+        <field name="name">Internal transfer</field>
+        <field name="code">internal.transfer</field>
+        <field name="prefix">IT</field>
+        <field name="padding">5</field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+        <field eval="False" name="company_id"/>
+    </record>
+
+	<!-- Sequence Invnetory Feeding -->
+	<record id="sequence_invnetory_feeding" model="ir.sequence">
+        <field name="name">Inventory Feeding</field>
+        <field name="code">inventory.feeding</field>
+        <field name="prefix">IF</field>
+        <field name="padding">5</field>
+        <field eval="1" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+        <field eval="False" name="company_id"/>
+    </record>
+
+
+</odoo>

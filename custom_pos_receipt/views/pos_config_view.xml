@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_pos_payment_form_inherit" model="ir.ui.view">
+            <field name="name">pos.payment.form</field>
+            <field name="model">pos.payment</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pos_order_id']" position="replace">
+                    <field name="pos_order_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_method_id']" position="replace">
+                    <field name="payment_method_id" groups="custom_pos_receipt.group_edit_payment_method_in_orders"/>
+                </xpath>
+            </field>
+        </record>
+
+    <record id="product_pricelist_view_form_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.form.inherit</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+         <field name="arch" type="xml">
+             <xpath expr="//field[@name='company_id']" position="after">
+                 <field name="pricelist_type"/>
+             </xpath>
+         </field>
+    </record>
+
+    <record id="view_pos_session_form_inherit" model="ir.ui.view">
+        <field name="name">pos.session.form.view.inherit</field>
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="replace">
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_order" class="oe_stat_button" icon="fa-shopping-basket" type="object" groups="custom_pos_receipt.group_sale_details">
+                        <field name="order_count" widget="statinfo" string="Orders"/>
+                    </button>
+                    <button class="oe_stat_button" name="action_stock_picking" type="object" icon="fa-arrows-v" attrs="{'invisible':[('picking_count', '=', 0)]}">
+                        <field name="picking_count" widget="statinfo" string="Picking Errors"/>
+                    </button>
+                    <button name="action_show_payments_list" type="object" class="oe_stat_button" icon="fa-dollar" groups="custom_pos_receipt.group_sale_details">
+                        <field name="total_payments_amount" widget="statinfo" string="Payments"/>
+                    </button>
+                    <button name="show_journal_items" type="object" class="oe_stat_button" icon="fa-bars" string="Journal Items" attrs="{'invisible':[('move_id', '=', False)]}" groups="account.group_account_user">
+                    </button>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='cash_register_total_entry_encoding']" position="replace">
+                <field style="text-align:right;margin:0;padding:0;" name="cash_register_total_entry_encoding" widget="monetary" options="{'currency_field': 'currency_id'}" string="+ Transactions" groups="custom_pos_receipt.group_sale_details"/>
+            </xpath>
+            <xpath expr="//field[@name='cash_register_balance_end']" position="replace">
+                <field style="text-align:right;margin:0;padding:0;" name="cash_register_balance_end" widget="monetary" options="{'currency_field': 'currency_id'}" string="= Expected in Cash" groups="custom_pos_receipt.group_sale_details"/>
+            </xpath>
+            <xpath expr="//group[@class='oe_subtotal_footer']" position="replace">
+                <group class="oe_subtotal_footer" groups="custom_pos_receipt.group_sale_details">
+                    <field name="cash_register_difference" widget="monetary" options="{'currency_field': 'currency_id'}" decoration-danger="cash_register_difference != 0"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_pos_config_kanban_inherit" model="ir.ui.view">
+        <field name="name">pos.config.kanban.view.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='kanban-box']//div//div[3]" position="replace">
+                <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+                    <div class="row">
+                        <div class="col-6 o_kanban_card_manage_section o_kanban_manage_view">
+                            <div role="menuitem" class="o_kanban_card_manage_title">
+                                <span>View</span>
+                            </div>
+                            <div role="menuitem" groups="custom_pos_receipt.group_sale_details">
+                                <a name="%(point_of_sale.action_pos_order_filtered)d" type="action">Orders</a>
+                            </div>
+                            <div role="menuitem">
+                                <a name="%(point_of_sale.action_pos_session_filtered)d" type="action">Sessions</a>
+                            </div>
+                        </div>
+                        <div class="col-6 o_kanban_card_manage_section o_kanban_manage_new" groups="custom_pos_receipt.group_sale_details">
+                            <div role="menuitem" class="o_kanban_card_manage_title">
+                                <span>Reporting</span>
+                            </div>
+                            <div role="menuitem">
+                                <a name="%(point_of_sale.action_report_pos_order_all_filtered)d" type="action">Orders</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div t-if="widget.editable" class="o_kanban_card_manage_settings row" groups="point_of_sale.group_pos_manager">
+                        <div role="menuitem" class="col-12">
+                            <a type="edit">Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='col-6 o_kanban_primary_right']" position="replace">
+                <div class="col-6 o_kanban_primary_right" groups="point_of_sale.group_pos_manager">
+                    <div t-if="record.last_session_closing_date.value" class="row">
+                        <div class="col-6">
+                            <span>Last Closing Date</span>
+                        </div>
+                        <div class="col-6">
+                            <span><t t-esc="record.last_session_closing_date.value"/></span>
+                        </div>
+                    </div>
+
+                    <div t-if="record.last_session_closing_date.value" class="row">
+                        <div class="col-6">
+                            <span>Cash Balance</span>
+                        </div>
+                        <div class="col-6">
+                            <span><field name="last_session_closing_cash" widget="monetary"/></span>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="point_of_sale.menu_point_rep"
+    name="Reporting"
+    parent="point_of_sale.menu_point_root"
+    sequence="90"
+    groups="point_of_sale.group_pos_manager,custom_pos_receipt.group_pos_reports"/>
+
+
+    <record id="pos_config_inherit_form_view" model="ir.ui.view">
+        <field name="name">pos.config.inherit.form</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//h2[@name='order']" position="after">
+                <label for="exepted_products"/>
+                <field name="exepted_products" string="Excluded products" widget="many2many_tags" options="{'no_create': True}"/>
+                <br />
+                <label for="neighborhood_ids"/>
+                <field name="neighborhood_ids" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//div[@id='inventory_location']" position="replace">
+                <div class="col-12 col-lg-6 o_setting_box" title="Operation types show up in the Inventory dashboard.">
+                    <div class="o_setting_right_pane">
+                        <label for="picking_type_id" string="Operation Type"/>
+                        <div class="text-muted">
+                            Operation type used to record product pickings <br/>
+                            Products will be taken from the default source location of this operation type
+                        </div>
+                        <div class="content-group mt16">
+                            <field name="picking_type_id" required="1" domain="[('company_id', '=', company_id)]"/>
+                        </div>
+                    </div>
+                    <div class="o_setting_left_pane">
+                        <label for="receipt_picking_type_id" string="Receipt Operation Type"/>
+                        <div class="text-muted">
+                            Operation type used to record product pickings <br/>
+                            Products will be taken from source location to this operation type
+                        </div>
+                        <div class="content-group mt16">
+                            <field name="receipt_picking_type_id" required="1" domain="[('company_id', '=', company_id)]"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="pos_neighborhood_form_view" model="ir.ui.view">
+        <field name="name">pos.neighborhood.form</field>
+        <field name="model">pos.neighborhood</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="pos_config_id"/>
+                        <field name="country"/>
+                        <field name="state"/>
+                        <field name="name"/>
+                        <field name="delivery_fees"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="pos_neighborhood_tree_view" model="ir.ui.view">
+        <field name="name">pos.neighborhood.tree</field>
+        <field name="model">pos.neighborhood</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="pos_config_id"/>
+                <field name="country"/>
+                <field name="state"/>
+                <field name="delivery_fees"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='pos_neighborhood_view_action_id' model='ir.actions.act_window'>
+        <field name='name'>Pos Neighborhood</field>
+        <field name="res_model">pos.neighborhood</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_pos_neighborhood" parent="point_of_sale.menu_point_config_product" action="pos_neighborhood_view_action_id" />
+
+    <record id="res_partner_inherit_form_view" model="ir.ui.view">
+        <field name="name">res.partner.inherit.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='country_id']" position="before">
+                    <field name="neighborhood_id" placeholder="Neighborhood"/>
+            </xpath>
+
+        </field>
+    </record>
+	<menuitem id="point_of_sale.pos_config_menu_catalog"
+        name="Products"
+        parent="point_of_sale.menu_point_root"
+        groups="point_of_sale.group_pos_manager"/>
+    </data>
+</odoo>

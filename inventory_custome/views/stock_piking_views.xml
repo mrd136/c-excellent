@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+     <record id="action_done_all" model="ir.actions.server">
+          <field name="name">Done All</field>
+          <field name="model_id" ref="stock.model_stock_picking"/>
+          <field name="binding_model_id" ref="stock.model_stock_picking"/>
+          <field name="state">code</field>
+          <field name="code">
+if records:
+     for rec in records:
+          action = rec.button_validate()
+          </field>
+     </record>
+     <!-- <act_window id="action_done_all" name="Done All" res_model="update.piking" binding_model="stock.picking" binding_views="list" view_mode="form" target="new" /> -->
+
+</odoo>

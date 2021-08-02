@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record model="ir.ui.view" id="view_material_request_report_pivot">
+            <field name="name">material.request.report.pivot</field>
+            <field name="model">material.request.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Asset Analysis" disable_linking="True" display_quantity="true">
+                    <field name="date" type="col"/>
+                    <field name="request_id" type="row"/>
+                    <field name="location_id" type="col"/>
+                    <field name="product_id" type="col"/>
+                    <field name="product_uom" type="col"/>
+                    <field name="product_qty" type="measure"/>
+                    <field name="deliver_qty" type="measure"/>
+                    <field name="onhand_qty" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_material_request_report_graph">
+            <field name="name">material.request.report.graph</field>
+            <field name="model">material.request.report</field>
+            <field name="arch" type="xml">
+                <graph string="Transfer Request Statistics" type="line">
+                    <field name="date" interval="day" type="col"/>
+                    <field name="product_id" type="measure"/>
+                    <field name="product_qty" type="measure"/>
+                    <field name="deliver_qty" type="measure"/>
+                    <field name="onhand_qty" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_material_request_report_search" model="ir.ui.view">
+        <field name="name">material.request.report.search</field>
+        <field name="model">material.request.report</field>
+        <field name="arch" type="xml">
+            <search string="material Request Report">
+                <filter string="Deliverd" name="deliver" domain="[('state','=','deliver')]"/>
+                <filter string="Done" name="Done" domain="[('state','=','done')]"/>
+                <filter string="Cancel" name="cancel" domain="[('state','=','cancel')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Representative" name="user_id" context="{'group_by':'user_id'}"/>
+                    <filter string="Product" name="product_id" context="{'group_by':'product_id'}"/>
+                    <filter string="Location" name="location" context="{'group_by':'location_id'}"/>   
+                    <filter string="Status" name="status" context="{'group_by':'state'}"/>
+                    <separator/>
+                    <filter string="Date" name="order_month" context="{'group_by': 'date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Actions-->
+    <record id="action_material_report" model="ir.actions.act_window">
+        <field name="name">Material Report</field>
+        <field name="res_model">material.request.report</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="view_id"></field> 
+        <field name="target">current</field>
+    </record>
+
+
+
+    <!-- Menus-->
+    <menuitem id="menu_material_report"
+              action="action_material_report"
+              parent="stock.menu_warehouse_report"
+              sequence="250"/>
+
+</odoo>

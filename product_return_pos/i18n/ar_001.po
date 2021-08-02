@@ -1,0 +1,196 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_return_pos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-19 12:21+0000\n"
+"PO-Revision-Date: 2020-11-19 12:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_return_pos
+#: model:res.groups,name:product_return_pos.group_retrun_button
+msgid "Access Return button in POS"
+msgstr "صلاحية إرجاع أوامر البيع"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Dis"
+msgstr ""
+
+#. module: product_return_pos
+#: model:ir.model.fields.selection,name:product_return_pos.selection__pos_order__return_status__fully_return
+msgid "Fully Returned"
+msgstr "مرجع بالكامل"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "ID"
+msgstr ""
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Line ID"
+msgstr ""
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Name"
+msgstr "الاسم"
+
+#. module: product_return_pos
+#: model:ir.model.fields.selection,name:product_return_pos.selection__pos_order__return_status__nothing_return
+msgid "Nothing Returned"
+msgstr "غير مرجع"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Order Ref"
+msgstr "متسلسل الأمر المرجع"
+
+#. module: product_return_pos
+#: model:ir.module.category,name:product_return_pos.pos_return
+msgid "POS Return Order"
+msgstr ""
+
+#. module: product_return_pos
+#: model:ir.model.fields.selection,name:product_return_pos.selection__pos_order__return_status__partialy_return
+msgid "Partialy Returned"
+msgstr "مرجع جزئيا"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: product_return_pos
+#: model:ir.model,name:product_return_pos.model_pos_order_line
+msgid "Point of Sale Order Lines"
+msgstr "بنود أمر نقطة البيع"
+
+#. module: product_return_pos
+#: model:ir.model,name:product_return_pos.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "أوامر نقطة البيع"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Price"
+msgstr "السعر"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Qty"
+msgstr "الكمية"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Return"
+msgstr "إرجاع"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Return Order"
+msgstr "إرجاع"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#: model:ir.model.fields,field_description:product_return_pos.field_pos_order__return_ref
+#, python-format
+msgid "Return Ref"
+msgstr "متسلسل الأمر المرجع"
+
+#. module: product_return_pos
+#: model:ir.model.fields,field_description:product_return_pos.field_pos_order__return_status
+msgid "Return Status"
+msgstr "حالة الإرجاع"
+
+#. module: product_return_pos
+#: model:ir.model.fields,help:product_return_pos.field_pos_order__return_status
+msgid "Return status of Order"
+msgstr ""
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Returned Order"
+msgstr "أمر مرجع"
+
+#. module: product_return_pos
+#: model:ir.model.fields,field_description:product_return_pos.field_pos_order_line__returned_qty
+msgid "Returned Qty"
+msgstr "الكمية المرجعة"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Returned Quantity"
+msgstr "الكمية المرجعة"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/xml/pos_return.xml:0
+#, python-format
+msgid "Search"
+msgstr "بحث"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/js/pos_return.js:0
+#, python-format
+msgid "This is a fully returned order"
+msgstr "هذا الأمر تم إرجاعة بالكامل"
+
+#. module: product_return_pos
+#. openerp-web
+#: code:addons/product_return_pos/static/src/js/pos_return.js:0
+#, python-format
+msgid "This is a returned order"
+msgstr "هذا أمر مرجع"
