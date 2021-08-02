@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+            <xpath expr="//div[1]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+            <xpath expr="//div[3]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+        </template>
+        <template id="external_layout_clean_custom" inherit_id="web.external_layout_clean">
+            <xpath expr="//div[1]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+            <xpath expr="//div[3]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+        </template>
+        <template id="external_layout_boxed_custom" inherit_id="web.external_layout_boxed">
+            <xpath expr="//div[1]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+            <xpath expr="//div[3]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+        </template>
+        <template id="external_layout_background_custom" inherit_id="web.external_layout_background">
+            <xpath expr="//div[1]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+            <xpath expr="//div[3]" position="replace">
+                <div>
+
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
