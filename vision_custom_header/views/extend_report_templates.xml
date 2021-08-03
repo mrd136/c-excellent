@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_external_layout_standard">
+            <div class="header" t-att-style="report_header_style">
+                <style type="text/css">
+                    @font-face {
+                    font-family: 'Amiri';
+                    src: local('Amiri-Regular'), local('Amiri-Regular'),
+                    url('/vision_custom_header/static/fonts/Amiri-Regular.ttf') format('truetype');
+                    }
+                    *{
+                    font-family: Amiri;
+                    }
+                </style>
+                <div dir="rtl">
+                    <div style="font-weight: bold;margin-top:20px;margin-right:0px !important;display:inline-block;width:30%;text-align:right">
+                        مجموعة العمري
+                        <br/>
+                        للتجارة و المقاولات
+                        <br/>
+                        ش.ذ.م.م
+                    </div>
+                    <div style="display:inline-block;width:40%" class="text-center">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="margin-top:20px;max-height: 100px;" alt="Logo"/>
+                    </div>
+                    <div style="font-weight: bold;margin-top:20px;display:inline-block;width:25%" class="text-left">
+                        AL-AMRY GROUP
+                        <br/>
+                        For trading and Contracting
+                        <br/>
+                        L.L.C
+                    </div>
+                </div>
+            </div>
+            <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer o_standard_footer">
+                <div class="text-center" style="border-top: 1px solid black;">
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="web.external_layout">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+            <t t-if="company.external_report_layout_id" t-call="vision_custom_header.custom_external_layout_standard"><t t-raw="0"/></t>
+            <t t-else="else" t-call="vision_custom_header.custom_external_layout_standard"><t t-raw="0"/></t>
+        </template>
+    </data>
+</odoo>
