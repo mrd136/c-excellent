@@ -1,0 +1,8 @@
+1.0.1                                     16/10/2019
+====================================================
+Released module for v13
+
+1.0.2                                     25/10/2019
+====================================================
+Improved code for making it work in list view 
+and do not show timer if start date is not there

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="branding" xml:space="preserve">
+    <t t-name="WebClient.announcement_bar">
+        <div class="odoo" id="announcement_bar_table">
+            <table class="oe_webclient" width="100%">
+                <tr>
+                    <td class="btn" style="text-align:center;background-color: #893b74; border-radius: 0px; pointer-events: none;" width="100%"> 
+                        <span>
+                            <a href="http://www.almightycs.com" style="color: white; pointer-events: all;" target="_blank">
+                                Welcome to ACS Hospital Management System
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </t>
+
+</templates>

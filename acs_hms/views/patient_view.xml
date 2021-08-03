@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_acs_family_member_form" model="ir.ui.view">
+        <field name="name">acs.family.member.form</field>
+        <field name="model">acs.family.member</field>
+        <field name="arch" type="xml">
+            <form string="Family Member">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="related_patient_id"/>
+                            <field name="relation_id"/>
+                        </group>
+                        <group>
+                            <field name="patient_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Patient View -->
+    <record model="ir.ui.view" id="patient_kanban_view">
+        <field name="name">patient.kanban</field>
+        <field name="model">hms.patient</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="image_128"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="primary_doctor"/>
+                <field name="parent_id"/>
+                <field name="function"/>
+                <field name="code"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <t t-set="placeholder" t-value="'/base/static/img/avatar_grey.png'"/>
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('hms.patient', 'image_128', record.id.raw_value, placeholder)}')"/>
+                            <div class="oe_kanban_details">
+                                <strong class="oe_partner_heading"><field name="display_name"/></strong>
+                                <ul>
+                                    <li><b>Code:</b> <field name="code"/></li>
+                                    <li t-if="record.age.raw_value"><b>Age:</b> <field name="age"/></li>
+                                    <li t-if="record.gender.raw_value"><b>Gender:</b> <field name="gender"/></li>
+                                    <li t-if="record.primary_doctor.raw_value"><b>Doctor:</b> <field name="primary_doctor"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_patient_tree" model="ir.ui.view">
+        <field name="name">patient.tree</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient">
+                <field name="code" optional="show"/>
+                <field name="name"/>
+                <field name="age" optional="show"/>
+                <field name="gender" optional="show"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">patient.form</field>
+        <field name="model">hms.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <header>
+                    <button name="create_invoice" string="Create Invoice" type="object" class="oe_highlight" attrs="{'invisible': [('invoice_id','!=',False)]}" groups="acs_hms.group_patient_registartion_invoicing"/>
+                    <field name="invoice_id" invisible="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" name="view_invoices" class="oe_stat_button" icon="fa-money" context="{'default_patient_id': active_id}" groups="acs_hms.group_patient_registartion_invoicing">
+                            <div class="o_field_widget o_stat_info mr4">
+                                <span class="o_stat_text">Inv:</span>
+                                <span class="o_stat_text">Due:</span>
+                            </div>
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value"><field name="total_invoiced" widget="monetary" options="{'currency_field': 'currency_id'}"/></span>
+                                <span class="o_stat_value"><field name="acs_amount_due" widget="monetary" options="{'currency_field': 'currency_id'}"/></span>
+                            </div>
+                        </button>
+
+                        <button name="action_treatment" type="object" class="oe_stat_button" groups="acs_hms.group_hms_receptionist" icon="fa-user-md">
+                            <field string="Treatments" name="treatment_count" widget="statinfo"/>
+                        </button>
+                        <button name="action_appointment" type="object" class="oe_stat_button" groups="acs_hms.group_hms_receptionist" icon="fa-stethoscope">
+                            <field string="Appointments" name="appointment_count" widget="statinfo"/>
+                        </button>
+                        <button name="action_prescription" groups="acs_hms.group_hms_jr_doctor,acs_hms.group_hms_pharmacist" type="object" class="oe_stat_button" icon="fa-wpforms">
+                            <field string="Prescriptions" name="prescription_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name" required="1"/>
+                        </h1>
+                        <div name="options" groups="base.group_user">
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code" readonly="1"/>
+                            <field name="gender"/>
+                            <field name="primary_doctor"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="birthday"/>
+                            <field name="age"/>
+                            <field name="department_ids" widget="many2many_tags" groups="acs_hms.group_allow_multi_department"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="info" string="General Information">
+                            <group>
+                                <group>
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format">
+                                        <field name="street" placeholder="Street..." class="o_address_street"
+                                        />
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"
+                                        />
+                                        <field name="city" placeholder="City" class="o_address_city"
+                                        />
+                                        <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'
+                                        context="{'country_id': country_id, 'zip': zip}"/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                        />
+                                        <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'
+                                        />
+                                    </div>
+                                </group>
+                                <group>
+                                    <field name="phone"/>
+                                    <field name="mobile"/>
+                                    <field name="email"/>
+                                    <field name="gov_code"/>
+                                </group>
+                            </group>
+                            <group> 
+                                <group name="basic_details">
+                                    <field name="occupation"/>
+                                    <field name="religion"/>
+                                    <field name="caste"/>
+                                    <field name="ethnic_group"/>
+                                </group>
+                                <group>
+                                    <field name="property_product_pricelist" groups="product.group_product_pricelist" options="{'no_open':True,'no_create': True}"/>
+                                    <field name="marital_status"/>
+                                </group>
+                            </group>
+                            
+                        </page>
+                        <page name="hospital_info" string="Hospital Info">
+                            <group>
+                                <group>
+                                    <field name="partner_id" groups="base.group_no_one" required="0" readonly="1"/>
+                                    <field name="company_id" groups="base.group_multi_company" string="Hospital" options="{'no_create': True}"/>
+                                </group>
+                                <group name="ref_doc_details">
+                                    <field name="ref_doctor" widget="many2many_tags"/>
+                                    <field name="registration_product_id" groups="acs_hms.group_patient_registartion_invoicing"/>
+                                </group>
+                                <group name="basic_medical">
+                                    <field name="blood_group"/>
+                                </group>
+                                <group name="death_details">
+                                    <field name="date_of_death" force_save="True"/>
+                                </group>
+                            </group>
+                            <group> 
+                                <group name="corporate_tieup">
+                                    <field name="is_corpo_tieup"/>
+                                    <field name="corpo_company_id" attrs="{'invisible': [('is_corpo_tieup', '!=', True)], 'required': [('is_corpo_tieup', '=', True)]}" context="{'default_is_company':True}"/>
+                                    <field name="emp_code" attrs="{'invisible': [('is_corpo_tieup', '!=', True)], 'required': [('is_corpo_tieup', '=', True)]}"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page name="clinical_ass" string="Clinical Assesment" groups="acs_hms.group_hms_nurse">
+                            <div>NOTE: Details are shown based on last Completed appoitment's Clinical Assesment data only. <t attrs="{'invisible': [('last_appointment_id','=',False)]}">Last Appointment: <field name="last_appointment_id" nolabel="1" class="oe_link"/></t></div>
+                            <group>
+                                <group>
+                                    <field name="weight"/>
+                                    <field name="height"/>
+                                    <field name="temp"/>
+                                    <field name="hr"/>
+                                </group>
+                                <group>
+                                    <field name="rr"/>
+                                    <field name="bp"/>
+                                    <field name="spo2"/>
+                                </group>
+                                <group>
+                                    <field name="bmi"/>
+                                </group>
+                                <group>
+                                    <field name="bmi_state"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page name='diseases' string="Diseases" groups="acs_hms.group_hms_jr_doctor">
+                            <separator string="Medical Alert" colspan="4"/>
+                            <group>
+                                <field name="medical_alert_ids" widget="many2many_tags"/>
+                            </group>
+                            <separator string="Past Medical History" colspan="4"/>
+                            <field name="medical_history"/>
+                            <separator string="Diseases History" colspan="4"/>
+                            <field name="patient_diseases"  nolabel="1" colspan="4"/>
+                            <separator string="Family Disease History"/>
+                            <field name="family_history" />
+                            <separator string="Genetic Risk" />
+                            <field name="genetic_risks"/>
+                        </page>
+                        <page string="Family" name="family_note">
+                            <field name="family_member_ids">
+                                <tree editable="bottom">
+                                    <field name="related_patient_id"/>
+                                    <field name="member" invisible="1"/>
+                                    <field name="relation_id" required="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+             </form>
+         </field>
+     </record>
+
+    <record id="view_patient_filter" model="ir.ui.view">
+        <field name="name">patient.filter</field>
+        <field name="model">hms.patient</field>
+        <field name="priority" eval="1" />
+        <field name="arch" type="xml">
+            <search string="Patient">
+                <field name="name" />
+                <field name="primary_doctor"/>
+                <field name="ref_doctor"/>
+                <field name="birthday" />
+                <field name="age" />
+                <field name="code"/>
+                <field name="mobile"/>
+                <field name="gov_code"/>
+                <newline/>
+                <group expand="0" string="Group By...">
+                    <filter string="Code" name="code_groupby" domain="[]" context="{'group_by':'code'}" />
+                    <filter string="birthday" name="birthday_groupby" domain="[]" context="{'group_by':'birthday'}" />
+                    <filter string="Gender" name="gender_groupby" domain="[]" context="{'group_by':'gender'}" />
+                    <filter string="Company" name="company_group" domain="[]" context="{'group_by':'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_patient" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="view_patient_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record Found
+            </p>
+            <p>
+                Click to add a Patient.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_patient_form" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="res_model">hms.patient</field>
+        <field name="view_mode">form</field>
+        <field name="search_view_id" ref="view_patient_filter"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- HMS Main Menu and sub menus -->
+    <menuitem id="menu_hms" name="HMS" sequence="5" groups="acs_hms.group_hms_manager" web_icon="acs_hms,static/description/icon.png"/>
+
+    <menuitem id="menu_patient" name="Patients" sequence="1" parent="menu_hms"/>
+
+    <menuitem id="action_menu_patient" name="Patients" sequence="0" parent="menu_patient" action="action_patient"/>
+
+    <menuitem id="action_menu_doctors" name="Physicians" parent="menu_hms" action="action_physician" sequence="2"/>
+
+    <menuitem id="action_menu_treatment" name="Treatments" parent="menu_hms"
+        sequence="3" action="acs_action_form_hospital_treatment"/>
+
+    <menuitem id="menu_appointment" name="Appointment" sequence="4" parent="menu_hms" action="action_appointment"/>
+ 
+    <!-- Prescription Menu-->
+    <menuitem id="hos_prescription" name="Prescription" parent="acs_hms.menu_hms" sequence="5" groups="acs_hms.group_hms_pharmacist,acs_hms.group_hms_jr_doctor" action="act_open_hms_prescription_order_view"/>
+
+    <!-- Services -->
+    <menuitem id="hos_services" name="Services" parent="acs_hms.menu_hms" sequence="5" action="product_template_action_services" groups="acs_hms.group_hms_receptionist"/>
+
+    <!-- Medicines -->
+    <menuitem id="hos_medicine" name="Medicines" parent="acs_hms.menu_hms" sequence="5" groups="acs_hms.group_hms_pharmacist,acs_hms.group_hms_jr_doctor" action="product_template_action_medicines"/>
+
+    <!-- Referring Doc -->
+    <menuitem id="menu_referring_doctors" sequence="15"
+        parent="acs_hms.menu_hms" action='action_referring_doctors'/>
+
+    <!-- Pricelist -->
+    <menuitem id="menu_product_pricelist_main" name="Pricelists" parent="acs_hms.menu_hms" action="product.product_pricelist_action2" groups="product.group_product_pricelist" sequence="20"/>
+
+    <!-- Configuration Menu-->
+    <menuitem id="menu_hms_cofig" name="Configuration" parent="menu_hms" groups="acs_hms.group_hms_manager" sequence="100"/>
+
+    <menuitem id="menu_hms_cofig_settings" name="Settings" parent="menu_hms_cofig" sequence="0" action="action_hms_config_settings" groups="base.group_system"/>
+
+    <!--Configuration Schedule -->
+    <menuitem id="menu_working_schedule" sequence="20" parent="menu_hms_cofig" action='resource.action_resource_calendar_form'/>
+
+    <!-- HMS Main Menu Complete-->
+
+    <!-- Main Patient Menu-->
+    <menuitem id="main_menu_patient" name="Patient" groups="acs_hms.group_hms_doctor,acs_hms.group_hms_receptionist,acs_hms.group_hms_pharmacist" sequence="5" web_icon="acs_hms,static/img/patient.png"/>
+    <menuitem id="action_main_menu_patient" name="Patient" action="action_patient" parent="main_menu_patient" sequence="10"/>
+
+    <!-- Patient Configuration Menu-->
+    <menuitem id="menu_hms_patient_cofig" name="Configuration" parent="main_menu_patient" groups="acs_hms.group_hms_manager" sequence="100"/>
+    <menuitem id="diseases_menu" name="Diseases" parent="acs_hms.menu_hms_patient_cofig" sequence="4"/>
+    <menuitem id="hms_diseases" name="Diseases" action="acs_hms.act_open_diseases_view" parent="acs_hms.diseases_menu" sequence="0"/>
+    <menuitem id="menu_disease_category" name="Disease Categories" sequence="1" parent="acs_hms.diseases_menu" action="acs_hms.act_open_acs_disease_category_view"/>
+
+    <menuitem id="menu_medical_alerts" name="Medical Alerts" sequence="11" parent="acs_hms.menu_hms_patient_cofig" action="acs_hms.act_open_medical_alerts"/>
+    <menuitem id="menu_family_relation" name="Family Relation" action="acs_hms.action_acs_family_relation" parent="acs_hms.menu_hms_patient_cofig" sequence="12"/>
+
+    <!--Main Physician -->
+    <menuitem id="main_menu_physician" name="Physician" groups="acs_hms.group_hms_receptionist"  sequence="10" web_icon="acs_hms,static/img/physician.png"/>
+
+    <menuitem id="action_menu_physician" sequence="0" parent="main_menu_physician" action="action_physician"/>
+
+    <menuitem id="menu_physician_referring_physicians" sequence="1" parent="main_menu_physician" action='action_referring_doctors'/>
+
+    <menuitem id="menu_physician_cofig" name="Configuration" parent="main_menu_physician" groups="acs_hms.group_hms_manager" sequence="100"/>
+
+    <menuitem id="menu_physician_specialty" sequence="10" parent="menu_physician_cofig" action='action_physician_specialty'/>
+
+    <menuitem id="menu_physician_degree" sequence="10" parent="menu_physician_cofig" action='action_physician_degree'/>
+
+    <!-- Schedule menu -->
+    <menuitem id="action_menu_working_schedule" name="Schedule"
+        sequence="15" groups="acs_hms.group_hms_receptionist,acs_hms.group_hms_jr_doctor" action="action_resource_calendar" web_icon="acs_hms,static/img/calendar.png"/>
+
+    <!-- Main Treatment Menu -->
+    <menuitem id="action_menu_treatment_sheet" name="Treatments"
+        sequence="20" groups="acs_hms.group_hms_receptionist,acs_hms.group_hms_jr_doctor" action="acs_action_form_hospital_treatment" web_icon="acs_hms,static/img/treatment.png"/>
+
+    <!-- Main Appointment Menu -->
+    <menuitem id="action_main_menu_appointmnet_opd" action="action_appointment" sequence="25" groups="acs_hms.group_hms_receptionist,acs_hms.group_hms_jr_doctor,acs_hms.group_acs_hms_appointment_user" web_icon="acs_hms,static/img/appointment.png"/>
+
+    <!-- Appointment Configuration -->
+    <menuitem id="menu_appointment_cofig" name="Configuration"
+        parent="acs_hms.action_main_menu_appointmnet_opd" sequence="100"/>
+
+    <menuitem id="menu_patient_appointment" name="Appointment Purpose"
+        sequence="0" parent="acs_hms.menu_appointment_cofig" action="act_open_appointment_purpose"/>
+    <menuitem id="menu_open_appointment_cabin" name="Appointment Cabin"
+        sequence="1" parent="acs_hms.menu_appointment_cofig" action="act_open_appointment_cabin"/>
+
+    <!-- Main Prescriptions Menu -->
+    <menuitem id="hos_pres_root" name="Prescription" sequence="25" groups="acs_hms.group_hms_pharmacist,acs_hms.group_hms_jr_doctor" web_icon="acs_hms,static/img/prescription.png"/>
+    <menuitem id="hos_prescption_inner_root" name="Prescription" parent="hos_pres_root" action="act_open_hms_prescription_order_view"/>
+
+    <menuitem id="menu_pres_cofig" name="Configuration" parent="hos_pres_root" groups="acs_hms.group_hms_doctor" sequence="100"/>
+
+    <menuitem id="menuitem_action_presc_medicament_group" name="Medicament Group" 
+        parent="acs_hms.menu_pres_cofig" action="act_open_medicament_group_view" sequence="11"/>
+
+    <!-- Main Services Menu -->
+    <menuitem id="acs_services_root" name="Services" sequence="30"  groups="acs_hms.group_hms_receptionist" web_icon="acs_hms,static/img/services.png"/>
+    <menuitem id="menu_acs_services" name="Services" parent="acs_services_root" action="product_template_action_services"/>
+
+    <!-- Main Medicine Menu -->
+    <menuitem id="acs_medicine_root" name="Medicines" sequence="30" groups="acs_hms.group_hms_pharmacist,acs_hms.group_hms_jr_doctor" web_icon="acs_hms,static/img/pills.png"/>
+    <menuitem id="menu_acs_medicine" name="Medicines" parent="acs_medicine_root" action="product_template_action_medicines"/>
+
+    <menuitem id="menu_medicine_cofig" name="Configuration" parent="acs_medicine_root" groups="acs_hms.group_hms_pharmacist,acs_hms.group_hms_manager,acs_hms.group_hms_doctor" sequence="100"/>
+
+    <menuitem id="menu_medicine_druggg" name="Drug Form"
+        parent="acs_hms.menu_medicine_cofig" action="acs_hms.act_open_drug_form_view"
+        sequence="2"/>
+    <menuitem id="menu_medicine_product_active_component" name="Active Component"
+        parent="acs_hms.menu_medicine_cofig" action="act_open_active_comp"
+        sequence="5"/>
+    <menuitem id="menu_medicine_drug_company" name="Drug Company"
+        parent="acs_hms.menu_medicine_cofig" action="act_open_drug_company_form_view"
+        sequence="6"/>
+    <menuitem id="menu_medicine_medicament_dosage" name="Medication Dosage"
+        parent="acs_hms.menu_medicine_cofig" action="action_medicament_dosage"
+        sequence="7"/>
+    <menuitem id="menu_medicine_medicament_flavour" name="Medicament Flavour"
+        parent="acs_hms.menu_medicine_cofig" action="action_medicament_flavour"
+        sequence="9"/>
+    <menuitem id="menu_medicine_medicament_route" name="Medicament Route"
+        parent="acs_hms.menu_medicine_cofig" action="action_medicament_route"
+        sequence="10"/>
+   <menuitem id="menu_medicine_hms_medicament_group" name="Medicament Group" 
+        parent="acs_hms.menu_medicine_cofig" action="act_open_medicament_group_view" sequence="11"/>
+
+</odoo>

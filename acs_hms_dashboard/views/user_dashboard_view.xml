@@ -1,0 +1,537 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="user_dashboard_kanban_view" model="ir.ui.view">
+        <field name="name">Dashboard</field>
+        <field name="model">res.users</field>
+        <field name="type">kanban</field>
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <kanban create="false">
+                <field name="total_patients"/>
+                <field name="total_patients_color"/>
+                <field name="total_appointments"/>
+                <field name="total_appointments_color"/>
+                <field name="total_open_invoice"/>
+                <field name="total_open_invoice_amount"/>
+                <field name="total_open_invoice_color"/>
+                <field name="birthday_patients"/>
+                <field name="birthday_employee"/>
+                <field name="birthday_color"/>
+                <field name="appointment_bar_graph"/>
+                <field name="appointment_bar_graph_color"/>
+                <field name="patient_line_graph"/>
+                <field name="patient_line_graph_color"/>
+
+                <field name="my_total_appointments"/>
+                <field name="my_total_appointments_color"/>
+                <field name="my_total_patients"/>
+                <field name="my_total_patients_color"/>
+                <field name="my_avg_wait_time"/>
+                <field name="my_avg_cons_time"/>
+                <field name="my_avg_time_color"/>
+                <field name="my_total_treatments"/>
+                <field name="my_total_treatments_color"/>
+
+                <field name="avg_wait_time"/>
+                <field name="avg_cons_time"/>
+                <field name="avg_time_color"/>
+                <field name="total_treatments"/>
+                <field name="total_treatments_color"/>
+                <field name="physicians_color"/>
+                <field name="total_physicians"/>
+                <field name="total_referring_physicians"/>
+                <field name="total_shedules"/>
+                <field name="total_shedules_color"/>
+                <field name="dashboard_data_filter"/>
+                <field name="is_physician"/>
+                <field name="is_manager"/>
+                
+                <templates>
+                    <t t-name="kanban-box">
+                        <div id="acs_hms_dashboard" class="o_kanban_view o_kanban_record">
+                            <div class="row">
+                                <span t-field="dashboard_data_filter"/>
+                                <div class="btn-group col-4 mt8 mb8" role="group" aria-label="Filters">
+                                    <button t-attf-class="btn #{record.dashboard_data_filter.raw_value=='today' ? 'btn-primary' : 'btn-secondary'}" type="object" name="today_data">Today</button>
+                                    <button t-attf-class="btn #{record.dashboard_data_filter.raw_value=='week' ? 'btn-primary' : 'btn-secondary'}" type="object" name="week_data">This Week</button>
+                                    <button t-attf-class="btn #{record.dashboard_data_filter.raw_value=='month' ? 'btn-primary' : 'btn-secondary'}" type="object" name="month_data">This Month</button>
+                                    <!-- <button t-attf-class="btn #{record.dashboard_data_filter.raw_value=='year' ? 'btn-primary' : 'btn-secondary'}" type="object" name="year_data">This Year</button> -->
+                                    <button t-attf-class="btn #{record.dashboard_data_filter.raw_value=='all' ? 'btn-primary' : 'btn-secondary'}" type="object" name="all_data">Till Now</button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Total Patients -->
+                                <div groups="acs_hms.group_hms_receptionist" t-if="!record.is_physician.raw_value or record.is_manager.raw_value" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.total_patients_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon stat-icon">
+                                                    <i class="fa fa-wheelchair" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="value">
+                                                        <span>
+                                                            <field name="total_patients"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="title">Patients</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a type="object" name="open_patients">
+                                            <div class="card-footer acs-footer">
+                                                <span class="pull-left">View Details</span>
+                                                <span class="pull-right">
+                                                    <i class="fa fa-arrow-circle-right" aria-label="Info" title="Info"></i>
+                                                </span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- My Patients -->
+                                <div groups="acs_hms.group_hms_jr_doctor" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.my_total_patients_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon">
+                                                    <i class="fa fa-wheelchair" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="value">
+                                                        <span>
+                                                            <field name="my_total_patients"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="title">My Total Patients</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a type="object" name="open_my_patients">
+                                            <div class="card-footer acs-footer">
+                                                <span class="pull-left">View Details</span>
+                                                <span class="pull-right">
+                                                    <i class="fa fa-arrow-circle-right" aria-label="Info" title="Info"></i>
+                                                </span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Physicians -->
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block" groups="acs_hms.group_hms_manager">
+                                    <div t-attf-class="card acs-card card-#{record.physicians_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-user-md" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_physicians">
+                                                            
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="total_physicians"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Total Phy.</div>
+                                                            </a>
+                                                        </div>
+                                                        
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_referring_physicians">
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="total_referring_physicians"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Ref. Phy.</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">Physicians</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Appointments --> 
+                                <div groups="acs_hms.group_hms_receptionist" t-if="!record.is_physician.raw_value or record.is_manager.raw_value" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.total_appointments_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-2 stat-icon">
+                                                    <i class="fa fa-stethoscope" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-10 text-right">
+                                                    <div class="value">
+                                                        <span>
+                                                            <field name="total_appointments"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="title">Appointments</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a type="object" name="open_appointments">
+                                            <div class="card-footer acs-footer">
+                                                <span class="pull-left">View Details</span>
+                                                <span class="pull-right">
+                                                    <i class="fa fa-arrow-circle-right" aria-label="Info" title="Info"></i>
+                                                </span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- My Appointments -->
+                                <div groups="acs_hms.group_hms_jr_doctor" t-if="record.is_physician.raw_value" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.my_total_appointments_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon">
+                                                    <i class="fa fa-stethoscope" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="value">
+                                                        <span>
+                                                            <field name="my_total_appointments"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="title">My Appointments</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a type="object" name="open_my_appointments">
+                                            <div class="card-footer acs-footer">
+                                                <span class="pull-left">View Details</span>
+                                                <span class="pull-right">
+                                                    <i class="fa fa-arrow-circle-right" aria-label="Info" title="Info"></i>
+                                                </span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Schedules -->
+                                <div groups="acs_hms.group_hms_receptionist" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.total_shedules_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon stat-icon">
+                                                    <i class="fa fa-calendar" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="value">
+                                                        <span>
+                                                            <field name="total_shedules"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="title">Total Shedules</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a type="object" name="open_shedules">
+                                            <div class="card-footer acs-footer">
+                                                <span class="pull-left">View Details</span>
+                                                <span class="pull-right">
+                                                    <i class="fa fa-arrow-circle-right" aria-label="Info" title="Info"></i>
+                                                </span>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Open Invoices -->
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block" groups="account.group_account_invoice">
+                                    <div t-attf-class="card acs-card card-#{record.total_open_invoice_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-2 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-list" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-10 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_invoices">
+                                                            
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="total_open_invoice"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Total</div>
+                                                            </a>
+                                                        </div>
+                                                        
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_invoices">
+                                                            
+                                                                <div class="value acs_medium_font">
+                                                                    <span>
+                                                                        <field name="total_open_invoice_amount"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Amount</div>
+                                                            </a>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">Open Invoices</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Treatments --> 
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block" groups="acs_hms.group_hms_receptionist" t-if="!record.is_physician.raw_value or record.is_manager.raw_value">
+                                    <div t-attf-class="card acs-card card-#{record.total_treatments_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-user-md" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_running_treatments">
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="total_running_treatments"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Running</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_treatments">
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="total_treatments"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Total</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">Treatments</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- My Treatments --> 
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block" groups="acs_hms.group_hms_jr_doctor" t-if="record.is_physician.raw_value">
+                                    <div t-attf-class="card acs-card card-#{record.my_total_treatments_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-user-md" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_my_running_treatments">
+                                                            
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="my_total_running_treatments"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Running</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_my_treatments">
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="my_total_treatments"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Total</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">My Treatments</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Avg Time -->
+                                <div groups="acs_hms.group_hms_manager" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.avg_time_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-2 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-clock-o" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-10 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <div class="value big-time-number">
+                                                                <span>
+                                                                    <field name="avg_wait_time" widget="float_time"/>
+                                                                </span>
+                                                            </div>
+                                                            <div class="small title">Wait Time</div>
+                                                        </div>
+                                                        <div class="col-6 text-center my-auto">
+                                                            <div class="value big-time-number">
+                                                                <span>
+                                                                    <field name="avg_cons_time" widget="float_time"/>
+                                                                </span>
+                                                            </div>
+                                                            <div class="small title">Cons. Time</div>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">Average Time</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- My Avg Time -->
+                                <div groups="acs_hms.group_hms_jr_doctor" t-if="record.is_physician.raw_value" class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block">
+                                    <div t-attf-class="card acs-card card-#{record.my_avg_time_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-2 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-clock-o" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-10 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <div class="value big-time-number">
+                                                                <span>
+                                                                    <field name="my_avg_wait_time" widget="float_time"/>
+                                                                </span>
+                                                            </div>
+                                                            <div class="small title">Wait Time</div>
+                                                        </div>
+                                                        <div class="col-6 text-center my-auto">
+                                                            <div class="value big-time-number">
+                                                                <span>
+                                                                    <field name="my_avg_cons_time" widget="float_time"/>
+                                                                </span>
+                                                            </div>
+                                                            <div class="small title">Cons. Time</div>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">My Average Time</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Todays Birthdays --> 
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 acs_block" groups="acs_hms.group_hms_receptionist">
+                                    <div t-attf-class="card acs-card card-#{record.birthday_color.raw_value}">
+                                        <div class="card-heading">
+                                            <div class="row">
+                                                <div class="col-3 stat-icon acs-birthday-box">
+                                                    <i class="fa fa-birthday-cake" aria-label="Info" title="Info"></i>
+                                                </div>
+                                                <div class="col-9 text-right">
+                                                    <div class="row">
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_birthday_employee">
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="birthday_employee"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Employee</div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6 text-center my-auto">
+                                                            <a type="object" name="open_birthday_patients">
+                                                                <div class="value big-acs-number">
+                                                                    <span>
+                                                                        <field name="birthday_patients"/>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="title small">Patient</div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="acs-hr"/>
+                                                    <div class="text-center title">Today's Birthday</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Graphs -->
+                            <div class="row" id="dashboard_graphs" groups="acs_hms.group_hms_receptionist">
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <div t-attf-class="card acs-card card-#{record.appointment_bar_graph_color.raw_value}">
+                                        <div class="card-heading">
+                                            <i class="fa fa-area-chart" aria-label="Info" title="Info"></i> Patient Appointments
+                                        </div>
+                                        <div class="card-body o_acs_dashboard_graph">
+                                            <t t-name="JournalBodyGraph">
+                                                <field name="appointment_bar_graph" graph_type="bar" widget="dashboard_graph"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    <div t-attf-class="card acs-card card-#{record.patient_line_graph_color.raw_value}">
+                                        <div class="card-heading">
+                                            <i class="fa fa-area-chart" aria-label="Info" title="Info"></i> New Patients
+                                        </div>
+                                        <div class="card-body o_acs_dashboard_graph">
+                                            <t t-name="JournalBodyGraph">
+                                                <field name="patient_line_graph" graph_type="line" widget="dashboard_graph"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_my_dashboard" model="ir.actions.act_window">
+        <field name="name">My Dashboard</field>
+        <field name="res_model">res.users</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="user_dashboard_kanban_view"/>
+        <field name="usage">menu</field>
+        <field name="domain">[('id','=',uid)]</field>
+    </record>
+
+    <menuitem id="main_dashboard" name="My Dashboard" sequence="0"
+        web_icon="acs_hms_dashboard,static/description/icon.png" groups="acs_hms_dashboard.group_hms_dashboard"/>
+    <menuitem id="dashboard_menu" name="Dashboard" parent="main_dashboard"
+        action="action_my_dashboard" sequence="1"/>
+
+</odoo>

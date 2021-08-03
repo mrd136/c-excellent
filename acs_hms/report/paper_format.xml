@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ACS: no need of this as it should work with web.basic_layout: because of no font in header it do not work at all-->
+        <template id="clean_layout">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+
+            <t t-if="not company">
+                <!-- Multicompany -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+
+            <t t-esc="company.update_scss()"/>
+
+            <div class="header">
+                <div class="row">
+                    <div class="col-12" style="font-size:1px;">
+                      <span>.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+              <t t-raw="0"/>
+            </div>
+        </template>
+
+        <record id="paperformat_hms_letterpad_report" model="report.paperformat">
+            <field name="name">HMS Letterpad format</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">60</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">65</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="10"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="HMS" string="HMS" data-key="acs_hms" groups="acs_hms.group_hms_manager">
+                    
+                    <h2>Patient</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Patient Registration Service</span>
+                                <div class="text-muted">
+                                    Set this service as default service for Patient Registration Invoice.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="patient_registration_product_id"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="group_patient_registartion_invoicing"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Patient Registration Invoicing" for="group_patient_registartion_invoicing"/>
+                                <div class="text-muted" id="group_patient_registartion_invoicing">
+                                    Create Patient Registration Invoicing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Treatment</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Treatment Registration Service</span>
+                                <div class="text-muted">
+                                    Set this service as default service for Treatment Registration Invoice.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="treatment_registration_product_id"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="group_treatment_invoicing"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Treatment Invoicing" for="group_treatment_invoicing"/>
+                                <div class="text-muted" id="group_treatment_invoicing">
+                                    Treatment Invoicing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Appointment</h2>
+                    <div class="row mt16 o_settings_container">
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Consultation Service</span>
+                                <div class="text-muted">
+                                    Set this service as default Consultation Service.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="consultation_product_id"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Follow-up Service</span>
+                                <div class="text-muted">
+                                    Set this service as default Follow-up Service.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="followup_product_id"/>
+                                </div>
+
+                                <span class="o_form_label">Follow-up Days</span>
+                                <div class="text-muted">
+                                    Set days to consider next appointment as follow-up if less than given days.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="followup_days"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Invoice Policy</span>
+                                <div class="text-muted">
+                                    Set to manage invoicing option on appointment.
+                                </div>
+                                <div class="row mt16">
+                                    <label for="appointment_anytime_invoice" string="Invoice Anytime" class="col-lg-4 o_light_label"/>
+                                    <field name="appointment_anytime_invoice" class="oe_inline"/>
+                                </div>
+                                <div class="row mt16">
+                                    <label for="appo_invoice_advance" string="Invoice in Advance" class="col-lg-4 o_light_label"/>
+                                    <field name="appo_invoice_advance" class="oe_inline"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Stock Usage Location</span>
+                                <div class="text-muted">
+                                    Location to manage consumed products in Consultation.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="appointment_usage_location"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Stock Location</span>
+                                <div class="text-muted">
+                                    Location to take consumed products in Consultation.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="appointment_stock_location"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div id="hospitalization"/>
+
+                    <h2>Other Configurations</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Birthday-wish template</span>
+                                <div class="text-muted">
+                                    Birthday wish template.
+                                </div>
+                                <div class="text-muted">
+                                    <field name="birthday_mail_template"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>HMS Mobile App</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class='col-12 col-lg-6 o_setting_box' id='appstore'>
+                            <div class="d-flex">
+                                <div class="o_setting_right_pane">
+                                    <a class="d-block mx-auto" href="https://play.google.com/store/apps/details?id=com.almightycspatient" target="blank">
+                                        <img alt="On Google Play" class="d-block mx-auto img img-fluid" src="/base_setup/static/src/img/google_play.png"/>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a class='d-block mx-auto' href="https://play.google.com/store/apps/details?id=com.almightycspatient" target="blank">
+                                        <img alt="On Apple Store" class="d-block mx-auto img img-fluid" src="/base_setup/static/src/img/app_store.png"/>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_hms_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'acs_hms'}</field>
+    </record>
+
+</odoo>
