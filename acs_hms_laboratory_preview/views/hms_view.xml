@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Patient view -->
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">patient.laboratory.test.document</field>
+        <field name="model">patient.laboratory.test</field>
+        <field name="inherit_id" ref="acs_hms_laboratory.patient_laboratory_test_view"/>
+        <field name="arch" type="xml"> 
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object"
+                    name="action_attachments_preview" icon="fa-files-o" string="Imaging">
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

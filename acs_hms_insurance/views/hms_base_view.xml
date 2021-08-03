@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<odoo>        
+
+    <record id="view_patient_form" model="ir.ui.view">
+        <field name="name">view.hms.patient</field>
+        <field name="model">hms.patient</field>
+        <field name="inherit_id" ref="acs_hms.view_patient_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_insurance_policy" type="object" class="oe_stat_button" icon="fa-medkit" string="Insurance Policy" groups="acs_hms_insurance.group_hms_insurance_officer"/>
+                <button name="action_claim_view" type="object" class="oe_stat_button" icon="fa-ticket" title="Claims" groups="acs_hms_insurance.group_hms_insurance_officer">
+                    <field string="Claims" name="claim_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+
+    <!-- Hospitalization -->
+    <record id="view_acs_hospitalization_form" model="ir.ui.view">
+        <field name="name">view.hospitalization.claim.form</field>
+        <field name="model">acs.hospitalization</field>
+        <field name="inherit_id" ref="acs_hms_hospitalization.view_acs_hospitalization_form"/>
+        <field name="arch" type="xml">
+            <button name="action_create_invoice" position="after">
+                <button name="create_package_invoice" type="object" string="Create Package Bill/Invoice" attrs="{'invisible': ['|',('package_id', '=', False), ('package_invoice_id', '!=', False)]}" groups="account.group_account_invoice"/>
+                <field name="package_invoice_id" invisible="1"/>
+            </button>
+            <div name="button_box" position="inside">
+                <button name="action_claim_view" type="object" class="oe_stat_button" icon="fa-pencil-square-o" groups="acs_hms_insurance.group_hms_insurance_officer">
+                    <field string="Claims" name="claim_count" widget="statinfo"/>
+                </button>
+                <button name="action_patient_doc_view" string="Patient Doc" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
+            </div>
+            <xpath expr="//field[@name='relative_number']" position="after">
+                <field name="cashless"/>
+                <field name="package_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Invoice -->
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="acs_hms.view_move_form"/>
+        <field name="arch" type="xml">
+            <group name="hospitalization" position="after">
+                <group string="Insurance Details" name="insurance">
+                    <field name="claim_id"/>
+                    <field name="insurance_company_id" attrs="{'invisible': [('claim_id', '=', False)]}"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+    <!-- Payment -->
+    <record id="view_account_payment_form" model="ir.ui.view">
+        <field name="name">account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="payment_method_code" position="after">
+                <field name="claim_id" domain="[('patient_id.partner_id','=', partner_id)]"/>
+                <field name="insurance_company_id" attrs="{'invisible': [('claim_id', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Product View -->
+    <record id="view_product_simple_tree" model="ir.ui.view">
+        <field name="name">product.simple.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Product">
+                <field name="name"/>
+                <field name="lst_price" class="oe_list_field_cell oe_list_field_char oe_required" string="Price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Appointment View -->
+    <record id="view_hms_appointment_form" model="ir.ui.view">
+        <field name="name">hms.appointment.form</field>
+        <field name="model">hms.appointment</field>
+        <field name="inherit_id" ref="acs_hms.view_hms_appointment_form"/>
+        <field name="arch" type="xml">
+            <field name="no_invoice" position="after">
+                <field name="insurance_id" domain="[('patient_id','=', patient_id), ('allow_appointment_insurance', '=', True)]"/>
+                <field name="insurance_company_id"/>
+                <field name="claim_id"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

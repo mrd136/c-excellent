@@ -60,7 +60,7 @@
         <record id="referring_doctor_1" model="res.partner">
             <field name="is_referring_doctor">True</field>
             <field name="name">Dr. V.K. Ratani</field>
-            <field name="email">vkratani@gmail.com</field>
+            <field name="email">logman@gmail.com</field>
             <field name="phone">41585214</field>
             <field name="mobile">9988855522</field>
             <field name="city">Surat</field>
