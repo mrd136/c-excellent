@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_picking_barcode">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc"> 
+                <t t-call="acs_hms.clean_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <t t-foreach="range(doc.starting_position)" t-as="s">
+                            <t t-call="acs_hms_pharmacy.lot_blank_table"/>
+                        </t>
+                        <t t-foreach="doc.product_barcode_line" t-as="line">
+                            <t t-foreach="range(line.quantity)" t-as="quantity_data">
+                                <t t-call="acs_hms_pharmacy.lot_barcode_table">
+                                    <t t-set="lot" t-value="line.lot_id"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <report id="action_stock_picking_barcode"
+        model="stock.picking.barcode"
+        report_type="qweb-pdf"
+        name="acs_hms_pharmacy.report_picking_barcode"
+        string="Product BarCode"
+        file="acs_hms_pharmacy.report_picking_barcode"
+        menu="False"/>
+
+</odoo>

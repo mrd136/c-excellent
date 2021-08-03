@@ -1,0 +1,510 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* acs_hms_commission
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-04 22:20+0000\n"
+"PO-Revision-Date: 2019-02-06 11:41-0500\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.0.4\n"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__print_commission
+msgid "Add Commision no in Description"
+msgstr "Añadir comisión no en Descripción"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: acs_hms_commission
+#: model:ir.actions.act_window,name:acs_hms_commission.acs_hms_commission_action
+#: model:ir.model.fields,field_description:acs_hms_commission.field_hms_patient__commission_ids
+#: model:ir.model.fields,field_description:acs_hms_commission.field_hms_physician__commission_ids
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_partner__commission_ids
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_users__commission_ids
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_search_view
+msgid "Business Commission"
+msgstr "Comisión de la empresa"
+
+#. module: acs_hms_commission
+#: model:ir.ui.menu,name:acs_hms_commission.menu_acs_hms_commission
+#: model:ir.ui.menu,name:acs_hms_commission.menu_invoice_acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_list_view
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_search_view
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_order_form
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_partner_form
+msgid "Business Commissions"
+msgstr "Comisiones de la empresa"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_form_view
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_commission_invoice
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,state:0
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#. module: acs_hms_commission
+#: model_terms:ir.actions.act_window,help:acs_hms_commission.acs_hms_commission_action
+msgid "Click to define a new Business Commission."
+msgstr "Haga clic para definir una nueva Comisión de Negocios."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__commission_amount
+msgid "Commission Amount"
+msgstr "Importe de la Comisión"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_company_form
+msgid "Commission Configurations"
+msgstr "Configuración de Comisiones"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_created
+msgid "Commission Created"
+msgstr "Comisión Creada"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_on
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__commission_on
+msgid "Commission On"
+msgstr "Comisión de"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__commission_percentage
+#: model:ir.model.fields,field_description:acs_hms_commission.field_hms_patient__commission_percentage
+#: model:ir.model.fields,field_description:acs_hms_commission.field_hms_physician__commission_percentage
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_partner__commission_percentage
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_users__commission_percentage
+msgid "Commission Percentage"
+msgstr "Porcentaje de comisión"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_company__commission_product_id
+msgid "Commission Product"
+msgstr "Producto de la comisión"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_form_view
+msgid "Commission Title"
+msgstr "Título de la Comisión"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_company__commission_on_invoice_amount
+msgid "Commission on Invoice Amount"
+msgstr "Comisión sobre el importe de la factura"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_partner_form
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_physician_form
+msgid "Commissions"
+msgstr "Comisiones"
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_order_form
+msgid "Create Commission"
+msgstr "Crear Comisión"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_commission_invoice
+msgid "Create Invoices"
+msgstr "Crear facturas"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_commission_invoice
+msgid "Create and View Invoices"
+msgstr "Crear y ver facturas"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__create_uid
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__create_date
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_search_view
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__display_name
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_form_view
+msgid "Done"
+msgstr "Hecho"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_partner1_id
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_order_form
+msgid "Dr. Commission"
+msgstr "Comisión de Dr."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_amount1
+msgid "Dr. Commission Amount"
+msgstr "Importe de la Comisión del Dr."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_percentage1
+msgid "Dr. Commission Percentage"
+msgstr "Porcentaje de comisión del Dr."
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+msgid "Draft Invoice"
+msgstr "Factura Borrador"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_hms_patient__provide_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_hms_physician__provide_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_partner__provide_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_res_users__provide_commission
+msgid "Give Commission"
+msgstr "Dar comisión"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_search_view
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__groupby_partner
+msgid "Groupby Partner"
+msgstr "Grupo por socio"
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_res_company
+msgid "Hospital"
+msgstr "Hospital"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__id
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__id
+msgid "ID"
+msgstr "ID"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_account_invoice
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: acs_hms_commission
+#: model:ir.actions.act_window,name:acs_hms_commission.action_view_commission_invoice
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_commission_invoice
+msgid "Invoice Commission"
+msgstr "Comisión de facturas"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_commission_invoice
+msgid ""
+"Invoices will be created in draft so that you can review\n"
+"                    them before validation."
+msgstr ""
+"Las facturas se crearán en borrador para que pueda revisar\n"
+"                    antes de la validación."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission____last_update
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__write_uid
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__write_date
+#: model:ir.model.fields,field_description:acs_hms_commission.field_commission_invoice__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_search_view
+msgid "Not Invoiced"
+msgstr "No facturado"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__note
+msgid "Note"
+msgstr "Nota"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+msgid "Open"
+msgstr "Abierto"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__partner_id
+msgid "Partner"
+msgstr "Socio"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__payment_invoice_id
+msgid "Payment Invoice"
+msgstr "Factura de Pago"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__invoice_line_id
+msgid "Payment Invoice Line"
+msgstr "Línea de Factura de Pago"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__invoice_status
+msgid "Payment Invoice Status"
+msgstr "Estado de la factura de pago"
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_hms_physician
+msgid "Physician"
+msgstr "Médico"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+msgid "Profoma"
+msgstr "Proforma"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,invoice_status:0
+msgid "Profoma2"
+msgstr "Proforma2"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_partner2_id
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_order_form
+msgid "Ref. Dr. Commission"
+msgstr "Ref. Comisión de Dr."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_amount2
+msgid "Ref. Dr. Commission Amount"
+msgstr "Ref. Importe de la Comisión del Dr."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_percentage2
+msgid "Ref. Dr. Commission Percentage"
+msgstr "Ref. Porcentaje de comisión del Dr."
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_ids
+msgid "Sales Commission"
+msgstr "Comisión de Venta"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_form_view
+msgid "Set to Draft"
+msgstr "Cambiar a borrador"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_commission_invoice__print_commission
+msgid "Set true if want to append SO in invoice line Description"
+msgstr "Establezca verdadero si desea anexar OV en la línea Descripción de la factura"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_commission_invoice__groupby_partner
+msgid "Set true if want to create single invoice for project"
+msgstr "Establézcalo en verdadero si desea crear una factura única para el proyecto"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_search_view
+msgid "State"
+msgstr "Estado"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__state
+msgid "Status"
+msgstr "Estatus"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_partner3_id
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.view_order_form
+msgid "Third Party Commission"
+msgstr "Comisión de terceros"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_percentage3
+msgid "Third Party Commission Percentage"
+msgstr "Porcentaje de comisión de terceros"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_account_invoice__commission_amount3
+msgid "Third PartyCommission Amount"
+msgstr "Cantidad de la Comisión de Terceros"
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_commission_invoice
+msgid "Timesheet Invoice"
+msgstr "Factura de la hoja de horas"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,field_description:acs_hms_commission.field_acs_hms_commission__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: acs_hms_commission
+#: model:ir.model.fields,help:acs_hms_commission.field_acs_hms_commission__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_acs_hms_commission
+msgid "acs.hms.commission"
+msgstr "Acs.hms.comisiones"
+
+#. module: acs_hms_commission
+#: selection:acs.hms.commission,state:0
+msgid "done"
+msgstr "Hecho"
+
+#. module: acs_hms_commission
+#: model_terms:ir.ui.view,arch_db:acs_hms_commission.acs_hms_commission_form_view
+msgid "e.g. Business Commission"
+msgstr "p.ej. Comisión empresarial"
+
+#. module: acs_hms_commission
+#: model:ir.model,name:acs_hms_commission.model_hms_appointment
+msgid "hms.appointment"
+msgstr ""

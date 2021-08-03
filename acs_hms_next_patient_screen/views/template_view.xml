@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="next_patient_row" name="Patient Row">
+        <div class="media main-box">
+            <h1 class="pull-left col-xs-1 img-rounded box">
+                <span t-esc="number"/>
+            </h1>
+            <t t-if="waiting_screen.show_patient_name_image">
+                <div t-if="appointment.patient_id.image_128" class="pull-left col-xs-2 img-circle">
+                    <span itemprop="image" t-field="appointment.patient_id.image_128" t-options='{"widget": "image"}' style="height:90px !important;width:100px !important;" />
+                </div>
+                <div t-else="" class="pull-left col-xs-2"/>
+                <div t-if="appointment.patient_id.name" class="pull-left col-xs-3 line">
+                    <span ><span t-esc="appointment.patient_id.name"/></span>
+                </div>
+                <div t-else="" class="pull-left col-xs-3 line big-font">
+                    <span style="">-------</span>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="pull-left col-xs-2"/>
+            </t>
+            <t t-if="appointment">
+                <div class="col-xs-4">
+                    <div class="line">
+                        <strong>
+                            <span t-esc="appointment.physician_id.name"/>
+                        </strong>
+                    </div>
+                    <div class="cabin-data" t-if="waiting_screen.show_cabin and appointment.cabin_id">
+                        <strong>
+                            (<span t-esc="appointment.cabin_id.name"/>)
+                        </strong>
+                    </div>
+                </div>
+                <div t-if="not waiting_screen.show_patient_name_image" class="pull-left col-xs-2"/>
+                <div class="pull-left col-xs-1 line">
+                    <strong><span ><span t-esc="appointment.name"/></span></strong>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="pull-left col-xs-2 line big-font">
+                    <span style="">-------</span>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <template id="next_patient_view" name="Next Patient view">
+        <head>
+            <link rel="stylesheet" href="/acs_hms_next_patient_screen/static/src/css/hms_next_patient_screen.css" />
+            <link rel="stylesheet" href='/acs_hms_next_patient_screen/static/src/css/bootstrap.min.css' />
+        </head>
+        <script type="text/javascript">
+            setTimeout("location.reload(true);", 5000);
+        </script>
+        <div id="wrap">
+            <section>
+                <div class="container">
+                    <div class="col-xs-12 acs_header_row">
+                        <div class="pull-left col-xs-1 text-center" style="font-size: 30px;">
+                            <strong>#</strong>
+                        </div>
+                        <div t-if="waiting_screen.show_patient_name_image" class="text-center col-xs-5" style="font-size: 30px;">
+                            <strong>Patient Name</strong>
+                        </div>
+                        <div t-if="not waiting_screen.show_patient_name_image" class="col-xs-2"/>
+                        <div class="text-center col-xs-4" style="font-size: 30px;">
+                            <strong>Dr. Name <t t-if="waiting_screen.show_cabin">(Cabin No)</t></strong>
+                        </div>
+                        
+                        <div t-if="not waiting_screen.show_patient_name_image" class="col-xs-2"/>
+                        <div class="pull-left col-xs-2" style="font-size: 30px;">
+                            <strong>Number</strong>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="col-xs-12 acs_row">
+
+                        <t t-foreach="waiting_appointments" t-as="appointment">
+                            <t t-call="acs_hms_next_patient_screen.next_patient_row">
+                                <t t-set="appointment" t-value="appointment"/>
+                                <t t-set="number" t-value="appointment_index + 1"/>
+                            </t>
+                        </t>
+                        <t t-set="extra_lines" t-value="4-len(waiting_appointments)"/>
+                        <t t-if="extra_lines&gt;0">
+                            <t t-foreach="extra_lines" t-as="extra_line">
+                                <t t-call="acs_hms_next_patient_screen.next_patient_row">
+                                    <t t-set="appointment" t-value="Appointment"/>
+                                    <t t-set="number" t-value="len(waiting_appointments) + extra_line_index + 1"/>
+                                </t>
+                            </t>
+                        </t>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+</odoo>

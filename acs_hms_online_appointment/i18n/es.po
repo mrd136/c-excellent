@@ -1,0 +1,709 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* acs_hms_online_appointment
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-08 08:18+0000\n"
+"PO-Revision-Date: 2020-08-11 07:07-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: \n"
+"Language: es\n"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_schedule_form
+msgid ""
+"<b>NOTE:</b> Make sure server timezone is UTC. Time in below table is also "
+"UTC Hours."
+msgstr ""
+"<b>NOTA:</b> Asegúrese de que la zona horaria del servidor sea UTC. El "
+"tiempo en la tabla siguiente también es UTC Horas."
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.portal_my_home
+msgid "<span class=\"fa fa-plus\"> Create New Appointment</span>"
+msgstr "<span class=\"fa fa-plus\">Crear nueva cita</span>"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.my_appointments
+msgid "<span class=\"fa fa-plus\"> Create New</span>"
+msgstr "<span class=\"fa fa-plus\">Crear nuevo</span>"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Allowed Advance Booking Days</span>"
+msgstr "<span class=\"o_form_label\">Días de reserva previa permitidos</span>"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Allowed Booking per Slot</span>"
+msgstr "<span class=\"o_form_label\">Reserva permitida por horario</span>"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Minutes in each slot</span>"
+msgstr "<span class=\"o_form_label\">Minutos en cada hora</span>"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__day_period__afternoon
+msgid "Afternoon"
+msgstr "Tarde"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_company__allowed_booking_payment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_config_settings__allowed_booking_payment
+msgid "Allow user to do online Payment"
+msgstr "Permitir al usuario hacer pagos en línea"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "Allow users to pay online for their appointments."
+msgstr "Permitir a los usuarios pagar en línea por sus citas."
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_company__allowed_booking_online_days
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_config_settings__allowed_booking_online_days
+msgid "Allowed Advance Booking Days"
+msgstr "Días de reserva anticipada permitidos"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_company__allowed_booking_payment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_config_settings__allowed_booking_payment
+msgid "Allowed Advance Booking Payment"
+msgstr "Pago de reserva anticipada permitido"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_company__allowed_booking_per_slot
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_config_settings__allowed_booking_per_slot
+msgid "Allowed Booking per Slot"
+msgstr "Reservas horarias permitidas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_hms_physician__allowed_online_booking
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_hr_department__allowed_online_booking
+msgid "Allowed Online Booking"
+msgstr "Reservas en línea permitidas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.actions.act_window,name:acs_hms_online_appointment.action_online_appointments
+#: model:ir.model,name:acs_hms_online_appointment.model_hms_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__appointment_ids
+msgid "Appointment"
+msgstr "Cita"
+
+#. module: acs_hms_online_appointment
+#: model:ir.ui.menu,name:acs_hms_online_appointment.app_portal_appointment_conf_menu
+#: model:ir.ui.menu,name:acs_hms_online_appointment.portal_appointment_conf_menu
+msgid "Appointment Booking Conf."
+msgstr "Conf. Agenda de Citas"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Appointment Date"
+msgstr "Fecha de la Cita"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Appointment Details"
+msgstr "Detalles de la cita"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_schedule_form
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_tree
+msgid "Appointment Schedule"
+msgstr "Agenda de Cita"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_lines_form
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_lines_tree
+msgid "Appointment Schedule Lines"
+msgstr "Líneas de Programación de Citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.actions.act_window,name:acs_hms_online_appointment.action_appointment_schedule_slot_form
+#: model:ir.model,name:acs_hms_online_appointment.model_appointment_schedule_slot
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_slot_form
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_slot_tree
+msgid "Appointment Schedule Slot"
+msgstr "Horario de Programación Citas"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_slot_lines_form
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_slot_lines_tree
+msgid "Appointment Schedule Slot Lines"
+msgstr "Líneas de programación horario de citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.actions.act_window,name:acs_hms_online_appointment.appointment_scheduler_wizard_action
+msgid "Appointment Scheduler"
+msgstr "Programador de Citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_appointment_scheduler_wizard
+msgid "Appointment Scheduler Wiz"
+msgstr "Asistente de citas programadas"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_scheduler_wizard
+msgid "Appointment Scheduler Wizard"
+msgstr "Asistente para citas programadas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.actions.act_window,name:acs_hms_online_appointment.action_appointment_schedule_form
+#: model:ir.ui.menu,name:acs_hms_online_appointment.menu_appointment_schedule
+msgid "Appointment Schedules"
+msgstr "Agenda de Citas"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/wizard/appointment_scheduler.py:0
+#, python-format
+msgid "Appointment Slot exist for date %s."
+msgstr "El horario de cita existe para la fecha programada %s."
+
+#. module: acs_hms_online_appointment
+#: model:ir.ui.menu,name:acs_hms_online_appointment.menu_appointment_schedule_slot
+msgid "Appointment Slots"
+msgstr "Horarios de Citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_appointment_schedule
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__schedule_id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__schedule_id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__schedule_id
+msgid "Appointment schedule"
+msgstr "Agenda de Citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_appointment_schedule_lines
+msgid "Appointment schedule Lines"
+msgstr "Líneas de Programación de Citas"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_slot_form
+msgid "Appointment schedule Slot"
+msgstr "Horario de Programación Citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_appointment_schedule_slot_lines
+msgid "Appointment schedule Slot Lines"
+msgstr "Líneas de programación horario de citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.constraint,message:acs_hms_online_appointment.constraint_appointment_schedule_slot_slot_date_unique
+msgid "Appointment slot must be unique!"
+msgstr "Error: ¡El horario de citas debe ser único!"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.my_appointments
+msgid "Appointments"
+msgstr "Citas"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Available Slots"
+msgstr "Horarios disponibles"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_hms_appointment__booked_online
+msgid "Booked Online"
+msgstr "Reservado en línea"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_scheduler_wizard
+msgid "Cancel"
+msgstr "Anular"
+
+#. module: acs_hms_online_appointment
+#: model:ir.actions.server,name:acs_hms_online_appointment.ir_cron_clear_appointment_ir_actions_server
+#: model:ir.cron,cron_name:acs_hms_online_appointment.ir_cron_clear_appointment
+#: model:ir.cron,name:acs_hms_online_appointment.ir_cron_clear_appointment
+msgid "Clear Appointment"
+msgstr "Cita Verificada"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_res_config_settings
+msgid "Config Settings"
+msgstr "Ajustes"
+
+#. module: acs_hms_online_appointment
+#: model:ir.ui.menu,name:acs_hms_online_appointment.menu_appointment_cofig
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "Configure your slot length, 15 or 30 min"
+msgstr "Configure su disponibilidad horaria, 15 o 30 min"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_company__booking_slot_time
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_config_settings__booking_slot_time
+msgid "Configure your slot length, 15-30min."
+msgstr "Configure su disponibilidad horaria, 15-30min."
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid ""
+"Confirm\n"
+"                                        <span class=\"fa fa-long-arrow-right"
+"\"/>"
+msgstr ""
+"Confirmar\n"
+"                                        <span class=“fa fa-long-arrow-"
+"right”/>"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_scheduler_wizard
+msgid "Create"
+msgstr "Crear"
+
+#. module: acs_hms_online_appointment
+#: model:ir.ui.menu,name:acs_hms_online_appointment.app_menu_appointment_scheduler_wizard_slot
+#: model:ir.ui.menu,name:acs_hms_online_appointment.menu_appointment_scheduler_wizard_slot
+msgid "Create Appointment Slots"
+msgstr "Crear horarios de citas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.actions.server,name:acs_hms_online_appointment.ir_cron_create_slot_ir_actions_server
+#: model:ir.cron,cron_name:acs_hms_online_appointment.ir_cron_create_slot
+#: model:ir.cron,name:acs_hms_online_appointment.ir_cron_create_slot
+msgid "Create Appointment Slots."
+msgstr "Crear horarios de citas."
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__create_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__create_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__create_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__create_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__create_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__create_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__create_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__create_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__day_period
+msgid "Day Period"
+msgstr "Período de día"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__dayofweek
+msgid "Day of Week"
+msgstr "Día de la semana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__department_id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__department_id
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Department"
+msgstr "Departamento"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__display_name
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__display_name
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__display_name
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__display_name
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__end_date
+msgid "End Date"
+msgstr "Fecha de finalización"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__to_slot
+msgid "End Slot"
+msgstr "Horario final"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__4
+msgid "Friday"
+msgstr "Viernes"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Friday Evening"
+msgstr "Viernes por la noche"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Friday Morning"
+msgstr "Viernes por la mañana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_hr_department
+msgid "HR Department"
+msgstr "Departamento RH"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_res_company
+msgid "Hospital"
+msgstr "Centro de salud"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_lines_form
+msgid "Hours"
+msgstr "Horas"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule____last_update
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines____last_update
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot____last_update
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines____last_update
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__write_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__write_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__write_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__write_uid
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__write_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__write_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__write_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__write_date
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__limit
+msgid "Limit"
+msgstr "Límite"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_slot_details
+msgid "Login to book an Appointment"
+msgstr "Inicie sesión para reservar una cita"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_personal_details
+msgid "Mention your location by Google map url."
+msgstr "Agregue su ubicación pegando la URL desde el mapa de Google."
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_company__booking_slot_time
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_res_config_settings__booking_slot_time
+msgid "Minutes in each slot"
+msgstr "Minutos en cada horario"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__0
+msgid "Monday"
+msgstr "Lunes"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Monday Evening"
+msgstr "Lunes por la noche"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Monday Morning"
+msgstr "Lunes por la mañana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__day_period__morning
+msgid "Morning"
+msgstr "Mañana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__name
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.actions.act_window,help:acs_hms_online_appointment.action_appointment_schedule_form
+#: model_terms:ir.actions.act_window,help:acs_hms_online_appointment.action_appointment_schedule_slot_form
+msgid "No Records Found."
+msgstr "No se encontraron registros"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid ""
+"No of allowed booking per slot, Once slot is fully booked will not be shown "
+"to users."
+msgstr ""
+"No de reserva permitida por hora, Una vez que el horario está completamente "
+"reservado no se mostrará a los usuarios."
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_company__allowed_booking_per_slot
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_config_settings__allowed_booking_per_slot
+msgid "No of allowed booking per slot."
+msgstr "Nº reservas permitidas por horario"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_company__allowed_booking_online_days
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_res_config_settings__allowed_booking_online_days
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "No of days for which advance booking is allowed"
+msgstr "Nº de días para los que se permite la reserva anticipada."
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.actions.act_window,help:acs_hms_online_appointment.action_online_appointments
+msgid "No online Appointments."
+msgstr "No hay citas en línea."
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/controllers/main.py:0
+#, python-format
+msgid "No patient is linked with user."
+msgstr "Ningún paciente está vinculado con el usuario."
+
+#. module: acs_hms_online_appointment
+#: model:ir.ui.menu,name:acs_hms_online_appointment.menu_action_online_appointments
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_hms_appointment_search
+msgid "Online Appointments"
+msgstr "Citas en linea"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "Online Booking"
+msgstr "Reservas en línea"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.res_config_settings_view_form
+msgid "Online Payment"
+msgstr "Pago Online"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model,name:acs_hms_online_appointment.model_hms_physician
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__physician_id
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__physician_id
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Physician"
+msgstr "Médico"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__rem_limit
+msgid "Remaining Limit"
+msgstr "Límite restante"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__5
+msgid "Saturday"
+msgstr "Sábado"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_hms_appointment__schedule_date
+msgid "Schedule Date"
+msgstr "Fecha Programada"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_hms_appointment__schedule_slot_id
+msgid "Schedule Slot"
+msgstr "Espacio Horario"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/wizard/appointment_scheduler.py:0
+#, python-format
+msgid "Scheduler 'Start Date' must be before 'End Date'."
+msgstr ""
+"Para agendar la ’Fecha de inicio' debe estar antes de 'Fecha de "
+"finalización'."
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__slot_id
+msgid "Slot"
+msgstr "Espacio"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__slot_date
+msgid "Slot Date"
+msgstr "Día del espacio"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__slot_ids
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_schedule_slot_form
+msgid "Slot Lines"
+msgstr "Líneas horarias"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/controllers/main.py:0
+#, python-format
+msgid "Some required fields are empty."
+msgstr "Algunos campos requeridos están vacíos"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_scheduler_wizard__start_date
+msgid "Start Date"
+msgstr "Fecha de inicio"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_appointment_schedule_lines__hour_from
+msgid "Start and End time of working."
+msgstr "Hora de inicio y fin de trabajo."
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__from_slot
+msgid "Starting Slot"
+msgstr "Espacio inicial"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__6
+msgid "Sunday"
+msgstr "Domingo"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_thank_you
+msgid "Thank You!"
+msgstr "¡Gracias!"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__3
+msgid "Thursday"
+msgstr "Jueves"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Thursday Evening"
+msgstr "Jueves por la noche"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Thursday Morning"
+msgstr "Jueves por la mañana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__appointment_tz
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot__appointment_tz
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_appointment_schedule__appointment_tz
+#: model:ir.model.fields,help:acs_hms_online_appointment.field_appointment_schedule_slot__appointment_tz
+msgid "Timezone where appointment take place"
+msgstr "Zona horaria donde se programa la cita"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Timezone: <strong><span id=\"appointment_tz\"/></strong>"
+msgstr "Timezone:<strong><span id=\"appointment_tz\"/></strong>"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__1
+msgid "Tuesday"
+msgstr "Martes"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Tuesday Evening"
+msgstr "Martes por la noche"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Tuesday Morning"
+msgstr "Martes por la mañana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields.selection,name:acs_hms_online_appointment.selection__appointment_schedule_lines__dayofweek__2
+msgid "Wednesday"
+msgstr "Miércoles"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Wednesday Evening"
+msgstr "Miércoles por la noche"
+
+#. module: acs_hms_online_appointment
+#: code:addons/acs_hms_online_appointment/models/schedule.py:0
+#, python-format
+msgid "Wednesday Morning"
+msgstr "Miércoles por la mañana"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__hour_from
+msgid "Work from"
+msgstr "Trabajar desde"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_lines__hour_to
+msgid "Work to"
+msgstr "Trabajar hasta"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_thank_you
+msgid ""
+"Your Appointment request has been successfully submitted, we will get back "
+"to you soon. Your reference number for this request is:"
+msgstr ""
+"Su solicitud de cita se ha enviado correctamente, nos pondremos en contacto "
+"con usted pronto. Su número de referencia para esta solicitud es:"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.appointment_details
+msgid "Your Name"
+msgstr "Su nombre"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule_slot_lines__name
+msgid "name"
+msgstr "nombre"
+
+#. module: acs_hms_online_appointment
+#: model_terms:ir.ui.view,arch_db:acs_hms_online_appointment.view_appointment_scheduler_wizard
+msgid "or"
+msgstr "o"
+
+#. module: acs_hms_online_appointment
+#: model:ir.model.fields,field_description:acs_hms_online_appointment.field_appointment_schedule__schedule_lines
+msgid "schedule Lines"
+msgstr "líneas de agenda"

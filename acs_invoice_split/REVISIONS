@@ -1,0 +1,24 @@
+1.0.1                                     19/11/2019
+====================================================
+Released module for v13
+
+1.0.2                                     30/12/2019
+====================================================
+Improved module to add more generic options.
+
+1.0.3                                     03/02/2020
+====================================================
+Block Spliting of validated invoices
+
+1.0.4                                     13/02/2020
+====================================================
+Fixed issue of not update partner in move line
+
+1.0.5                                     25/04/2020
+====================================================
+Spit Invoice by % in line also and improved code.
+
+1.0.6                                     18/02/2021
+====================================================
+Improved code for updatng linked so lines also.
+

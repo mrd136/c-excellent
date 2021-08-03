@@ -1,0 +1,234 @@
+<odoo>
+
+    <!-- Patient image in Portal View -->
+    <template id="portal_my_details" inherit_id="portal.portal_my_details">
+        <xpath expr="//div[hasclass('col-lg-8')]" position="after">
+            <div class="col-lg-4">
+                <img t-attf-src="/web/image/res.partner/{{partner.id}}/image_1920/400x400" t-att-alt="partner.name" class="img img-fluid mx-auto mt64"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="patient_portal_layout" inherit_id="portal.portal_layout">
+        <xpath expr="//div[@t-field='user_id.partner_id']" position="before">
+            <img t-attf-src="/web/image/res.partner/{{user_id.partner_id.id}}/image_1920/400x400" t-att-alt="user_id.partner_id.name" class="img img-fluid mx-auto mt8 mb8"/>
+        </xpath>
+    </template>
+
+    <!-- Portal View -->
+    <template id="portal_my_home_menu_hms" name="Portal layout : HMS Data" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'appointment' or appointment" t-attf-class="breadcrumb-item #{'active ' if not appointment else ''}">
+                <a t-if="appointment" t-attf-href="/my/appointments?{{ keep_query() }}">Appointments</a>
+                <t t-else="">Appointments</t>
+            </li>
+            <li t-if="appointment" class="breadcrumb-item active">
+                <t t-esc="appointment.name"/>
+            </li>
+
+            <li t-if="page_name == 'prescription' or prescription" t-attf-class="breadcrumb-item #{'active ' if not prescription else ''}">
+                <a t-if="prescription" t-attf-href="/my/prescriptions?{{ keep_query() }}">Prescriptions</a>
+                <t t-else="">Prescriptions</t>
+            </li>
+            <li t-if="prescription" class="breadcrumb-item active">
+                <t t-esc="prescription.name"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home" name="Portal My Home: HMS entries" inherit_id="portal.portal_my_home" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-if="appointment_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Appointments</t>
+                <t t-set="url" t-value="'/my/appointments'"/>
+                <t t-set="count" t-value="appointment_count"/>
+            </t>
+            <t t-if="prescription_count" t-call="portal.portal_docs_entry">
+                <t t-set="title">Prescriptions</t>
+                <t t-set="url" t-value="'/my/prescriptions'"/>
+                <t t-set="count" t-value="prescription_count"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="my_appointments" name="My Appointments">
+        <t t-call="portal.portal_layout">
+
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Appointments</t>
+            </t>
+            <t t-if="not appointments">
+                <p>There are currently no Appointments for your account.</p>
+            </t>
+
+            <div t-if="appointments" class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover bg-white status_table o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Reg. No #</th>
+                                <th>Appointment Date</th>
+                                <th>Service</th>
+                                <th>Status</th>
+                                <th>Report</th>
+                            </tr>
+                        </thead>
+
+                        <t t-foreach="appointments" t-as="appointment">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/appointments/#{appointment.id}?{{ keep_query() }}"><t t-esc="appointment.name" /></a>
+                                </td>
+                                <td>
+                                    <span t-field="appointment.date" />
+                                </td>
+                                <td>
+                                    <span t-field="appointment.sudo().product_id.name" />
+                                </td>
+                                <td>
+                                    <span t-field="appointment.state" />
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" target="_blank" title="Prescription Report"
+                                        t-att-href="'/report/pdf/acs_hms.report_acs_appointment/'+str(appointment.id)">Print</a>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </div>
+            <div t-if="pager" class="o_portal_pager text-center">
+                <t t-call="portal.pager"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="my_appointments_appointment" name="My Appointment">
+        <t t-call="portal.portal_layout"> 
+            <div id="wrap">
+                <div class="container">
+                    <div id="appointment_content" class="col-12 col-lg mt32">
+                        <div class="row mt16 mb16" t-if="appointment.state=='draft'">
+                            <a role="button" class="btn btn-link btn-block mb8" data-toggle="modal" data-target="#modalcancel" href="#">
+                                <i class="fa fa-times text-danger"/>Cancel the Appointment
+                            </a>
+                        </div>
+
+                        <div role="dialog" class="modal fade" id="modalcancel">
+                            <div class="modal-dialog" t-if="appointment.state=='draft'">
+                                <form t-attf-action="/acs/cancel/#{appointment.id}/appointment" method="post" role="form" class="js_accept_json modal-content js_website_submit_form">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <header class="modal-header">
+                                        <h4 class="modal-title">Cancel Appointment</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">&amp;times;</button>
+                                    </header>
+                                    <main class="modal-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="cancel_reason">Reason</label>
+                                            <div class="col-sm-9">
+                                                <textarea type="text" name="cancel_reason" required="True" value="" class="form-control mb16 o_forum_post_link" placeholder="Reason to cancel Appointment"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-4">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close </button>
+                                            </div>
+                                        </div>
+                                    </main>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="o_portal_html_view shadow p-3" style="background-color: white;">
+                            <iframe id="result_html" width="100%" height="1080px" frameborder="0" scrolling="no" t-att-src="'/report/html/acs_hms.report_acs_appointment/'+str(appointment.id)"/>
+                        </div>
+                        <!-- chatter -->
+                        <div id="certificate_communication" class="mt-4">
+                            <h2>History</h2>
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="appointment"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Prescription -->
+    <template id="my_prescriptions" name="My Prescription">
+        <t t-call="portal.portal_layout">
+
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Prescriptions</t>
+            </t>
+            <t t-if="not prescriptions">
+                <p>There are currently no Prescriptions for your account.</p>
+            </t>
+
+            <div t-if="prescriptions" class="panel panel-default">
+                <div class="table-responsive">
+                    <table class="table table-hover bg-white status_table o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Reg. No #</th>
+                                <th>Prescription Date</th>
+                                <th>Status</th>
+                                <th>Report</th>
+                            </tr>
+                        </thead>
+
+                        <t t-foreach="prescriptions" t-as="prescription">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/my/prescriptions/#{prescription.id}?{{ keep_query() }}"><t t-esc="prescription.name" /></a>
+                                </td>
+                                <td>
+                                    <span t-field="prescription.prescription_date" />
+                                </td>
+                                <td>
+                                    <span t-field="prescription.state" />
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" target="_blank" title="Prescription Report"
+                                        t-att-href="'/report/pdf/acs_hms.report_hms_prescription/'+str(prescription.id)">Print</a>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+            </div>
+            <div t-if="pager" class="o_portal_pager text-center">
+                <t t-call="portal.pager"/>
+            </div>
+        </t>
+    </template>
+
+    <template id="my_prescriptions_prescription" name="My Prescription">
+        <t t-call="portal.portal_layout"> 
+            <div id="wrap">
+                <div class="container">
+                    <div id="prescription_content" class="col-12 col-lg mt32">
+                        <div class="o_portal_html_view shadow p-3" style="background-color: white;">
+                            <iframe id="result_html" width="100%" height="1080px" frameborder="0" scrolling="no" t-att-src="'/report/html/acs_hms.report_hms_prescription/'+str(prescription.id)"/>
+                        </div>
+                        <!-- chatter -->
+                        <div id="certificate_communication" class="mt-4">
+                            <h2>History</h2>
+                            <t t-call="portal.message_thread">
+                                <t t-set="object" t-value="prescription"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+
+    </template>
+
+</odoo>

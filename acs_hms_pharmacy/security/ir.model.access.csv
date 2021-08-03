@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hms_drug_form_pharmacist,ACS Drug Form,acs_hms.model_drug_form,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_active_comp_pharmacist,ACS Active Comp,acs_hms.model_active_comp,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_drug_company_pharmacist,ACS Drug Company,acs_hms.model_drug_company,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_drug_route_pharmacist,ACS Drug Route,acs_hms.model_drug_route,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_medicament_dosage_pharmacist,ACS Medication Dosage,acs_hms.model_medicament_dosage,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_medicament_flavour_pharmacist,ACS Medicament Flavor,acs_hms.model_medicament_flavour,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_product_template_pharmacist,ACS Medicament Template,product.model_product_template,acs_hms.group_hms_pharmacist,1,1,1,0
+access_hms_product_product_pharmacist,ACS Medicament,product.model_product_product,acs_hms.group_hms_pharmacist,1,1,1,0
