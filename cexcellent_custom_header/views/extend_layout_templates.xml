@@ -1,53 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
-            <xpath expr="//div[1]" position="replace">
+        <template id="custom_external_layout_standard">
+            <div t-attf-class="header o_company_#{company.id}_layout">
+                <style type="text/css">
+                    @font-face {
+                    font-family: 'Amiri';
+                    src: local('Amiri-Regular'), local('Amiri-Regular'),
+                    url('/cexcellent_custom_header/static/fonts/Amiri-Regular.ttf') format('truetype');
+                    }
+                    *{
+                    font-family: Amiri !important;
+                    font-weight: bold;
+                    font-size:12pt;
+                    color:#538cc6;
+                    }
+                </style>
                 <div>
-
+                    <div style="font-weight: bold;display:inline-block;margin-top:15px;float: right">
+                        <div t-field="company.partner_id"
+                             t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                        />
+                    </div>
+                    <div style="float: left;display:inline-block;margin-top:15px">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:110px;" alt="Logo"/>
+                    </div>
                 </div>
-            </xpath>
-            <xpath expr="//div[3]" position="replace">
-                <div>
-
+                <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                    <div class="col-12">
+                        <div style="border-bottom: 1px solid #204060;"/>
+                    </div>
                 </div>
-            </xpath>
-        </template>
-        <template id="external_layout_clean_custom" inherit_id="web.external_layout_clean">
-            <xpath expr="//div[1]" position="replace">
-                <div>
-
+            </div>
+            <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer o_standard_footer">
+                <div style="border-top: 1px solid #204060;">
+                    <div t-if="report_type == 'pdf'" style="font-family: Amiri !important;color:#538cc6;font-weight: bold;font-size:12pt;display:inline-block;float: right;">
+                        Page: <span class="page"/> / <span class="topage"/>
+                    </div>
+                    <div style="float: left;display:inline-block;font-family: Amiri !important;color:#538cc6;font-weight: bold;font-size:12pt;">
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </div>
                 </div>
-            </xpath>
-            <xpath expr="//div[3]" position="replace">
-                <div>
-
-                </div>
-            </xpath>
-        </template>
-        <template id="external_layout_boxed_custom" inherit_id="web.external_layout_boxed">
-            <xpath expr="//div[1]" position="replace">
-                <div>
-
-                </div>
-            </xpath>
-            <xpath expr="//div[3]" position="replace">
-                <div>
-
-                </div>
-            </xpath>
-        </template>
-        <template id="external_layout_background_custom" inherit_id="web.external_layout_background">
-            <xpath expr="//div[1]" position="replace">
-                <div>
-
-                </div>
-            </xpath>
-            <xpath expr="//div[3]" position="replace">
-                <div>
-
-                </div>
-            </xpath>
+            </div>
         </template>
     </data>
 </odoo>
