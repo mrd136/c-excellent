@@ -13,7 +13,7 @@
                     font-family: Amiri !important;
                     font-weight: bold;
                     font-size:12pt;
-                    color:#204060;
+                    color:#538cc6;
                     }
                 </style>
                 <div>
@@ -28,7 +28,7 @@
                 </div>
                 <div t-if="company.logo or company.report_header" class="row zero_min_height">
                     <div class="col-12">
-                        <div style="border-bottom: 1px solid #538cc6;"/>
+                        <div style="border-bottom: 1px solid #204060;"/>
                     </div>
                 </div>
             </div>
@@ -36,11 +36,11 @@
                 <t t-raw="0"/>
             </div>
             <div class="footer o_standard_footer">
-                <div style="border-top: 1px solid #538cc6;">
-                    <div t-if="report_type == 'pdf'" style="font-family: Amiri !important;color:#204060;font-weight: bold;font-size:12pt;display:inline-block;float: right;">
+                <div style="border-top: 1px solid #204060;">
+                    <div t-if="report_type == 'pdf'" style="font-family: Amiri !important;color:#538cc6;font-weight: bold;font-size:12pt;display:inline-block;float: right;">
                         Page: <span class="page"/> / <span class="topage"/>
                     </div>
-                    <div style="float: left;display:inline-block;font-family: Amiri !important;color:#204060;font-weight: bold;font-size:12pt;">
+                    <div style="float: left;display:inline-block;font-family: Amiri !important;color:#538cc6;font-weight: bold;font-size:12pt;">
                         <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
                     </div>
                 </div>
