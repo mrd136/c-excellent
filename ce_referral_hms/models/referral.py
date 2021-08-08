@@ -158,6 +158,9 @@ class Referral(models.Model):
 
     @api.model
     def create(self, values):
+        if values.get('appointment_id'):
+            appointment_id = self.env['hms.appointment'].browse(values.get('appointment_id'))
+            appointment_id.state = 'referral'
         if not values.get('name'):
             values['name'] = self.env['ir.sequence'].next_by_code('hms.referral')
         return super(Referral, self).create(values)

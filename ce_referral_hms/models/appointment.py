@@ -7,6 +7,21 @@ class Appointment(models.Model):
     _inherit = 'hms.appointment'
     _description = "Appointment"
 
+    READONLY_STATES = {'cancel': [('readonly', True)], 'done': [('readonly', True)]}
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirm', 'Confirm'),
+        ('waiting', 'Waiting'),
+        ('in_consultation', 'In consultation'),
+        ('referral', 'Referral'),
+        ('pause', 'Pause'),
+        ('to_invoice', 'To Invoice'),
+        ('done', 'Done'),
+        ('cancel', 'Cancelled'),
+    ], string='State', default='draft', required=True, copy=False, tracking=True,
+        states=READONLY_STATES)
+    is_referral = fields.Boolean(string='Referral ?', states=READONLY_STATES)
+
     def action_new_referral(self):
         action = self.env.ref('ce_referral_hms.action_new_referral').read()[0]
         action['context'] = {
