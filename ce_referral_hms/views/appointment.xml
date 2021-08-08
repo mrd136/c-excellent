@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_hms_appointment_form_inherit" model="ir.ui.view">
+        <field name="name">view.hms.appointment.form.inherit</field>
+        <field name="model">hms.appointment</field>
+        <field name="inherit_id" ref="acs_hms.view_hms_appointment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_refer_doctor']" position="after">
+                <button name="action_new_referral" string="Referral Request" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

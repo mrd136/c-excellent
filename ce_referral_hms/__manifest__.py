@@ -14,7 +14,7 @@
         'security/security.xml',
         'security/ir.model.access.csv',
         'data/sequence.xml',
-        # 'wizard/cancel_reason_view.xml',
+        'views/appointment.xml',
         'views/referral_view.xml',
     ],
     'demo': [],
