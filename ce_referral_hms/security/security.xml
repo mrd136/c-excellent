@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_hms_referral" model="res.groups">
+            <field name="name">Referral</field>
+            <field name="category_id" ref="acs_hms.module_category_hms"/>
+            <field name="implied_ids" eval="[(4, ref('acs_hms.group_hms_nurse')),(4, ref('acs_hms.group_hms_receptionist'))]"/>
+        </record>
+    </data>
+</odoo>

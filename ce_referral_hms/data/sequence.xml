@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_hms_referral" model="ir.sequence">
+            <field name="name">ACS Referral</field>
+            <field name="code">hms.referral</field>
+            <field name="prefix">RE/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

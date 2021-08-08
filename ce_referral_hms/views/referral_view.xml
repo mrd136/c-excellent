@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Referral -->
+    <menuitem id="menu_referral_parent" name="Referral Management" sequence="5" groups="acs_hms.group_hms_manager" web_icon="ce_referral_hms,static/description/icon.png"/>
+
+    <record model="ir.ui.view" id="referral_kanban_view">
+        <field name="name">referral.kanban</field>
+        <field name="model">hms.referral</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="patient_id"/>
+                <field name="image_128"/>
+                <field name="date"/>
+                <field name="display_name"/>
+                <field name="state"/>
+                <field name="physician_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_partner_kanban">
+                            <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                            <t t-set="placeholder" t-value="'/base/static/img/avatar_grey.png'"/>
+                            <div class="o_kanban_image_fill_left o_kanban_image_full" t-attf-style="background-image: url(#{kanban_image('hms.patient', 'image_128', record.patient_id.raw_value, placeholder)})" role="img"/>
+                            <div class="oe_kanban_details">
+                                <strong class="oe_partner_heading">
+                                    <field name="display_name"/>
+                                </strong>
+                                <ul>
+                                    <li t-if="record.patient_id.raw_value">
+                                        <field name="patient_id"/>
+                                    </li>
+                                    <li t-if="record.date.raw_value">
+                                        <field name="physician_id"/>
+                                    </li>
+                                    <li t-if="record.date.raw_value">
+                                        <field name="date"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_hms_referral_tree" model="ir.ui.view">
+        <field name="name">hms.referral.tree</field>
+        <field name="model">hms.referral</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='draft'" decoration-muted="state=='cancel'" decoration-danger="state=='waiting'" name="referral_tree">
+                <field name="name" string="Referral"/>
+                <field name="patient_id"/>
+                <field name="date"/>
+                <field name="department_id" groups="acs_hms.group_allow_multi_department" optional="hide"/>
+                <field name="physician_id"/>
+                <field name="responsible_id" optional="hide"/>
+                <field name="create_uid" optional="hide"/>
+                <field name="state" optional="show"/>
+                <field name="appointment_id" optional="hide"/>
+                <field name="from_company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="to_company_id" groups="base.group_multi_company" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hms_referral_form" model="ir.ui.view">
+        <field name="name">hms.referral.form</field>
+        <field name="model">hms.referral</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_requested" string="Request" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'in')]}" type="object"/>
+                    <button name="action_confirm" string="Confirm" type="object" states="requested,receive"/>
+                    <!--                    <button name="action_done" string="Done" type="object" states="requested,receive"/>-->
+                    <button name="action_receive" string="Receive" type="object" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'out')]}"/>
+                    <button name="action_reject" string="Reject" type="object" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'out')]}"/>
+                    <button name="action_cancel" string="Cancel" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'in')]}" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,requested,receive"/>
+                </header>
+                <sheet>
+                    <field name="image_128" widget='image' class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type" invisible="1"/>
+                            <field name="patient_id"/>
+                            <field name="appointment_id"/>
+                            <field name="age"/>
+                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
+                            <field name="physician_id" required="1"/>
+                            <field name="from_company_id"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="urgency"/>
+                            <field name="to_company_id" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="info" string="General Information" groups="acs_hms.group_hms_nurse">
+                            <group>
+                                <group>
+                                    <field name="diseas_id"/>
+                                </group>
+                                <group>
+                                    <field name="responsible_id"/>
+                                </group>
+                            </group>
+                            <separator string="History of Present Illness"/>
+                            <field name="present_illness"
+                                   placeholder="History of Present Illness..."/>
+                            <separator string="Past History"/>
+                            <field name="past_history"
+                                   placeholder="Past History..."/>
+                            <separator string="Referral Reason"/>
+                            <field name="referral_reason" placeholder="Referral Reason..." />
+                        </page>
+                        <page name="clinical_ass" string="Clinical Assesment" groups="acs_hms.group_hms_nurse">
+                            <group>
+                                <group>
+                                    <field name="weight"/>
+                                    <field name="height"/>
+                                    <field name="temp"/>
+                                    <field name="hr"/>
+                                </group>
+                                <group>
+                                    <field name="rr"/>
+                                    <field name="bp"/>
+                                    <field name="spo2"/>
+                                </group>
+                                <group>
+                                    <field name="bmi"/>
+                                </group>
+                                <group>
+                                    <field name="bmi_state"/>
+                                </group>
+                            </group>
+                            <separator string="Laboratory"/>
+                            <field name="lab_report" placeholder="Laboratory Report..."/>
+                            <separator string="Radiological"/>
+                            <field name="radiological_report" placeholder="Radiological Report..."/>
+                        </page>
+                        <page name="advice" string="D/D &amp; Advice" groups="acs_hms.group_hms_jr_doctor,acs_hms.group_acs_hms_appointment_user">
+                            <separator string="Differential Diagnosis"/>
+                            <field name="differencial_diagnosis" placeholder="Differential Diagnosis..."/>
+                        </page>
+                        <page name='diseases' string="Diseas History" groups="acs_hms.group_hms_jr_doctor">
+                            <separator string="Past Medical History"/>
+                            <field name="medical_history"/>
+                            <separator string="Diseases History"/>
+                            <field name="patient_diseases"/>
+                        </page>
+                    </notebook>
+                    <separator string="Notes"/>
+                    <field name="notes" placeholder="Notes..."/>
+                    <separator string="Reason"/>
+                    <field name="referral_reason" placeholder="Reason..."/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hms_referral_search" model="ir.ui.view">
+        <field name="name">Referral Search</field>
+        <field name="model">hms.referral</field>
+        <field name="arch" type="xml">
+            <search string="Search Referral">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="physician_id"/>
+                <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
+                <filter name="today" string="Today" domain="[('date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
+                <filter name="my_app" string="My Referral" domain="[('physician_id.user_id', '=',uid)]"/>
+                <separator/>
+                <filter name="done" string="Not Confirm" domain="[('state','!=','confirm')]"/>
+                <group expand="0" string="Group By...">
+                    <filter string="Doctor's Referral" name="physician_groupby" domain="[]" context="{'group_by':'physician_id'}" />
+                    <filter string="Date" name="date_groupby" domain="[]" context="{'group_by':'date'}" />
+                    <filter string="Department" name="department_groupby" domain="[]" context="{'group_by':'department_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_referral_pivot" model="ir.ui.view">
+        <field name="name">hms.referral.pivot</field>
+        <field name="model">hms.referral</field>
+        <field name="arch" type="xml">
+            <pivot string="Referral">
+                <field name="date" type="row"/>
+                <field name="physician_id" type="row"/>
+                <field name="patient_id" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_referral" model="ir.actions.act_window">
+        <field name="name">Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record Found
+            </p>
+            <p>
+                Click to add an Referral.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_new_referral" model="ir.actions.act_window">
+        <field name="name">Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">form</field>
+    </record>
+    <menuitem id="menu_referral" name="Referral" sequence="4" parent="menu_referral_parent" action="action_referral"/>
+
+    <record id="view_hms_appointment_form_inherit" model="ir.ui.view">
+        <field name="name">view.hms.appointment.form.inherit</field>
+        <field name="model">hms.appointment</field>
+        <field name="inherit_id" ref="acs_hms.view_hms_appointment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_refer_doctor']" position="after">
+                <button name="action_new_referral" string="Referral Request" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
