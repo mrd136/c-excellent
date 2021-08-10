@@ -45,7 +45,7 @@ class Appointment(models.Model):
             'default_urgency': self.urgency,
             'default_diseas_id': self.diseas_id.id,
             'default_responsible_id': self.responsible_id.id,
-            'referral_type': self.referral_type,
+            'default_referral_type': self.referral_type,
         }
         return action
 

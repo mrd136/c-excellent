@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Referral -->
-    <menuitem id="menu_referral_parent" name="Referral Management" sequence="5" groups="acs_hms.group_hms_manager" web_icon="ce_referral_hms,static/description/icon.png"/>
+    <menuitem id="menu_referral_parent" name="Referral Management" sequence="5" groups="acs_hms.group_hms_manager,group_hms_referral" web_icon="ce_referral_hms,static/description/icon.png"/>
 
     <record model="ir.ui.view" id="referral_kanban_view">
         <field name="name">referral.kanban</field>
@@ -165,12 +165,28 @@
         </field>
     </record>
 
+    <record id="view_hms_referral_tree_inherit" model="ir.ui.view">
+        <field name="name">view.hms.referral.tree.inherit</field>
+        <field name="model">hms.referral</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="create">false</attribute>
+                <!--                <attribute name="edit">false</attribute>-->
+            </xpath>
+        </field>
+    </record>
     <record id="view_hms_referral_form_inherit" model="ir.ui.view">
         <field name="name">view.hms.referral.form.inherit</field>
         <field name="model">hms.referral</field>
         <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>
         <field name="mode">primary</field>
         <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="create">false</attribute>
+                <!--                <attribute name="edit">true</attribute>-->
+            </xpath>
             <xpath expr="//header" position='replace'>
                 <header>
                     <button name="action_accept" string="Accept" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
@@ -195,6 +211,20 @@
             </xpath>
         </field>
     </record>
+    <record id="view_hms_referral_tree_center_inherit" model="ir.ui.view">
+        <field name="name">view.hms.referral.tree.center.inherit</field>
+        <field name="model">hms.referral</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='from_hospital_id']" position="replace">
+                <field name="from_center_id"/>
+            </xpath>
+            <xpath expr="//field[@name='to_hospital_id']" position="replace">
+                <field name="to_center_id"/>
+            </xpath>
+        </field>
+    </record>
     <record id="view_hms_referral_form_receive_center_inherit" model="ir.ui.view">
         <field name="name">view.hms.referral.receive.form.center.inherit</field>
         <field name="model">hms.referral</field>
@@ -206,6 +236,20 @@
             </xpath>
             <xpath expr="//field[@name='to_hospital_id']" position="replace">
                 <field name="to_center_id" required="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_hms_referral_tree_receive_center_inherit" model="ir.ui.view">
+        <field name="name">view.hms.referral.receive.tree.center.inherit</field>
+        <field name="model">hms.referral</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree_inherit"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='from_hospital_id']" position="replace">
+                <field name="from_center_id"/>
+            </xpath>
+            <xpath expr="//field[@name='to_hospital_id']" position="replace">
+                <field name="to_center_id"/>
             </xpath>
         </field>
     </record>
@@ -247,7 +291,7 @@
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('from_hospital_id.user_ids', '=', uid)]</field>
+        <field name="domain">[('referral_type', '=', 'hospital'),('from_hospital_id.user_ids', '=', uid)]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -262,7 +306,7 @@
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('to_hospital_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept', 'done'])]</field>
+        <field name="domain">[('referral_type', '=', 'hospital'),('to_hospital_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept', 'done'])]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -273,7 +317,7 @@
             </p>
         </field>
         <field name="view_ids" eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_inherit')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_inherit')})]"/>
     </record>
 
@@ -281,7 +325,7 @@
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('from_center_id.user_ids', '=', uid)]</field>
+        <field name="domain">[('referral_type', '=', 'center'),('from_center_id.user_ids', '=', uid)]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -292,7 +336,7 @@
             </p>
         </field>
         <field name="view_ids" eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_center_inherit')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_center_inherit')})]"/>
     </record>
 
@@ -300,7 +344,7 @@
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('to_center_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept', 'done'])]</field>
+        <field name="domain">[('referral_type', '=', 'center'),('to_center_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept', 'done'])]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -311,7 +355,7 @@
             </p>
         </field>
         <field name="view_ids" eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree')}),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_receive_center_inherit')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_receive_center_inherit')})]"/>
     </record>
     <record id="action_new_referral" model="ir.actions.act_window">
