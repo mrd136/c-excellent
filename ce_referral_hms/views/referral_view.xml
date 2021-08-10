@@ -58,8 +58,8 @@
                 <field name="create_uid" optional="hide"/>
                 <field name="state" optional="show"/>
                 <field name="appointment_id" optional="hide"/>
-                <field name="from_company_id" groups="base.group_multi_company" optional="hide"/>
-                <field name="to_company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="from_hospital_id"/>
+                <field name="to_hospital_id"/>
             </tree>
         </field>
     </record>
@@ -70,13 +70,10 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_requested" string="Request" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'in')]}" type="object"/>
-                    <button name="action_confirm" string="Confirm" type="object" states="requested,receive"/>
-                    <!--                    <button name="action_done" string="Done" type="object" states="requested,receive"/>-->
-                    <button name="action_receive" string="Receive" type="object" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'out')]}"/>
-                    <button name="action_reject" string="Reject" type="object" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'out')]}"/>
-                    <button name="action_cancel" string="Cancel" attrs="{'invisible':['|',('state', '!=', 'draft'), ('type','=', 'in')]}" type="object"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,requested,receive"/>
+                    <button name="action_requested" string="Request" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
+                    <button name="action_waiting" string="Send" type="object" attrs="{'invisible':['|',('state', '!=', 'requested')]}"/>
+                    <button name="action_cancel" string="Cancel" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,waiting,accept,done"/>
                 </header>
                 <sheet>
                     <field name="image_128" widget='image' class="oe_avatar"/>
@@ -87,18 +84,18 @@
                     </div>
                     <group>
                         <group>
-                            <field name="type" invisible="1"/>
+                            <field name="current_is_accept_user" invisible="1"/>
                             <field name="patient_id"/>
                             <field name="appointment_id"/>
                             <field name="age"/>
                             <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
                             <field name="physician_id" required="1"/>
-                            <field name="from_company_id"/>
+                            <field name="from_hospital_id"/>
                         </group>
                         <group>
                             <field name="date"/>
                             <field name="urgency"/>
-                            <field name="to_company_id" required="1"/>
+                            <field name="to_hospital_id" required="1"/>
                         </group>
                     </group>
                     <notebook>
@@ -168,6 +165,50 @@
         </field>
     </record>
 
+    <record id="view_hms_referral_form_inherit" model="ir.ui.view">
+        <field name="name">view.hms.referral.form.inherit</field>
+        <field name="model">hms.referral</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position='replace'>
+                <header>
+                    <button name="action_accept" string="Accept" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_done" string="Create Appointment" type="object" attrs="{'invisible':['|',('state', '!=', 'accept'), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_reject" string="Reject" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="waiting,accept,done"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_hms_referral_form_center_inherit" model="ir.ui.view">
+        <field name="name">view.hms.referral.form.center.inherit</field>
+        <field name="model">hms.referral</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='from_hospital_id']" position="replace">
+                <field name="from_center_id" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='to_hospital_id']" position="replace">
+                <field name="to_center_id" required="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_hms_referral_form_receive_center_inherit" model="ir.ui.view">
+        <field name="name">view.hms.referral.receive.form.center.inherit</field>
+        <field name="model">hms.referral</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form_inherit"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='from_hospital_id']" position="replace">
+                <field name="from_center_id" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='to_hospital_id']" position="replace">
+                <field name="to_center_id" required="1"/>
+            </xpath>
+        </field>
+    </record>
     <record id="view_hms_referral_search" model="ir.ui.view">
         <field name="name">Referral Search</field>
         <field name="model">hms.referral</field>
@@ -202,10 +243,11 @@
         </field>
     </record>
 
-    <record id="action_referral" model="ir.actions.act_window">
+    <record id="action_hospital_out_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="domain">[('from_hospital_id.user_ids', '=', uid)]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -216,11 +258,11 @@
             </p>
         </field>
     </record>
-    <record id="action_out_referral" model="ir.actions.act_window">
+    <record id="action_hospital_receive_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('type', '=', 'out')]</field>
+        <field name="domain">[('to_hospital_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept', 'done'])]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -230,12 +272,16 @@
                 Click to add an Referral.
             </p>
         </field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_inherit')})]"/>
     </record>
-    <record id="action_receive_referral" model="ir.actions.act_window">
+
+    <record id="action_center_request_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('type', '=', 'in')]</field>
+        <field name="domain">[('from_center_id.user_ids', '=', uid)]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -245,13 +291,46 @@
                 Click to add an Referral.
             </p>
         </field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_center_inherit')})]"/>
+    </record>
+
+    <record id="action_center_receive_referral" model="ir.actions.act_window">
+        <field name="name">Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="domain">[('to_center_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept', 'done'])]</field>
+        <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record Found
+            </p>
+            <p>
+                Click to add an Referral.
+            </p>
+        </field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_receive_center_inherit')})]"/>
     </record>
     <record id="action_new_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">form</field>
     </record>
-    <menuitem id="menu_referral" name="Referral" sequence="1" parent="menu_referral_parent" action="action_referral"/>
-    <menuitem id="menu_in_referral" name="Receive Referral" sequence="2" parent="menu_referral_parent" action="action_receive_referral"/>
-    <menuitem id="menu_out_referral" name="Requested Referral" sequence="3" parent="menu_referral_parent" action="action_out_referral"/>
+    <record id="action_new_center_referral" model="ir.actions.act_window">
+        <field name="name">Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_center_inherit')})]"/>
+
+    </record>
+    <menuitem id="menu_hospital_referral" name="Hospital Referral" sequence="1" parent="menu_referral_parent"/>
+    <menuitem id="menu_in_referral" name="Receive Referral" sequence="2" parent="menu_hospital_referral" action="action_hospital_receive_referral"/>
+    <menuitem id="menu_out_referral" name="Requested Referral" sequence="3" parent="menu_hospital_referral" action="action_hospital_out_referral"/>
+    <menuitem id="menu_center_referral" name="Health center Referral" sequence="1" parent="menu_referral_parent"/>
+    <menuitem id="menu_center_in_referral" name="Receive Referral" sequence="2" parent="menu_center_referral" action="action_center_receive_referral"/>
+    <menuitem id="menu_center_out_referral" name="Requested Referral" sequence="3" parent="menu_center_referral" action="action_center_request_referral"/>
 </odoo>

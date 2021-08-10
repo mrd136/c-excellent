@@ -40,7 +40,8 @@ class Referral(models.Model):
                 end_data = rec.date or fields.Datetime.now()
                 delta = relativedelta(end_data, rec.patient_id.birthday)
                 if delta.years <= 2:
-                    age = str(delta.years) + _(" Year") + str(delta.months) + _(" Month ") + str(delta.days) + _(" Days")
+                    age = str(delta.years) + _(" Year") + str(delta.months) + _(" Month ") + str(delta.days) + _(
+                        " Days")
                 else:
                     age = str(delta.years) + _(" Year")
             rec.age = age
@@ -48,13 +49,14 @@ class Referral(models.Model):
     READONLY_STATES = {'cancel': [('readonly', True)], 'done': [('readonly', True)]}
 
     name = fields.Char(string='Referral Id', copy=False, tracking=True, states=READONLY_STATES)
-    patient_id = fields.Many2one('hms.patient', ondelete='restrict',  string='Patient',
+    patient_id = fields.Many2one('hms.patient', ondelete='restrict', string='Patient',
                                  required=True, index=True, help='Patient Name', states=READONLY_STATES, tracking=True)
-    image_128 = fields.Binary(related='patient_id.image_128',string='Image', readonly=True)
+    image_128 = fields.Binary(related='patient_id.image_128', string='Image', readonly=True)
     physician_id = fields.Many2one('hms.physician', ondelete='restrict', string='Physician',
                                    index=True, help='Physician\'s Name', states=READONLY_STATES, tracking=True)
     department_id = fields.Many2one('hr.department', ondelete='restrict',
-                                    domain=[('patient_depatment', '=', True)], string='Department', tracking=True, states=READONLY_STATES)
+                                    domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
+                                    states=READONLY_STATES)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, states=READONLY_STATES, tracking=True)
     appointment_id = fields.Many2one("hms.appointment", 'Appointment', states=READONLY_STATES)
     weight = fields.Float(string="Weight")
@@ -73,7 +75,8 @@ class Referral(models.Model):
     differencial_diagnosis = fields.Text(string="differencial_diagnosis")
     present_illness = fields.Text(string="present_illness")
     lab_report = fields.Text(string='Lab Report', states=READONLY_STATES, help="Details of the lab report.")
-    radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES, help="Details of the Radiological Report")
+    radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES,
+                                      help="Details of the Radiological Report")
     past_history = fields.Text(string='Past History', states=READONLY_STATES, help="Past history of any diseases.")
     urgency = fields.Selection([
         ('a', 'Normal'),
@@ -84,20 +87,29 @@ class Referral(models.Model):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('requested', 'Requested'),
-        ('confirm', 'Confirm'),
-        ('receive', 'Received'),
-        ('reject', 'Reject'),
+        ('waiting', 'Waiting For Accept'),
+        ('accept', 'Accepted'),
+        ('reject', 'Rejected'),
+        ('done', 'Done'),
         ('cancel', 'Cancelled'),
-    ], string='State', default='draft', required=True, copy=False, tracking=True,
+    ], string=' State', default='draft', required=True, copy=False, tracking=True,
         states=READONLY_STATES)
     age = fields.Char(compute="get_patient_age", string='Age', store=True,
                       help="Computed patient age at the moment of the evaluation")
     company_id = fields.Many2one('res.company', ondelete='restrict', states=READONLY_STATES,
                                  string='Hospital', default=lambda self: self.env.user.company_id.id)
-    from_company_id = fields.Many2one('res.company', ondelete='restrict', states=READONLY_STATES,
-                                      string='From Hospital', default=lambda self: self.env.user.company_id.id)
-    to_company_id = fields.Many2one('res.company', ondelete='restrict', states=READONLY_STATES,
-                                    string='To Hospital')
+    referral_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], string='Referral Type',
+                                     required=True, default='hospital', states=READONLY_STATES)
+    from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
+                                       string='From Hospital', default=lambda self: self.env.user.company_id.id,
+                                       domain=[('type', '=', 'hospital')])
+    to_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
+                                     string='To Hospital', domain=[('type', '=', 'hospital')])
+    from_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
+                                     string='From Health center', default=lambda self: self.env.user.company_id.id,
+                                     domain=[('type', '=', 'center')])
+    to_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
+                                   string='To Health center', domain=[('type', '=', 'center')])
     diseas_id = fields.Many2one('hms.diseases', 'Disease', states=READONLY_STATES)
     medical_history = fields.Text(related='patient_id.medical_history',
                                   string="Past Medical History", readonly=True)
@@ -107,13 +119,21 @@ class Referral(models.Model):
     responsible_id = fields.Many2one('hms.physician', "Responsible Jr. Doctor", states=READONLY_STATES)
     notes = fields.Text(string='Notes', states=READONLY_STATES)
     referral_reason = fields.Text(string="Referral Reason", states=READONLY_STATES)
-    type = fields.Selection([('in', 'IN'), ('out', 'out')], string='type', default='out', required=True,
-                            states=READONLY_STATES)
+    current_is_accept_user = fields.Boolean(compute='is_accept_user', string='Accept User')
 
-    def action_confirm(self):
-        self.state = 'confirm'
+    def is_accept_user(self):
+        for rec in self:
+            rec.current_is_accept_user = False
+            if rec.to_hospital_id:
+                rec_id = rec.to_hospital_id
+            elif rec.to_center_id:
+                rec_id = rec.to_center_id
+            user_id = rec_id.referral_user_ids.filtered(lambda v: v.id == self.env.uid)
+            if user_id:
+                rec.current_is_accept_user = True
+
+    def action_create_appointment(self):
         dic = {
-            'company_id': self.to_company_id.id,
             'diseas_id': self.diseas_id.id,
             'state': 'draft',
             'patient_id': self.patient_id.id,
@@ -131,30 +151,29 @@ class Referral(models.Model):
             'height': self.height,
             'weight': self.weight,
         }
-        if self.type == 'out':
-            self.appointment_id.state = 'done'
-            dic['from_company_id'] = self.from_company_id.id
-            dic['to_company_id'] = self.to_company_id.id
-            dic['referral_reason'] = self.referral_reason
-            dic['type'] = 'in'
-            self.env['hms.referral'].create(dic)
-        elif self.type == 'in':
-            self.env['hms.appointment'].create(dic)
+        self.env['hms.appointment'].create(dic)
 
     def action_requested(self):
         self.state = 'requested'
 
-    def action_receive(self):
-        self.state = 'receive'
+    def action_waiting(self):
+        self.state = 'waiting'
+
+    def action_accept(self):
+        self.state = 'accept'
 
     def action_reject(self):
         self.state = 'reject'
 
-    # def action_done(self):
-    #     self.state = 'done'
+    def action_done(self):
+        self.state = 'done'
+        self.action_create_appointment()
 
     def action_cancel(self):
         self.state = 'cancel'
+
+    def set_to_draft(self):
+        self.state = 'draft'
 
     @api.model
     def create(self, values):

@@ -6,12 +6,14 @@
         <field name="inherit_id" ref="acs_hms.view_hms_appointment_form"/>
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_refer_doctor']" position="after">
-                <button name="action_new_referral" attrs="{'invisible': ['|',('is_referral','!=',False),('state','!=','in_consultation')]}"
+                <button name="action_new_referral" attrs="{'invisible': ['|',('is_referral','!=',True),('state','!=','in_consultation')]}"
                         string="Referral Request" type="object" class="oe_stat_button" icon="fa-pencil-square-o"/>
             </xpath>
             <xpath expr="//field[@name='cabin_id']" position="after">
                 <field name="is_referral" attrs="{'invisible': [('state','!=','in_consultation')]}"
                        string="Referral"/>
+                <field name="referral_type" attrs="{'invisible': [('state','!=','in_consultation')]}"
+                       string="Type Of Referral"/>
             </xpath>
         </field>
     </record>

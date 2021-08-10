@@ -17,8 +17,9 @@ class OperatingUnit(models.Model):
         "res.company",
         required=True,
         readonly=True,
-        default=lambda self: self.env.company,
-    )
+        default=lambda self: self.env.company)
+    type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')])
+    parent_id = fields.Many2one('operating.unit', 'Parent', domain=[('type', '=', 'hospital')])
     partner_id = fields.Many2one("res.partner", "Partner", required=True)
     user_ids = fields.Many2many(
         "res.users",

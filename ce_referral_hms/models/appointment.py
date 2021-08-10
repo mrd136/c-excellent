@@ -21,9 +21,12 @@ class Appointment(models.Model):
     ], string='State', default='draft', required=True, copy=False, tracking=True,
         states=READONLY_STATES)
     is_referral = fields.Boolean(string='Referral ?', states=READONLY_STATES)
+    referral_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], 'Type Of Referral')
 
     def action_new_referral(self):
         action = self.env.ref('ce_referral_hms.action_new_referral').read()[0]
+        if self.referral_type == 'center':
+            action = self.env.ref('ce_referral_hms.action_new_center_referral').read()[0]
         action['context'] = {
             'default_weight': self.weight,
             'default_height': self.height,
@@ -42,6 +45,7 @@ class Appointment(models.Model):
             'default_urgency': self.urgency,
             'default_diseas_id': self.diseas_id.id,
             'default_responsible_id': self.responsible_id.id,
+            'referral_type': self.referral_type,
         }
         return action
 
