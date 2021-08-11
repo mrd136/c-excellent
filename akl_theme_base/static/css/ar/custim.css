@@ -1,0 +1,15 @@
+@font-face {
+    font-family:'janna';
+    
+    src: url(../../fonts/JannaLTRegular.eot) format("embedded-opentype"), url(../../fonts/JannaLTRegular.woff) format("woff"), url(../../fonts/JannaLTRegular.ttf) format("truetype");
+    /*font-weight: 500;*/
+    font-style: normal
+}
+body
+{
+	font-family: "janna" !important;
+}
+/*	    font-size: initial !important;*/
+.zoomodoo-flyout{
+    display:none;
+}
