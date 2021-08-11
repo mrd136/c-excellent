@@ -46,7 +46,8 @@ class Referral(models.Model):
                     age = str(delta.years) + _(" Year")
             rec.age = age
 
-    READONLY_STATES = {'cancel': [('readonly', True)], 'done': [('readonly', True)]}
+    READONLY_STATES = {'reject': [('readonly', True)],'accept': [('readonly', True)], 'waiting': [('readonly', True)], 'requested': [('readonly', True)],
+                       'cancel': [('readonly', True)], 'done': [('readonly', True)]}
 
     name = fields.Char(string='Referral Id', copy=False, tracking=True, states=READONLY_STATES)
     patient_id = fields.Many2one('hms.patient', ondelete='restrict', string='Patient',
@@ -72,8 +73,8 @@ class Referral(models.Model):
         ('normal', 'Normal'),
         ('over_weight', 'Over Weight'),
         ('obesity', 'Obesity')], compute="get_bmi_data", string='BMI State', store=True)
-    differencial_diagnosis = fields.Text(string="differencial_diagnosis")
-    present_illness = fields.Text(string="present_illness")
+    differencial_diagnosis = fields.Text(string="differencial_diagnosis", states=READONLY_STATES)
+    present_illness = fields.Text(string="present_illness", states=READONLY_STATES)
     lab_report = fields.Text(string='Lab Report', states=READONLY_STATES, help="Details of the lab report.")
     radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES,
                                       help="Details of the Radiological Report")
