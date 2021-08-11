@@ -101,12 +101,12 @@ class Referral(models.Model):
     referral_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], string='Referral Type',
                                      required=True, default='hospital', states=READONLY_STATES)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                       string='From Hospital', default=lambda self: self.env.user.company_id.id,
+                                       string='From Hospital', default=lambda self: self.env.user.default_operating_unit_id.id,
                                        domain=[('type', '=', 'hospital')])
     to_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                      string='To Hospital', domain=[('type', '=', 'hospital')])
     from_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                     string='From Health center', default=lambda self: self.env.user.company_id.id,
+                                     string='From Health center', default=lambda self: self.env.user.default_operating_unit_id.id,
                                      domain=[('type', '=', 'center')])
     to_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                    string='To Health center', domain=[('type', '=', 'center')])
