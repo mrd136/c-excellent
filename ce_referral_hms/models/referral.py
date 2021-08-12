@@ -2,6 +2,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
+from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 
@@ -46,7 +47,8 @@ class Referral(models.Model):
                     age = str(delta.years) + _(" Year")
             rec.age = age
 
-    READONLY_STATES = {'cancel': [('readonly', True)], 'done': [('readonly', True)]}
+    READONLY_STATES = {'reject': [('readonly', True)],'accept': [('readonly', True)], 'waiting': [('readonly', True)], 'requested': [('readonly', True)],
+                       'cancel': [('readonly', True)], 'done': [('readonly', True)]}
 
     name = fields.Char(string='Referral Id', copy=False, tracking=True, states=READONLY_STATES)
     patient_id = fields.Many2one('hms.patient', ondelete='restrict', string='Patient',
@@ -72,8 +74,8 @@ class Referral(models.Model):
         ('normal', 'Normal'),
         ('over_weight', 'Over Weight'),
         ('obesity', 'Obesity')], compute="get_bmi_data", string='BMI State', store=True)
-    differencial_diagnosis = fields.Text(string="differencial_diagnosis")
-    present_illness = fields.Text(string="present_illness")
+    differencial_diagnosis = fields.Text(string="differencial_diagnosis", states=READONLY_STATES)
+    present_illness = fields.Text(string="present_illness", states=READONLY_STATES)
     lab_report = fields.Text(string='Lab Report', states=READONLY_STATES, help="Details of the lab report.")
     radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES,
                                       help="Details of the Radiological Report")
@@ -101,12 +103,12 @@ class Referral(models.Model):
     referral_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], string='Referral Type',
                                      required=True, default='hospital', states=READONLY_STATES)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                       string='From Hospital', default=lambda self: self.env.user.company_id.id,
+                                       string='From Hospital', default=lambda self: self.env.user.default_operating_unit_id.id,
                                        domain=[('type', '=', 'hospital')])
     to_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                      string='To Hospital', domain=[('type', '=', 'hospital')])
     from_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                     string='From Health center', default=lambda self: self.env.user.company_id.id,
+                                     string='From Health center', default=lambda self: self.env.user.default_operating_unit_id.id,
                                      domain=[('type', '=', 'center')])
     to_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                    string='To Health center', domain=[('type', '=', 'center')])
@@ -120,6 +122,9 @@ class Referral(models.Model):
     notes = fields.Text(string='Notes', states=READONLY_STATES)
     referral_reason = fields.Text(string="Referral Reason", states=READONLY_STATES)
     current_is_accept_user = fields.Boolean(compute='is_accept_user', string='Accept User')
+    requested_date = fields.Datetime('Requested Date', states=READONLY_STATES)
+    accept_date = fields.Datetime('Accept/Reject Date', states=READONLY_STATES)
+    waiting_duration = fields.Float('Wait Time', readonly=True)
 
     def is_accept_user(self):
         for rec in self:
@@ -158,12 +163,23 @@ class Referral(models.Model):
 
     def action_waiting(self):
         self.state = 'waiting'
+        self.requested_date = datetime.now()
 
     def action_accept(self):
         self.state = 'accept'
+        datetime_diff = datetime.now() - self.requested_date
+        m, s = divmod(datetime_diff.total_seconds(), 60)
+        h, m = divmod(m, 60)
+        self.waiting_duration = float(('%0*d')%(2,h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.accept_date = datetime.now()
 
     def action_reject(self):
         self.state = 'reject'
+        datetime_diff = datetime.now() - self.requested_date
+        m, s = divmod(datetime_diff.total_seconds(), 60)
+        h, m = divmod(m, 60)
+        self.waiting_duration = float(('%0*d')%(2,h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.accept_date = datetime.now()
 
     def action_done(self):
         self.state = 'done'
