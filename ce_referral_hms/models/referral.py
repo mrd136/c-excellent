@@ -2,6 +2,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
+from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 
@@ -121,6 +122,9 @@ class Referral(models.Model):
     notes = fields.Text(string='Notes', states=READONLY_STATES)
     referral_reason = fields.Text(string="Referral Reason", states=READONLY_STATES)
     current_is_accept_user = fields.Boolean(compute='is_accept_user', string='Accept User')
+    requested_date = fields.Datetime('Requested Date', states=READONLY_STATES)
+    accept_date = fields.Datetime('Accept/Reject Date', states=READONLY_STATES)
+    waiting_duration = fields.Float('Wait Time', readonly=True)
 
     def is_accept_user(self):
         for rec in self:
@@ -159,12 +163,23 @@ class Referral(models.Model):
 
     def action_waiting(self):
         self.state = 'waiting'
+        self.requested_date = datetime.now()
 
     def action_accept(self):
         self.state = 'accept'
+        datetime_diff = datetime.now() - self.requested_date
+        m, s = divmod(datetime_diff.total_seconds(), 60)
+        h, m = divmod(m, 60)
+        self.waiting_duration = float(('%0*d')%(2,h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.accept_date = datetime.now()
 
     def action_reject(self):
         self.state = 'reject'
+        datetime_diff = datetime.now() - self.requested_date
+        m, s = divmod(datetime_diff.total_seconds(), 60)
+        h, m = divmod(m, 60)
+        self.waiting_duration = float(('%0*d')%(2,h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.accept_date = datetime.now()
 
     def action_done(self):
         self.state = 'done'
