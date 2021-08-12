@@ -378,7 +378,7 @@
     <menuitem id="menu_hospital_referral" name="Hospital Referral" sequence="1" parent="menu_referral_parent"/>
     <menuitem id="menu_in_referral" name="Receive Referral" sequence="2" parent="menu_hospital_referral" action="action_hospital_receive_referral"/>
     <menuitem id="menu_out_referral" name="Requested Referral" sequence="3" parent="menu_hospital_referral" action="action_hospital_out_referral"/>
-    <menuitem id="menu_center_referral" name="Health center Referral" sequence="1" parent="menu_referral_parent"/>
-    <menuitem id="menu_center_in_referral" name="Receive Referral" sequence="2" parent="menu_center_referral" action="action_center_receive_referral"/>
-    <menuitem id="menu_center_out_referral" name="Requested Referral" sequence="3" parent="menu_center_referral" action="action_center_request_referral"/>
+<!--    <menuitem id="menu_center_referral" name="Health center Referral" sequence="1" parent="menu_referral_parent"/>-->
+<!--    <menuitem id="menu_center_in_referral" name="Receive Referral" sequence="2" parent="menu_center_referral" action="action_center_receive_referral"/>-->
+<!--    <menuitem id="menu_center_out_referral" name="Requested Referral" sequence="3" parent="menu_center_referral" action="action_center_request_referral"/>-->
 </odoo>
