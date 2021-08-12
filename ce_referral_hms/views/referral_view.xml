@@ -98,6 +98,7 @@
                             <field name="accept_date" readonly="1" force_save="1"/>
                             <field name="waiting_duration"/>
                             <field name="urgency"/>
+                            <field name="service_id"/>
                             <field name="to_hospital_id" required="1"/>
                         </group>
                     </group>

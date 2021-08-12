@@ -59,6 +59,8 @@ class Referral(models.Model):
     department_id = fields.Many2one('hr.department', ondelete='restrict',
                                     domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
                                     states=READONLY_STATES)
+    service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True,
+                                    states=READONLY_STATES)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, states=READONLY_STATES, tracking=True)
     appointment_id = fields.Many2one("hms.appointment", 'Appointment', states=READONLY_STATES)
     weight = fields.Float(string="Weight")
