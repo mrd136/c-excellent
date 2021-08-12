@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_referral_nurse,ACS Medicament referral,model_hms_referral,group_hms_referral,1,1,1,1
 access_hms_referral_manager,ACS referral,model_hms_referral,acs_hms.group_hms_manager,1,1,1,0
+,,,,,,,
+access_referral_service,ACS service referral,model_hms_referral_service,group_hms_referral,1,1,1,1
+access_hms_referral_service,ACS service referral,model_hms_referral_service,acs_hms.group_hms_manager,1,1,1,0

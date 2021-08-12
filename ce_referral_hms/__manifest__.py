@@ -17,6 +17,7 @@
         'views/appointment.xml',
         'views/operating_unit_view.xml',
         'views/referral_view.xml',
+        'views/config_view.xml',
     ],
     'demo': [],
     'images': [

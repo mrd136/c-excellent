@@ -59,6 +59,8 @@ class Referral(models.Model):
     department_id = fields.Many2one('hr.department', ondelete='restrict',
                                     domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
                                     states=READONLY_STATES)
+    service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True,
+                                    states=READONLY_STATES)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, states=READONLY_STATES, tracking=True)
     appointment_id = fields.Many2one("hms.appointment", 'Appointment', states=READONLY_STATES)
     weight = fields.Float(string="Weight")
@@ -103,15 +105,14 @@ class Referral(models.Model):
     referral_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], string='Referral Type',
                                      required=True, default='hospital', states=READONLY_STATES)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                       string='From Hospital', default=lambda self: self.env.user.default_operating_unit_id.id,
-                                       domain=[('type', '=', 'hospital')])
+                                       string='From Hospital', default=lambda self: self.env.user.default_operating_unit_id.id)
     to_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                     string='To Hospital', domain=[('type', '=', 'hospital')])
-    from_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                     string='From Health center', default=lambda self: self.env.user.default_operating_unit_id.id,
-                                     domain=[('type', '=', 'center')])
-    to_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                   string='To Health center', domain=[('type', '=', 'center')])
+                                     string='To Hospital')
+    # from_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
+    #                                  string='From Health center', default=lambda self: self.env.user.default_operating_unit_id.id,
+    #                                  domain=[('type', '=', 'center')])
+    # to_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
+    #                                string='To Health center', domain=[('type', '=', 'center')])
     diseas_id = fields.Many2one('hms.diseases', 'Disease', states=READONLY_STATES)
     medical_history = fields.Text(related='patient_id.medical_history',
                                   string="Past Medical History", readonly=True)
@@ -125,6 +126,13 @@ class Referral(models.Model):
     requested_date = fields.Datetime('Requested Date', states=READONLY_STATES)
     accept_date = fields.Datetime('Accept/Reject Date', states=READONLY_STATES)
     waiting_duration = fields.Float('Wait Time', readonly=True)
+
+    @api.onchange('from_hospital_id')
+    def onchange_from_hospital_id(self):
+        """to get just all operation unit expect from hos"""
+        domain = [('id', 'in', self.env['operating.unit'].search([('id', '!=', self.from_hospital_id.id)]).ids)]
+        domain = {'domain': {'to_hospital_id': domain}}
+        return domain
 
     def is_accept_user(self):
         for rec in self:
