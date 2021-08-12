@@ -201,62 +201,62 @@
             </xpath>
         </field>
     </record>
-    <record id="view_hms_referral_form_center_inherit" model="ir.ui.view">
-        <field name="name">view.hms.referral.form.center.inherit</field>
-        <field name="model">hms.referral</field>
-        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>
-        <field name="mode">primary</field>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='from_hospital_id']" position="replace">
-                <field name="from_center_id" required="1"/>
-            </xpath>
-            <xpath expr="//field[@name='to_hospital_id']" position="replace">
-                <field name="to_center_id" required="1"/>
-            </xpath>
-        </field>
-    </record>
-    <record id="view_hms_referral_tree_center_inherit" model="ir.ui.view">
-        <field name="name">view.hms.referral.tree.center.inherit</field>
-        <field name="model">hms.referral</field>
-        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree"/>
-        <field name="mode">primary</field>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='from_hospital_id']" position="replace">
-                <field name="from_center_id"/>
-            </xpath>
-            <xpath expr="//field[@name='to_hospital_id']" position="replace">
-                <field name="to_center_id"/>
-            </xpath>
-        </field>
-    </record>
-    <record id="view_hms_referral_form_receive_center_inherit" model="ir.ui.view">
-        <field name="name">view.hms.referral.receive.form.center.inherit</field>
-        <field name="model">hms.referral</field>
-        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form_inherit"/>
-        <field name="mode">primary</field>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='from_hospital_id']" position="replace">
-                <field name="from_center_id" required="1"/>
-            </xpath>
-            <xpath expr="//field[@name='to_hospital_id']" position="replace">
-                <field name="to_center_id" required="1"/>
-            </xpath>
-        </field>
-    </record>
-    <record id="view_hms_referral_tree_receive_center_inherit" model="ir.ui.view">
-        <field name="name">view.hms.referral.receive.tree.center.inherit</field>
-        <field name="model">hms.referral</field>
-        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree_inherit"/>
-        <field name="mode">primary</field>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='from_hospital_id']" position="replace">
-                <field name="from_center_id"/>
-            </xpath>
-            <xpath expr="//field[@name='to_hospital_id']" position="replace">
-                <field name="to_center_id"/>
-            </xpath>
-        </field>
-    </record>
+<!--    <record id="view_hms_referral_form_center_inherit" model="ir.ui.view">-->
+<!--        <field name="name">view.hms.referral.form.center.inherit</field>-->
+<!--        <field name="model">hms.referral</field>-->
+<!--        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>-->
+<!--        <field name="mode">primary</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='from_hospital_id']" position="replace">-->
+<!--                <field name="from_center_id" required="1"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='to_hospital_id']" position="replace">-->
+<!--                <field name="to_center_id" required="1"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="view_hms_referral_tree_center_inherit" model="ir.ui.view">-->
+<!--        <field name="name">view.hms.referral.tree.center.inherit</field>-->
+<!--        <field name="model">hms.referral</field>-->
+<!--        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree"/>-->
+<!--        <field name="mode">primary</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='from_hospital_id']" position="replace">-->
+<!--                <field name="from_center_id"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='to_hospital_id']" position="replace">-->
+<!--                <field name="to_center_id"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="view_hms_referral_form_receive_center_inherit" model="ir.ui.view">-->
+<!--        <field name="name">view.hms.referral.receive.form.center.inherit</field>-->
+<!--        <field name="model">hms.referral</field>-->
+<!--        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form_inherit"/>-->
+<!--        <field name="mode">primary</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='from_hospital_id']" position="replace">-->
+<!--                <field name="from_center_id" required="1"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='to_hospital_id']" position="replace">-->
+<!--                <field name="to_center_id" required="1"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+<!--    <record id="view_hms_referral_tree_receive_center_inherit" model="ir.ui.view">-->
+<!--        <field name="name">view.hms.referral.receive.tree.center.inherit</field>-->
+<!--        <field name="model">hms.referral</field>-->
+<!--        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_tree_inherit"/>-->
+<!--        <field name="mode">primary</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='from_hospital_id']" position="replace">-->
+<!--                <field name="from_center_id"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='to_hospital_id']" position="replace">-->
+<!--                <field name="to_center_id"/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
     <record id="view_hms_referral_search" model="ir.ui.view">
         <field name="name">Referral Search</field>
         <field name="model">hms.referral</field>
