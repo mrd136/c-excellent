@@ -12,8 +12,8 @@
             <xpath expr="//field[@name='cabin_id']" position="after">
                 <field name="is_referral" attrs="{'invisible': [('state','!=','in_consultation')]}"
                        string="Referral"/>
-                <field name="referral_type" attrs="{'invisible': [('state','!=','in_consultation')]}"
-                       string="Type Of Referral"/>
+<!--                <field name="referral_type" attrs="{'invisible': [('state','!=','in_consultation')]}"-->
+<!--                       string="Type Of Referral"/>-->
             </xpath>
         </field>
     </record>
