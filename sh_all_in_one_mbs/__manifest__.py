@@ -84,7 +84,7 @@ debit note barcode mobile scanner
         "sh_invoice_barcode_mobile/views/res_config_settings_views.xml",
         "sh_invoice_barcode_mobile/views/account_view.xml",                
          
-        "sh_bom_barcode_mobile/views/res_config_settings_views.xml",
+     #   "sh_bom_barcode_mobile/views/res_config_settings_views.xml",
       #  "sh_bom_barcode_mobile/views/mrp_view.xml",
            
                
