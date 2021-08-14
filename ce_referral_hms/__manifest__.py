@@ -5,7 +5,7 @@
     'description': """""",
     'version': '1.0.55',
     'category': 'Medical',
-    'author': 'connection excellent',
+    'author': 'Connection Excellent',
     'support': 'Info@c-excellent.com',
     'website': 'http://c-excellent.com',
     'license': 'OPL-1',
