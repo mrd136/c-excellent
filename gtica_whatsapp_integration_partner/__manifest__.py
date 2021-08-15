@@ -15,6 +15,7 @@
     'depends': [
         'gtica_whatsapp_template',
         'base',
+        'acs_hms',
     ],
     'data': [
         'views/view_integration_partner.xml',
