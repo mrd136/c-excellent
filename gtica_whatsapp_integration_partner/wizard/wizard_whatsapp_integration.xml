@@ -13,7 +13,20 @@
                         <field name="partner_id" string="Recipient" options="{'no_create': True, 'no_create_edit':True}"/>
                         <field name="mobile" string="Number Whatsapp" attrs="{'readonly':True}" />
                         <field name="default_messege_id" string="Quick replies"/>
-                        <field name="message" strign="Message" />
+
+                <group>
+                    <field name="message_type" widget="radio" options="{'horizontal': true}"/>
+                </group>
+                <group attrs="{'invisible' : [('message_type', '!=', 'url_link')]}">
+                    <field name="title" attrs="{'required' : [('message_type', '=', 'url_link')]}"/>
+                    <field name="link" widget="url" attrs="{'required' : [('message_type', '=', 'url_link')]}"/>
+                </group>
+                <group>
+                    <field name="message" attrs="{'required' : [('message_type', 'in', ('text', 'url_link'))]}"/>
+                </group>
+                       <!--  <field name="message" strign="Message" />  -->
+
+                         
                     </group>
                 </sheet>
                 <footer>

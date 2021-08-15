@@ -19,6 +19,13 @@ class SendWhatsapp(models.TransientModel):
 
     name = fields.Char(related='partner_id.name')
     mobile = fields.Char(related='partner_id.mobile',help="use country mobile code without the + sign")
+    title = fields.Char()
+    link = fields.Char("Link URL")
+
+    message_type = fields.Selection([
+        ('text', 'Text'),
+        ('media', 'Media'),
+        ('url_link', 'Url Link')], default='text')
 
     message = fields.Text(string="Message", required=True)
     format_visible_context = fields.Boolean(default=False)
