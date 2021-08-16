@@ -15,10 +15,13 @@ class SendWhatsapp(models.TransientModel):
     _description = 'Send Whatsapp'
 
     partner_id = fields.Many2one('res.partner', domain="[('parent_id','=',partner_id)]")
+    patient_id = fields.Many2one('hms.patient', domain="[('patient_id','=',patient_id)]")
+    
     default_messege_id = fields.Many2one('whatsapp.template', domain="[('category', '=', 'partner')]")
 
-    name = fields.Char(related='partner_id.name')
-    mobile = fields.Char(related='partner_id.mobile',help="use country mobile code without the + sign")
+    name = fields.Char(related='patient_id.name')
+    mobile = fields.Char(related='patient_id.mobile',help="use country mobile code without the + sign")
+    #print(str(mobile))
     title = fields.Char()
     link = fields.Char("Link URL")
 
@@ -34,22 +37,22 @@ class SendWhatsapp(models.TransientModel):
     @api.onchange('default_messege_id')
     def _onchange_message(self):
 
-        partner_record = self.env['res.partner'].browse(self._context.get('active_id'))
+        patient_record = self.env['hms.patient'].browse(self._context.get('active_id'))
         message = self.default_messege_id.template_messege
         incluid_name = str(message).format(
-            name=partner_record.name,
-            sales_person=partner_record.user_id.name,
-            company=partner_record.company_id.name,
-            website=partner_record.company_id.website)
+            name=patient_record.name,
+            sales_person=patient_record.user_id.name,
+            company=patient_record.company_id.name,
+            website=patient_record.company_id.website)
 
         if message:
             self.message = incluid_name
 
     @api.model
-    @api.onchange('partner_id')
+    @api.onchange('patient_id')
     def _onchange_partner_id(self):
         self.format_visible_context = self.env.context.get('format_invisible', False)
-        self.mobile = self.partner_id.mobile
+        self.mobile = self.patient_id.mobile
 
     @api.model
     def close_dialog(self):
@@ -59,8 +62,10 @@ class SendWhatsapp(models.TransientModel):
     def send_dialog(self, whatsapp_url):
         action = {'type': 'ir.actions.act_url', 'url': whatsapp_url, 'target': 'new', 'res_id': self.id}
 
+
     def sending_reset(self):
-        partner_id = self.env['res.partner'].browse(self._context.get('active_id'))
+       # partner_id = self.env['res.partner'].browse(self._context.get('active_id'))
+        patient_id = self.env['hms.patient'].browse(self._context.get('active_id'))
         partner_id.update({
             'send_whatsapp': 'without_sending',
             })
@@ -71,7 +76,8 @@ class SendWhatsapp(models.TransientModel):
         if not self.mobile or not self.message:
             raise ValidationError(_("You must send your WhatsApp message before"))
 
-        partner_id = self.env['res.partner'].browse(self._context.get('active_id'))
+       # partner_id = self.env['res.partner'].browse(self._context.get('active_id'))
+        patient_id = self.env['hms.patient'].browse(self._context.get('active_id'))
         message_fomat = '<p class="text-info">Successful Whatsapp</p><p><b>Message sent:</b></p>%s' % self.message
         partner_id._action_whatsapp_confirmed(message_fomat.replace('\n', '<br>'))
         partner_id.update({
@@ -84,10 +90,11 @@ class SendWhatsapp(models.TransientModel):
         if not self.mobile or not self.message:
             raise ValidationError(_("You must send your WhatsApp message before"))
 
-        partner_id = self.env['res.partner'].browse(self._context.get('active_id'))
+        #partner_id = self.env['res.partner'].browse(self._context.get('active_id'))
+        patient_id = self.env['hms.patient'].browse(self._context.get('active_id'))
         message_fomat = '<p class="text-danger">Error Whatsapp</p><p>The recipient may not have whatsapp / verify the country code / other reasons</p>'
-        partner_id._action_whatsapp_confirmed(message_fomat.replace('\n', '<br>'))
-        partner_id.update({
+        patient_id._action_whatsapp_confirmed(message_fomat.replace('\n', '<br>'))
+        patient_id.update({
             'send_whatsapp': 'not_sent',
             })
         self.close_dialog()

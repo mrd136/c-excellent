@@ -20,7 +20,7 @@ class ResPartner(models.Model):
                 'target': 'new',
                 'view_mode': 'form',
                 'view_type': 'form',
-                'context': {'default_partner_id': self.id, 'format_invisible': True},
+                'context': {'default_patient_id': self.id, 'format_invisible': True},
                 }
 
     def _action_whatsapp_confirmed(self, message=None):
