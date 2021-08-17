@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-from . import referral_process
+from . import reject_referral
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
