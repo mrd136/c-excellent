@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Referral -->
+    <record id="view_hms_multi_referral_tree" model="ir.ui.view">
+        <field name="name">hms.multi.referral.tree</field>
+        <field name="model">hms.multi.referral</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state=='draft'" decoration-muted="state=='cancel'" name="multi_referral_tree">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="date"/>
+                <field name="department_id" groups="acs_hms.group_allow_multi_department" optional="hide"/>
+                <field name="physician_id"/>
+                <field name="create_uid" optional="hide"/>
+                <field name="from_hospital_id"/>
+                <field name="to_hospital_ids" widget="many2many_tags"/>
+                <field name="state" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hms_multi_referral_form" model="ir.ui.view">
+        <field name="name">hms.multi.referral.form</field>
+        <field name="model">hms.multi.referral</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_requested" string="Request" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
+                    <button name="action_cancel" string="Cancel" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,waiting,accept,done"/>
+                </header>
+                <sheet>
+                    <field name="image_128" widget='image' class="oe_avatar"/>
+                    <div class="ooe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
+                            <field name="physician_id" required="1"/>
+                            <field name="urgency"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="service_id" required="1"/>
+                            <field name="from_hospital_id"/>
+                            <field name="to_hospital_ids" widget="many2many_tags" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="info" string="General Information" groups="acs_hms.group_hms_nurse">
+                            <separator string="History of Present Illness"/>
+                            <field name="present_illness"
+                                   placeholder="History of Present Illness..."/>
+                            <separator string="Past History"/>
+                            <field name="past_history"
+                                   placeholder="Past History..."/>
+                            <separator string="Referral Reason"/>
+                            <field name="referral_reason" placeholder="Referral Reason..." />
+                        </page>
+                        <page name="clinical_ass" string="Clinical Assesment" groups="acs_hms.group_hms_nurse">
+                            <separator string="Laboratory"/>
+                            <field name="lab_report" placeholder="Laboratory Report..."/>
+                            <separator string="Radiological"/>
+                            <field name="radiological_report" placeholder="Radiological Report..."/>
+                        </page>
+                        <page name="advice" string="D/D &amp; Advice" groups="acs_hms.group_hms_jr_doctor,acs_hms.group_acs_hms_appointment_user">
+                            <separator string="Differential Diagnosis"/>
+                            <field name="differencial_diagnosis" placeholder="Differential Diagnosis..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hospital_multi_referral" model="ir.actions.act_window">
+        <field name="name">Multi Referral</field>
+        <field name="res_model">hms.multi.referral</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('from_hospital_id.user_ids', '=', uid)]</field>
+<!--        <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record Found
+            </p>
+            <p>
+                Click to add an Referral.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_multi_referral" name="Multi Referral" sequence="4" parent="menu_hospital_referral" action="action_hospital_multi_referral"/>
+</odoo>

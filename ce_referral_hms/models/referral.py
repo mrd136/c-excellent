@@ -47,7 +47,8 @@ class Referral(models.Model):
                     age = str(delta.years) + _(" Year")
             rec.age = age
 
-    READONLY_STATES = {'reject': [('readonly', True)],'accept': [('readonly', True)], 'waiting': [('readonly', True)], 'requested': [('readonly', True)],
+    READONLY_STATES = {'reject': [('readonly', True)], 'accept': [('readonly', True)], 'waiting': [('readonly', True)],
+                       'requested': [('readonly', True)],
                        'cancel': [('readonly', True)], 'done': [('readonly', True)]}
 
     name = fields.Char(string='Referral Id', copy=False, tracking=True, states=READONLY_STATES)
@@ -60,7 +61,7 @@ class Referral(models.Model):
                                     domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
                                     states=READONLY_STATES)
     service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True,
-                                    states=READONLY_STATES)
+                                 states=READONLY_STATES)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, states=READONLY_STATES, tracking=True)
     appointment_id = fields.Many2one("hms.appointment", 'Appointment', states=READONLY_STATES)
     weight = fields.Float(string="Weight")
@@ -104,7 +105,8 @@ class Referral(models.Model):
                                       ('specialty', 'To Specialty Hospital')], string='Referral Type',
                                      required=True, default='hospital', states=READONLY_STATES)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-                                       string='From Hospital', default=lambda self: self.env.user.default_operating_unit_id.id)
+                                       string='From Hospital',
+                                       default=lambda self: self.env.user.default_operating_unit_id.id)
     to_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                      string='To Hospital')
     diseas_id = fields.Many2one('hms.diseases', 'Disease', states=READONLY_STATES)
@@ -122,6 +124,7 @@ class Referral(models.Model):
     arrival_date = fields.Datetime('Patient Arrival Date', states=READONLY_STATES)
     waiting_duration = fields.Float('Wait Time', readonly=True)
     arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
+    source_id = fields.Many2one('hms.multi.referral', 'Source')
 
     @api.onchange('referral_type')
     def onchange_referral_type(self):
@@ -134,8 +137,9 @@ class Referral(models.Model):
                 raise UserError(_('You can not referral from Specialty Hospital To Specialty Hospital'))
             self.to_hospital_id = self.env['operating.unit'].search([('specialty_hospital', '=', True)]).id
         elif self.referral_type == 'hospital':
-            domain = [('id', 'in', self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', False),
-                                                                      ('id', '!=', self.from_hospital_id.id)]).ids)]
+            domain = [('id', 'in',
+                       self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', False),
+                                                          ('id', '!=', self.from_hospital_id.id)]).ids)]
             domain = {'domain': {'to_hospital_id': domain}}
             return domain
 
@@ -171,7 +175,7 @@ class Referral(models.Model):
         self.state = 'requested'
 
     def action_waiting(self):
-        if self.service_id.is_emergency or self.from_hospital_id.specialty_hospital or self.referral_type == 'center':
+        if self.service_id.is_emergency or self.from_hospital_id.specialty_hospital:
             self.state = 'waiting_ar'
         else:
             self.state = 'waiting'
@@ -182,7 +186,7 @@ class Referral(models.Model):
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
         h, m = divmod(m, 60)
-        self.arrival_duration = float(('%0*d')%(2, h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.arrival_duration = float(('%0*d') % (2, h) + '.' + ('%0*d') % (2, m * 1.677966102))
         self.arrival_date = datetime.now()
 
     def action_accept(self):
@@ -190,7 +194,7 @@ class Referral(models.Model):
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
         h, m = divmod(m, 60)
-        self.waiting_duration = float(('%0*d')%(2,h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.waiting_duration = float(('%0*d') % (2, h) + '.' + ('%0*d') % (2, m * 1.677966102))
         self.accept_date = datetime.now()
 
     def action_reject(self):
@@ -198,7 +202,7 @@ class Referral(models.Model):
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
         h, m = divmod(m, 60)
-        self.waiting_duration = float(('%0*d')%(2,h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.waiting_duration = float(('%0*d') % (2, h) + '.' + ('%0*d') % (2, m * 1.677966102))
         self.accept_date = datetime.now()
 
     def action_done(self):
@@ -226,4 +230,68 @@ class Referral(models.Model):
                 raise UserError(_('You can not delete record in done state'))
         return super(Referral, self).unlink()
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+class MultiReferral(models.Model):
+    # _inherit = "hms.referral"
+    _name = 'hms.multi.referral'
+    _inherit = ['mail.thread', 'mail.activity.mixin', 'acs.hms.mixin']
+
+    name = fields.Char(string='Multi Referral Id', copy=False, tracking=True)
+    date = fields.Datetime(string='Date', default=fields.Datetime.now, tracking=True)
+    patient_id = fields.Many2one('hms.patient', ondelete='restrict', string='Patient',
+                                 required=True, index=True, help='Patient Name')
+    image_128 = fields.Binary(related='patient_id.image_128', string='Image', readonly=True)
+    physician_id = fields.Many2one('hms.physician', ondelete='restrict', string='Physician',
+                                   index=True, help='Physician\'s Name', tracking=True)
+    department_id = fields.Many2one('hr.department', ondelete='restrict',
+                                    domain=[('patient_depatment', '=', True)], string='Department', tracking=True)
+    service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True)
+    from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict',
+                                       string='From Hospital',
+                                       default=lambda self: self.env.user.default_operating_unit_id.id)
+    to_hospital_ids = fields.Many2many('operating.unit', ondelete='restrict', string='To Hospital')
+    diseas_id = fields.Many2one('hms.diseases', 'Disease')
+    differencial_diagnosis = fields.Text(string="differencial_diagnosis")
+    present_illness = fields.Text(string="present_illness")
+    lab_report = fields.Text(string='Lab Report', help="Details of the lab report.")
+    radiological_report = fields.Text(string='Radiological Report', help="Details of the Radiological Report")
+    past_history = fields.Text(string='Past History', help="Past history of any diseases.")
+    referral_ids = fields.One2many('hms.referral', 'source_id', string='Diseases', readonly=True)
+    state = fields.Selection([('draft', 'Draft'), ('requested', 'Requested'), ('done', 'Done'), ('cancel', 'Cancelled')]
+                             , string=' State', default='draft', required=True, copy=False, tracking=True)
+    urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Urgency Level',
+                               default='1')
+    referral_reason = fields.Text(string="Referral Reason")
+
+    @api.model
+    def create(self, values):
+        if not values.get('name'):
+            values['name'] = self.env['ir.sequence'].next_by_code('hms.multi.referral')
+        return super(MultiReferral, self).create(values)
+
+    def action_requested(self):
+        self.state = 'requested'
+        self.action_create_referral()
+
+    def action_cancel(self):
+        self.state = 'cancel'
+
+    def action_create_referral(self):
+        for unit in self.to_hospital_ids:
+            dic = {'to_hospital_id': unit.id,
+                   'patient_id': self.patient_id.id,
+                   'state': 'waiting',
+                   'physician_id': self.physician_id.id,
+                   'urgency': self.urgency,
+                   'department_id': self.department_id.id,
+                   'radiological_report': self.radiological_report,
+                   'lab_report': self.lab_report,
+                   'present_illness': self.present_illness,
+                   'differencial_diagnosis': self.differencial_diagnosis,
+                   'service_id': self.service_id.id,
+                   'from_hospital_id': self.from_hospital_id.id,
+                   'diseas_id': self.diseas_id.id,
+                   'past_history': self.past_history,
+                   'source_id': self.id
+                   }
+            self.env['hms.referral'].create(dic)

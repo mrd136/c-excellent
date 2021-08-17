@@ -8,5 +8,12 @@
             <field name="padding">4</field>
             <field name="company_id" eval="False"/>
         </record>
+        <record id="seq_hms_multi_referral" model="ir.sequence">
+            <field name="name">Multi Referral</field>
+            <field name="code">hms.multi.referral</field>
+            <field name="prefix">M-RE/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
     </data>
 </odoo>

@@ -4,3 +4,6 @@ access_hms_referral_manager,ACS referral,model_hms_referral,acs_hms.group_hms_ma
 ,,,,,,,
 access_referral_service,ACS service referral,model_hms_referral_service,group_hms_referral,1,1,1,1
 access_hms_referral_service,ACS service referral,model_hms_referral_service,acs_hms.group_hms_manager,1,1,1,0
+,,,,,,,
+access_referral_multi,ACS multi referral,model_hms_multi_referral,group_hms_referral,1,1,1,1
+access_hms_referral_multi,ACS multi referral,model_hms_multi_referral,acs_hms.group_hms_manager,1,1,1,0
