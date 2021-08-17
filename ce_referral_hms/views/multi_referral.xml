@@ -71,6 +71,16 @@
                             <separator string="Differential Diagnosis"/>
                             <field name="differencial_diagnosis" placeholder="Differential Diagnosis..."/>
                         </page>
+                        <page name="referral" string="Referral Request">
+                            <field name="referral_ids" readonly="1">
+                                <tree string="Referral Request">
+                                    <field name="name"/>
+                                    <field name="from_hospital_id"/>
+                                    <field name="to_hospital_id"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
                     </notebook>
                 </sheet>
                 <div class="oe_chatter">
@@ -87,7 +97,7 @@
         <field name="res_model">hms.multi.referral</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('from_hospital_id.user_ids', '=', uid)]</field>
-<!--        <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>-->
+        <!--        <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>-->
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No Record Found
