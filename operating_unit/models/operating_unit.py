@@ -24,7 +24,11 @@ class OperatingUnit(models.Model):
     user_ids = fields.Many2many("res.users", "operating_unit_users_rel", "operating_unit_id", "user_id",
                                 "Users Allowed")
     specialty_hospital = fields.Boolean('Is Specialty?')
-    # unit_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')])
+
+    @api.onchange('specialty_hospital')
+    def onchange_unit_type(self):
+        """to get just all operation unit expect from hos"""
+        self.type = 'hospital'
 
     _sql_constraints = [
         (
