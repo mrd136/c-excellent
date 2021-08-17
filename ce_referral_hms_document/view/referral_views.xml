@@ -7,7 +7,7 @@
         <field name="model">hms.referral</field>
         <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//sheet/div[1]" position="before">
+            <xpath expr="//sheet/field[@name='image_128']" position="before">
                 <div class="oe_button_box" name="button_box">
                     <button class="oe_stat_button" type="object"
                             name="action_view_attachments" icon="fa-files-o">

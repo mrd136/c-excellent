@@ -82,17 +82,15 @@ class Referral(models.Model):
     radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES,
                                       help="Details of the Radiological Report")
     past_history = fields.Text(string='Past History', states=READONLY_STATES, help="Past history of any diseases.")
-    urgency = fields.Selection([
-        ('a', 'Normal'),
-        ('b', 'Urgent'),
-        ('c', 'Medical Emergency'),
-    ], string='Urgency Level', default='a',
-        states=READONLY_STATES)
+    urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Urgency Level',
+                               default='1', states=READONLY_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('requested', 'Requested'),
         ('waiting', 'Waiting For Accept'),
+        ('waiting_ar', 'Waiting For Patient Arrival'),
         ('accept', 'Accepted'),
+        ('arrival', 'Confirmation of patient arrival'),
         ('reject', 'Rejected'),
         ('done', 'Done'),
         ('cancel', 'Cancelled'),
@@ -102,17 +100,13 @@ class Referral(models.Model):
                       help="Computed patient age at the moment of the evaluation")
     company_id = fields.Many2one('res.company', ondelete='restrict', states=READONLY_STATES,
                                  string='Hospital', default=lambda self: self.env.user.company_id.id)
-    referral_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], string='Referral Type',
+    referral_type = fields.Selection([('center', 'To Health center'), ('hospital', 'To General Hospital'),
+                                      ('specialty', 'To Specialty Hospital')], string='Referral Type',
                                      required=True, default='hospital', states=READONLY_STATES)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                        string='From Hospital', default=lambda self: self.env.user.default_operating_unit_id.id)
     to_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
                                      string='To Hospital')
-    # from_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-    #                                  string='From Health center', default=lambda self: self.env.user.default_operating_unit_id.id,
-    #                                  domain=[('type', '=', 'center')])
-    # to_center_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
-    #                                string='To Health center', domain=[('type', '=', 'center')])
     diseas_id = fields.Many2one('hms.diseases', 'Disease', states=READONLY_STATES)
     medical_history = fields.Text(related='patient_id.medical_history',
                                   string="Past Medical History", readonly=True)
@@ -125,14 +119,25 @@ class Referral(models.Model):
     current_is_accept_user = fields.Boolean(compute='is_accept_user', string='Accept User')
     requested_date = fields.Datetime('Requested Date', states=READONLY_STATES)
     accept_date = fields.Datetime('Accept/Reject Date', states=READONLY_STATES)
+    arrival_date = fields.Datetime('Patient Arrival Date', states=READONLY_STATES)
     waiting_duration = fields.Float('Wait Time', readonly=True)
+    arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
 
-    @api.onchange('from_hospital_id')
-    def onchange_from_hospital_id(self):
+    @api.onchange('referral_type')
+    def onchange_referral_type(self):
         """to get just all operation unit expect from hos"""
-        domain = [('id', 'in', self.env['operating.unit'].search([('id', '!=', self.from_hospital_id.id)]).ids)]
-        domain = {'domain': {'to_hospital_id': domain}}
-        return domain
+        if self.referral_type == 'center':
+            self.to_hospital_id = self.env['operating.unit'].search([('type', '=', 'center'),
+                                                                     ('parent_id', '=', self.from_hospital_id.id)]).id
+        elif self.referral_type == 'specialty':
+            if self.from_hospital_id.specialty_hospital:
+                raise UserError(_('You can not referral from Specialty Hospital To Specialty Hospital'))
+            self.to_hospital_id = self.env['operating.unit'].search([('specialty_hospital', '=', True)]).id
+        elif self.referral_type == 'hospital':
+            domain = [('id', 'in', self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', False),
+                                                                      ('id', '!=', self.from_hospital_id.id)]).ids)]
+            domain = {'domain': {'to_hospital_id': domain}}
+            return domain
 
     def is_accept_user(self):
         for rec in self:
@@ -141,33 +146,44 @@ class Referral(models.Model):
             if user_id:
                 rec.current_is_accept_user = True
 
-    def action_create_appointment(self):
-        dic = {
-            'diseas_id': self.diseas_id.id,
-            'state': 'draft',
-            'patient_id': self.patient_id.id,
-            'urgency': self.urgency,
-            'past_history': self.past_history,
-            'radiological_report': self.radiological_report,
-            'lab_report': self.lab_report,
-            'present_illness': self.present_illness,
-            'differencial_diagnosis': self.differencial_diagnosis,
-            'spo2': self.spo2,
-            'bp': self.bp,
-            'rr': self.rr,
-            'hr': self.hr,
-            'temp': self.temp,
-            'height': self.height,
-            'weight': self.weight,
-        }
-        self.env['hms.appointment'].create(dic)
+    # def action_create_appointment(self):
+    #     dic = {
+    #         'diseas_id': self.diseas_id.id,
+    #         'state': 'draft',
+    #         'patient_id': self.patient_id.id,
+    #         'urgency': self.urgency,
+    #         'past_history': self.past_history,
+    #         'radiological_report': self.radiological_report,
+    #         'lab_report': self.lab_report,
+    #         'present_illness': self.present_illness,
+    #         'differencial_diagnosis': self.differencial_diagnosis,
+    #         'spo2': self.spo2,
+    #         'bp': self.bp,
+    #         'rr': self.rr,
+    #         'hr': self.hr,
+    #         'temp': self.temp,
+    #         'height': self.height,
+    #         'weight': self.weight,
+    #     }
+    #     self.env['hms.appointment'].create(dic)
 
     def action_requested(self):
         self.state = 'requested'
 
     def action_waiting(self):
-        self.state = 'waiting'
+        if self.service_id.is_emergency or self.from_hospital_id.specialty_hospital or self.referral_type == 'center':
+            self.state = 'waiting_ar'
+        else:
+            self.state = 'waiting'
         self.requested_date = datetime.now()
+
+    def action_arrival(self):
+        self.state = 'arrival'
+        datetime_diff = datetime.now() - self.requested_date
+        m, s = divmod(datetime_diff.total_seconds(), 60)
+        h, m = divmod(m, 60)
+        self.arrival_duration = float(('%0*d')%(2, h) + '.' + ('%0*d')%(2,m*1.677966102))
+        self.arrival_date = datetime.now()
 
     def action_accept(self):
         self.state = 'accept'
@@ -187,7 +203,7 @@ class Referral(models.Model):
 
     def action_done(self):
         self.state = 'done'
-        self.action_create_appointment()
+        # self.action_create_appointment()
 
     def action_cancel(self):
         self.state = 'cancel'

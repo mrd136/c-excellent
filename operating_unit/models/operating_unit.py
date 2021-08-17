@@ -18,16 +18,13 @@ class OperatingUnit(models.Model):
         required=True,
         readonly=True,
         default=lambda self: self.env.company)
-    type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')])
+    type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')], readonly=False)
     parent_id = fields.Many2one('operating.unit', 'Parent', domain=[('type', '=', 'hospital')])
     partner_id = fields.Many2one("res.partner", "Partner", required=True)
-    user_ids = fields.Many2many(
-        "res.users",
-        "operating_unit_users_rel",
-        "operating_unit_id",
-        "user_id",
-        "Users Allowed",
-    )
+    user_ids = fields.Many2many("res.users", "operating_unit_users_rel", "operating_unit_id", "user_id",
+                                "Users Allowed")
+    specialty_hospital = fields.Boolean('Is Specialty?')
+    # unit_type = fields.Selection([('center', 'Health center'), ('hospital', 'Hospital')])
 
     _sql_constraints = [
         (

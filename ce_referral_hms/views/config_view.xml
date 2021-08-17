@@ -8,6 +8,7 @@
             <tree>
                 <field name="name"/>
                 <field name="code"/>
+                <field name="is_obstetrics"/>
             </tree>
         </field>
     </record>
@@ -20,6 +21,8 @@
                     <group>
                         <field name="name"/>
                         <field name="code"/>
+                        <field name="is_emergency"/>
+                        <field name="is_obstetrics"/>
                     </group>
                 </sheet>
             </form>
@@ -32,4 +35,24 @@
     </record>
     <menuitem id="menu_referral_config" name="Configuration" sequence="3" parent="ce_referral_hms.menu_referral_parent"/>
     <menuitem id="menu_referral_service" name="Service" sequence="1" parent="menu_referral_config" action="action_referral_service"/>
+
+    <record id="action_hospital_health_unit_tree" model="ir.actions.act_window">
+        <field name="name">Hospital/Health center</field>
+        <field name="res_model">operating.unit</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="domain">[('type', '=', 'hospital')]</field>-->
+<!--        <field name="context">{'default_type': 'hospital'}</field>-->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to start a new Hospital/Health center.
+            </p>
+        </field>
+    </record>
+    <menuitem
+            action="action_hospital_health_unit_tree"
+            id="menu_action_hospital_unit_tree"
+            parent="menu_referral_config"
+            sequence="2"
+            groups="operating_unit.group_multi_operating_unit"
+    />
 </odoo>

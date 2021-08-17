@@ -6,11 +6,11 @@
         <field name="arch" type="xml">
             <form string="Operating Unit">
                 <group name="main_group">
-                    <field name="name" />
-                    <field name="code" />
-                    <field name="active" />
-                    <field name="parent_id"/>
-                    <field name="type" readonly="1"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                    <field name="type"/>
+                    <field name="parent_id" attrs="{'required':[('type', '=', 'center')]}"/>
                     <field name="partner_id"/>
                     <field name="company_id" invisible="1" groups="base.group_multi_company" />
                 </group>
@@ -24,6 +24,7 @@
             <tree string="Operating Unit">
                 <field name="code"/>
                 <field name="name"/>
+                <field name="type"/>
                 <field name="parent_id"/>
             </tree>
         </field>
@@ -39,43 +40,43 @@
             </search>
         </field>
     </record>
-    <record id="action_hospital_unit_tree" model="ir.actions.act_window">
-        <field name="name">Hospital</field>
-        <field name="res_model">operating.unit</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('type', '=', 'hospital')]</field>
-        <field name="context">{'default_type': 'hospital'}</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Click to start a new Hospital.
-            </p>
-        </field>
-    </record>
-    <record id="action_center_unit_tree" model="ir.actions.act_window">
-        <field name="name">Health center</field>
-        <field name="res_model">operating.unit</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('type', '=', 'center')]</field>
-        <field name="context">{'default_type': 'center'}</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-                Click to start a new Health center.
-            </p>
-        </field>
-    </record>
+    <!--    <record id="action_hospital_unit_tree" model="ir.actions.act_window">-->
+    <!--        <field name="name">Hospital</field>-->
+    <!--        <field name="res_model">operating.unit</field>-->
+    <!--        <field name="view_mode">tree,form</field>-->
+    <!--        <field name="domain">[('type', '=', 'hospital')]</field>-->
+    <!--        <field name="context">{'default_type': 'hospital'}</field>-->
+    <!--        <field name="help" type="html">-->
+    <!--            <p class="oe_view_nocontent_create">-->
+    <!--                Click to start a new Hospital.-->
+    <!--            </p>-->
+    <!--        </field>-->
+    <!--    </record>-->
+    <!--    <record id="action_center_unit_tree" model="ir.actions.act_window">-->
+    <!--        <field name="name">Health center</field>-->
+    <!--        <field name="res_model">operating.unit</field>-->
+    <!--        <field name="view_mode">tree,form</field>-->
+    <!--        <field name="domain">[('type', '=', 'center')]</field>-->
+    <!--        <field name="context">{'default_type': 'center'}</field>-->
+    <!--        <field name="help" type="html">-->
+    <!--            <p class="oe_view_nocontent_create">-->
+    <!--                Click to start a new Health center.-->
+    <!--            </p>-->
+    <!--        </field>-->
+    <!--    </record>-->
 
-    <menuitem
-            action="action_hospital_unit_tree"
-            id="menu_action_hospital_unit_tree"
-            parent="base.menu_users"
-            sequence="4"
-            groups="operating_unit.group_multi_operating_unit"
-    />
-    <menuitem
-            action="action_center_unit_tree"
-            id="menu_action_center_unit_tree"
-            parent="base.menu_users"
-            sequence="5"
-            groups="operating_unit.group_multi_operating_unit"
-    />
+    <!--    <menuitem-->
+    <!--            action="action_hospital_unit_tree"-->
+    <!--            id="menu_action_hospital_unit_tree"-->
+    <!--            parent="base.menu_users"-->
+    <!--            sequence="4"-->
+    <!--            groups="operating_unit.group_multi_operating_unit"-->
+    <!--    />-->
+    <!--    <menuitem-->
+    <!--            action="action_center_unit_tree"-->
+    <!--            id="menu_action_center_unit_tree"-->
+    <!--            parent="base.menu_users"-->
+    <!--            sequence="5"-->
+    <!--            groups="operating_unit.group_multi_operating_unit"-->
+    <!--    />-->
 </odoo>
