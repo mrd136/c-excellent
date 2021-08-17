@@ -191,6 +191,9 @@ class Referral(models.Model):
 
     def action_accept(self):
         self.state = 'accept'
+        if self.source_id:
+            for referral in self.source_id.referral_ids.filtered(lambda v: v.id != self.id):
+                referral.action_cancel()
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
         h, m = divmod(m, 60)
