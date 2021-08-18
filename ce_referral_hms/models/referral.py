@@ -126,7 +126,7 @@ class Referral(models.Model):
     arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
     source_id = fields.Many2one('hms.multi.referral', 'Source')
 
-    @api.onchange('referral_type')
+    @api.onchange('from_hospital_id', 'referral_type')
     def onchange_referral_type(self):
         """to get just all operation unit expect from hos"""
         if self.referral_type == 'center':
@@ -269,6 +269,15 @@ class MultiReferral(models.Model):
     urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Urgency Level',
                                default='1')
     referral_reason = fields.Text(string="Referral Reason")
+
+    @api.onchange('from_hospital_id', 'referral_type')
+    def onchange_referral_type(self):
+        """to get just all operation unit expect from hos"""
+        domain = [('id', 'in',
+                   self.env['operating.unit'].search([('type', '=', 'hospital'),
+                                                      ('id', '!=', self.from_hospital_id.id)]).ids)]
+        domain = {'domain': {'to_hospital_ids': domain}}
+        return domain
 
     @api.model
     def create(self, values):

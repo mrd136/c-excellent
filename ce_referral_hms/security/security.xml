@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
+        <record model="ir.module.category" id="module_category_referral_management">
+            <field name="name">Referral Management</field>
+            <field name="description">Referral Management</field>
+            <field name="sequence">9</field>
+        </record>
         <record id="group_hms_referral" model="res.groups">
             <field name="name">Referral</field>
-            <field name="category_id" ref="acs_hms.module_category_hms"/>
+            <field name="category_id" ref="ce_referral_hms.module_category_referral_management"/>
             <field name="implied_ids" eval="[(4, ref('acs_hms.group_hms_nurse')),(4, ref('acs_hms.group_hms_receptionist'))]"/>
+        </record>
+        <record id="group_hms_receive_referral" model="res.groups">
+            <field name="name">Receive Referral</field>
+            <field name="category_id" ref="ce_referral_hms.module_category_referral_management"/>
+            <field name="implied_ids" eval="[(4, ref('ce_referral_hms.group_hms_referral'))]"/>
+        </record>
+        <record id="group_hms_coordinator_referral" model="res.groups">
+            <field name="name">Coordinator Referral</field>
+            <field name="category_id" ref="ce_referral_hms.module_category_referral_management"/>
+            <field name="implied_ids" eval="[(4, ref('ce_referral_hms.group_hms_referral'))]"/>
         </record>
     </data>
 </odoo>

@@ -108,5 +108,7 @@
         </field>
     </record>
 
-    <menuitem id="menu_multi_referral" name="Multi Referral" sequence="4" parent="menu_hospital_referral" action="action_hospital_multi_referral"/>
+    <menuitem id="menu_multi_referral" name="Multi Referral" sequence="4"
+              groups="ce_referral_hms.group_hms_coordinator_referral"
+              parent="menu_hospital_referral" action="action_hospital_multi_referral"/>
 </odoo>
