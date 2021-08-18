@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="code"/>
                     <field name="active"/>
-                    <field name="specialty_hospital"/>
+                    <field name="specialty_hospital" attrs="{'invisible':[('type', '=', 'center')]}"/>
                     <field name="type" force_save="1" attrs="{'readonly':[('specialty_hospital', '=', True)]}"/>
                     <field name="parent_id" attrs="{'invisible':[('specialty_hospital', '=', True)],'required':[('type', '=', 'center')]}"/>
                     <field name="partner_id"/>

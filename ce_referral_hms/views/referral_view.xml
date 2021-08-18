@@ -73,7 +73,7 @@
                     <button name="action_requested" string="Request" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
                     <button name="action_waiting" string="Send" type="object" attrs="{'invisible':['|',('state', '!=', 'requested')]}"/>
                     <button name="action_cancel" string="Cancel" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,waiting,accept,done"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,requested,waiting,accept,waiting_ar,done"/>
                 </header>
                 <sheet>
                     <field name="image_128" widget='image' class="oe_avatar"/>
@@ -196,7 +196,7 @@
                 <header>
                     <button name="action_accept" string="Accept" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
                     <button name="action_arrival" string="Confirm Patient Arrival" type="object" attrs="{'invisible':['|',('state', 'not in', ['accept', 'waiting_ar']), ('current_is_accept_user','!=', True)]}"/>
-                    <button name="action_done" string="Complete" type="object" attrs="{'invisible':['|',('state', '!=', 'accept'), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_done" string="Complete" type="object" attrs="{'invisible':['|',('state', '!=', 'arrival'), ('current_is_accept_user','!=', True)]}"/>
                     <button name="action_reject" string="Reject" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="waiting,accept,done"/>
                 </header>
@@ -256,7 +256,7 @@
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('to_hospital_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'done'])]</field>
+        <field name="domain">[('to_hospital_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'arrival','done'])]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

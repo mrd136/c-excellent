@@ -89,8 +89,8 @@ class Referral(models.Model):
         ('draft', 'Draft'),
         ('requested', 'Requested'),
         ('waiting', 'Waiting For Accept'),
-        ('waiting_ar', 'Waiting For Patient Arrival'),
         ('accept', 'Accepted'),
+        ('waiting_ar', 'Waiting For Patient Arrival'),
         ('arrival', 'Confirmation of patient arrival'),
         ('reject', 'Rejected'),
         ('done', 'Done'),
@@ -175,7 +175,11 @@ class Referral(models.Model):
         self.state = 'requested'
 
     def action_waiting(self):
-        if self.service_id.is_emergency or self.from_hospital_id.specialty_hospital:
+        if self.service_id.is_emergency:
+            self.state = 'waiting_ar'
+        elif self.service_id.is_obstetrics:
+            self.state = 'waiting'
+        elif self.from_hospital_id.specialty_hospital:
             self.state = 'waiting_ar'
         else:
             self.state = 'waiting'
