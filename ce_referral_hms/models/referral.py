@@ -308,6 +308,8 @@ class MultiReferral(models.Model):
                    'from_hospital_id': self.from_hospital_id.id,
                    'diseas_id': self.diseas_id.id,
                    'past_history': self.past_history,
-                   'source_id': self.id
+                   'source_id': self.id,
+                   'requested_date': datetime.now()
                    }
             self.env['hms.referral'].create(dic)
+
