@@ -1,0 +1,978 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ce_referral_hms
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-18 11:35+0000\n"
+"PO-Revision-Date: 2021-08-18 11:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ce_referral_hms
+#: code:addons/ce_referral_hms/models/referral.py:0
+#, python-format
+msgid " Days"
+msgstr "الايام"
+
+#. module: ce_referral_hms
+#: code:addons/ce_referral_hms/models/referral.py:0
+#, python-format
+msgid " Month "
+msgstr "الشهر"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__state
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__state
+msgid " State"
+msgstr "الحالة"
+
+#. module: ce_referral_hms
+#: code:addons/ce_referral_hms/models/referral.py:0
+#: code:addons/ce_referral_hms/models/referral.py:0
+#, python-format
+msgid " Year"
+msgstr "السنه"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form_inherit
+msgid "Accept"
+msgstr "موافق"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__current_is_accept_user
+msgid "Accept User"
+msgstr "مستخدم لديه صلاحية الموافقة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__accept_date
+msgid "Accept/Reject Date"
+msgstr "تاريخ الموافقة / الرفض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__accept
+msgid "Accepted"
+msgstr "تمة الموافقه"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_needaction
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_needaction
+msgid "Action Needed"
+msgstr "إجراء مطلوب"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_ids
+msgid "Activities"
+msgstr "الأنشطة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_exception_decoration
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_state
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__age
+msgid "Age"
+msgstr "العمر"
+
+#. module: ce_referral_hms
+#: model:ir.model,name:ce_referral_hms.model_hms_appointment
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__appointment_id
+msgid "Appointment"
+msgstr "الموعد"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_attachment_count
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__bmi_state
+msgid "BMI State"
+msgstr "حالة مؤشر كتلة الجسم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__bmi
+msgid "Body Mass Index"
+msgstr "كتلة الجسم"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__cancel
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_multi_referral__state__cancel
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__cancel
+msgid "Cancelled"
+msgstr "مغلي"
+
+#. module: ce_referral_hms
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_multi_referral
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_out_referral
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_receive_referral
+msgid "Click to add an Referral."
+msgstr "اضغط لاضافة طلب تحويل جديد"
+
+#. module: ce_referral_hms
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_health_unit_tree
+msgid "Click to start a new Hospital/Health center."
+msgstr "اضغط لاضافة مستشفي/مركز جديد جديد"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Clinical Assesment"
+msgstr "التقييم السريري"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__code
+msgid "Code"
+msgstr "الرمز"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form_inherit
+msgid "Complete"
+msgstr "مكتمل"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__age
+msgid "Computed patient age at the moment of the evaluation"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_referral_config
+msgid "Configuration"
+msgstr "الاعدادات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__confirm
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form_inherit
+msgid "Confirm Patient Arrival"
+msgstr "تاكيد وصول المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__arrival
+msgid "Confirmation of patient arrival"
+msgstr "تم تاكيد وصول المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__create_uid
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__create_uid
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__create_date
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__create_date
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "D/D & Advice"
+msgstr "التشخيص والارشادات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__date
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__date
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__department_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__department_id
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Department"
+msgstr "القسم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__radiological_report
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__radiological_report
+msgid "Details of the Radiological Report"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__lab_report
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__lab_report
+msgid "Details of the lab report."
+msgstr ""
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Differential Diagnosis"
+msgstr "التشخيص التفريقي"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Differential Diagnosis..."
+msgstr "التشخيص التفريقي..."
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Diseas History"
+msgstr "تاريخ المرض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__diseas_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__diseas_id
+msgid "Disease"
+msgstr "مرض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__referral_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__patient_diseases
+msgid "Diseases"
+msgstr "الأمراض"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Diseases History"
+msgstr "سجل الأمراض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__display_name
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__display_name
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Doctor's Referral"
+msgstr "الطبيب المحول"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__done
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_multi_referral__state__done
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__done
+msgid "Done"
+msgstr "المنتهية"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__draft
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_multi_referral__state__draft
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_follower_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_channel_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون (القنوات)"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_partner_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__from_hospital_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__from_hospital_id
+msgid "From Hospital"
+msgstr "إحالة من"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "General Information"
+msgstr "المعلومات العامة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Group By..."
+msgstr "تجميع حسب.."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__height
+msgid "Height"
+msgstr "الطول"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "History of Present Illness"
+msgstr "سجل الحالة المرضية الحالية"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "History of Present Illness..."
+msgstr "تاريخ الحالة المرضية الحالية"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__company_id
+msgid "Hospital"
+msgstr "المستشفى"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_hospital_referral
+msgid "Hospital Referral"
+msgstr "طلب الإحالات"
+
+#. module: ce_referral_hms
+#: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_health_unit_tree
+#: model:ir.ui.menu,name:ce_referral_hms.menu_action_hospital_unit_tree
+msgid "Hospital/Health center"
+msgstr "المستشفيات و المراكز"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_exception_icon
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_exception_icon
+msgid "Icon"
+msgstr "الأيقونة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__activity_exception_icon
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_needaction
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_unread
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_needaction
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "إذا كان محددًا، فهناك رسائل جديدة تحتاج لرؤيتها."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_has_error
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_has_sms_error
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_has_error
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا كان محددًا، فقد حدث خطأ في تسليم بعض الرسائل."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__image_128
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__image_128
+msgid "Image"
+msgstr "صورة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__in_consultation
+msgid "In consultation"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__is_emergency
+msgid "Is Emergency?"
+msgstr "خدمة طواري؟"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_is_follower
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__is_obstetrics
+msgid "Is Obstetrics and Gynecology ?!"
+msgstr "خدمة نساء وتوليد؟"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__lab_report
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__lab_report
+msgid "Lab Report"
+msgstr "تقرير المختبر"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Laboratory"
+msgstr "المختبر"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Laboratory Report..."
+msgstr "تقرير المختبر ..."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral____last_update
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral____last_update
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__write_uid
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__write_uid
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__write_date
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__write_date
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__bmi_state__low_weight
+msgid "Low Weight"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_main_attachment_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__patient_diseases
+msgid "Mark if the patient has died"
+msgstr "علامة إذا كان المريض قد مات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_has_error
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسائل"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: ce_referral_hms
+#: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_multi_referral
+#: model:ir.ui.menu,name:ce_referral_hms.menu_multi_referral
+msgid "Multi Referral"
+msgstr "الاحالات المتعددة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__name
+msgid "Multi Referral Id"
+msgstr "رقم الاحالات المتعددة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "My Referral"
+msgstr "الاحالات الخاصه بي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_date_deadline
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_summary
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_type_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: ce_referral_hms
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_multi_referral
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_out_referral
+#: model_terms:ir.actions.act_window,help:ce_referral_hms.action_hospital_receive_referral
+msgid "No Record Found"
+msgstr "لا يوجد سجل"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__bmi_state__normal
+msgid "Normal"
+msgstr "طبيعى"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Not Confirm"
+msgstr "انتظار الموافقه"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__notes
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Notes..."
+msgstr "ملاحظات..."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_needaction_counter
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_has_error_counter
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الاخطاء"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_needaction_counter
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تتطلب إجراء"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_has_error_counter
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل الحادث بها خطأ في التسليم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__message_unread_counter
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل الجديدة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__bmi_state__obesity
+msgid "Obesity"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model,name:ce_referral_hms.model_operating_unit
+msgid "Operating Unit"
+msgstr "المستشفيات / المركز الطبي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__bmi_state__over_weight
+msgid "Over Weight"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__past_history
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__past_history
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Past History"
+msgstr "السجل الماضي"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Past History..."
+msgstr "السجل الماضي..."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__medical_history
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Past Medical History"
+msgstr "السجل المرضي السابق"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__past_history
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__past_history
+msgid "Past history of any diseases."
+msgstr "التاريخ المرضي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__patient_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__patient_id
+msgid "Patient"
+msgstr "المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__arrival_date
+msgid "Patient Arrival Date"
+msgstr "تاريخ وصول المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__arrival_duration
+msgid "Patient Arrival Duration"
+msgstr "الوقت المستقطع للوصول"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__patient_id
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__patient_id
+msgid "Patient Name"
+msgstr "اسم المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__pause
+msgid "Pause"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__physician_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__physician_id
+msgid "Physician"
+msgstr "الطبيب"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__physician_id
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__physician_id
+msgid "Physician's Name"
+msgstr "اسم الطبيب"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Radiological"
+msgstr "الاشعاعيه"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__radiological_report
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__radiological_report
+msgid "Radiological Report"
+msgstr "التقرير الإشعاعي"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Radiological Report..."
+msgstr "تقرير إشعاعي..."
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_in_referral
+msgid "Receive Referral"
+msgstr "الاحالات المستلمة"
+
+#. module: ce_referral_hms
+#: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_out_referral
+#: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_receive_referral
+#: model:ir.actions.act_window,name:ce_referral_hms.action_new_referral
+#: model:ir.model,name:ce_referral_hms.model_hms_referral
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__referral
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_appointment_form_inherit
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_tree
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_referral_pivot
+#: model:res.groups,name:ce_referral_hms.group_hms_referral
+msgid "Referral"
+msgstr "احالة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_appointment__is_referral
+msgid "Referral ?"
+msgstr "احالة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__name
+msgid "Referral Id"
+msgstr "رقم الاحالة"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_referral_parent
+msgid "Referral Management"
+msgstr "الإحالات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__referral_reason
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__referral_reason
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Referral Reason"
+msgstr "سبب الاحالة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Referral Reason..."
+msgstr "سبب الاحالة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_appointment_form_inherit
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+msgid "Referral Request"
+msgstr "طلب احالة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__referral_type
+msgid "Referral Type"
+msgstr "نوع الاحالة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form_inherit
+msgid "Reject"
+msgstr "مفرفوض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__reject
+msgid "Rejected"
+msgstr "مفرفوضة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_multi_referral_form
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Request"
+msgstr "طلب"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_multi_referral__state__requested
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__requested
+msgid "Requested"
+msgstr "تم الطلب"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__requested_date
+msgid "Requested Date"
+msgstr "تاريخ الطلب"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_out_referral
+msgid "Requested Referral"
+msgstr "طلبات الاحالة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__responsible_id
+msgid "Responsible Jr. Doctor"
+msgstr "الطبيب"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__activity_user_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_has_sms_error
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل القصيرة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Search Referral"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Send"
+msgstr "إرسال"
+
+#. module: ce_referral_hms
+#: model:ir.actions.act_window,name:ce_referral_hms.action_referral_service
+#: model:ir.model,name:ce_referral_hms.model_hms_referral_service
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__service_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__service_id
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__name
+#: model:ir.ui.menu,name:ce_referral_hms.menu_referral_service
+msgid "Service"
+msgstr "الخدمة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__source_id
+msgid "Source"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_appointment__state
+msgid "State"
+msgstr "المحافظة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__activity_state
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة على أساس الأنشطة\n"
+"المتأخرة: تاريخ الاستحقاق مر\n"
+"اليوم: تاريخ النشاط هو اليوم\n"
+"المخطط: الأنشطة المستقبلية."
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__referral_type__hospital
+msgid "To General Hospital"
+msgstr "إحالة الي مستشفي عام"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__referral_type__center
+msgid "To Health center"
+msgstr "إحالة الي مركز طبي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__to_hospital_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__to_hospital_id
+msgid "To Hospital"
+msgstr "إحالة الى"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__to_invoice
+msgid "To Invoice"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__referral_type__specialty
+msgid "To Specialty Hospital"
+msgstr "إحالة الي مستشفي تخصصي"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_search
+msgid "Today"
+msgstr "اليوم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__activity_exception_decoration
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_unread
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_unread
+msgid "Unread Messages"
+msgstr "الرسائل الجديدة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__message_unread_counter
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عدد الرسائل الجديدة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__urgency
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__urgency
+msgid "Urgency Level"
+msgstr "مستوى الطوارئ"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_operating_unit__referral_coordinator_ids
+msgid "Users Coordinator referral"
+msgstr "منسق الاحالات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_operating_unit__referral_user_ids
+msgid "Users responsible for receive referral"
+msgstr "مستلم الاحالات"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__waiting_duration
+msgid "Wait Time"
+msgstr "وقت الانتظار"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_appointment__state__waiting
+msgid "Waiting"
+msgstr "في الانتظار"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__waiting
+msgid "Waiting For Accept"
+msgstr "انتظار الموافقه"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__waiting_ar
+msgid "Waiting For Patient Arrival"
+msgstr "في انتظار وصول المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__website_message_ids
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_multi_referral__website_message_ids
+#: model:ir.model.fields,help:ce_referral_hms.field_hms_referral__website_message_ids
+msgid "Website communication history"
+msgstr "سجل تواصل الموقع"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__weight
+msgid "Weight"
+msgstr "الوزن"
+
+#. module: ce_referral_hms
+#: code:addons/ce_referral_hms/models/referral.py:0
+#, python-format
+msgid "You can not delete record in done state"
+msgstr "لا يمكنك حذف سجل في حالة ليست مسودة"
+
+#. module: ce_referral_hms
+#: code:addons/ce_referral_hms/models/referral.py:0
+#, python-format
+msgid "You can not referral from Specialty Hospital To Specialty Hospital"
+msgstr "لايمكنك تحويل من مستشفي تخصصي ل مستشفي تخصصي"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__bp
+msgid "bp"
+msgstr "ضغط الدم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__differencial_diagnosis
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__differencial_diagnosis
+msgid "differencial_diagnosis"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model,name:ce_referral_hms.model_hms_multi_referral
+msgid "hms.multi.referral"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__hr
+msgid "hr"
+msgstr "نبضات القلب"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__present_illness
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__present_illness
+msgid "present_illness"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__rr
+msgid "rr"
+msgstr ""
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__spo2
+msgid "spo2"
+msgstr " الأكسجين"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__temp
+msgid "temp"
+msgstr "درجة الحرارة"
