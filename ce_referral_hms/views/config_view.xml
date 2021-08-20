@@ -9,6 +9,7 @@
                 <field name="name"/>
                 <field name="code"/>
                 <field name="is_obstetrics"/>
+                <field name="unit_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -23,6 +24,7 @@
                         <field name="code"/>
                         <field name="is_emergency"/>
                         <field name="is_obstetrics"/>
+                        <field name="unit_ids" widget="many2many_tags"/>
                     </group>
                 </sheet>
             </form>
@@ -40,8 +42,8 @@
         <field name="name">Hospital/Health center</field>
         <field name="res_model">operating.unit</field>
         <field name="view_mode">tree,form</field>
-<!--        <field name="domain">[('type', '=', 'hospital')]</field>-->
-<!--        <field name="context">{'default_type': 'hospital'}</field>-->
+        <!--        <field name="domain">[('type', '=', 'hospital')]</field>-->
+        <!--        <field name="context">{'default_type': 'hospital'}</field>-->
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Click to start a new Hospital/Health center.

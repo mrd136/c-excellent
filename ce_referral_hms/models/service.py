@@ -9,3 +9,4 @@ class Referral(models.Model):
     code = fields.Char('Code')
     is_obstetrics = fields.Boolean('Is Obstetrics and Gynecology ?!')
     is_emergency = fields.Boolean('Is Emergency?')
+    unit_ids = fields.Many2many('operating.unit', string='Hospital/Center')

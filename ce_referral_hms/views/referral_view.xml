@@ -48,7 +48,8 @@
         <field name="name">hms.referral.tree</field>
         <field name="model">hms.referral</field>
         <field name="arch" type="xml">
-            <tree decoration-info="state=='draft'" decoration-muted="state=='cancel'" decoration-danger="state=='waiting'" name="referral_tree">
+            <tree decoration-bf="state=='draft'" decoration-it="state=='requested'" decoration-muted="state=='cancel'" decoration-danger="state=='waiting'"
+                  decoration-success="state=='done'" decoration-primary="state=='accept'" decoration-warning="state=='waiting_ar'" name="referral_tree">
                 <field name="name" string="Referral"/>
                 <field name="patient_id"/>
                 <field name="date"/>

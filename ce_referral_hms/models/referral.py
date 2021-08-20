@@ -133,9 +133,13 @@ class Referral(models.Model):
             self.to_hospital_id = self.env['operating.unit'].search([('type', '=', 'center'),
                                                                      ('parent_id', '=', self.from_hospital_id.id)]).id
         elif self.referral_type == 'specialty':
-            if self.from_hospital_id.specialty_hospital:
-                raise UserError(_('You can not referral from Specialty Hospital To Specialty Hospital'))
-            self.to_hospital_id = self.env['operating.unit'].search([('specialty_hospital', '=', True)]).id
+            domain = [('id', 'in',
+                       self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', True),
+                                                          ('id', '!=', self.from_hospital_id.id)]).ids)]
+            domain = {'domain': {'to_hospital_id': domain}}
+            # if self.from_hospital_id.specialty_hospital:
+            #     raise UserError(_('You can not referral from Specialty Hospital To Specialty Hospital'))
+            # self.to_hospital_id = self.env['operating.unit'].search([('specialty_hospital', '=', True)]).id
         elif self.referral_type == 'hospital':
             domain = [('id', 'in',
                        self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', False),
@@ -198,6 +202,7 @@ class Referral(models.Model):
         if self.source_id:
             for referral in self.source_id.referral_ids.filtered(lambda v: v.id != self.id):
                 referral.action_cancel()
+                self.source_id.state = 'done'
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
         h, m = divmod(m, 60)
