@@ -101,7 +101,7 @@ class Referral(models.Model):
                       help="Computed patient age at the moment of the evaluation")
     company_id = fields.Many2one('res.company', ondelete='restrict', states=READONLY_STATES,
                                  string='Hospital', default=lambda self: self.env.user.company_id.id)
-    referral_type = fields.Selection([('center', 'To Health center'), ('hospital', 'To General Hospital'),
+    referral_type = fields.Selection([('center', 'To Urgent Care Center'), ('hospital', 'To General Hospital'),
                                       ('specialty', 'To Specialty Hospital')], string='Referral Type',
                                      required=True, default='hospital', states=READONLY_STATES)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict', states=READONLY_STATES,
@@ -127,7 +127,7 @@ class Referral(models.Model):
     source_id = fields.Many2one('hms.multi.referral', 'Source')
     hospital_action = fields.Selection([
         ('hypnotize', 'Hypnotize the patient'), ('go', 'Go Home'),
-        ('loss', 'Patient life loss')], string='Patient State')
+        ('loss', 'Patient life loss'), ('not', 'Not Arrival')], string='Patient State')
 
     @api.onchange('from_hospital_id', 'referral_type')
     def onchange_referral_type(self):
@@ -180,12 +180,13 @@ class Referral(models.Model):
         self.state = 'requested'
 
     def action_waiting(self):
-        if self.service_id.is_emergency:
-            self.state = 'waiting_ar'
-        elif self.service_id.is_obstetrics:
+        # if self.service_id.is_emergency:
+        #     self.state = 'waiting_ar'
+        if self.service_id.is_obstetrics:
             self.state = 'waiting'
-        elif self.from_hospital_id.specialty_hospital:
+        elif self.from_hospital_id.specialty_hospital or self.to_hospital_id.parent_id.id == self.from_hospital_id.id:
             self.state = 'waiting_ar'
+            self.accept_date = datetime.now()
         else:
             self.state = 'waiting'
         self.requested_date = datetime.now()
