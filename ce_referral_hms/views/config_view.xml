@@ -9,6 +9,7 @@
                 <field name="name"/>
                 <field name="code"/>
                 <field name="is_obstetrics"/>
+                <field name="is_emergency"/>
                 <field name="unit_ids" widget="many2many_tags"/>
             </tree>
         </field>

@@ -17,4 +17,25 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_referral_form_extend_service" model="ir.ui.view">
+        <field name="name">res.referral.service.form.extend</field>
+        <field name="model">hms.referral.service</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_service_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_obstetrics']" position="after">
+                <field name="survey_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_referral_tree_extend_service" model="ir.ui.view">
+        <field name="name">res.referral.service.tree.extend</field>
+        <field name="model">hms.referral.service</field>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_service_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_emergency']" position="after">
+                <field name="survey_id"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>
