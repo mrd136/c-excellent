@@ -125,6 +125,9 @@ class Referral(models.Model):
     waiting_duration = fields.Float('Wait Time', readonly=True)
     arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
     source_id = fields.Many2one('hms.multi.referral', 'Source')
+    hospital_action = fields.Selection([
+        ('hypnotize', 'Hypnotize the patient'), ('go', 'Go Home'),
+        ('loss', 'Patient life loss')], string='Patient State')
 
     @api.onchange('from_hospital_id', 'referral_type')
     def onchange_referral_type(self):

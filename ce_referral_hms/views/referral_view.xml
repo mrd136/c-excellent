@@ -93,6 +93,7 @@
                             <field name="physician_id" required="1"/>
                             <field name="urgency"/>
                             <field name="from_hospital_id"/>
+                            <field name="hospital_action" attrs="{'readonly':[('state', '!=', 'arrival')],'invisible':[('state', 'not in', ['arrival','done'])], 'required':[('state', '=', 'arrival')]}"/>
                         </group>
                         <group>
                             <field name="referral_type"/>
