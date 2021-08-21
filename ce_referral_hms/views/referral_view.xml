@@ -77,6 +77,8 @@
                     <field name="state" widget="statusbar" statusbar_visible="draft,requested,waiting,accept,waiting_ar,done"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
                     <field name="image_128" widget='image' class="oe_avatar"/>
                     <div class="ooe_title">
                         <h1>

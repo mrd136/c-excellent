@@ -4,7 +4,7 @@
     <record id="view_hospital_hms_referral_form" model="ir.ui.view">
         <field name="name">hms.referral.form</field>
         <field name="model">hms.referral</field>
-        <field name="inherit_id" ref="ce_referral_hms_document.view_document_referral_form"/>
+        <field name="inherit_id" ref="ce_referral_hms.view_hms_referral_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button class="oe_inline oe_stat_button" type="object"
