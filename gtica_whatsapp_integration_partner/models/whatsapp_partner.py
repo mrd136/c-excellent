@@ -34,19 +34,18 @@ class SendWhatsapp(models.TransientModel):
     format_visible_context = fields.Boolean(default=False)
 
 
-    @api.onchange('default_messege_id')
-    def _onchange_message(self):
-
-        patient_record = self.env['hms.patient'].browse(self._context.get('active_id'))
-        message = self.default_messege_id.template_messege
-        incluid_name = str(message).format(
-            name=patient_record.name,
-            sales_person=patient_record.user_id.name,
-            company=patient_record.company_id.name,
-            website=patient_record.company_id.website)
-
-        if message:
-            self.message = incluid_name
+    # @api.onchange('default_messege_id')
+    # def _onchange_message(self):
+    #     patient_record = self.env['hms.patient'].browse(self._context.get('active_id'))
+    #     message = self.default_messege_id.template_messege
+    #     incluid_name = str(message).format(
+    #         name=patient_record.name,
+    #         sales_person=patient_record.user_id.name,
+    #         company=patient_record.company_id.name,
+    #         website=patient_record.company_id.website)
+    #
+    #     if message:
+    #         self.message = incluid_name
 
     @api.model
     @api.onchange('patient_id')
