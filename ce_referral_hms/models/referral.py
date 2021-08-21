@@ -140,9 +140,7 @@ class Referral(models.Model):
                        self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', True),
                                                           ('id', '!=', self.from_hospital_id.id)]).ids)]
             domain = {'domain': {'to_hospital_id': domain}}
-            # if self.from_hospital_id.specialty_hospital:
-            #     raise UserError(_('You can not referral from Specialty Hospital To Specialty Hospital'))
-            # self.to_hospital_id = self.env['operating.unit'].search([('specialty_hospital', '=', True)]).id
+            return domain
         elif self.referral_type == 'hospital':
             domain = [('id', 'in',
                        self.env['operating.unit'].search([('type', '=', 'hospital'), ('specialty_hospital', '=', False),
