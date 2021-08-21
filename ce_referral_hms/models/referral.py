@@ -153,7 +153,7 @@ class Referral(models.Model):
     def is_accept_user(self):
         for rec in self:
             rec.current_is_accept_user = False
-            user_id = rec.to_hospital_id.referral_user_ids.filtered(lambda v: v.id == self.env.uid)
+            user_id = rec.to_hospital_id.referral_coordinator_ids.filtered(lambda v: v.id == self.env.uid)
             if user_id:
                 rec.current_is_accept_user = True
 
