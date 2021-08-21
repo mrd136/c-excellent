@@ -260,7 +260,7 @@
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('to_hospital_id.referral_user_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'arrival','done'])]</field>
+        <field name="domain">[('to_hospital_id.referral_coordinator_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'arrival','done'])]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

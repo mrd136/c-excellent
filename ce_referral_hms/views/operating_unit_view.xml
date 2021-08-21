@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='company_id']" position="after">
                 <field name="referral_coordinator_ids" widget="many2many_tags"/>
-                <field name="referral_user_ids" widget="many2many_tags"/>
+<!--                <field name="referral_user_ids" widget="many2many_tags"/>-->
             </xpath>
         </field>
     </record>
