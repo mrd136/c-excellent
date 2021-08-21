@@ -10,7 +10,7 @@
                         name="send_whatsapp_step"
                         string="Send Whatsapp"
                         type="object"
-                        class="oe_stat_button"
+                        class="oe_inline oe_stat_button"
                         title="Send Whatsapp"
                         icon="fa-whatsapp"
                 />
