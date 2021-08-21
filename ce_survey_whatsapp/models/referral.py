@@ -16,7 +16,10 @@ class Referral(models.Model):
     ], default='without_sending')
 
     def send_whatsapp_step(self):
-        survy_id = self.env['survey.survey'].search([], limit=1)
+        domain = []
+        if self.service_id.survey_id:
+            domain = [('id', '=', self.service_id.survey_id.id)]
+        survy_id = self.env['survey.survey'].search([domain], limit=1)
         url = survy_id.public_url or ''
         action = self.env.ref('gtica_whatsapp_integration_partner.send_whatsapp_partner_action').read()[0]
         action['context'] = {'default_patient_id': self.patient_id.id,
