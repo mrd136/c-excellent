@@ -40,7 +40,7 @@
             <field name="name">Barcode Product Labels</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">barcode.labels</field>
-            <!-- <field name="view_type">form</field> -->
+            <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_barcode_labels" />
             <field name="target">new</field>
