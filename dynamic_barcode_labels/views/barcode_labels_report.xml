@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_barcode_labels">
+            <t t-call="web.html_container">
+                <t t-foreach="doc_ids" t-as="doc">
+                    <t t-call="web.basic_layout">
+                        <div class="page" align="center">
+                            <!-- Product Record -->
+                            <t t-set="product" t-value="request.env['product.product'].browse(doc.get('product_id'))"/>
+
+                            <!-- Company Logo -->
+                            <div class="row" style="background-color: #C4C4FD;">
+                                <div class="col-xs-4" >
+                                    <img src="dynamic_barcode_labels/static/src/img/Tellerex_logo.png" style="max-height: 100px;"/>
+                                </div>
+                                <div class="col-xs-8">
+                                    <img src="dynamic_barcode_labels/static/src/img/Tellerex_name.png" style="max-height: 100px;"/>
+                                </div>
+                            </div>
+
+                            <!-- Product Name -->
+                            <t t-if="data['form'].get('product_code')">
+                                <div class="row" style="color:black;font-size:22px;border-bottom: 2px solid black;">
+                                    <div class="col-xs-12 mb16 mt16">
+                                        <span><b>PART NO: </b></span><span t-field="product.name"/>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <!-- Product Description -->
+                            <t t-if="data['form'].get('description')">
+                                <div class="row" style="color:black;font-size:22px;border-bottom: 2px solid black;">
+                                    <div class="col-xs-12 mb16 mt16">
+                                        <span><b>Description: </b></span><span t-esc="product.default_code"/>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <!-- Watermark on Label -->
+                            <div class="watermark" style="position:absolute;opacity:0.1;font-size:3em;height:100%;width:100%;text-align:center;z-index:1000;right:0px;border:0;top:230px">
+                                <img style="width:200px;height:100px;" t-att-src="'data:image/png;base64,%s' % to_text(product.company_id.logo)"/>
+                            </div>
+
+                            <!-- Product Quantity -->
+                            <t t-if="data['form'].get('quantity')">
+                                <div class="row" style="color:black;font-size:22px;border-bottom: 2px solid black;">
+                                    <div class="col-xs-12 mb16 mt16">
+                                        <span><b>Quantity: </b></span><span t-esc="doc.get('qty')"/>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <!-- Product SERIAL No -->
+                            <t t-if="data['form'].get('lot')">
+                                <div class="row" style="color:black;font-size:22px;border-bottom: 2px solid black;">
+                                    <div class="col-xs-12 mb16 mt16">
+                                        <span><b>SERIAL NO: </b></span><span t-esc="doc.get('lot_number')"/>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <!-- Product Barcode -->
+                            <t t-if="data['form'].get('barcode')">
+                                <div style="color:black;margin-top:15px;font-size:9px;">
+                                    <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;humanreadable=%s' %(data['form'].get('barcode_type'), get_barcode_value(product[0], data), int(data['form'].get('display_width')), int(data['form'].get('display_height')), is_humanreadable(data))"/>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
