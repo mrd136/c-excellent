@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="dynamic_zbarcode_layout">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+        <t t-if="not company">
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+        <t t-esc="company.update_scss()"/>
+        <t t-raw="0"/>
+    </template>
+
+	<template id="report_product_tdzebrabarcode">
+		<t t-set="loopvalue" t-value="get_lines(data['form'])" />
+		<t t-call="td_zebra_barcode_labels.dynamic_zbarcode_layout">
+			<t t-call="web.html_container">
+				<t t-foreach="loopvalue" t-as="line">
+					<container>
+							<!-- <table style="width:100%;text-align: center;border-color: white;">
+								<tr>
+									<td bgcolor="red" align="left" style="width:50%;border:0px;text-align:left;"
+										t-attf-style="width:50%;padding-top: {{'0.1'}}px;padding-bottom: {{config.first_padding_bottom or '1'}}px;padding-left: {{config.first_padding_left or '1'}}px;padding-right: {{config.first_padding_right or '1'}}px;">
+										<img t-if="config.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(config.company_id.logo)" style="align:left" width="110%" height="11%" t-attf-style="font-size:{{config.product_name_size or '6'}}px;"/>
+										<br/>
+										<t t-if="config.product_name">
+											<b width="110%" text-align="left" t-attf-style="font-size:{{config.product_name_size or '6'}}px; text-align=left;">Categories:
+											<t t-esc="line.get('categ_id')" t-attf-style="font-size:{{config.product_name_size or '6'}}px;"/>
+										    </b><br/>
+									    </t>
+										<t t-if="config.product_name">
+										    <b width="110%" text-align="left" t-attf-style="font-size:{{config.product_name_size or '6'}}px; text-align=left;">Name: <t t-esc="line.get('p_name')" t-attf-style="font-size:{{config.product_name_size or '6'}}px;"/>
+										    </b><br/>
+										</t>
+										<t t-if="config.product_variant">
+											<b width="110%" text-align="left" t-attf-style="font-size:{{config.product_variant_size or '6'}}px; text-align=left;">Attributes:
+												<t t-esc="line.get('variants_0')" t-attf-style="font-size:{{config.product_variant_size or '6'}}px;"/>
+											</b><br/>
+										</t>
+										<t t-if="config.price_display">
+											<b width="110%" text-align="left" t-attf-style="font-size:{{config.price_display_size or '6'}}px; text-align=left;">Price:
+												<t t-esc="line.get('list_price_0')" t-attf-style="font-size:{{config.price_display_size or '2'}}px;"/>
+											</b><br/>
+										</t>
+									</td>
+
+									<td bgcolor="yellow" style="width:50%;border:0px;"
+										t-attf-style="width:50%;padding-top: {{config.first_padding_top or '1'}}px;padding-bottom: {{config.first_padding_bottom or '1'}}px;padding-left: {{config.first_padding_left or '1'}}px;padding-right: {{config.first_padding_right or '1'}}px;">
+										<b t-attf-style="font-size:{{config.product_name_upr_bar_size or '10'}}px; margin-right:50px;"><t t-esc="line.get('p_name')"/></b>
+										<br/>
+										<t t-if="line.get('code_0')">
+											<span style="margin-right:70px;" t-raw="get_barcode_string(line.get('code_0'), data['form'])" />
+										</t>
+										<t t-if="product_code">
+											<b t-attf-style="font-size:{{config.product_code_size or '6'}};margin-right:120px;">BAR :<t t-esc="line.get('code_0')"
+												t-attf-style="font-size:{{config.product_code_size or '6'}}px;" /></b>
+										</t>
+										<t t-if="line.get('ncode_0')">
+											<span style="margin-right:60px;"
+												t-raw="get_sn_barcode_string(line.get('ncode_0'), data['form'])" />
+										</t>
+										<t t-if="product_code">
+											<b t-attf-style="font-size:{{config.product_code_size or '6'}};margin-right:120px;">S/N :<t t-esc="line.get('ncode_0')"
+												t-attf-style="font-size:{{config.product_code_size or '6'}}px;" /></b>
+										</t>
+									</td>
+								</tr>
+							</table> -->
+
+						<table style="width:100%;text-align: center;border-color: white;">
+							<tr style="background-color:white;">
+								<td>
+									<img t-if="config.company_id.logo" t-att-src="'data:image/png;base64,%s' % to_text(config.company_id.logo)" style="align:left" width="110%" height="11%" t-attf-style="font-size:{{config.product_name_size or '6'}}px;"/>
+								</td>
+								<td>
+									<b t-attf-style="font-size:{{config.product_name_upr_bar_size or '10'}}px; margin-right:-60px;"><t t-esc="line.get('p_name')"/></b>
+									<br/>
+									<t t-if="line.get('ncode_0')">
+									    <span
+											t-raw="get_barcode_string(line.get('code_0'), data['form'])"  style="margin-right:-60px;"/>
+									</t>
+									<br/>
+									<b t-attf-style="font-size:{{config.product_code_size or '6'}}; margin-right:-60px;">BAR :<t t-esc="line.get('code_0')"/></b>
+								</td>
+							</tr>
+							<tr style="background-color:white;">
+								<td>
+									<t t-if="config.product_name">
+										<b text-align="left" t-attf-style="font-size:{{config.product_name_size or '6'}}px; text-align=left;">Categories:
+										<t t-esc="line.get('categ_id')" t-attf-style="font-size:{{config.product_name_size or '6'}}px;"/>
+									    </b><br/>
+								    </t>
+									<t t-if="config.product_name">
+									    <b text-align="left" t-attf-style="font-size:{{config.product_name_size or '6'}}px; text-align=left;">Name: <t t-esc="line.get('p_name')" t-attf-style="font-size:{{config.product_name_size or '6'}}px;"/>
+									    </b><br/>
+									</t>
+									<t t-if="config.product_variant">
+										<b text-align="left" t-attf-style="font-size:{{config.product_variant_size or '6'}}px; text-align=left;">Attributes:
+											<t t-esc="line.get('variants_0')" t-attf-style="font-size:{{config.product_variant_size or '6'}}px;"/>
+										</b><br/>
+									</t>
+									<t t-if="config.price_display">
+										<b text-align="left" t-attf-style="font-size:{{config.price_display_size or '6'}}px; text-align=left;">Price:
+											<t t-esc="line.get('list_price_0')" t-attf-style="font-size:{{config.price_display_size or '2'}}px;"/>
+										</b><br/>
+									</t>
+								</td>
+								<td>
+									<t t-if="line.get('ncode_0')">
+									    <span
+											t-raw="get_sn_barcode_string(line.get('ncode_0'), data['form'])"  style="margin-right:-60px;"/>
+									</t>
+									<br/>
+									<b t-attf-style="font-size:{{config.product_code_size or '6'}}; margin-right:-60px;">S/N :<t t-esc="line.get('ncode_0')"/></b>
+								</td>
+							</tr>
+						</table>
+
+						<center t-attf-style="font-size:{{config.product_code_size or '3'}};">-------------------------</center>
+						<table style="width:100%;text-align: center;border-color: white;">
+							<tr style="background-color:white;">
+								<td>
+									<t t-if="line.get('code_0')">
+										<span t-raw="get_barcode_string(line.get('code_0'), data['form'])" style="margin-left:-50px;"/>
+									</t>
+									<br/>
+									<b t-attf-style="font-size:{{config.product_code_size or '6'}}; margin-left:-60px;">BAR :<t t-esc="line.get('code_0')"/></b>
+								</td>
+								<td>
+									<b t-attf-style="font-size:{{config.product_name_upr_bar_size or '10'}}px; margin-left:-70px;"><t t-esc="line.get('p_name')"/></b>
+									<br/>
+									<t t-if="line.get('ncode_0')">
+									    <span
+											t-raw="get_barcode_string(line.get('code_0'), data['form'])"  style="margin-left:-70px;"/>
+									</t>
+									<br/>
+									<b t-attf-style="font-size:{{config.product_code_size or '6'}}; margin-left:-60px;">BAR :<t t-esc="line.get('code_0')"/></b>
+								</td>
+							</tr>
+							<tr style="background-color:white;">
+								<td>
+									<t t-if="line.get('ncode_0')">
+										<span t-raw="get_sn_barcode_string(line.get('ncode_0'), data['form'])" style="margin-left:-50px;"/>
+									</t>
+									<br/>
+									<b t-attf-style="font-size:{{config.product_code_size or '6'}}; margin-left:-60px;">S/N :<t t-esc="line.get('ncode_0')"/></b>
+								</td>
+								<td>
+									<t t-if="line.get('ncode_0')">
+									    <span
+											t-raw="get_sn_barcode_string(line.get('ncode_0'), data['form'])"  style="margin-left:-70px;"/>
+									</t>
+									<br/>
+									<b t-attf-style="font-size:{{config.product_code_size or '6'}}; margin-left:-60px;">S/N :<t t-esc="line.get('ncode_0')"/></b>
+								</td>
+							</tr>
+						</table>
+					</container>
+					<p style="page-break-before:always;"/>
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>
