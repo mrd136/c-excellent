@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <data>
+        <record id="receipt_design_form_view" model="ir.ui.view">
+            <field name="name">Receipt Design</field>
+            <field name="model">receipt.design</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string='Receipt Design'>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name='receipt_design' widget="ace" options="{'mode': 'xml'}" string="Receipt XML"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="receipt_design_tree_view" model="ir.ui.view">
+            <field name="name">Receipt Design</field>
+            <field name="model">receipt.design</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string='Receipt Design'>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="receipt_design_action_window" model="ir.actions.act_window">
+            <field name="name">Receipt Designs</field>
+            <field name="res_model">receipt.design</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="pos_receipt_design.receipt_design_tree_view"/>
+        </record>
+
+        <menuitem id="menu_receipt_design" parent="point_of_sale.menu_point_config_product" action="pos_receipt_design.receipt_design_action_window"/>
+    </data>
+</odoo>
