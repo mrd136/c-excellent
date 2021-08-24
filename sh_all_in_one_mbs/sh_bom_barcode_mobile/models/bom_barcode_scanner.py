@@ -5,16 +5,16 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import Warning,UserError
 
-# class mrp_bom(models.Model):
-#     _inherit = "mrp.bom"
+class mrp_bom(models.Model):
+    _inherit = "mrp.bom"
     
-#     def default_sh_bom_bm_is_cont_scan(self):
-#         if self.env.user and self.env.user.company_id:
-#             return self.env.user.company_id.sh_bom_bm_is_cont_scan
+    def default_sh_bom_bm_is_cont_scan(self):
+        if self.env.user and self.env.user.company_id:
+            return self.env.user.company_id.sh_bom_bm_is_cont_scan
     
-#     sh_bom_barcode_mobile = fields.Char(string = "Mobile Barcode")
+    sh_bom_barcode_mobile = fields.Char(string = "Mobile Barcode")
     
-#     sh_bom_bm_is_cont_scan = fields.Char(string='Continuously Scan?',default = default_sh_bom_bm_is_cont_scan, readonly=True)
+    sh_bom_bm_is_cont_scan = fields.Char(string='Continuously Scan?',default = default_sh_bom_bm_is_cont_scan, readonly=True)
         
  
        

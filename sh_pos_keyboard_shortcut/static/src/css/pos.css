@@ -1,0 +1,49 @@
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .title {
+    margin-bottom: 0px;
+}
+.main_div_shortcut_tips {
+    font-weight: normal !important;
+    font-size: 15px !important;
+    max-height: 266px;
+    overflow: auto;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table_header {
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table {
+    width: 100%;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table thead {
+    background: #ccc;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table thead tr {
+    line-height: 30px;
+}
+.pos .modal-dialog .popup.shortcut_tips_popup {
+    height: 80vh;
+}
+.main_div_shortcut_tips {
+    max-height: 60vh;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table_header {
+    margin-top: 15px;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table thead {
+    background: #ddd;
+}
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table thead tr th {
+    width: 50%;
+}
+
+.popup.popup-textinput.product-info-popup.shortcut_tips_popup .main_div_shortcut_tips .sh_shortcut_table tr td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.pos .popup .footer .button.cancel {
+    background: #6ec89b;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+}

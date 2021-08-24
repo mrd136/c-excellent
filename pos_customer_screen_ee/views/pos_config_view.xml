@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pos_config_view_form" model="ir.ui.view">
+        <field name="name">pos.config.form.view</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='inventory_location']" position="after">
+                <h2>Customer Display</h2>
+                <div class="row mt16 o_settings_container" id="customer_display">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="customer_display">
+                        <div class="o_setting_left_pane">
+                            <field name="customer_display"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="customer_display" string="Customer Display"/>
+                            <div class="text-muted">
+                                Customer Display
+                            </div>
+                            <div class="content-group mt16" attrs="{'invisible' : [('customer_display', '=', False)]}">
+	                            <div class="row mt16">
+	                                <label string="Image Time Interval" for="image_interval" class="col-md-3 o_light_label" style="width: 150px;"/>
+	                                <field name="image_interval"/>
+	                            </div>
+	                            <div class="text-muted" id="image_interval">
+	                               Time interval calculate based on seconds
+	                            </div>
+	                        </div>
+	                        <field name="customer_display_details_ids" style="width: 100%;" attrs="{'invisible' : [('customer_display', '=', False)]}">
+	                            <tree editable="bottom">
+	                                <field name="name"/>
+	                                <field name="image"/>
+	                            </tree>
+	                        </field>
+                        </div>
+                        <div class="o_setting_left_pane" attrs="{'invisible' : [('customer_display', '=', False)]}">
+                            <field name="set_customer"/>
+                        </div>
+                        <div class="o_setting_right_pane" attrs="{'invisible' : [('customer_display', '=', False)]}">
+                            <label for="set_customer" string="Set customer"/>
+                            <div class="text-muted" id="customer_rating">
+                                Set customer form customer display.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="customer_display" attrs="{'invisible' : [('customer_display', '=', False)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="enable_customer_rating"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="enable_customer_rating" string="Rating"/>
+                            <div class="text-muted">
+                                Customer Display Rating
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="order_inherited_form_view" model="ir.ui.view">
+        <field name="name">pos.order.inherited.view</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <field name="pos_reference" position="after">
+                <field name="rating" readonly="1" widget="priority"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
