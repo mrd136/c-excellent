@@ -6,6 +6,7 @@ from odoo import models, api, fields
 
 class BarcodeConfiguration(models.Model):
     _name = 'barcode.configuration'
+    _description = 'barcode.configuration'
 
     @api.model
     def _get_barcode_field(self):
@@ -23,12 +24,14 @@ class BarcodeConfiguration(models.Model):
     label_width = fields.Integer(
          'Label Width(MM)',
          required=True,
-         help="Page Width"
+         help="Page Width",
+         default=51
          )
     label_height = fields.Integer(
          'Label Height(MM)',
          required=True,
-         help="Page Height"
+         help="Page Height",
+         default=25
          )
     margin_top = fields.Integer(string="Margin(Top)", required=True)
     margin_bottom = fields.Integer(string="Margin(Bottom)", required=True)
@@ -48,31 +51,47 @@ class BarcodeConfiguration(models.Model):
          help="Determines where the currency symbol"
          " should be placed after or before the amount.",
          default='before')
-    barcode_height = fields.Integer(string="Height",  help="Height of barcode.")
-    barcode_width = fields.Integer(string="Width",  help="Width of barcode.")
+
+    product_name = fields.Boolean('Product Name', default=True)
+    product_variant = fields.Boolean('Attributes', default=True)
+    price_display = fields.Boolean('Price', default=True)
+    product_barcode_no = fields.Boolean('Barcode No.', default=True)
+    product_code = fields.Boolean('Product Default Code')
+    lot = fields.Boolean('Production Lot')
+
+    product_name_size = fields.Char('Product Name Font Size', default=7)
+    price_display_size = fields.Char('Price Font Size', default=14)
+    product_variant_size = fields.Char('Attributes Font Size', default=7)
+    product_barcode_no_size = fields.Char('Barcode No. Font Size', default=7)
+    product_code_size = fields.Char('ProductCode Font Size', default=5)
+
+    barcode = fields.Boolean('Barcode Label', default=True)
+    barcode_type = fields.Selection([
+         ('Codabar', 'Codabar'), ('Code11', 'Code11'),
+         ('Code128', 'Code128'), ('EAN13', 'EAN13'),
+         ('Extended39', 'Extended39'), ('EAN8', 'EAN8'),
+         ('Extended93', 'Extended93'), ('USPS_4State', 'USPS_4State'),
+         ('I2of5', 'I2of5'), ('UPCA', 'UPCA'),
+         ('QR', 'QR')],
+            string='Type', required=True)
     barcode_field = fields.Selection('_get_barcode_field', string="Barcode Field")
     display_height = fields.Integer(
         string="Display Height (px)",
-        help="This height will required for display barcode in label.")
+        help="This height will required for display barcode in label.",
+        default=25)
     display_width = fields.Integer(
        string="Display Width (px)",
-       help="This width will required for display barcode in label.")
+       help="This width will required for display barcode in label.",
+       default=120)
+    barcode_height = fields.Integer(string="Height",  help="BarLines Quality(Height)", default=1400)
+    barcode_width = fields.Integer(string="Width",  help="BarLines Quality(Width)", default=1400)
     humanreadable = fields.Boolean()
-    product_name = fields.Boolean('Product Name')
-    product_variant = fields.Boolean('Attributes')
-    lot = fields.Boolean('Production Lot')
-    price_display = fields.Boolean('Price')
-    product_code = fields.Boolean('Product Default Code')
-    barcode = fields.Boolean('Barcode Label')
-    description = fields.Boolean('Description')
-    quantity = fields.Boolean('Quantity')
 
     @api.onchange('dpi')
     def onchange_dpi(self):
         if self.dpi < 80:
             self.dpi = 80
 
-    #@api.multi
     def apply(self):
         return True
 
