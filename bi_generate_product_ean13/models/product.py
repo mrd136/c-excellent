@@ -38,13 +38,12 @@ class productproduct(models.Model):
                     barcode_str = self.env['barcode.nomenclature'].sanitize_ean("%s" % (number_random))
                 ean = barcode.get('ean13', barcode_str, writer=ImageWriter())
 #                 path  =  os.path.abspath('bi_generate_product_ean13')
-                filename = ean.save('/tmp/ean13')
-                f = open(filename, 'rb')
-                jpgdata = f.read()
-                imgdata = base64.encodestring(jpgdata)
-                res.write({'barcode' : barcode_str,
-                           'barcode_img': imgdata})
-                os.remove(filename)
+               #filename = ean.save('/tmp/ean13')
+              #  f = open(filename, 'rb')
+               # jpgdata = f.read()
+               # imgdata = base64.encodestring(jpgdata)
+                res.write({'barcode' : barcode_str})
+               # os.remove(filename)
 
         return res
 

@@ -28,15 +28,15 @@ class biproductgeneratebarcodemanually(models.TransientModel):
                 number_random = int("%0.13d" % random.randint(0,999999999999))
                 bcode = self.env['barcode.nomenclature'].sanitize_ean("%s" % (number_random))
             record.write({'barcode':bcode})
-            if ImageWriter != None:
-                ean = barcode.get('ean13', bcode, writer=ImageWriter())
-#                 path  =  os.path.abspath('bi_generate_product_ean13')
-                filename = ean.save('/tmp/ean13')
-                f = open(filename, 'rb')
-                jpgdata = f.read()
-                imgdata = base64.encodestring(jpgdata)
-                record.write({'barcode_img':imgdata})
-                os.remove(filename)
+#             if ImageWriter != None:
+#                 ean = barcode.get('ean13', bcode, writer=ImageWriter())
+# #                 path  =  os.path.abspath('bi_generate_product_ean13')
+#                 filename = ean.save('/tmp/ean13')
+#                 f = open(filename, 'rb')
+#                 jpgdata = f.read()
+#                 imgdata = base64.encodestring(jpgdata)
+#                 record.write({'barcode_img':imgdata})
+#                 os.remove(filename)
         return True
         
 
@@ -58,15 +58,14 @@ class bi_generate_product_barcode(models.TransientModel):
             else:
                 number_random = int("%0.13d" % random.randint(0,999999999999))
                 bcode = self.env['barcode.nomenclature'].sanitize_ean("%s" % (number_random))
-            ean = barcode.get('ean13', bcode, writer=ImageWriter())
-#             path  =  os.path.abspath('bi_generate_product_ean13')
-            filename = ean.save('/tmp/ean13')
-            f = open(filename, 'rb')
-            jpgdata = f.read()
-            imgdata = base64.encodestring(jpgdata)
-            record.write({'barcode':bcode,
-                          'barcode_img': imgdata
-            })
+#             ean = barcode.get('ean13', bcode, writer=ImageWriter())
+# #             path  =  os.path.abspath('bi_generate_product_ean13')
+#             filename = ean.save('/tmp/ean13')
+#             f = open(filename, 'rb')
+#             jpgdata = f.read()
+#             imgdata = base64.encodestring(jpgdata)
+            record.write({'barcode':bcode})
+          #  'barcode_img': imgdata
         return True
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
