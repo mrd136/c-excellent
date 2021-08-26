@@ -17,9 +17,8 @@
     'version': '1.0',
     'category': 'Point Of Sale',
     'summary': 'Customized Receipt of Point Of Sales',
-    'website': 'www.kanakinfosystems.com',
-    'author': 'Kanak Infosystems LLP.',
-    'images': ['static/description/banner.jpg'],
+    'author': 'A&L.',
+    'images': ['static/description/icon.png'],
     'description': "Customized our point of sale receipt",
     'depends': ['base', 'point_of_sale'],
     "data": [
@@ -31,7 +30,7 @@
         'wizard/pos_tax_template.xml',
         'wizard/payment_method_wizard.xml',
         'wizard/payment_method_report.xml',
-        'wizard/consum_report.xml',
+        # 'wizard/consum_report.xml',
         'wizard/consum_wizard.xml'
 
     ],

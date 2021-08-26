@@ -20,4 +20,5 @@ ProductProduct.loaded = function(self, products){
     _super_loaded(self, products);
 };
 
+
 });

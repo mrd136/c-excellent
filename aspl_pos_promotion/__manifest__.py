@@ -16,19 +16,16 @@
     'description': """
 User needs to create the promotion according to promotion, rules will be apply in POS.
 """,
-    'author': "Acespritech Solutions Pvt. Ltd.",
-    'website': "www.acespritech.com",
+    'author': 'A&L.',
+    'images': ['static/description/icon.png'],
     'depends': ['web', 'point_of_sale','sale'],
-    'price': 35.0,
-    'currency': 'EUR',
     'version': '1.0',
-    'images': ['static/description/main_screenshot.png'],
     'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'views/pos_promotion_view.xml',
         'views/promotion_template.xml',
         'views/product_brand_view.xml',
-        'security/ir.model.access.csv',
-        'security/security.xml',
     ],
     'demo': [],
     'test': [],

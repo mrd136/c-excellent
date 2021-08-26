@@ -51,7 +51,7 @@ odoo.define('custom_pos_receipt.product_domain',function(require) {
                 tax:                this.get_tax(),
                 product_description:      this.get_product().description,
                 product_description_sale: this.get_product().description_sale,
-                extra_items: this.get_extra_items(),
+                //extra_items: this.get_extra_items(),
                 product_ar_trans : this.get_product().ar_trans,
                 product_en_trans : this.get_product().en_trans,
             };
@@ -226,16 +226,18 @@ odoo.define('custom_pos_receipt.product_domain',function(require) {
                         limit: 1,
                     })
                     .then(function (ord){
-                        var product = self.pos.db.get_product_by_id(ord[0].id);
-                        var new_line = new models.Orderline({}, {pos: self.pos, order: order, product: product});
-                        new_line.set_quantity(1);
-                        if(order.get_client().delivery_fees){
-                            new_line.set_unit_price(order.get_client().delivery_fees);
+                        if (ord){
+                            var product = self.pos.db.get_product_by_id(ord[0].id);
+                            var new_line = new models.Orderline({}, {pos: self.pos, order: order, product: product});
+                            new_line.set_quantity(1);
+                            if(order.get_client().delivery_fees){
+                                new_line.set_unit_price(order.get_client().delivery_fees);
+                            }
+                            else{
+                                new_line.set_unit_price(0);
+                            }
+                            order.add_orderline(new_line);
                         }
-                        else{
-                            new_line.set_unit_price(0);
-                        }
-                        order.add_orderline(new_line);
                     });
 
                 }

@@ -25,7 +25,7 @@
         paperformat="techno_pos_session_report.paper_format_session_report"
         name="techno_pos_session_report.report_pos_session_pdf"
         file="techno_pos_session_report.report_pos_session_pdf"
-	groups="custom_pos_receipt.group_pos_print_session_end_report"
+
     />
     <template id="techno_pos_session_report.report_pos_session_pdf">
         <t t-call="web.basic_layout">
@@ -172,30 +172,30 @@
                                 <span t-field="o.currency_id.symbol"/><span t-esc="round(o.get_session_detail().get('total_return', 0),2)"/>
                             </td>
                         </tr>
-                        <tr>
+                       <!--  <tr>
                             <td class="text-left">
                                 Total Internal
                             </td>
                             <td class="text-right">
                                 <span t-field="o.currency_id.symbol"/><span t-esc="round(o.get_session_detail().get('total_internal', 0),2)"/>
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> -->
+                        <!-- <tr>
                             <td class="text-left">
                                 Total Delivery
                             </td>
                             <td class="text-right">
                                 <span t-field="o.currency_id.symbol"/><span t-esc="round(o.get_session_detail().get('total_delivery', 0),2)"/>
                             </td>
-                        </tr>
-                        <tr>
+                        </tr> -->
+                       <!--  <tr>
                             <td class="text-left">
                                 Total Takeaway
                             </td>
                             <td class="text-right">
                                 <span t-field="o.currency_id.symbol"/><span t-esc="round(o.get_session_detail().get('total_takeaway', 0),2)"/>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td class="text-left">
                                 Total

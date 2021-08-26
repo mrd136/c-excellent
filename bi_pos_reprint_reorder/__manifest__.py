@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-# Part of BrowseInfo. See LICENSE file for full copyright and licensing details.
-
 {
     "name" : "POS Orders Reprint and POS ReOrder in Odoo",
     "version" : "13.0.0.1",
     "category" : "Point of Sale",
     "depends" : ['base','sale','point_of_sale','pos_orders_list'],
-    "author": "BrowseInfo",
+    'author': 'A&L.',
+    'images': ['static/description/icon.png'],
     'summary': 'This apps helps to reprint and reorder existing POS Orders from Order list using POS touch screen. pos reorder pos repeat order pos order repeat point of sales reorders pos re-orders pos orders pos list orders  pos reprint pos order reprint pos orders',
     "description": """
 
@@ -84,6 +83,5 @@ List all POS order on POS screen Show order on POS view all orders on POS Displa
     ],
     "auto_install": False,
     "installable": True,
-    "images":["static/description/Banner.png"],
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

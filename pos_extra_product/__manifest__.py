@@ -9,7 +9,8 @@
     "description": """
     Link Extra Products with POS Product Line
     """,
-    "author": "Tauras",
+    'author': 'A&L.',
+    'images': ['static/description/icon.png'],
     "depends": [
         "pos_restaurant",
     ],

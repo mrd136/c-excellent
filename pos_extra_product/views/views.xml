@@ -12,15 +12,4 @@
                 </xpath>
             </field>
         </record>
-
-        <record id="res_partner_form_inherit" model="ir.ui.view">
-            <field name="name">res.partner.form</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_form" />
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='barcode']" position="after">
-                    <field name="pos_special_customer" />
-                </xpath>
-            </field>
-        </record>
 </odoo>

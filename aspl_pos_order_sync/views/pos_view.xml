@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="test_pos_config_form_view_inherit" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_ids']" position='replace'>
+                <field name="employee_ids" widget="many2many_tags"
+                    domain="[('company_id', '=', company_id)]"
+                    />
+            </xpath>
+        </field>
+    </record>
+
+	<record model="ir.ui.view" id="aspl_sale_note_view_pos_config_form">
+           <field name="name">pos.config.form.view.inherit</field>
+           <field name="model">pos.config</field>
+           <field name="inherit_id" ref="kzm_pos_config.kzm_pos_config_form_view_inherit"></field>
+           <field name="arch" type="xml">
+               <div id="kzm_pos_config" position="inside">
+                <div class="col-xs-12 col-md-9 o_setting_box" id="reorder">
+                    <div class="o_setting_left_pane">
+                        <field name="enable_reorder"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="enable_reorder"/>
+                        <div class="text-muted" id="reorder_order">
+                           Order Sync Between Salesmen and Cashier
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 o_setting_box" id="operation_restrict">
+                     <div class="o_setting_left_pane">
+                         <field name="enable_operation_restrict"/>
+                     </div>
+                     <div class="o_setting_right_pane">
+                          <label for="enable_operation_restrict"/>
+                          <div class="text-muted" id="pos_cross_selling">
+                             Enable Restrict Operation like Change Price, Discount.
+                          </div>
+                          <div class="content-group mt16" attrs="{'invisible' : [('enable_operation_restrict', '=', False)]}">
+	                         <div class="row mt16">
+								<label string="Managers" for="pos_managers_ids" class="col-md-3 o_light_label"/>
+								<field name="group_pos_manager_id" invisible="1"/>
+								<field name="pos_managers_ids" widget="many2many_tags" domain="[('groups_id','in', [group_pos_manager_id])]"/>
+	                         </div>
+	                       </div>
+                      </div>
+                </div>
+
+               </div>
+           </field>
+       </record>
+
+    <record id="sale_note_order_inherited_form_view" model="ir.ui.view">
+        <field name="name">pos.order.inherited.view</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="attributes">
+            	<attribute name="string">Cashier</attribute>
+            </field>
+            <field name="user_id" position="before">
+                <field name="salesman_id"/>
+            </field>
+            <xpath expr="//notebook" position="inside">
+                <page string="Delivery information" attrs="{'invisible': [('delivring_order','=',False)]}">
+                    <field name="delivring_order" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="customer_name" readonly="1"/>
+                            <field name="customer_phone"  readonly="1"/>
+                            <field name="customer_addr"  readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

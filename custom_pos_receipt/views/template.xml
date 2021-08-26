@@ -6,5 +6,10 @@
                 <script type="text/javascript" src="/custom_pos_receipt/static/src/js/pos_products_domain.js"/>
             </xpath>
         </template>
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/custom_pos_receipt/static/src/lib/qrcode/qrcode.js"></script>
+            </xpath>
+        </template>
     </data>
 </odoo>

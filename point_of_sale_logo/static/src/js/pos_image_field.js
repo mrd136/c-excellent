@@ -10,14 +10,17 @@ odoo.define("point_of_sale_logo.image", function (require) {
         render_receipt: function () {
             this._super(this);
             var order = this.pos.get_order()
+            var receipt = order.export_for_printing();
+            var qr_string = ' Company Name : '+ receipt.company.name +' \n Company VAT NO.: ' + receipt.company.vat+'\n Ref : '+ order.name +' \n Date: ' + receipt.date.localestring+'\n Total Tax: '+receipt.total_tax+' SR'+'\n Total Amount: '+order.get_total_with_tax()+' SR';
             this.$('.pos-receipt-container').html(QWeb.render('OrderReceipt',{
                     widget:this,
                     a2 : window.location.origin + '/web/image?model=pos.config&field=image&id='+this.pos.config.id,
                     order: order,
-                    receipt: order.export_for_printing(),
+                    receipt: receipt,
                     orderlines: order.get_orderlines(),
                     paymentlines: order.get_paymentlines(),
                     pos : this.pos,
+                    qr_string : qr_string,
                 }));
             if (this.pos.config.duplicate_receipt && this.pos.config.print_number > 1) {
                 var contents = $('.pos-receipt-container');
@@ -32,6 +35,7 @@ odoo.define("point_of_sale_logo.image", function (require) {
                     receipt: order.export_for_printing(),
                     orderlines: order.get_orderlines(),
                     paymentlines: order.get_paymentlines(),
+                    qr_string : qr_string,
                 }));
                     i++;
                 }

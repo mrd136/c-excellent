@@ -3,7 +3,6 @@
 import ast
 
 from odoo import api, fields, models
-from odoo.exceptions import UserError,ValidationError
 
 
 class Product(models.Model):
@@ -67,9 +66,3 @@ class OrderLine(models.Model):
                     'price_unit': line[2].get('line_unit_price')
                 })
         return line
-
-
-class ResPartner(models.Model):
-    _inherit = "res.partner"
-
-    pos_special_customer = fields.Boolean("Pos Special Customer")

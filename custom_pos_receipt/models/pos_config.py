@@ -2,9 +2,23 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError,ValidationError
 from datetime import datetime
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.http import request
+from odoo.addons.ehcs_qr_code_base.models.qr_code_base import generate_qr_code
 
 class PosOrder(models.Model):
     _inherit = 'pos.order'
+
+    qr_image = fields.Binary("QR Code", compute='_generate_qr_code')
+
+    def _generate_qr_code(self):
+        base_url = request.env['ir.config_parameter'].get_param('web.base.url')
+        base_url += '/web#id=%d&view_type=form&model=%s' % (self.id, self._name)
+        text = "Price: 13.00 \n Reference: 00001"
+        self.qr_image = generate_qr_code(text)
+
+    @api.model
+    def generate_qrcode(self, text):
+        return generate_qr_code(text)
 
     def unlink(self):
         for pos_order in self.filtered(lambda pos_order: pos_order.state not in ['draft', 'cancel']):

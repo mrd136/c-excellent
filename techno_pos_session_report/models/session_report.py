@@ -116,12 +116,12 @@ class PosSession(models.Model):
                 total_return -= order.amount_total
                 return_total += order.amount_total
 
-            if order.delivery_type == 'internal':
-                total_internal = total_internal + order.amount_total
-            if order.delivery_type == 'delivery':
-                total_delivery = total_delivery + order.amount_total
-            if order.delivery_type == 'takeaway':
-                total_takeaway = total_takeaway + order.amount_total
+            # if order.delivery_type == 'internal':
+            #     total_internal = total_internal + order.amount_total
+            # if order.delivery_type == 'delivery':
+            #     total_delivery = total_delivery + order.amount_total
+            # if order.delivery_type == 'takeaway':
+            #     total_takeaway = total_takeaway + order.amount_total
 
         starting_cash = self.cash_register_balance_start
         expected_in_cash = self.cash_register_balance_start + total_sale

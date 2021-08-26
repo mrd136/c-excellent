@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+		<record id="ace_view_pos_config_form" model="ir.ui.view" >
+	        <field name="name">pos.config.form.view.inherit</field>
+	        <field name="model">pos.config</field>
+	        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+	        <field name="arch" type="xml">
+	            <div id="category_reference" position="before">
+		            <div class="col-xs-12 col-md-9 o_setting_box" id="config_enable_combo">
+		                <div class="o_setting_left_pane">
+		                    <field name="enable_combo"/>
+		                </div>
+	                	<div class="o_setting_right_pane">
+	                     	<label for="enable_combo"/>
+	                     	<div class="text-muted" id="lbl_show_image">
+	                        	Use combo feature in restaurant
+	                     	</div>
+	                    </div>
+	                </div>
+                </div>
+				<xpath expr="//sheet" position="inside">
+					<notebook>
+						<page string="Produits disponibles">
+							<field name="prds_tmpl_ids"/>
+						</page>
+					</notebook>
+				</xpath>
+			</field>
+		</record>
+
+		<record id="product_template_form_view_inherit_kzm" model="ir.ui.view">
+	        <field name="name">product.template.stock.property.form.kzm</field>
+	        <field name="model">product.template</field>
+	        <field name="inherit_id" ref="point_of_sale.product_template_form_view"/>
+	        <field name="arch" type="xml">
+				<xpath expr="//field[@name='available_in_pos']" position="after">
+					<field name="can_sale_pos_solo" attrs="{'invisible': [('available_in_pos', '=', False)]}"/>
+					<field name="when_be_sale" attrs="{'invisible': [('available_in_pos', '=', False)]}" widget="many2many_tags"/>
+				</xpath>
+			</field>
+		</record>
+
+        <record id="package_product_template_only_form_view" model="ir.ui.view">
+	        <field name="name">package.product.template.form.view</field>
+	        <field name="model">product.template</field>
+	        <field name="inherit_id" ref="product.product_template_form_view"/>
+	        <field name="arch" type="xml">
+
+	            <field name="sale_ok" position="before">
+	                <div>
+	                    <field name="is_combo"/>
+	                    <label for="is_combo"/>
+	                </div>
+	            </field>
+	            <xpath expr='//page[4]' position="after" >
+	               <page string="Combo items" attrs="{'invisible': [('is_combo', '=', False)]}">
+	                   <field name="product_combo_ids">
+						   <form string="Combo items">
+							   <group>
+								   <group>
+										<field name="require"/>
+									   <field name="no_of_items"/>
+								   </group>
+								   <group>
+									<field name="pos_category_id" attrs="{'readonly': [('require', '=', True)]}"/>
+								   </group>
+							   </group>
+							   <notebook>
+								   <page string="Products">
+									   <field name="product_ids">
+										   <tree  editable="bottom">
+										   	  <field name='sequence' widget='handle'/>
+											   <field name="product_id"
+													  domain="[('available_in_pos', '=', True),('pos_categ_id','=?',parent.pos_category_id)]"/>
+												<field name="based_on_priceliste"/>
+											   <field name="price_supplement"/>
+										   </tree>
+									   </field>
+								   </page>
+							   </notebook>
+						   </form>
+	                       <tree>
+	                           <field name="require"/>
+	                           <field name="pos_category_id" attrs="{'readonly': [('require', '=', True)]}"/>
+	                           <field name="product_ids" widget="many2many_tags" />
+	                           <field name="no_of_items"/>
+	                       </tree>
+	                   </field>
+	               </page>
+	            </xpath>
+	        </field>
+    </record>
+
+		<record id="view_pos_pos_form_inhert" model="ir.ui.view">
+	        <field name="name">pos.order.form.inherited</field>
+	        <field name="model">pos.order</field>
+	        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+	        <field name="arch" type="xml">
+				<xpath expr="//field[@name='price_unit']" position="after">
+					<field name="real_supplement_price"/>
+					<field name="is_splmnt"/>
+					<field name="is_combo"/>
+					<field name="parent_combo_product_id"/>
+				</xpath>
+			</field>
+		</record>
+
+    </data>
+</odoo>

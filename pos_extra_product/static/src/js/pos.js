@@ -6,15 +6,40 @@ var screens = require('point_of_sale.screens');
 var gui = require('point_of_sale.gui');
 var core = require('web.core');
 var PopupWidget = require('point_of_sale.popups');
-var rpc = require('web.rpc');
+
 var QWeb = core.qweb;
 var _t = core._t;
+///////////////////////////////
+var _super_order = models.Order.prototype;
+models.Order = models.Order.extend({
+    build_line_resume: function(){
+        var resume = {};
+        this.orderlines.each(function(line){
+            if (line.mp_skip) {
+                return;
+            }
+            var line_hash = line.get_line_diff_hash();
+            var qty  = Number(line.get_quantity());
+            var note = line.get_note();
+            var product_id = line.get_product().id;
 
-var ResPartner = _.find(models.PosModel.prototype.models, function(p){
-    return p.model == 'res.partner';
+            if (typeof resume[line_hash] === 'undefined') {
+                resume[line_hash] = {
+                    qty: qty,
+                    note: note,
+                    product_id: product_id,
+                    product_name_wrapped: line.generate_wrapped_product_name(),
+		    extra_items: line.extra_items,
+                };
+            } else {
+                resume[line_hash].qty += qty;
+            }
+
+        });
+        return resume;
+    }
 });
-ResPartner.fields.push('pos_special_customer');
-
+///////////////////////////////
 var _super_orderline = models.Orderline.prototype;
 models.Orderline = models.Orderline.extend({
     initialize: function(attr,options){
@@ -36,12 +61,12 @@ models.Orderline = models.Orderline.extend({
         });
         this.set_unit_price(tot_price);
         this.extra_items = items;
-        this.trigger('change', this);
-        this.order.trigger('change:sync');
+//        this.trigger('change', this);
+//        this.order.trigger('change:sync');
 
-        if(typeof this.order.send_to_kitchen == 'function'){
-            self.order.send_to_kitchen();
-        }
+//        if(typeof this.order.send_to_kitchen == 'function'){
+//            self.order.send_to_kitchen();
+//        }
     },
     get_extra_items: function() {
         if (this.extra_items && this.extra_items.length) {
@@ -104,7 +129,6 @@ screens.define_action_button({
     'name': 'additional_items',
     'widget': AdditionalItemButton,
 });
-
 
 var ProductAdditionalItems = PopupWidget.extend({
     template: 'AdditionalItemPopupWidget',
@@ -177,86 +201,4 @@ var ProductAdditionalItems = PopupWidget.extend({
 });
 gui.define_popup({name:'additional_items', widget: ProductAdditionalItems});
 
-
-
-///////////////////////////////////////////////
-
-models.Order = models.Order.extend({
-    get_all_special_customers: function() {
-        var self = this;
-        var customers = [];
-        var fields = ResPartner.fields;
-        rpc.query({
-            model: 'res.partner',
-            method: 'search_read',
-            args: [[['pos_special_customer', '=', true]], fields],
-        }).then(function (partners){
-            return customers;
-        });
-    },
-});
-var SpecialCustomerButton = screens.ActionButtonWidget.extend({
-    'template': 'SpecialCustomerButton',
-    button_click: function(){
-        var self = this;
-        var order = this.pos.get_order();
-        var fields = ResPartner.fields;
-        rpc.query({
-            model: 'res.partner',
-            method: 'search_read',
-            args: [[['pos_special_customer', '=', true]], fields],
-        }).then(function (partners){
-            self.gui.show_popup('special_customers',{
-                title: _('Special Customers'),
-                items: partners,
-            });
-        });
-    },
-});
-
-screens.define_action_button({
-    'name': 'special_customers',
-    'widget': SpecialCustomerButton,
-});
-
-var SpecialCustomer = PopupWidget.extend({
-    template: 'SpecialCustomerPopupWidget',
-    show: function(options) {
-        options = options || {};
-        this._super(options);
-        if (options.items) {
-            this.events["click .set_special_customer .button"] = "click_special_customer";
-            this.items = options.items;
-        }
-        this.items.forEach(function(item) {
-            item.active = false;
-        });
-        this.renderElement();
-    },
-    get_item_by_id: function(id) {
-        return _.find(this.items, function(item) {
-            return item.id === Number(id);
-        });
-    },
-    click_special_customer: function(e) {
-        var self = this;
-        var order = this.pos.get_order();
-        var id = e.currentTarget.getAttribute('data-id');
-        self.set_active_note_status($(e.target), Number(id));
-        var client = this.pos.db.get_partner_by_id(Number(id));
-        order.set_client(client);
-        this.gui.close_popup();
-    },
-    set_active_note_status: function(note_obj, id){
-        if (note_obj.hasClass("active")) {
-            note_obj.removeClass("active");
-            this.get_item_by_id(id).active = false;
-        } else {
-            note_obj.addClass("active");
-            this.get_item_by_id(id).active = true;
-        }
-    },
-});
-
-gui.define_popup({name:'special_customers', widget: SpecialCustomer});
 });

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--        <record id="res_users_view_form" model="ir.ui.view">-->
+<!--            <field name="name">res.users.form.view</field>-->
+<!--            <field name="model">res.users</field>-->
+<!--            <field name="inherit_id" ref="base.view_users_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <notebook position="inside">-->
+<!--                    <page string="Point of Sale">-->
+<!--                        <group>-->
+<!--                            <field name="barcode"/>-->
+<!--                            <field name="pos_security_pin"/>-->
+<!--                        </group>-->
+<!--                    </page>-->
+<!--                </notebook>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="aspl_sale_note_employee_form_view_ace" model="ir.ui.view">
+            <field name="name">res.users.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+                <notebook position="inside">
+                    <page string="Point of Sale">
+                        <group>
+                            <field name="pos_user_type"/>
+                            <field name="sales_persons" widget="many2many_tags"
+                                   attrs="{'invisible' : [('pos_user_type' ,'!=', 'cashier')]}"
+                                   context="{'from_sales_person': True}"/>
+                        </group>
+
+                    </page>
+
+                </notebook>
+            </field>
+        </record>
+<!--        hr.view_employee_form-->
+    </data>
+</odoo>

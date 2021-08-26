@@ -865,9 +865,9 @@ odoo.define('pos_promotion.promotion', function (require) {
 						self._super(val);
 					}
 				}
-				if(selected_line.get_extra_items() && selected_line.get_extra_items().length){
-				    selected_line.set_extra_items(selected_line.get_extra_items());
-				}
+//				if(selected_line.get_extra_items() && selected_line.get_extra_items().length){
+//				    selected_line.set_extra_items(selected_line.get_extra_items());
+//				}
 			}
 			if(self.pos.config.applied_promotion == 'automatic'){
 			    order.remove_promotion();

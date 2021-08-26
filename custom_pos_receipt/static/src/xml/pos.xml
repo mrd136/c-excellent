@@ -42,6 +42,21 @@
                 <div>Happy to serve you</div>
                 <div>سعداء بخدمتكم</div>
             </div>
+<!--            document.getElementById("qrcode")-->
+            <br></br>
+            <div id="qr_code" style="width: 32%;display: block;margin: 0 auto;"></div>
+            <div id="qr_string" style="display: none;"><t t-esc='qr_string' /></div>
+            <script type="text/javascript">
+                var qrcode = new QRCode(document.getElementById("qr_code") , {
+                    text: "AL",
+                    width: 100,
+                    height: 100,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                qrcode.makeCode($('#qr_string').text());
+            </script>
         </t>
 
         <t t-jquery=".pos-receipt .orderlines t[t-foreach='receipt.orderlines']" t-operation="replace">
@@ -258,16 +273,16 @@
         </t>
     </t>
 
-    <t t-extend="SubmitOrderButton">
-        <t t-jquery="span.order-submit" t-operation="replace"/>
-    </t>
+<!--    <t t-extend="SubmitOrderButton">-->
+<!--        <t t-jquery="span.order-submit" t-operation="replace"/>-->
+<!--    </t>-->
 
-    <t t-name="SubmitOrderButton1">
-        <span class="control-button order-submit">
-            <i class="fa fa-cutlery"></i>
-            Order
-        </span>
-    </t>
+<!--    <t t-name="SubmitOrderButton1">-->
+<!--        <span class="control-button order-submit">-->
+<!--            <i class="fa fa-cutlery"></i>-->
+<!--            Order-->
+<!--        </span>-->
+<!--    </t>-->
 
     <t t-extend="FloorScreenWidget">
         <t t-jquery=".editing" t-operation='replace'>

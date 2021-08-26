@@ -5,10 +5,8 @@
     'name': "POS Duplicate Receipt",
     'version': '1.0.0',
     'category': 'Point of Sale',
-    'author': 'TL Technology',
-    'live_test_url': 'http://posodoo.com/web/signup',
-    'price': '0',
-    'website': 'http://posodoo.com',
+    'author': 'A&L.',
+    'images': ['static/description/icon.png'],
     'sequence': 0,
     'depends': [
         'point_of_sale'
@@ -25,14 +23,12 @@
     'qweb': [
         'static/src/xml/*.xml'
     ],
-    "currency": 'EUR',
     "external_dependencies": {
         "python": [],
         "bin": []
     },
     'images': ['static/description/icon.png'],
     'support': 'thanhchatvn@gmail.com',
-    "license": "OPL-1",
     'installable': True,
     'application': True,
     'post_init_hook': 'auto_action_after_install',
