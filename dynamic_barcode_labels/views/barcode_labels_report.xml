@@ -98,6 +98,18 @@
 								</t>
 							</t>
 						</div>
+
+
+						<div align="center"
+							t-attf-style="color:black;font-weight: bold;font-size:{{config.price_display_size or '14'}}px">
+                        
+                           <span t-esc="config.company" />
+							
+						</div>
+
+
+
+
 					</div>
 					<p style="page-break-before:always;" />
 				</t>

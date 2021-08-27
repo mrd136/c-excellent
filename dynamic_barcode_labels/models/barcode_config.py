@@ -86,6 +86,24 @@ class BarcodeConfiguration(models.Model):
     barcode_height = fields.Integer(string="Height",  help="BarLines Quality(Height)", default=1400)
     barcode_width = fields.Integer(string="Width",  help="BarLines Quality(Width)", default=1400)
     humanreadable = fields.Boolean()
+  
+
+
+    @api.model
+    def get_company(self):
+        self.company = self.env.user.company_id.name
+
+          
+
+       
+
+    company = fields.Char(string='Company   ', default=get_company)
+
+
+
+
+
+
 
     @api.onchange('dpi')
     def onchange_dpi(self):

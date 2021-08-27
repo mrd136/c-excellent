@@ -32,7 +32,8 @@
                             <t t-if="data['form'].get('description')">
                                 <div class="row" style="color:black;font-size:22px;border-bottom: 2px solid black;">
                                     <div class="col-xs-12 mb16 mt16">
-                                        <span><b>Description: </b></span><span t-esc="product.default_code"/>
+                                        <!-- <span><b>Description: </b></span><span t-esc="product.default_code"/> -->
+                                        <span><b>Description: </b></span><span t-esc="product.company_id.name"/>
                                     </div>
                                 </div>
                             </t>

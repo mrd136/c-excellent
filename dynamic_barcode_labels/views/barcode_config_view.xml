@@ -13,6 +13,9 @@
                         <group string="Dimensions">
                             <field name="label_width" />
                             <field name="label_height" />
+                            <field name="company" />
+
+                            
                         </group>
                         <group string="Display" attrs="{'invisible': [('price_display', '=', False)]}">
                             <field name="currency" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
