@@ -1,0 +1,86 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_pos_access_rights
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.1alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-15 05:17+0000\n"
+"PO-Revision-Date: 2020-10-15 05:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__id
+msgid "ID"
+msgstr "هوية شخصية"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__group_select_customer
+msgid "POS - Customer Selection"
+msgstr "نقاط البيع - اختيار العميل"
+
+#. module: sh_pos_access_rights
+#: model:res.groups,name:sh_pos_access_rights.group_select_customer
+msgid "POS - Disable Customer Selection"
+msgstr "POS - تعطيل اختيار العميل"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__group_disable_discount
+#: model:res.groups,name:sh_pos_access_rights.group_disable_discount
+msgid "POS - Disable Discount Button"
+msgstr "نقاط البيع - تعطيل زر الخصم"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__group_disable_numpad
+#: model:res.groups,name:sh_pos_access_rights.group_disable_numpad
+msgid "POS - Disable Numpad"
+msgstr "POS - تعطيل Numpad"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__disable_payment_id
+msgid "POS - Disable Payment"
+msgstr "نقاط البيع - تعطيل الدفع"
+
+#. module: sh_pos_access_rights
+#: model:res.groups,name:sh_pos_access_rights.group_disable_payment
+msgid "POS - Disable Payment Button"
+msgstr "POS - تعطيل زر الدفع"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__group_disable_plus_minus
+#: model:res.groups,name:sh_pos_access_rights.group_disable_plus_minus
+msgid "POS - Disable Plus-Minus"
+msgstr "POS - تعطيل علامة زائد ناقص"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__group_disable_price
+#: model:res.groups,name:sh_pos_access_rights.group_disable_price
+msgid "POS - Disable Price Button"
+msgstr "POS - تعطيل زر السعر"
+
+#. module: sh_pos_access_rights
+#: model:ir.model.fields,field_description:sh_pos_access_rights.field_pos_config__group_disable_qty
+#: model:res.groups,name:sh_pos_access_rights.group_disable_qty
+msgid "POS - Disable Qty Button"
+msgstr "POS - تعطيل زر الكمية"
+
+#. module: sh_pos_access_rights
+#: model:ir.model,name:sh_pos_access_rights.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr "تكوين نقطة البيع"
