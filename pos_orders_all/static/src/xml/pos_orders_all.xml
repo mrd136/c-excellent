@@ -24,7 +24,7 @@
 	 </t>
 
 	<!-- CreateSalesOrderButtonWidget -->
-	<t t-name="CreateSalesOrderButtonWidget" name="Create Sales Order Button Widget">
+	<!-- <t t-name="CreateSalesOrderButtonWidget" name="Create Sales Order Button Widget">
 		<div class="control-button button confirm" id="create_sales_order" style="background-color: #7f82ac; color: #fff;font-size: 14px;">
 			<i class="fa fa-shopping-cart"></i> Create Sales Order 
 		</div>
@@ -36,10 +36,10 @@
 				<i class="fa fa-university"></i> Sale Orders
 			</div>
 		</t>
-	</t>
+	</t> -->
 
 	<!-- PosBagWidget -->
-	<t t-name="PosBagWidget" name="Pos Bag Widget">
+	<!-- <t t-name="PosBagWidget" name="Pos Bag Widget">
 		<t t-if="widget.pos.config.allow_bag_charges">
 			<div class="control-button button confirm" id="pos_bag" style="background-color: #7f82ac; color: #fff;font-size: 14px;">
 				<i class="fa fa-shopping-bag"></i> Bag 
@@ -51,14 +51,14 @@
 		 <div class="control-button button confirm" style="background-color: #7f82ac;color: #fff; font-size: 14px;">
 				<i class="fa fa-gift"></i>Coupon
 		  </div>
-	</t>
+	</t> -->
 
 	<!-- POSBarcodeReturnWidget -->
-	<t t-name="POSBarcodeReturnWidget" name="POS Return Order with Barcode">
+	<!-- <t t-name="POSBarcodeReturnWidget" name="POS Return Order with Barcode">
 		<div class="control-button button confirm" id="create_barcode_return" style="background-color: #7f82ac; color: #fff;font-size: 14px;">
 			<i class="fa fa-barcode"></i> Return with Barcode
 		</div>
-	</t>
+	</t> -->
 
 
 	<!-- PosBarcodePopupWidget -->
