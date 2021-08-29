@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_doctor_disease,hms.diseases,model_hms_diseases,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_disease_category,diseases.category,model_diseases_category,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+patient_access_doctor_disease,hms.patient.disease,model_hms_patient_disease,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_disease_gene,disease.gene,model_disease_gene,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_disease_genetic_risk,hms.patient.genetic.risk,model_hms_patient_genetic_risk,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_disease_family,hms.patient.family.diseases,model_hms_patient_family_diseases,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_physician_specialty,physician.specialty,model_physician_specialty,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_physician_degree,physician.degree,model_physician_degree,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_hms_physician,hms.physician,model_hms_physician,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_hms_patient,hms.patient,model_hms_patient,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_acs_family_member,acs.family.member,model_acs_family_member,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_hms_acs_ethnicity,acs.ethnicity,model_acs_ethnicity,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
+access_doctor_acs_family_relation,acs.family.relation,model_acs_family_relation,ce_acs_hms_custom.group_hms_custom_doctor,1,1,1,1
