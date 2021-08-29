@@ -31,7 +31,7 @@ class Appointment(models.Model):
             'default_weight': self.weight,
             'default_height': self.height,
             'default_patient_id': self.patient_id.id,
-            'default_appointment_id': self.id,
+            # 'default_appointment_id': self.id,
             'default_temp': self.temp,
             'default_hr': self.hr,
             'default_rr': self.rr,

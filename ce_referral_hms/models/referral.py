@@ -64,7 +64,7 @@ class Referral(models.Model):
     service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True,
                                  states=READONLY_STATES)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, states=READONLY_STATES, tracking=True)
-    appointment_id = fields.Many2one("hms.appointment", 'Appointment', states=READONLY_STATES)
+    # appointment_id = fields.Many2one("hms.appointment", 'Appointment', states=READONLY_STATES)
     weight = fields.Float(string="Weight")
     height = fields.Float(string="Height")
     temp = fields.Char(string="temp")
@@ -93,6 +93,7 @@ class Referral(models.Model):
         ('accept', 'Accepted'),
         ('waiting_ar', 'Waiting For Patient Arrival'),
         ('arrival', 'Confirmation of patient arrival'),
+        ('not', 'Not Arrival'),
         ('reject', 'Rejected'),
         ('done', 'Done'),
         ('cancel', 'Cancelled'),
@@ -224,6 +225,11 @@ class Referral(models.Model):
         self.state = 'done'
         # self.action_create_appointment()
 
+    def action_not_arrival(self):
+        self.state = 'not'
+        self.hospital_action = 'not'
+        # self.action_create_appointment()
+
     def action_cancel(self):
         self.state = 'cancel'
 
@@ -232,9 +238,9 @@ class Referral(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get('appointment_id'):
-            appointment_id = self.env['hms.appointment'].browse(values.get('appointment_id'))
-            appointment_id.state = 'referral'
+        # if values.get('appointment_id'):
+        #     appointment_id = self.env['hms.appointment'].browse(values.get('appointment_id'))
+        #     appointment_id.state = 'referral'
         if not values.get('name'):
             values['name'] = self.env['ir.sequence'].next_by_code('hms.referral')
         return super(Referral, self).create(values)

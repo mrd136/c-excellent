@@ -57,7 +57,7 @@
                 <field name="physician_id"/>
                 <field name="responsible_id" optional="hide"/>
                 <field name="create_uid" optional="hide"/>
-                <field name="appointment_id" optional="hide"/>
+<!--                <field name="appointment_id" optional="hide"/>-->
                 <field name="from_hospital_id"/>
                 <field name="to_hospital_id"/>
                 <field name="state" optional="show"/>
@@ -90,7 +90,7 @@
                             <field name="current_is_accept_user" invisible="1"/>
                             <field name="patient_id"/>
                             <field name="age"/>
-                            <field name="appointment_id"/>
+<!--                            <field name="appointment_id"/>-->
 <!--                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>-->
                             <field name="physician_id" required="1"/>
                             <field name="urgency"/>
@@ -200,6 +200,7 @@
                 <header>
                     <button name="action_accept" string="Accept" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
                     <button name="action_arrival" string="Confirm Patient Arrival" type="object" attrs="{'invisible':['|',('state', 'not in', ['accept', 'waiting_ar']), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_not_arrival" string="Confirm Patient Not Arrival" type="object" attrs="{'invisible':['|',('state', 'not in', ['accept', 'waiting_ar']), ('current_is_accept_user','!=', True)]}"/>
                     <button name="action_done" string="Complete" type="object" attrs="{'invisible':['|',('state', '!=', 'arrival'), ('current_is_accept_user','!=', True)]}"/>
                     <button name="action_reject" string="Reject" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="waiting,accept,done"/>

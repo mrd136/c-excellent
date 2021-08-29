@@ -42,6 +42,8 @@ class ACSPatient(models.Model):
     occupation = fields.Char("Occupation")
     religion = fields.Char("Religion")
     caste = fields.Char("Tribe")
+    is_unknown_patient = fields.Boolean('Is Unknown Patient?')
+    is_saudi = fields.Boolean('Is a Saudi?')
 
     @api.model
     def create(self, values):
@@ -73,7 +75,7 @@ class ACSPatient(models.Model):
             domain = []
         else:
             criteria_operator = ['|'] if operator not in expression.NEGATIVE_TERM_OPERATORS else ['&', '!']
-            domain = criteria_operator + [('code', '=ilike', name + '%'), ('name', operator, name)]
+            domain = criteria_operator + ['|', ('gov_code', '=ilike', name + '%'), ('code', '=ilike', name + '%'), ('name', operator, name)]
         group_ids = self._search(expression.AND([domain, args]), limit=limit, access_rights_uid=name_get_uid)
         return models.lazy_name_get(self.browse(group_ids).with_user(name_get_uid))
 
