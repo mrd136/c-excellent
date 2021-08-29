@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- HMS Main Menu and sub menus -->
+    <menuitem id="menu_hms" name="HMS" sequence="5" web_icon="acs_hms,static/description/icon.png"/>
+
+    <menuitem id="menu_patient" name="Patients" sequence="1" parent="menu_hms"/>
+
+    <menuitem id="action_menu_patient" name="Patients" sequence="0" parent="menu_patient" action="action_patient"/>
+
+    <menuitem id="action_menu_doctors" name="Physicians" parent="menu_hms" action="action_physician" sequence="2"/>
+
+<!--    &lt;!&ndash; Medicines &ndash;&gt;-->
+<!--    <menuitem id="hos_medicine" name="Medicines" parent="acs_hms.menu_hms" sequence="5" groups="acs_hms.group_hms_pharmacist,acs_hms.group_hms_jr_doctor" action="product_template_action_medicines"/>-->
+
+    <!-- Referring Doc -->
+    <menuitem id="menu_referring_doctors" sequence="15"
+        parent="ce_acs_hms_custom.menu_hms" action='action_referring_doctors'/>
+
+    <!-- Configuration Menu-->
+    <menuitem id="menu_hms_cofig" name="Configuration" parent="menu_hms" groups="ce_acs_hms_custom.group_hms_custom_manager" sequence="100"/>
+
+<!--    <menuitem id="menu_hms_cofig_settings" name="Settings" parent="menu_hms_cofig" sequence="0" action="action_hms_config_settings" groups="base.group_system"/>-->
+
+<!--    &lt;!&ndash;Configuration Schedule &ndash;&gt;-->
+<!--    <menuitem id="menu_working_schedule" sequence="20" parent="menu_hms_cofig" action='resource.action_resource_calendar_form'/>-->
+
+    <!-- HMS Main Menu Complete-->
+
+<!--    &lt;!&ndash; Main Patient Menu&ndash;&gt;-->
+<!--    <menuitem id="main_menu_patient" name="Patient" groups="acs_hms.group_hms_doctor,acs_hms.group_hms_receptionist,acs_hms.group_hms_pharmacist" sequence="5" web_icon="acs_hms,static/img/patient.png"/>-->
+<!--    <menuitem id="action_main_menu_patient" name="Patient" action="action_patient" parent="main_menu_patient" sequence="10"/>-->
+
+    <!-- Patient Configuration Menu-->
+    <menuitem id="menu_hms_patient_cofig" name="Configuration" parent="menu_patient" groups="ce_acs_hms_custom.group_hms_custom_manager" sequence="100"/>
+    <menuitem id="diseases_menu" name="Diseases" parent="menu_hms_patient_cofig" sequence="4"/>
+    <menuitem id="hms_diseases" name="Diseases" action="ce_acs_hms_custom.act_open_diseases_view" parent="ce_acs_hms_custom.diseases_menu" sequence="0"/>
+    <menuitem id="menu_disease_category" name="Disease Categories" sequence="1" parent="ce_acs_hms_custom.diseases_menu" action="ce_acs_hms_custom.act_open_acs_disease_category_view"/>
+
+<!--    <menuitem id="menu_medical_alerts" name="Medical Alerts" sequence="11" parent="ce_referral_hms_document.menu_hms_patient_cofig" action="ce_referral_hms_document.act_open_medical_alerts"/>-->
+    <menuitem id="menu_family_relation" name="Family Relation" action="ce_acs_hms_custom.action_acs_family_relation" parent="ce_acs_hms_custom.menu_hms_patient_cofig" sequence="12"/>
+
+    <!--Main Physician -->
+    <menuitem id="main_menu_physician" name="Physician" sequence="10" web_icon="acs_hms,static/img/physician.png"/>
+
+    <menuitem id="action_menu_physician" sequence="0" parent="main_menu_physician" action="action_physician"/>
+
+    <menuitem id="menu_physician_referring_physicians" sequence="1" parent="main_menu_physician" action='action_referring_doctors'/>
+
+    <menuitem id="menu_physician_cofig" name="Configuration" parent="main_menu_physician" sequence="100"/>
+
+    <menuitem id="menu_physician_specialty" sequence="10" parent="menu_physician_cofig" action='action_physician_specialty'/>
+
+    <menuitem id="menu_physician_degree" sequence="10" parent="menu_physician_cofig" action='action_physician_degree'/>
+
+</odoo>

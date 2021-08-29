@@ -26,12 +26,12 @@
     'support': 'info@almightycs.com',
     'website': 'https://www.almightycs.com',
     'license': 'OPL-1',
-    'depends': ['acs_hms'],
+    # 'depends': ['acs_hms'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
         'view/document_view.xml',
-        'view/hms_views.xml',
+        # 'view/hms_views.xml',
     ],
     'images': [
         'static/description/hms_document_management_system_almightycs_cover.jpg',

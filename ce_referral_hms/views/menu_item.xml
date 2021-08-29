@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_patient" name="Patients" sequence="1" parent="menu_referral_parent"/>
+
+    <menuitem id="action_menu_patient" name="Patients" sequence="0" parent="menu_patient" action="ce_acs_hms_custom.action_patient"/>
+
+    <menuitem id="menu_doctors" name="Physicians" sequence="2" parent="menu_referral_parent"/>
+
+    <menuitem id="action_menu_doctors" name="Physicians" parent="menu_doctors" action="ce_acs_hms_custom.action_physician" sequence="2"/>
+
+    <menuitem id="menu_referring_doctors" sequence="5"
+              parent="menu_doctors" action='ce_acs_hms_custom.action_referring_doctors'/>
+
+    <!-- Patient Configuration Menu-->
+    <menuitem id="menu_hms_patient_cofig" name="Configuration" parent="menu_patient" sequence="100"/>
+    <menuitem id="diseases_menu" name="Diseases" parent="menu_hms_patient_cofig" sequence="4"/>
+    <menuitem id="hms_diseases" name="Diseases" action="ce_acs_hms_custom.act_open_diseases_view" parent="diseases_menu" sequence="0"/>
+    <menuitem id="menu_disease_category" name="Disease Categories" sequence="1" parent="diseases_menu" action="ce_acs_hms_custom.act_open_acs_disease_category_view"/>
+
+    <menuitem id="menu_family_relation" name="Family Relation" action="ce_acs_hms_custom.action_acs_family_relation" parent="menu_hms_patient_cofig" sequence="12"/>
+
+    <menuitem id="menu_physician_cofig" name="Configuration" parent="menu_doctors" sequence="100"/>
+
+    <menuitem id="menu_physician_specialty" sequence="10" parent="menu_physician_cofig" action='ce_acs_hms_custom.action_physician_specialty'/>
+
+    <menuitem id="menu_physician_degree" sequence="10" parent="menu_physician_cofig" action='ce_acs_hms_custom.action_physician_degree'/>
+
+</odoo>

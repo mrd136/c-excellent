@@ -9,7 +9,8 @@ from dateutil.relativedelta import relativedelta
 class Referral(models.Model):
     _name = 'hms.referral'
     _description = "Referral"
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'acs.hms.mixin']
+    # _inherit = ['mail.thread', 'mail.activity.mixin', 'acs.hms.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = "id desc"
 
     @api.depends('height', 'weight')
@@ -57,9 +58,9 @@ class Referral(models.Model):
     image_128 = fields.Binary(related='patient_id.image_128', string='Image', readonly=True)
     physician_id = fields.Many2one('hms.physician', ondelete='restrict', string='Physician',
                                    index=True, help='Physician\'s Name', states=READONLY_STATES, tracking=True)
-    department_id = fields.Many2one('hr.department', ondelete='restrict',
-                                    domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
-                                    states=READONLY_STATES)
+    # department_id = fields.Many2one('hr.department', ondelete='restrict',
+    #                                 domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
+    #                                 states=READONLY_STATES)
     service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True,
                                  states=READONLY_STATES)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, states=READONLY_STATES, tracking=True)
@@ -248,7 +249,8 @@ class Referral(models.Model):
 class MultiReferral(models.Model):
     # _inherit = "hms.referral"
     _name = 'hms.multi.referral'
-    _inherit = ['mail.thread', 'mail.activity.mixin', 'acs.hms.mixin']
+    # _inherit = ['mail.thread', 'mail.activity.mixin', 'acs.hms.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Multi Referral Id', copy=False, tracking=True)
     date = fields.Datetime(string='Date', default=fields.Datetime.now, tracking=True)
@@ -257,8 +259,8 @@ class MultiReferral(models.Model):
     image_128 = fields.Binary(related='patient_id.image_128', string='Image', readonly=True)
     physician_id = fields.Many2one('hms.physician', ondelete='restrict', string='Physician',
                                    index=True, help='Physician\'s Name', tracking=True)
-    department_id = fields.Many2one('hr.department', ondelete='restrict',
-                                    domain=[('patient_depatment', '=', True)], string='Department', tracking=True)
+    # department_id = fields.Many2one('hr.department', ondelete='restrict',
+    #                                 domain=[('patient_depatment', '=', True)], string='Department', tracking=True)
     service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True)
     from_hospital_id = fields.Many2one('operating.unit', ondelete='restrict',
                                        string='From Hospital',
@@ -306,7 +308,7 @@ class MultiReferral(models.Model):
                    'state': 'waiting',
                    'physician_id': self.physician_id.id,
                    'urgency': self.urgency,
-                   'department_id': self.department_id.id,
+                   # 'department_id': self.department_id.id,
                    'radiological_report': self.radiological_report,
                    'lab_report': self.lab_report,
                    'present_illness': self.present_illness,

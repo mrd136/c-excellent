@@ -9,7 +9,7 @@
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="date"/>
-                <field name="department_id" groups="acs_hms.group_allow_multi_department" optional="hide"/>
+<!--                <field name="department_id" groups="acs_hms.group_allow_multi_department" optional="hide"/>-->
                 <field name="physician_id"/>
                 <field name="create_uid" optional="hide"/>
                 <field name="from_hospital_id"/>
@@ -39,7 +39,7 @@
                     <group>
                         <group>
                             <field name="patient_id"/>
-                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
+<!--                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>-->
                             <field name="physician_id" required="1"/>
                             <field name="urgency"/>
                         </group>

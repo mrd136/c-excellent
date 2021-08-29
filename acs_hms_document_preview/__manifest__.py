@@ -30,7 +30,7 @@
     ],
     'data' : [
         'views/template.xml',
-        'views/hms_view.xml',
+        # 'views/hms_view.xml',
     ],
     'images': [
         'static/description/hms_document_preview_almightycs_cover.jpg',

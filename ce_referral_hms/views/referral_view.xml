@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Referral -->
-    <menuitem id="menu_referral_parent" name="Referral Management" sequence="5" groups="acs_hms.group_hms_manager,group_hms_referral" web_icon="ce_referral_hms,static/description/icon.png"/>
+    <menuitem id="menu_referral_parent" name="Referral Management" sequence="5" groups="group_hms_referral" web_icon="ce_referral_hms,static/description/icon.png"/>
 
     <record model="ir.ui.view" id="referral_kanban_view">
         <field name="name">referral.kanban</field>
@@ -53,7 +53,7 @@
                 <field name="name" string="Referral"/>
                 <field name="patient_id"/>
                 <field name="date"/>
-                <field name="department_id" groups="acs_hms.group_allow_multi_department" optional="hide"/>
+<!--                <field name="department_id" groups="acs_hms.group_allow_multi_department" optional="hide"/>-->
                 <field name="physician_id"/>
                 <field name="responsible_id" optional="hide"/>
                 <field name="create_uid" optional="hide"/>
@@ -91,7 +91,7 @@
                             <field name="patient_id"/>
                             <field name="age"/>
                             <field name="appointment_id"/>
-                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
+<!--                            <field name="department_id" groups="acs_hms.group_allow_multi_department"/>-->
                             <field name="physician_id" required="1"/>
                             <field name="urgency"/>
                             <field name="from_hospital_id"/>
@@ -215,7 +215,7 @@
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="physician_id"/>
-                <field name="department_id" groups="acs_hms.group_allow_multi_department"/>
+<!--                <field name="department_id" groups="acs_hms.group_allow_multi_department"/>-->
                 <filter name="today" string="Today" domain="[('date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))), ('date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59)))]"/>
                 <filter name="my_app" string="My Referral" domain="[('physician_id.user_id', '=',uid)]"/>
                 <separator/>
@@ -223,7 +223,7 @@
                 <group expand="0" string="Group By...">
                     <filter string="Doctor's Referral" name="physician_groupby" domain="[]" context="{'group_by':'physician_id'}" />
                     <filter string="Date" name="date_groupby" domain="[]" context="{'group_by':'date'}" />
-                    <filter string="Department" name="department_groupby" domain="[]" context="{'group_by':'department_id'}" />
+<!--                    <filter string="Department" name="department_groupby" domain="[]" context="{'group_by':'department_id'}" />-->
                 </group>
             </search>
         </field>

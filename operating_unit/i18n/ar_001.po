@@ -175,6 +175,7 @@ msgstr "المستخدمون"
 msgid "Users Allowed"
 msgstr "المستخدمين المسموح بهم"
 
-model:ir.model.fields,field_description:operating_unit.field_operating_unit__specialty_hospital
+#. module: operating_unit
+#: model:ir.model.fields,field_description:operating_unit.field_operating_unit__specialty_hospital
 msgid "Is Specialty?"
-msgstr "تخصصي"
+msgstr "تخصصي؟"

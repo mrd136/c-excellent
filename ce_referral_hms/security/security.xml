@@ -9,7 +9,7 @@
         <record id="group_hms_referral" model="res.groups">
             <field name="name">Referral</field>
             <field name="category_id" ref="ce_referral_hms.module_category_referral_management"/>
-            <field name="implied_ids" eval="[(4, ref('acs_hms.group_hms_nurse')),(4, ref('acs_hms.group_hms_receptionist'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="group_hms_receive_referral" model="res.groups">
             <field name="name">Receive Referral</field>
