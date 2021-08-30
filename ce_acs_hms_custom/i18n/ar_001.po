@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* acs_hms_document_preview
+# 	* ce_acs_hms_custom
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0+e\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:14+0000\n"
-"PO-Revision-Date: 2019-11-02 10:14+0000\n"
+"POT-Creation-Date: 2021-08-29 18:51+0000\n"
+"PO-Revision-Date: 2021-08-29 18:51+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,17 +15,2189 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: acs_hms_document_preview
-#: model:ir.model.fields,field_description:acs_hms_document_preview.field_hms_patient__document_preview_url
-msgid "Document Preview Link"
-msgstr "رابط عرض الملف"
+#. module: ce_acs_hms_custom
+#: code:addons/ce_acs_hms_custom/models/hms_base.py:0
+#, python-format
+msgid " Days"
+msgstr "الايام"
 
-#. module: acs_hms_document_preview
-#: model:ir.model,name:acs_hms_document_preview.model_hms_patient
-msgid "Patient"
+#. module: ce_acs_hms_custom
+#: code:addons/ce_acs_hms_custom/models/hms_base.py:0
+#, python-format
+msgid " Month "
+msgstr "الشهر"
+
+#. module: ce_acs_hms_custom
+#: code:addons/ce_acs_hms_custom/models/hms_base.py:0
+#: code:addons/ce_acs_hms_custom/models/hms_base.py:0
+#, python-format
+msgid " Year"
+msgstr "السنه"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__accesses_count
+msgid "# Access Rights"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__groups_count
+msgid "# Groups"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__rules_count
+msgid "# Record Rules"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__patient_count
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__patient_count
+msgid "#Patient"
 msgstr "المريض"
 
-#. module: acs_hms_document_preview
-#: model_terms:ir.ui.view,arch_db:acs_hms_document_preview.view_patient_form
-msgid "Preview Documents"
-msgstr "عرض الملفات"
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__physician_count
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__physician_count
+msgid "#Physician"
+msgstr "الطبيب"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.patient_kanban_view
+msgid "<b>Age:</b>"
+msgstr "<b>العمر:</b>"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.patient_kanban_view
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.physician_kanban_view
+msgid "<b>Code:</b>"
+msgstr "<b>الرمز:</b>"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.patient_kanban_view
+msgid "<b>Doctor:</b>"
+msgstr "الدكتور"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.patient_kanban_view
+msgid "<b>Gender:</b>"
+msgstr "النوع"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.physician_kanban_view
+msgid "<b>Specialty:</b>"
+msgstr "التخصص"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__blood_group__ab+
+msgid "AB+"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__blood_group__ab-
+msgid "AB-"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_tree
+msgid "ACS Diseases"
+msgstr "أمراض ACS"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_tree
+msgid "ACS Ethnicity"
+msgstr "عرق ACS"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_needaction
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__active
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__active_lang_count
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__active_lang_count
+msgid "Active Lang Count"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_exception_decoration
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_state
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__status__acute
+msgid "Acute"
+msgstr "بصير"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Address"
+msgstr "العنوان"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__type
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__type
+msgid "Address Type"
+msgstr "نوع العنوان"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__chromosome
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__chromosome
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+msgid "Affected Chromosome"
+msgstr "الكروموسوم المتأثر"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__age
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__age
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__age
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__age
+msgid "Age"
+msgstr "العمر"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__age
+msgid "Age when diagnosed"
+msgstr "العمر عند التشخيص"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__alias_id
+msgid "Alias"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__alias_contact
+msgid "Alias Contact Security"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__lang
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__lang
+msgid ""
+"All the emails and documents sent to this contact will be translated in this"
+" language."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__is_allergy
+msgid "Allergic Disease"
+msgstr "أمراض الحساسية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__allergy_type
+msgid "Allergy type"
+msgstr "نوع الحساسية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_attachment_count
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__aunt
+msgid "Aunt"
+msgstr "عمة/خالة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__bank_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__bank_ids
+msgid "Banks"
+msgstr "البنوك"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_blacklisted
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_blacklisted
+msgid "Blacklist"
+msgstr "القائمة السوداء"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__blood_group
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__blood_group
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__blood_group
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__blood_group
+msgid "Blood Group"
+msgstr "فصيلة الدم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_bounce
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_bounce
+msgid "Bounce"
+msgstr "المرتد"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__brother
+msgid "Brother"
+msgstr "أخ"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__category
+msgid "Category"
+msgstr "فئة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__name
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_search
+msgid "Category Name"
+msgstr "اسم التصنيف"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__cod
+msgid "Cause of Death"
+msgstr "سبب الوفاة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__channel_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__channel_ids
+msgid "Channels"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__out_of_office_message
+msgid "Chat Status"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__is_patient
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__is_patient
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_res_partner__is_patient
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_res_users__is_patient
+msgid "Check if customer is linked with patient."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__is_company
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "فحص ما اذا كانت جهة الاتصال مؤسسة، وإلا كانت شخصًا"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient_disease__is_infectious
+msgid "Check if the patient has an infectioustransmissible disease"
+msgstr "تحقق مما إذا كان المريض يعاني من مرض معدٍ قابل للانتقال"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__employee
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__employee
+msgid "Check this box if this contact is an Employee."
+msgstr "قم بتحديد هذا المربع إذا كانت جهة الاتصال المختارة موظفًا."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__status__chronic
+msgid "Chronic"
+msgstr "مزمن"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__city
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__city
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "City"
+msgstr "المدينة"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_acs_family_relation
+msgid "Click to add Family Relation."
+msgstr "انقر لإضافة القرابة العائلية"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.act_open_acs_disease_category_view
+msgid "Click to add a Disease Categories."
+msgstr "انقر لإضافة فئات الأمراض."
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.act_open_diseases_view
+msgid "Click to add a Diseases."
+msgstr "انقر لإضافة الأمراض."
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.act_open_acs_ethnicity_view
+msgid "Click to add a Ethnicity."
+msgstr "انقر لإضافة العرق."
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_patient
+msgid "Click to add a Patient."
+msgstr "انقر لإضافة مريض."
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_physician_degree
+msgid "Click to add a Physician Degree."
+msgstr "انقر لإضافة درجة طبيب"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_physician
+msgid "Click to add a Physician."
+msgstr "انقر لإضافة طبيب."
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_referring_doctors
+msgid "Click to add a Referring Doctor."
+msgstr "انقر لإضافة طبيب إحالة."
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_physician_specialty
+msgid "Click to add a Specialty."
+msgstr "انقر لإضافة التخصص"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_hms_patient_disease
+msgid "Click to add a Systematic Examination."
+msgstr "انقر لإضافة اختبار منهجي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__code
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__code
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__code
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_filter
+msgid "Code"
+msgstr "الرمز"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__color
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__color
+msgid "Color Index"
+msgstr "معرف اللون"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__commercial_partner_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__commercial_partner_id
+msgid "Commercial Entity"
+msgstr "الكيان التجاري"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__company_ids
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__company_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__company_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_filter
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_search
+msgid "Company"
+msgstr "الشركة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__company_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__company_name
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__commercial_company_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__commercial_company_name
+msgid "Company Name Entity"
+msgstr "كيان اسم المؤسسة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__company_type
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__company_type
+msgid "Company Type"
+msgstr "نوع المؤسسة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__contact_address
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__contact_address
+msgid "Complete Address"
+msgstr "العنوان الكامل"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_consultation_doctor
+msgid "Consultation Physician"
+msgstr "طبيب الإستشارة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_res_partner
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__child_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__child_ids
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__corpo_company_id
+msgid "Corporate Company"
+msgstr "الشركات الخاصة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_corpo_tieup
+msgid "Corporate Tie-Up"
+msgstr "ربط الشركات"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_bounce
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_bounce
+msgid "Counter of the number of bounced emails for this contact"
+msgstr "عدد الرسائل المرتدة لجهة الاتصال هذه"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__country_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__country_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Country"
+msgstr "الدولة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__cousin
+msgid "Cousin"
+msgstr "أبناء العم"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_res_users_inherit_form
+msgid "Create Patient"
+msgstr "إنشاء المريض"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_res_users_inherit_form
+msgid "Create Physician"
+msgstr "إنشاء طبيب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__create_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__create_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__credit_limit
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__credit_limit
+msgid "Credit Limit"
+msgstr "حد الائتمان"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__date
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__birthday
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__birthday
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__birthday
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__birthday
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__date_of_death
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__date_of_death
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__date_of_death
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__date_of_death
+msgid "Date of Death"
+msgstr "تاريخ الوفاة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__diagnosed_date
+msgid "Date of Diagnosis"
+msgstr "تاريخ التشخيص"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__default_operating_unit_id
+msgid "Default Operating Unit"
+msgstr "وحدة التشغيل الافتراضية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__degree_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__name
+msgid "Degree"
+msgstr "الدرجة العلمية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__discharged
+msgid "Discharged"
+msgstr "خرج من المستشفى"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_form
+msgid "Diseas"
+msgstr "مرض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__disease
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__diseases_ids
+msgid "Disease"
+msgstr "الأمراض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.act_open_acs_disease_category_view
+msgid "Disease Categories"
+msgstr " فئات الأمراض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__disease_gene
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_genetic_risk_form
+msgid "Disease Gene"
+msgstr "جين المرض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_disease_gene
+msgid "Disease Genes"
+msgstr "جينات المرض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_diseases__name
+msgid "Disease name"
+msgstr "اسم المرض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.act_open_diseases_view
+#: model:ir.model,name:ce_acs_hms_custom.model_hms_diseases
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__patient_diseases
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Diseases"
+msgstr "الأمراض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_diseases_category
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_tree
+msgid "Diseases Category"
+msgstr "فئة الأمراض"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Diseases History"
+msgstr "سجل الأمراض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__display_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_disease_form
+#: model:res.groups,name:ce_acs_hms_custom.group_hms_custom_doctor
+msgid "Doctor"
+msgstr "الطبيب"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_tree
+msgid "Doctor ID"
+msgstr "هوية الطبيب"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Doctor's Name"
+msgstr "اسم الطبيب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__dominance
+msgid "Dominance"
+msgstr "هيمنه"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__allergy_type__da
+msgid "Drug Allergy"
+msgstr "حساسية من الدواء"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Education"
+msgstr "التعليم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__partner_share
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__partner_share
+msgid ""
+"Either customer (not a user), either shared user. Indicated the current "
+"partner is a customer without access or with a limited access created for "
+"sharing data."
+msgstr ""
+"إما عميل (وليس مستخدم) ، إما مستخدم مشترك. يشار إلى أن الشريك الحالي هو عميل"
+" بدون وصول أو مع وصول محدود تم إنشاؤه لمشاركة البيانات."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__email
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__email
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__alias_id
+msgid ""
+"Email address internally associated with this user. Incoming emails will "
+"appear in the user's notifications."
+msgstr ""
+"عنوان البريد الإلكتروني المرتبط داخليًا بهذا المستخدم. ستظهر رسائل البريد "
+"الإلكتروني الواردة في إشعارات المستخدم."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__employee
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__employee
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__emp_code
+msgid "Employee Code"
+msgstr "هوية الموظف"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__ethnic_group
+msgid "Ethnic group"
+msgstr "مجموعة عرقية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.act_open_acs_ethnicity_view
+#: model:ir.model,name:ce_acs_hms_custom.model_acs_ethnicity
+msgid "Ethnicity"
+msgstr "الأصل العرقي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__share
+msgid ""
+"External user with limited access, created only for the purpose of sharing "
+"data."
+msgstr "مستخدم خارجي بصلاحيات وصول محدودة، أنشئ فقط لأغراض مشاركة البيانات."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__info
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+msgid "Extra Info"
+msgstr "معلومات إضافيه"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__family_member_ids
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Family"
+msgstr "العائلة"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Family Disease History"
+msgstr "سجل أمراض العائلة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_hms_patient_family_diseases
+msgid "Family Diseases"
+msgstr "أمراض العائلة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__family_history
+msgid "Family Diseases History"
+msgstr "سجل أمراض العائلة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_acs_family_member
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__related_patient_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_family_member_form
+msgid "Family Member"
+msgstr "فرد من العائلة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_acs_family_member__member
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_acs_family_member__related_patient_id
+msgid "Family Member Name"
+msgstr "اسم الفرد من العائلة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_acs_family_relation
+#: model:ir.model,name:ce_acs_hms_custom.model_acs_family_relation
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_family_relation_tree
+msgid "Family Relation"
+msgstr "العلاقة الأسرية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__father
+msgid "Father"
+msgstr "الاب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__gender__female
+msgid "Female"
+msgstr "انثي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient_family_diseases__relative
+msgid ""
+"First degree = siblings, mother and father; second degree = Uncles, nephews "
+"and Nieces; third degree = Grandparents and cousins"
+msgstr ""
+"الدرجة الأولى = الأشقاء ، الأم والأب ؛ الدرجة الثانية = الأعمام والأبناء "
+"والأخوات. الدرجة الثالثة = الأجداد وأبناء العم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_follower_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_channel_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_partner_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__allergy_type__fa
+msgid "Food Allergy"
+msgstr "حساسية الطعام"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__email_formatted
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__email_formatted
+msgid "Format email address \"Name <email@domain>\""
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__email_formatted
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__email_formatted
+msgid "Formatted Email"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__gender
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__gender
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__gender
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__gender
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_filter
+msgid "Gender"
+msgstr "النوع"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__gene
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+msgid "Gene"
+msgstr "الجين"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__gene_id
+msgid "Gene ID"
+msgstr "هوية الجين"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "General Information"
+msgstr "المعلومات العامة"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_family_disease_tree
+msgid "Genetic Family Diseases"
+msgstr "أمراض الأسرة الوراثية"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Genetic Risk"
+msgstr "المخاطر الوراثية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__genetic_risks
+msgid "Genetic Risks"
+msgstr "المخاطر الوراثية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__partner_latitude
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__partner_latitude
+msgid "Geo Latitude"
+msgstr "خط العرض الجغرافي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__partner_longitude
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__partner_longitude
+msgid "Geo Longitude"
+msgstr "خط العرض الجغرافي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__government_id
+msgid "Government ID"
+msgstr "الهوية الوطنية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__gov_code
+msgid "Government Identity"
+msgstr "الهوية الحكومية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__grandfather
+msgid "Grandfather"
+msgstr "جد"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__grandmother
+msgid "Grandmother"
+msgstr "جدة"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_filter
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_search
+msgid "Group By..."
+msgstr "تجميع ب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__groups_id
+msgid "Groups"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__healed_date
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__status__healed
+msgid "Healed"
+msgstr "شفى"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_disease_form
+msgid "Healing Date"
+msgstr "تاريخ الشفاء"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__action_id
+msgid "Home Action"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.module.category,name:ce_acs_hms_custom.module_category_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Hospital"
+msgstr "المستشفى"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_partner_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Hospital Info"
+msgstr "معلومات المستشفى"
+
+#. module: ce_acs_hms_custom
+#: model:ir.module.category,description:ce_acs_hms_custom.module_category_hms_custom
+msgid "Hospital Management System"
+msgstr "نظام إدارة المستشفى"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__hospital_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__hospital_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__hospital_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__hospital_name
+msgid "Hospital Name"
+msgstr "اسم المستشفى"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__hospitalized
+msgid "Hospitalized"
+msgstr "في المستشفى"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_diseases__classification__icd10
+msgid "ICD-10"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_diseases__classification__vaccine
+msgid "ICD-11"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_diseases__classification__icd9
+msgid "ICD-9"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__id
+msgid "ID"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__im_status
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__im_status
+msgid "IM Status"
+msgstr "حالة المحادثات الفورية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_exception_icon
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_exception_icon
+msgid "Icon"
+msgstr "الأيقونة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__activity_exception_icon
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__code
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__code
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__code
+msgid "Identification Code"
+msgstr "رمز التعريف"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__code
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_res_partner__code
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_res_users__code
+msgid "Identifier provided by the Health Center."
+msgstr "المعرف المقدم من قبل المركز الصحي."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_needaction
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_unread
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_needaction
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "إذا كان محددًا، فهناك رسائل جديدة تحتاج لرؤيتها."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_has_error
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا كان محددًا، فقد حدث خطأ في تسليم بعض الرسائل."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__is_corpo_tieup
+msgid ""
+"If not checked, these Corporate Tie-Up Group will not be visible at all."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__action_id
+msgid ""
+"If specified, this action will be opened at log on for this user, in "
+"addition to the standard menu."
+msgstr ""
+"إذا تم تحديد هذا الإجراء فسيتم تنفيذه عند تسجيل دخول المستخدم، بالإضافة إلى "
+"القائمة الافتراضية."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__is_blacklisted
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__is_blacklisted
+msgid ""
+"If the email address is on the blacklist, the contact won't receive mass "
+"mailing anymore, from any list"
+msgstr ""
+"إذا كان البريد الإلكتروني في القائمة السوداء، لن يستقبل صاحبه أي مراسلات "
+"جماعية من أي قائمة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__image_1920
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__image_1920
+msgid "Image"
+msgstr "صورة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__image_1024
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__image_128
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__image_256
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__image_512
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__status__improving
+msgid "Improving"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__industry_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__industry_id
+msgid "Industry"
+msgstr "مجال العمل"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__is_infectious
+msgid "Infectious Disease"
+msgstr "الأمراض المعدية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__info
+msgid "Information"
+msgstr "معلومات"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__inverse_relation_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__inverse_relation_id
+msgid "Inverse Relation"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__type
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__type
+msgid ""
+"Invoice & Delivery addresses are used in sales orders. Private addresses are"
+" only visible by authorized users."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_is_follower
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_patient
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_patient
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__is_patient
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__is_patient
+msgid "Is Patient"
+msgstr "المريض؟"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_referring_doctor
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_referring_doctor
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__is_referring_doctor
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__is_referring_doctor
+msgid "Is Refereinng Physician"
+msgstr "الطبيب المحول؟"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_company
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_company
+msgid "Is a Company"
+msgstr "هذه مؤسسة؟"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_moderator
+msgid "Is moderator"
+msgstr "مشرف"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__function
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__function
+msgid "Job Position"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__password
+msgid ""
+"Keep empty if you don't want the user to be able to connect on the system."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__lactation
+msgid "Lactation"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__lang
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__lang
+msgid "Language"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree____last_update
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__write_uid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_degree__write_date
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__login_date
+msgid "Latest authentication"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__location
+msgid "Location"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_disease_gene__location
+msgid "Locus of the chromosome"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__login
+msgid "Login"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_physician_degree_form
+msgid "MBBS"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_main_attachment_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+msgid "Main Category"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__gender__male
+msgid "Male"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:res.groups,name:ce_acs_hms_custom.group_hms_custom_manager
+msgid "Manager"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__marital_status
+msgid "Marital Status"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient__marital_status__married
+msgid "Married"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__xory__m
+msgid "Maternal"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__xory
+msgid "Maternal or Paternal"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_physician_specialty_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_specialty_tree
+msgid "Medicament Specialty"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_physician_specialty_form
+msgid "Medicament Specialtys"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__member
+msgid "Member"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_has_error
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__disease_severity__mild
+msgid "Mild"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__allergy_type__ma
+msgid "Misc Allergy"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__allergy_type__mc
+msgid "Misc Contraindication"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__mobile
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__mobile
+msgid "Mobile"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__disease_severity__moderate
+msgid "Moderate"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__moderation_channel_ids
+msgid "Moderated channels"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__moderation_counter
+msgid "Moderation count"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__mother
+msgid "Mother"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_res_users_inherit_form
+#: model:res.groups,name:ce_acs_hms_custom.group_allow_multi_department
+msgid "Multi Department"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_partner__name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__name
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_physician_degree_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_physician_specialty_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Name"
+msgstr "الاسم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.constraint,message:ce_acs_hms_custom.constraint_acs_ethnicity_name_uniq
+#: model:ir.model.constraint,message:ce_acs_hms_custom.constraint_physician_degree_name_uniq
+#: model:ir.model.constraint,message:ce_acs_hms_custom.constraint_physician_specialty_name_uniq
+msgid "Name must be unique!"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_diseases__protein
+msgid "Name of the protein(s) affected"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__nephew
+msgid "Nephew"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_date_deadline
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_summary
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_type_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__niece
+msgid "Niece"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.act_open_acs_disease_category_view
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.act_open_acs_ethnicity_view
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.act_open_diseases_view
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_acs_family_relation
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_hms_patient_disease
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_patient
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_physician
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_physician_degree
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_physician_specialty
+#: model_terms:ir.actions.act_window,help:ce_acs_hms_custom.action_referring_doctors
+msgid "No Record Found"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__email_normalized
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__email_normalized
+msgid "Normalized Email"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_ethnicity__notes
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__comment
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__comment
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_ethnicity_search
+msgid "Notes"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_disease_form
+msgid "Notes about the disease"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__notification_type
+msgid "Notification"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_needaction_counter
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__companies_count
+msgid "Number of Companies"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__accesses_count
+msgid "Number of access rights that apply to the current user"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_has_error_counter
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__groups_count
+msgid "Number of groups that apply to the current user"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_needaction_counter
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_has_error_counter
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__rules_count
+msgid "Number of record rules that apply to the current user"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__message_unread_counter
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__occupation
+msgid "Occupation"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__long_name
+msgid "Official Long Name"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_disease_gene__name
+msgid "Official Symbol"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__role
+msgid "Old Relation"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__operating_unit_ids
+msgid "Operating Unit"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__assigned_operating_unit_ids
+msgid "Operating Units"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__gender__other
+msgid "Other"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__parent_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_search
+msgid "Parent Category"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__parent_name
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__parent_name
+msgid "Parent name"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__active_partner
+msgid "Partner is Active"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__same_vat_partner_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__same_vat_partner_id
+msgid "Partner with same Tax ID"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__partner_id
+msgid "Partner-related data of the user"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__password
+msgid "Password"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__medical_history
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Past Medical History"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__xory__f
+msgid "Paternal"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_patient
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_patient_form
+#: model:ir.model,name:ce_acs_hms_custom.model_hms_patient
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__patient_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__patient_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__patient_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_genetic_risk__patient_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_filter
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_tree
+msgid "Patient"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_disease_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_disease_tree
+msgid "Patient Disease"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_hms_patient_disease
+msgid "Patient Diseases"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_family_disease_form
+msgid "Patient Genetic Family Diseases"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_hms_patient_genetic_risk
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_genetic_risk_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_genetic_risk_tree
+msgid "Patient Genetic Risks"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient_disease__age
+msgid "Patient age at the moment of the diagnosis. Can be estimative"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Personal Information"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__phone
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__phone
+msgid "Phone"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_physician
+#: model:ir.model,name:ce_acs_hms_custom.model_hms_physician
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__physician_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.physician_kanban_view
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_search
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_tree
+msgid "Physician"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_physician_degree
+#: model:ir.model,name:ce_acs_hms_custom.model_physician_degree
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_acs_physician_degree_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_degree_tree
+msgid "Physician Degree"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__code
+msgid "Physician ID"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_physician_specialty
+msgid "Physician Specialty"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient_disease__physician_id
+msgid "Physician who treated or diagnosed the patient"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__notification_type
+msgid ""
+"Policy on how to handle Chatter notifications:\n"
+"- Handle by Emails: notifications are sent to your email address\n"
+"- Handle in Odoo: notifications appear in your Odoo Inbox"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__alias_contact
+msgid ""
+"Policy to post a message on the document using the mailgateway.\n"
+"- everyone: everyone can post\n"
+"- partners: only authenticated partners\n"
+"- followers: only followers of the related document or members of following channels\n"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__pregnancy_warning
+msgid "Pregnancy warning"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__primary_doctor
+msgid "Primary Care Doctor"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__is_primary_surgeon
+msgid "Primary Surgeon"
+msgstr "الجراح الأولي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__protein
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_search
+msgid "Protein involved"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__ref
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__ref
+msgid "Reference"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_partner_form
+msgid "Refering Doctor"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_referring_doctors
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__ref_doctor
+msgid "Referring Doctors"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__parent_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__parent_id
+msgid "Related Company"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__partner_id
+msgid "Related Partner"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__physician_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_res_users__physician_ids
+msgid "Related Physician"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__user_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__user_id
+msgid "Related User"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_member__relation_id
+msgid "Relation"
+msgstr "علاقة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_family_diseases__relative
+msgid "Relative"
+msgstr "أقارب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__religion
+msgid "Religion"
+msgstr "دين"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__activity_user_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_diseases__category
+msgid ""
+"Select the category for this disease This is usuallyassociated to the "
+"standard. For instance, the chapter on the ICD-10will be the main category "
+"for the disease"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__self
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__self
+msgid "Self"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_acs_family_relation__sequence
+msgid "Sequence"
+msgstr "التسلسل"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__new_password
+msgid "Set Password"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__disease_severity__severe
+msgid "Severe"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__disease_severity
+msgid "Severity"
+msgstr "حدة المرض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__partner_share
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__partner_share
+msgid "Share Partner"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__share
+msgid "Share User"
+msgstr "المستخدم المشترك"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__signature
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Signature"
+msgstr "التوقيع"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__signup_expiration
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__signup_expiration
+msgid "Signup Expiration"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__signup_token
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__signup_token
+msgid "Signup Token"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__signup_type
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__signup_type
+msgid "Signup Token Type"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__signup_valid
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__signup_valid
+msgid "Signup Token is Valid"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__signup_url
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__signup_url
+msgid "Signup URL"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient__marital_status__single
+msgid "Single"
+msgstr "أعزب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__sister
+msgid "Sister"
+msgstr "أخت"
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_physician_specialty
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__specialty
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_physician_specialty__name
+msgid "Specialty"
+msgstr "التخصص"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__specialty
+msgid "Specialty Code"
+msgstr "رمز التخصص"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_diseases__code
+msgid "Specific Code for the Disease (eg, Code for ICD-10)"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__new_password
+msgid ""
+"Specify a value only when creating a user or if you're changing the user's "
+"password, otherwise leave empty. After a change of password, the user has to"
+" login again."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__state_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__state_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "State"
+msgstr "الحالة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__activity_state
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__status
+msgid "Status of the disease"
+msgstr "حالة المرض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__street
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__street
+msgid "Street"
+msgstr "الشارع"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+msgid "Street 2..."
+msgstr "الشارع التاني"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "Street..."
+msgstr "الشارع .."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__street2
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__street2
+msgid "Street2"
+msgstr "الشارع التاني"
+
+#. module: ce_acs_hms_custom
+#: model:ir.actions.act_window,name:ce_acs_hms_custom.action_hms_patient_disease
+msgid "Systematic Examination"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__category_id
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__category_id
+msgid "Tags"
+msgstr "وسوم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__vat
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__vat
+msgid "Tax ID"
+msgstr "معرف الضريبة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.constraint,message:ce_acs_hms_custom.constraint_acs_family_relation_name_uniq
+msgid "The Relation must be unique!"
+msgstr "يجب أن تكون العلاقة فريدة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__vat
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__vat
+msgid ""
+"The Tax Identification Number. Complete it if the contact is subjected to "
+"government taxes. Used in some legal statements."
+msgstr ""
+"رقم التعريف الضريبي. قم بإكماله إذا كانت جهة الاتصال تخضع للضرائب الحكومية. "
+"يُستخدم في بعض المستندات القانونية."
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__company_id
+msgid "The default company for this user."
+msgstr "الشركة الافتراضية لهذا المستخدم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__email_normalized
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__email_normalized
+msgid ""
+"This field is used to search on email address as the primary email field can"
+" contain more than strictly an email address."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__tz
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__tz
+msgid "Timezone"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__tz_offset
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__tz_offset
+msgid "Timezone offset"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__title
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__title
+msgid "Title"
+msgstr "العنوان"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient_disease__description
+msgid "Treatment Description"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__caste
+msgid "Tribe"
+msgstr "قبيلة"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__activity_exception_decoration
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__status__unchanged
+msgid "Unchanged"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__uncle
+msgid "Uncle"
+msgstr "العم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_unread
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__message_unread_counter
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__login
+msgid "Used to log into the system"
+msgstr "يستخدم لتسجيل الدخول إلى النظام"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__log_ids
+msgid "User log entries"
+msgstr "قيود سجل المستخدم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__user_id
+msgid "User-related data of the patient"
+msgstr "البيانات المتعلقة بالشريك للمريض"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__user_id
+msgid "User-related data of the physician"
+msgstr "البيانات المتعلقة بالشريك للطبيب"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model,name:ce_acs_hms_custom.model_res_users
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__user_ids
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__user_ids
+msgid "Users"
+msgstr "المستخدمون"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__website
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__website
+msgid "Website Link"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_patient__tz
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_physician__tz
+msgid ""
+"When printing documents and exporting/importing data, time values are computed according to this timezone.\n"
+"If the timezone is not set, UTC (Coordinated Universal Time) is used.\n"
+"Anywhere else, time values are computed according to the time offset of your web client."
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_disease__status__worsening
+msgid "Worsening"
+msgstr "تفاقم"
+
+#. module: ce_acs_hms_custom
+#: code:addons/ce_acs_hms_custom/models/diseases.py:0
+#, python-format
+msgid "You cannot create a recursive hierarchy."
+msgstr "لا يمكنك إنشاء تسلسل هرمي متكرر"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "ZIP"
+msgstr "الرمز البريدي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__zip
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_physician__zip
+msgid "Zip"
+msgstr "الرمز البريدي"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_filter
+msgid "birthday"
+msgstr "عيد الميلاد"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,help:ce_acs_hms_custom.field_hms_diseases__chromosome
+msgid "chromosome number"
+msgstr "رقم الكروموسوم"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__disease_gene__dominance__d
+msgid "dominant"
+msgstr "مهيمن"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "e.g. +506 5555 5555"
+msgstr "مثلا +506 5555 5555"
+
+#. module: ce_acs_hms_custom
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_physician_form
+msgid "e.g. MBBS"
+msgstr "مثلا MBBS"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__disease_gene__dominance__r
+msgid "recessive"
+msgstr ""
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_unknown_patient
+msgid "Is Unknown Patient?"
+msgstr "مجهول الهوية؟"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_saudi
+msgid "Is a Saudi?"
+msgstr "سعودي؟"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__marital_status
+msgid "Marital Status"
+msgstr "الحالة الاجتماعية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient__marital_status__married
+msgid "Married"
+msgstr "متزوج"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__occupation
+msgid "Occupation"
+msgstr "احتلال"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__primary_doctor
+msgid "Primary Care Doctor"
+msgstr "طبيب الرعاية الأولية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__gender__male
+msgid "Male"
+msgstr "ذكر"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__gender__other
+msgid "Other"
+msgstr "اخرى"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_diseases__classification
+msgid "Classification"
+msgstr "التصنيف"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_diseases_category__parent_id
+#: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_diseases_category_search
+msgid "Parent Category"
+msgstr "الفئة الام"
+

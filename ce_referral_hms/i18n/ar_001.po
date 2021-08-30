@@ -976,3 +976,52 @@ msgstr " الأكسجين"
 #: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__temp
 msgid "temp"
 msgstr "درجة الحرارة"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_hms_patient_cofig
+#: model:ir.ui.menu,name:ce_referral_hms.menu_physician_cofig
+msgid "Configuration"
+msgstr "الاعدادات"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_physician_degree
+msgid "Physician Degree"
+msgstr "الدرجة العلمية للطبيب"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.action_menu_doctors
+#: model:ir.ui.menu,name:ce_referral_hms.menu_doctors
+msgid "Physicians"
+msgstr "الأطباء"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_physician_specialty
+msgid "Specialty"
+msgstr "التخصص"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_referring_doctors
+msgid "Referring Doctors"
+msgstr "الأطباء المحولين"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.action_menu_patient
+#: model:ir.ui.menu,name:ce_referral_hms.menu_patient
+msgid "Patients"
+msgstr "المرضى"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_disease_category
+msgid "Disease Categories"
+msgstr " فئات الأمراض"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.diseases_menu
+#: model:ir.ui.menu,name:ce_referral_hms.hms_diseases
+msgid "Diseases"
+msgstr "الأمراض"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_family_relation
+msgid "Family Relation"
+msgstr "العلاقات الاسرية"
