@@ -124,6 +124,7 @@ class Referral(models.Model):
     requested_date = fields.Datetime('Requested Date', states=READONLY_STATES)
     accept_date = fields.Datetime('Accept/Reject Date', states=READONLY_STATES)
     arrival_date = fields.Datetime('Patient Arrival Date', states=READONLY_STATES)
+    close_date = fields.Datetime('Close Date', states=READONLY_STATES)
     waiting_duration = fields.Float('Wait Time', readonly=True)
     arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
     source_id = fields.Many2one('hms.multi.referral', 'Source')
@@ -221,13 +222,28 @@ class Referral(models.Model):
         self.waiting_duration = float(('%0*d') % (2, h) + '.' + ('%0*d') % (2, m * 1.677966102))
         self.accept_date = datetime.now()
 
+    def auto_close_referral(self):
+        now_date = datetime.now()
+        referral_ids = self.env['hms.referral'].search([('accept_date', '<=', now_date),
+                                                        ('state', 'in', ['accept', 'waiting_ar'])])
+        for rec in referral_ids:
+            diff = now_date - rec.accept_date
+            days, seconds = diff.days, diff.seconds
+            hours = days * 24 + seconds // 3600
+            if hours >= 24:
+                rec.state = 'not'
+                self.hospital_action = 'not'
+                rec.close_date = now_date
+
     def action_done(self):
         self.state = 'done'
+        self.close_date = datetime.now()
         # self.action_create_appointment()
 
     def action_not_arrival(self):
         self.state = 'not'
         self.hospital_action = 'not'
+        self.close_date = datetime.now()
         # self.action_create_appointment()
 
     def action_cancel(self):
