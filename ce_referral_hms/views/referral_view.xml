@@ -278,7 +278,7 @@
         <field name="name">Not Arrival Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('to_hospital_id.referral_coordinator_ids', '=', uid),('state', '=', 'not')]</field>
+        <field name="domain">['|',('from_hospital_id.referral_coordinator_ids', '=', uid),('to_hospital_id.referral_coordinator_ids', '=', uid),('state', '=', 'not')]</field>
         <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_inherit')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_inherit')})]"/>
