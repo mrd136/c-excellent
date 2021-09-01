@@ -1067,3 +1067,8 @@ msgstr "فقدان الحياه"
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__not
 msgid "Not Arrival"
 msgstr "لم يتم وصول المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__unit_ids
+msgid "Hospital/Center"
+msgstr "المستشفيات/المراكز الطبية"
