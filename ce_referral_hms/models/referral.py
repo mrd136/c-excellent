@@ -50,14 +50,17 @@ class Referral(models.Model):
 
     READONLY_STATES = {'reject': [('readonly', True)], 'accept': [('readonly', True)], 'waiting': [('readonly', True)],
                        'requested': [('readonly', True)],
-                       'cancel': [('readonly', True)], 'done': [('readonly', True)]}
+                       'cancel': [('readonly', True)], 'arrival': [('readonly', True)],
+                       'waiting_ar': [('readonly', True)],
+                       'done': [('readonly', True)]}
 
     name = fields.Char(string='Referral Id', copy=False, tracking=True, states=READONLY_STATES)
     patient_id = fields.Many2one('hms.patient', ondelete='restrict', string='Patient',
                                  required=True, index=True, help='Patient Name', states=READONLY_STATES, tracking=True)
     image_128 = fields.Binary(related='patient_id.image_128', string='Image', readonly=True)
     physician_id = fields.Many2one('hms.physician', ondelete='restrict', string='Physician',
-                                   index=True, help='Physician\'s Name', states=READONLY_STATES, tracking=True)
+                                   index=True, help='Physician\'s Name', states=READONLY_STATES, tracking=True,
+                                   default=lambda self: self.default_physician())
     # department_id = fields.Many2one('hr.department', ondelete='restrict',
     #                                 domain=[('patient_depatment', '=', True)], string='Department', tracking=True,
     #                                 states=READONLY_STATES)
@@ -132,9 +135,13 @@ class Referral(models.Model):
         ('hypnotize', 'Hypnotize the patient'), ('go', 'Go Home'),
         ('loss', 'Patient life loss'), ('not', 'Not Arrival')], string='Patient State')
 
+    def default_physician(self):
+        return self.env['hms.physician'].search([('user_id', '=', self.env.uid)], limit=1)
+
     @api.onchange('from_hospital_id', 'referral_type')
     def onchange_referral_type(self):
         """to get just all operation unit expect from hos"""
+        self.to_hospital_id = False
         if self.referral_type == 'center':
             self.to_hospital_id = self.env['operating.unit'].search([('type', '=', 'center'),
                                                                      ('parent_id', '=', self.from_hospital_id.id)]).id
@@ -280,7 +287,8 @@ class MultiReferral(models.Model):
                                  required=True, index=True, help='Patient Name')
     image_128 = fields.Binary(related='patient_id.image_128', string='Image', readonly=True)
     physician_id = fields.Many2one('hms.physician', ondelete='restrict', string='Physician',
-                                   index=True, help='Physician\'s Name', tracking=True)
+                                   index=True, help='Physician\'s Name', tracking=True
+                                   , default=lambda self: self.default_physician())
     # department_id = fields.Many2one('hr.department', ondelete='restrict',
     #                                 domain=[('patient_depatment', '=', True)], string='Department', tracking=True)
     service_id = fields.Many2one('hms.referral.service', string='Service', tracking=True)
@@ -301,9 +309,13 @@ class MultiReferral(models.Model):
                                default='1')
     referral_reason = fields.Text(string="Referral Reason")
 
-    @api.onchange('from_hospital_id', 'referral_type')
+    def default_physician(self):
+        return self.env['hms.physician'].search([('user_id', '=', self.env.uid)], limit=1)
+
+    @api.onchange('from_hospital_id')
     def onchange_referral_type(self):
         """to get just all operation unit expect from hos"""
+        self.to_hospital_ids = False
         domain = [('id', 'in',
                    self.env['operating.unit'].search([('type', '=', 'hospital'),
                                                       ('id', '!=', self.from_hospital_id.id)]).ids)]

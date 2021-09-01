@@ -1025,3 +1025,45 @@ msgstr "الأمراض"
 #: model:ir.ui.menu,name:ce_referral_hms.menu_family_relation
 msgid "Family Relation"
 msgstr "العلاقات الاسرية"
+
+#. module: ce_referral_hms
+#: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_not_referral
+#: model:ir.ui.menu,name:ce_referral_hms.menu_not_referral
+msgid "Not Arrival Referral"
+msgstr "الاحالات التي لم يتم وصول المريض بها"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__close_date
+msgid "Close Date"
+msgstr "تاريخ اغلاق الاحالة"
+
+#. module: ce_referral_hms
+#: model_terms:ir.ui.view,arch_db:ce_referral_hms.view_hms_referral_form
+msgid "Date Info"
+msgstr "المعلومات الاضافية"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__hospital_action
+msgid "Patient State"
+msgstr "حالة المريض"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__hypnotize
+msgid "Hypnotize the patient"
+msgstr "التنويم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__go
+msgid "Go Home"
+msgstr "الخروج الي المنزل"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__loss
+msgid "Patient life loss"
+msgstr "فقدان الحياه"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__not
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__not
+msgid "Not Arrival"
+msgstr "لم يتم وصول المريض"
