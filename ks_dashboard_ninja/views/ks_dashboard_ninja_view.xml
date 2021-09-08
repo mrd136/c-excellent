@@ -73,7 +73,9 @@
 
         <menuitem name="My Dashboard" id="ks_dashboard_ninja.board_menu_root"
                   web_icon="ks_dashboard_ninja,static/description/icon.png"
-                  action="ks_dashboard_ninja.board_dashboard_action_window"/>
+                  action="ks_dashboard_ninja.board_dashboard_action_window"
+                  groups="ks_dashboard_ninja_group_manager"
+        />
 
         <menuitem name="Configuration" id="ks_dashboard_ninja.configuration_menu"
                   parent="ks_dashboard_ninja.board_menu_root"
