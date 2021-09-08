@@ -13,6 +13,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'data/sequence.xml',
         'views/hms_base_views.xml',
         'views/patient_view.xml',
         'views/doctor_view.xml',

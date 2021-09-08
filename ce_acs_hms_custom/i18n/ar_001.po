@@ -882,7 +882,7 @@ msgstr "الهوية الوطنية"
 #. module: ce_acs_hms_custom
 #: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__gov_code
 msgid "Government Identity"
-msgstr "الهوية الحكومية"
+msgstr "رقم الاثبات/ خطاب الشرطة"
 
 #. module: ce_acs_hms_custom
 #: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient_family_diseases__relative__grandfather
@@ -1613,7 +1613,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_form
 #: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_patient_tree
 msgid "Patient"
-msgstr ""
+msgstr "المرضى"
 
 #. module: ce_acs_hms_custom
 #: model_terms:ir.ui.view,arch_db:ce_acs_hms_custom.view_hms_patient_disease_form
@@ -2151,16 +2151,6 @@ msgid "recessive"
 msgstr ""
 
 #. module: ce_acs_hms_custom
-#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_unknown_patient
-msgid "Is Unknown Patient?"
-msgstr "مجهول الهوية؟"
-
-#. module: ce_acs_hms_custom
-#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__is_saudi
-msgid "Is a Saudi?"
-msgstr "سعودي؟"
-
-#. module: ce_acs_hms_custom
 #: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__marital_status
 msgid "Marital Status"
 msgstr "الحالة الاجتماعية"
@@ -2177,8 +2167,8 @@ msgstr "احتلال"
 
 #. module: ce_acs_hms_custom
 #: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__primary_doctor
-msgid "Primary Care Doctor"
-msgstr "طبيب الرعاية الأولية"
+msgid "Physician"
+msgstr "الطبيب المعالج"
 
 #. module: ce_acs_hms_custom
 #: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__res_partner__gender__male
@@ -2201,3 +2191,22 @@ msgstr "التصنيف"
 msgid "Parent Category"
 msgstr "الفئة الام"
 
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient__nationality__saudi
+msgid "Saudi"
+msgstr "سعودي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient__nationality__unknown
+msgid "Unknown Patient"
+msgstr "مجهول الهوية"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields.selection,name:ce_acs_hms_custom.selection__hms_patient__nationality__non
+msgid "Non Saudis"
+msgstr "غير سعودي"
+
+#. module: ce_acs_hms_custom
+#: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__nationality
+msgid "Nationality"
+msgstr "الهوية"

@@ -96,16 +96,17 @@
                     <group>
                         <group>
                             <field name="code" readonly="1"/>
-                            <field name="is_unknown_patient"/>
-                            <field name="is_saudi"/>
+                            <field name="nationality" widget="radio" required="1"/>
+<!--                            <field name="is_unknown_patient"/>-->
+<!--                            <field name="is_saudi"/>-->
                             <field name="primary_doctor"/>
                             <field name="active" invisible="1"/>
                         </group>
                         <group>
                             <field name="gender"/>
-                            <field name="birthday" attrs="{'required':[('is_unknown_patient', '=', False)]}"/>
-                            <field name="age"/>
-                            <field name="gov_code" attrs="{'required':[('is_unknown_patient', '=', False)]}"/>
+                            <field name="age" attrs="{'required':[('nationality', '!=', 'unknown')]}"/>
+<!--                            <field name="age"/>-->
+                            <field name="gov_code" required="1"/>
                             <!--                            <field name="department_ids" widget="many2many_tags" groups="acs_hms.group_allow_multi_department"/>-->
                         </group>
                     </group>

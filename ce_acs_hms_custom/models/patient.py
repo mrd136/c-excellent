@@ -24,7 +24,7 @@ class ACSPatient(models.Model):
     emp_code = fields.Char(string='Employee Code')
     user_id = fields.Many2one('res.users', string='Related User', ondelete='cascade', 
         help='User-related data of the patient')
-    primary_doctor = fields.Many2one('hms.physician', 'Primary Care Doctor')
+    primary_doctor = fields.Many2one('hms.physician', 'Physician')
     ref_doctor = fields.Many2many('res.partner', 'rel_doc_pat', 'doc_id', 
         'patient_id', 'Referring Doctors', domain=[('is_referring_doctor','=',True)])
     #ACS NOTE: CAN BE deleted?
@@ -42,8 +42,12 @@ class ACSPatient(models.Model):
     occupation = fields.Char("Occupation")
     religion = fields.Char("Religion")
     caste = fields.Char("Tribe")
-    is_unknown_patient = fields.Boolean('Is Unknown Patient?')
-    is_saudi = fields.Boolean('Is a Saudi?')
+    nationality = fields.Selection([('saudi', 'Saudi'), ('non', 'Non Saudis'),
+                                    ('unknown', 'Unknown Patient')], default='saudi', required=True, string="Nationality")
+
+    age = fields.Char(string='Age')
+    # is_unknown_patient = fields.Boolean('Is Unknown Patient?')
+    # is_saudi = fields.Boolean('Is a Saudi?')
 
     @api.model
     def create(self, values):
