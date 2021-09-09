@@ -193,8 +193,21 @@ class Referral(models.Model):
         else:
             self.state = 'waiting'
         self.requested_date = datetime.now()
+        activity_type = self.env['mail.activity.type'].search([('category', '=', 'meeting')], limit=1)
+        for x in self.to_hospital_id.referral_coordinator_ids:
+            self.env['mail.activity'].create({
+                'res_id': self.id,
+                'res_model_id': self.env['ir.model']._get('hms.referral').id,
+                'summary': 'New Referral Request',
+                'note': 'View Note',
+                'activity_type_id': activity_type.id,
+                'user_id': x.id,
+            })
 
     def action_arrival(self):
+        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        if existing_activity:
+            existing_activity.action_feedback(feedback="Patient Arrival")
         self.state = 'arrival'
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
@@ -203,6 +216,9 @@ class Referral(models.Model):
         self.arrival_date = datetime.now()
 
     def action_accept(self):
+        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        if existing_activity:
+            existing_activity.action_feedback(feedback="Accepted")
         self.state = 'accept'
         if self.source_id:
             for referral in self.source_id.referral_ids.filtered(lambda v: v.id != self.id):
@@ -215,6 +231,9 @@ class Referral(models.Model):
         self.accept_date = datetime.now()
 
     def action_reject(self):
+        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        if existing_activity:
+            existing_activity.action_feedback(feedback="Rejected")
         self.state = 'reject'
         datetime_diff = datetime.now() - self.requested_date
         m, s = divmod(datetime_diff.total_seconds(), 60)
