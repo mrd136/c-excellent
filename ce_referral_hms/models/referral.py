@@ -87,7 +87,7 @@ class Referral(models.Model):
     radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES,
                                       help="Details of the Radiological Report")
     past_history = fields.Text(string='Past History', states=READONLY_STATES, help="Past history of any diseases.")
-    urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Urgency Level',
+    urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Cases of category',
                                default='1', states=READONLY_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -132,8 +132,20 @@ class Referral(models.Model):
     arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
     source_id = fields.Many2one('hms.multi.referral', 'Source')
     hospital_action = fields.Selection([
-        ('hypnotize', 'Hypnotize the patient'), ('go', 'Go Home'),
-        ('loss', 'Patient life loss'), ('not', 'Not Arrival')], string='Patient State')
+        ('admitted', 'Admitted'), ('discharged', 'Discharged'),
+        ('died', 'Died'), ('not', 'The patient was not arrived')], string='Patient State')
+    is_from_center = fields.Boolean(compute='is_center')
+
+    @api.depends('from_hospital_id')
+    def is_center(self):
+        for rec in self:
+            rec.is_from_center = False
+            if rec.from_hospital_id:
+                if rec.from_hospital_id.type == 'center':
+                    rec.is_from_center = True
+                    rec.referral_type = 'hospital'
+                    if rec.from_hospital_id.parent_id.specialty_hospital:
+                        rec.referral_type = 'specialty'
 
     def default_physician(self):
         return self.env['hms.physician'].search([('user_id', '=', self.env.uid)], limit=1)
@@ -142,6 +154,8 @@ class Referral(models.Model):
     def onchange_referral_type(self):
         """to get just all operation unit expect from hos"""
         self.to_hospital_id = False
+        if self.is_from_center:
+            self.to_hospital_id = self.from_hospital_id.parent_id.id
         if self.referral_type == 'center':
             self.to_hospital_id = self.env['operating.unit'].search([('type', '=', 'center'),
                                                                      ('parent_id', '=', self.from_hospital_id.id)]).id

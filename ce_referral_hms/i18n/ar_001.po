@@ -871,12 +871,6 @@ msgid "Unread Messages Counter"
 msgstr "عدد الرسائل الجديدة"
 
 #. module: ce_referral_hms
-#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_multi_referral__urgency
-#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__urgency
-msgid "Urgency Level"
-msgstr "مستوى الطوارئ"
-
-#. module: ce_referral_hms
 #: model:ir.model.fields,field_description:ce_referral_hms.field_operating_unit__referral_coordinator_ids
 msgid "Users Coordinator referral"
 msgstr "منسق الاحالات"
@@ -1048,27 +1042,32 @@ msgid "Patient State"
 msgstr "حالة المريض"
 
 #. module: ce_referral_hms
-#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__hypnotize
-msgid "Hypnotize the patient"
-msgstr "التنويم"
-
-#. module: ce_referral_hms
-#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__go
-msgid "Go Home"
-msgstr "الخروج الي المنزل"
-
-#. module: ce_referral_hms
-#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__loss
-msgid "Patient life loss"
-msgstr "فقدان الحياه"
-
-#. module: ce_referral_hms
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__not
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__state__not
-msgid "Not Arrival"
+msgid "The patient was not arrived"
 msgstr "لم يتم وصول المريض"
 
 #. module: ce_referral_hms
 #: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral_service__unit_ids
 msgid "Hospital/Center"
 msgstr "المستشفيات/المراكز الطبية"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__urgency
+msgid "Cases of category"
+msgstr "مستوى الحالة"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__admitted
+msgid "Admitted"
+msgstr "التنويم"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__discharged
+msgid "Discharged"
+msgstr "الخروج الي المنزل"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__died
+msgid "Died"
+msgstr "فقدان الحياه"
