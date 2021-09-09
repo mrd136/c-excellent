@@ -87,7 +87,7 @@ class Referral(models.Model):
     radiological_report = fields.Text(string='Radiological Report', states=READONLY_STATES,
                                       help="Details of the Radiological Report")
     past_history = fields.Text(string='Past History', states=READONLY_STATES, help="Past history of any diseases.")
-    urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Cases of category',
+    urgency = fields.Selection([('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')], string='Level of case',
                                default='1', states=READONLY_STATES)
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -178,27 +178,6 @@ class Referral(models.Model):
             user_id = rec.to_hospital_id.referral_coordinator_ids.filtered(lambda v: v.id == self.env.uid)
             if user_id:
                 rec.current_is_accept_user = True
-
-    # def action_create_appointment(self):
-    #     dic = {
-    #         'diseas_id': self.diseas_id.id,
-    #         'state': 'draft',
-    #         'patient_id': self.patient_id.id,
-    #         'urgency': self.urgency,
-    #         'past_history': self.past_history,
-    #         'radiological_report': self.radiological_report,
-    #         'lab_report': self.lab_report,
-    #         'present_illness': self.present_illness,
-    #         'differencial_diagnosis': self.differencial_diagnosis,
-    #         'spo2': self.spo2,
-    #         'bp': self.bp,
-    #         'rr': self.rr,
-    #         'hr': self.hr,
-    #         'temp': self.temp,
-    #         'height': self.height,
-    #         'weight': self.weight,
-    #     }
-    #     self.env['hms.appointment'].create(dic)
 
     def action_requested(self):
         self.state = 'requested'

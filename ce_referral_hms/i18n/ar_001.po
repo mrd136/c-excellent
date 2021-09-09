@@ -1054,7 +1054,7 @@ msgstr "المستشفيات/المراكز الطبية"
 
 #. module: ce_referral_hms
 #: model:ir.model.fields,field_description:ce_referral_hms.field_hms_referral__urgency
-msgid "Cases of category"
+msgid "Level of case"
 msgstr "مستوى الحالة"
 
 #. module: ce_referral_hms
