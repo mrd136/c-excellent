@@ -881,7 +881,7 @@ msgstr "الهوية الوطنية"
 
 #. module: ce_acs_hms_custom
 #: model:ir.model.fields,field_description:ce_acs_hms_custom.field_hms_patient__gov_code
-msgid "Government Identity"
+msgid "ID,Iqama/police letter"
 msgstr "رقم الاثبات/ خطاب الشرطة"
 
 #. module: ce_acs_hms_custom

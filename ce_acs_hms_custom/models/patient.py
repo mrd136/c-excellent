@@ -13,7 +13,7 @@ class ACSPatient(models.Model):
     _inherits = {'res.partner': 'partner_id'}
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, ondelete='restrict')
-    gov_code = fields.Char(string='Government Identity', copy=False, tracking=True)
+    gov_code = fields.Char(string='ID,Iqama/police letter', copy=False, tracking=True)
     marital_status = fields.Selection([
         ('single', 'Single'), 
         ('married', 'Married')], string='Marital Status', default="single")
