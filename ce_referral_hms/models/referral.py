@@ -250,9 +250,7 @@ class Referral(models.Model):
             days, seconds = diff.days, diff.seconds
             hours = days * 24 + seconds // 3600
             if hours >= 24:
-                rec.state = 'not'
-                self.hospital_action = 'not'
-                rec.close_date = now_date
+                rec.action_not_arrival()
 
     def action_done(self):
         self.state = 'done'
@@ -260,6 +258,9 @@ class Referral(models.Model):
         # self.action_create_appointment()
 
     def action_not_arrival(self):
+        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        if existing_activity:
+            existing_activity.action_feedback(feedback="The patient was not arrived")
         self.state = 'not'
         self.hospital_action = 'not'
         self.close_date = datetime.now()
