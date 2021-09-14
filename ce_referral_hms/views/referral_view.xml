@@ -74,6 +74,11 @@
                     <button name="action_requested" string="Request" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
                     <button name="action_waiting" string="Send" type="object" attrs="{'invisible':['|',('state', '!=', 'requested')]}"/>
                     <button name="action_cancel" string="Cancel" attrs="{'invisible':['|',('state', '!=', 'draft')]}" type="object"/>
+                    <button name="action_accept" string="Accept" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_arrival" string="Confirm Patient Arrival" type="object" attrs="{'invisible':['|',('state', 'not in', ['accept', 'waiting_ar']), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_not_arrival" string="Confirm Patient Not Arrival" type="object" attrs="{'invisible':['|',('state', 'not in', ['accept', 'waiting_ar']), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_done" string="Complete" type="object" attrs="{'invisible':['|',('state', '!=', 'arrival'), ('current_is_accept_user','!=', True)]}"/>
+                    <button name="action_reject" string="Reject" type="object" attrs="{'invisible':['|',('state', '!=', 'waiting'), ('current_is_accept_user','!=', True)]}"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,requested,waiting,accept,waiting_ar,done"/>
                 </header>
                 <sheet>
@@ -98,7 +103,7 @@
                         </group>
                         <group>
                             <field name="date"/>
-<!--                            <-->
+                            <!--                            <-->
                             <field name="referral_type" force_save="1" attrs="{'readonly':['|',('state','!=', 'draft'), ('is_from_center','=',True)]}"/>
                             <field name="service_id" required="1"/>
                             <field name="to_hospital_id" force_save="1" attrs="{'readonly':['|','|',('state','!=', 'draft'),('is_from_center','=',True),('referral_type', '=', 'center')]}" required="1"/>
