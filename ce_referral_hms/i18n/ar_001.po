@@ -1060,14 +1060,14 @@ msgstr "مستوى الحالة"
 #. module: ce_referral_hms
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__admitted
 msgid "Admitted"
-msgstr "التنويم"
+msgstr "تنويم"
 
 #. module: ce_referral_hms
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__discharged
 msgid "Discharged"
-msgstr "الخروج الي المنزل"
+msgstr "خروج"
 
 #. module: ce_referral_hms
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__died
 msgid "Died"
-msgstr "فقدان الحياه"
+msgstr "توفى"
