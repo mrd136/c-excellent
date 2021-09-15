@@ -1071,3 +1071,16 @@ msgstr "خروج"
 #: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__died
 msgid "Died"
 msgstr "توفى"
+
+#. module: ce_referral_hms
+#: model:ir.model.fields.selection,name:ce_referral_hms.selection__hms_referral__hospital_action__returned
+msgid "Returned To Hospital"
+msgstr "إرجاع الى المستشفي"
+
+#. module: ce_referral_hms
+#: code:addons/ce_referral_hms/models/referral.py:0
+#, python-format
+msgid ""
+"This option is only available in the case of a referral to the Urgent Care "
+"Center"
+msgstr "هذا الخيار غير متاح الا في حالة نوع الاحالة مركز احالة طبية"

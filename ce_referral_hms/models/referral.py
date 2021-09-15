@@ -131,10 +131,37 @@ class Referral(models.Model):
     waiting_duration = fields.Float('Wait Time', readonly=True)
     arrival_duration = fields.Float('Patient Arrival Duration', readonly=True)
     source_id = fields.Many2one('hms.multi.referral', 'Source')
-    hospital_action = fields.Selection([
-        ('admitted', 'Admitted'), ('discharged', 'Discharged'),
-        ('died', 'Died'), ('not', 'The patient was not arrived')], string='Patient State')
+    hospital_action = fields.Selection([('admitted', 'Admitted'), ('discharged', 'Discharged'), ('died', 'Died'),
+                                        ('not', 'The patient was not arrived'), ('returned', 'Returned To Hospital')],
+                                       string='Patient State')
     is_from_center = fields.Boolean(compute='is_center')
+
+    @api.onchange('hospital_action')
+    def onchange_hospital_action(self):
+        print("/...")
+        if self.referral_type != 'center' and self.hospital_action == 'returned':
+            raise UserError(_('This option is only available in the case of a referral to the Urgent Care Center'))
+
+    def action_create_referral(self):
+        # for unit in self.to_hospital_ids:
+        dic = {'to_hospital_id': self.from_hospital_id.id,
+               'patient_id': self.patient_id.id,
+               'state': 'waiting',
+               'physician_id': self.physician_id.id,
+               'urgency': self.urgency,
+               # 'department_id': self.department_id.id,
+               'radiological_report': self.radiological_report,
+               'lab_report': self.lab_report,
+               'present_illness': self.present_illness,
+               'differencial_diagnosis': self.differencial_diagnosis,
+               'service_id': self.service_id.id,
+               'from_hospital_id': self.to_hospital_id.id,
+               'diseas_id': self.diseas_id.id,
+               'past_history': self.past_history,
+               # 'source_id': self.id,
+               'requested_date': datetime.now()
+               }
+        self.env['hms.referral'].create(dic)
 
     @api.depends('from_hospital_id')
     def is_center(self):
@@ -205,7 +232,7 @@ class Referral(models.Model):
             })
 
     def action_arrival(self):
-        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        existing_activity = self.env['mail.activity'].search([('res_id', '=', self.id)])
         if existing_activity:
             existing_activity.action_feedback(feedback="Patient Arrival")
         self.state = 'arrival'
@@ -216,7 +243,7 @@ class Referral(models.Model):
         self.arrival_date = datetime.now()
 
     def action_accept(self):
-        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        existing_activity = self.env['mail.activity'].search([('res_id', '=', self.id)])
         if existing_activity:
             existing_activity.action_feedback(feedback="Accepted")
         self.state = 'accept'
@@ -231,7 +258,7 @@ class Referral(models.Model):
         self.accept_date = datetime.now()
 
     def action_reject(self):
-        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        existing_activity = self.env['mail.activity'].search([('res_id', '=', self.id)])
         if existing_activity:
             existing_activity.action_feedback(feedback="Rejected")
         self.state = 'reject'
@@ -255,10 +282,12 @@ class Referral(models.Model):
     def action_done(self):
         self.state = 'done'
         self.close_date = datetime.now()
+        if self.hospital_action == 'returned':
+            self.action_create_referral()
         # self.action_create_appointment()
 
     def action_not_arrival(self):
-        existing_activity = self.env['mail.activity'].search([('res_id', '=',  self.id)])
+        existing_activity = self.env['mail.activity'].search([('res_id', '=', self.id)])
         if existing_activity:
             existing_activity.action_feedback(feedback="The patient was not arrived")
         self.state = 'not'
@@ -368,4 +397,3 @@ class MultiReferral(models.Model):
                    'requested_date': datetime.now()
                    }
             self.env['hms.referral'].create(dic)
-
