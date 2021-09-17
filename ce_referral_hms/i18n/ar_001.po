@@ -341,11 +341,6 @@ msgid "Hospital"
 msgstr "المستشفى"
 
 #. module: ce_referral_hms
-#: model:ir.ui.menu,name:ce_referral_hms.menu_hospital_referral
-msgid "Hospital Referral"
-msgstr "طلب الإحالات"
-
-#. module: ce_referral_hms
 #: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_health_unit_tree
 #: model:ir.ui.menu,name:ce_referral_hms.menu_action_hospital_unit_tree
 msgid "Hospital/Health center"
@@ -671,7 +666,9 @@ msgid "Radiological Report..."
 msgstr "تقرير إشعاعي..."
 
 #. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_in_obstetrics_referral
 #: model:ir.ui.menu,name:ce_referral_hms.menu_in_referral
+#: model:res.groups,name:ce_referral_hms.group_hms_receive_referral
 msgid "Receive Referral"
 msgstr "الاحالات المستلمة"
 
@@ -756,6 +753,7 @@ msgid "Requested Date"
 msgstr "تاريخ الطلب"
 
 #. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_out_obstetrics_referral
 #: model:ir.ui.menu,name:ce_referral_hms.menu_out_referral
 msgid "Requested Referral"
 msgstr "طلبات الاحالة"
@@ -1021,8 +1019,10 @@ msgid "Family Relation"
 msgstr "العلاقات الاسرية"
 
 #. module: ce_referral_hms
+#: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_not_obstetrics_referral
 #: model:ir.actions.act_window,name:ce_referral_hms.action_hospital_not_referral
 #: model:ir.ui.menu,name:ce_referral_hms.menu_not_referral
+#: model:ir.ui.menu,name:ce_referral_hms.menu_not_obstetrics_referral
 msgid "Not Arrival Referral"
 msgstr "الاحالات التي لم يتم وصول المريض بها"
 
@@ -1084,3 +1084,14 @@ msgid ""
 "This option is only available in the case of a referral to the Urgent Care "
 "Center"
 msgstr "هذا الخيار غير متاح الا في حالة نوع الاحالة مركز احالة طبية"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_referral_obstetrics_parent
+msgid "Referrals for obstetrics and gynecology"
+msgstr "ادارة الاحالات الخاصه بالنساء و التوليد"
+
+#. module: ce_referral_hms
+#: model:ir.ui.menu,name:ce_referral_hms.menu_hospital_obstetrics_referral
+#: model:ir.ui.menu,name:ce_referral_hms.menu_hospital_referral
+msgid "Hospital Referral"
+msgstr "طلبات الإحالات"
