@@ -2,6 +2,7 @@
 <odoo>
     <!-- Referral -->
     <menuitem id="menu_referral_parent" name="Referral Management" sequence="5" groups="group_hms_referral" web_icon="ce_referral_hms,static/description/icon.png"/>
+    <menuitem id="menu_referral_obstetrics_parent" name="Referrals for obstetrics and gynecology" sequence="5" groups="group_hms_referral" web_icon="ce_referral_hms,static/description/icon.png"/>
 
     <record model="ir.ui.view" id="referral_kanban_view">
         <field name="name">referral.kanban</field>
@@ -256,11 +257,27 @@
         </field>
     </record>
 
+    <record id="action_hospital_out_obstetrics_referral" model="ir.actions.act_window">
+        <field name="name">Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="domain">[('is_obstetrics','=',True), ('from_hospital_id.referral_coordinator_ids', '=', uid)]</field>
+        <field name="context">{'default_is_obstetrics': True, 'search_default_today': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Record Found
+            </p>
+            <p>
+                Click to add an Referral.
+            </p>
+        </field>
+    </record>
+
     <record id="action_hospital_out_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('from_hospital_id.referral_coordinator_ids', '=', uid)]</field>
+        <field name="domain">[('is_obstetrics','=',False),('from_hospital_id.referral_coordinator_ids', '=', uid)]</field>
         <field name="context">{'search_default_today': 1,'search_default_done': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -271,11 +288,21 @@
             </p>
         </field>
     </record>
+    <record id="action_hospital_receive_obstetrics_referral" model="ir.actions.act_window">
+        <field name="name">Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="domain">[('is_obstetrics','=',True),('to_hospital_id.referral_coordinator_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'arrival','done'])]</field>
+        <field name="context">{'default_is_obstetrics': True, 'search_default_today': 1}</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_inherit')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_inherit')})]"/>
+    </record>
     <record id="action_hospital_receive_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">[('to_hospital_id.referral_coordinator_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'arrival','done'])]</field>
+        <field name="domain">[('is_obstetrics','=',False),('to_hospital_id.referral_coordinator_ids', '=', uid),('state', 'in', ['waiting','accept','waiting_ar', 'arrival','done'])]</field>
         <field name="context">{'search_default_today': 1}</field>
         <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_inherit')}),
@@ -285,11 +312,22 @@
         <field name="name">Not Arrival Referral</field>
         <field name="res_model">hms.referral</field>
         <field name="view_mode">tree,form,kanban,pivot</field>
-        <field name="domain">['|',('from_hospital_id.referral_coordinator_ids', '=', uid),('to_hospital_id.referral_coordinator_ids', '=', uid),('state', '=', 'not')]</field>
+        <field name="domain">['|',('from_hospital_id.referral_coordinator_ids', '=', uid),('to_hospital_id.referral_coordinator_ids', '=', uid),('state', '=', 'not'),('is_obstetrics','=',False)]</field>
         <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_inherit')}),
                 (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_inherit')})]"/>
     </record>
+
+    <record id="action_hospital_not_obstetrics_referral" model="ir.actions.act_window">
+        <field name="name">Not Arrival Referral</field>
+        <field name="res_model">hms.referral</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="domain">['|',('from_hospital_id.referral_coordinator_ids', '=', uid),('to_hospital_id.referral_coordinator_ids', '=', uid),('state', '=', 'not'),('is_obstetrics','=',True)]</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('ce_referral_hms.view_hms_referral_tree_inherit')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('ce_referral_hms.view_hms_referral_form_inherit')})]"/>
+    </record>
+
     <record id="action_new_referral" model="ir.actions.act_window">
         <field name="name">Referral</field>
         <field name="res_model">hms.referral</field>
@@ -305,4 +343,15 @@
     <menuitem id="menu_not_referral" name="Not Arrival Referral" sequence="4" parent="menu_hospital_referral"
               groups="ce_referral_hms.group_hms_coordinator_referral"
               action="action_hospital_not_referral"/>
+
+    <menuitem id="menu_hospital_obstetrics_referral" name="Hospital Referral" sequence="1" parent="menu_referral_obstetrics_parent"/>
+    <menuitem id="menu_in_obstetrics_referral" name="Receive Referral" sequence="2" parent="menu_hospital_obstetrics_referral"
+              groups="ce_referral_hms.group_hms_receive_referral"
+              action="action_hospital_receive_obstetrics_referral"/>
+    <menuitem id="menu_out_obstetrics_referral" name="Requested Referral" sequence="3" parent="menu_hospital_obstetrics_referral"
+              groups="ce_referral_hms.group_hms_coordinator_referral"
+              action="action_hospital_out_obstetrics_referral"/>
+    <menuitem id="menu_not_obstetrics_referral" name="Not Arrival Referral" sequence="4" parent="menu_hospital_obstetrics_referral"
+              groups="ce_referral_hms.group_hms_coordinator_referral"
+              action="action_hospital_not_obstetrics_referral"/>
 </odoo>

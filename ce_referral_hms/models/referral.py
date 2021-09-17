@@ -135,10 +135,10 @@ class Referral(models.Model):
                                         ('not', 'The patient was not arrived'), ('returned', 'Returned To Hospital')],
                                        string='Patient State')
     is_from_center = fields.Boolean(compute='is_center')
+    is_obstetrics = fields.Boolean('Is Obstetrics and Gynecology ?!')
 
     @api.onchange('hospital_action')
     def onchange_hospital_action(self):
-        print("/...")
         if self.referral_type != 'center' and self.hospital_action == 'returned':
             raise UserError(_('This option is only available in the case of a referral to the Urgent Care Center'))
 
